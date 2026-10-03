@@ -37,5 +37,5 @@ tpa-mortgage-calculator input[type=range]{padding:0;border:0;background:transpar
 .tpa-mc-cta{display:block;text-align:center;font-weight:700;background:var(--tpa-cta-bg,#FFC20E);color:var(--tpa-cta-fg,#0A0A0A);border-radius:999px;padding:13px 24px;text-decoration:none}
 
 .tpa-mc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-.tpa-mc-logo{width:clamp(96px,26%,150px);height:auto;flex:none;display:block}
-@media(max-width:420px){.tpa-mc-head{flex-wrap:wrap}.tpa-mc-logo{order:-1;width:110px}}
+.tpa-mc-logo{width:clamp(96px,26%,150px);height:auto;flex:none;display:block;margin-right:var(--tpa-logo-inset,28px)}
+@media(max-width:420px){.tpa-mc-head{flex-wrap:wrap}.tpa-mc-logo{order:-1;width:110px;margin-right:0}}
