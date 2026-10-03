@@ -13,7 +13,8 @@ interface Props {
   noindex?: boolean;
   schema?: object | object[];
 }
-const { title, description, image = '/img/skyline-night-1600.jpg', type = 'website', noindex = false, schema } = Astro.props;
+const { title, description, image = '/img/skyline-night-1600.jpg', type = 'website', noindex: pageNoindex = false, schema } = Astro.props;
+const noindex = pageNoindex || import.meta.env.PUBLIC_NOINDEX === 'true';
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).toString();
 const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const ogImage = new URL(image, site.url).toString();
