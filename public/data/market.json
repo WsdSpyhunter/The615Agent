@@ -67,6 +67,15 @@
       "dom": null,
       "saleToList": null,
       "inventory": null
+    },
+    "murfreesboro": {
+      "name": "Murfreesboro",
+      "monthsSupply": 4.8,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
     }
   }
 }
