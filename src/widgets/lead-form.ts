@@ -8,6 +8,15 @@
  */
 function wire(form: HTMLFormElement) {
   if ((form as any).__tpa) return; (form as any).__tpa = true;
+  // Reveal helper: a checkbox with data-reveals="x" shows the element with data-reveal-box="x" while it is ticked.
+  const sync = () => form.querySelectorAll<HTMLInputElement>('[data-reveals]').forEach((cb) => {
+    const box = form.querySelector<HTMLElement>(`[data-reveal-box="${cb.dataset.reveals}"]`);
+    if (!box) return;
+    box.hidden = !cb.checked;
+    if (!cb.checked) box.querySelectorAll('input').forEach((i) => (i.value = ''));
+  });
+  form.addEventListener('change', sync);
+  form.addEventListener('reset', () => setTimeout(sync));
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const ok = form.querySelector<HTMLElement>('[data-ok]'), err = form.querySelector<HTMLElement>('[data-err]');

@@ -65,10 +65,11 @@ const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller:
       <fieldset>
         <legend>Areas you are interested in</legend>
         <div class="choices">
-          {['Franklin', 'Brentwood', 'Spring Hill', "Thompson's Station", 'Nolensville', 'Nashville', 'Murfreesboro', 'Other', 'Not sure yet'].map((a) => (
-            <label><input type="checkbox" name="areas" value={a} /><span>{a}</span></label>
+          {['Franklin', 'Brentwood', 'Spring Hill', "Thompson's Station", 'Nolensville', 'Columbia', 'Nashville', 'Murfreesboro', 'Other'].map((a) => (
+            <label><input type="checkbox" name="areas" value={a} data-reveals={a === 'Other' ? 'other-area' : undefined} /><span>{a}</span></label>
           ))}
         </div>
+        <label data-reveal-box="other-area" hidden>Which area?<input name="other_area" placeholder="City or neighborhood" autocomplete="off" /></label>
       </fieldset>
       <div class="two-in">
         <label>Bedrooms

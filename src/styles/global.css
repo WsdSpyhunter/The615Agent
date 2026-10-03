@@ -186,6 +186,7 @@ input,select,textarea{font:inherit;color:var(--fg);background:var(--card);border
 .choices span{border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;font-size:14px;background:var(--card);font-weight:600}
 .choices input:checked+span{background:var(--blue);border-color:var(--blue);color:#fff}
 .choices input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.fcard [hidden]{display:none!important}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .fmsg{font-weight:700;border-radius:12px;padding:12px 14px}
 .fmsg.ok{background:#DDF5F1;color:#066356}
