@@ -13,6 +13,8 @@ import { getJSON, money0, money2, flag, emit } from './lib/data';
  *   contact-url     where the "talk to me" button goes; the numbers are added as ?note=... (default /contact)
  *   cta-label       button text; set cta="false" to hide the button
  *   brand           name shown in the disclaimer (default "This site")
+ *   logo-src        optional image shown at the top right of the results panel (use a light-on-transparent logo)
+ *   logo-alt        alt text for that image (default: the brand name)
  * Events: tpa-mortgage:change {total, loan, interest, ...}
  */
 
@@ -82,7 +84,7 @@ export class TpaMortgageCalculator extends HTMLElement {
       <p class="tpa-mc-hint">Property tax and insurance are example values. Tax depends on the home's assessment and its location, and insurance depends on the home and carrier. Look up the specific property and get a quote for real numbers.</p>
     </div>
     <div class="tpa-mc-res" aria-live="polite">
-      <div><small>Estimated monthly payment</small><div class="tpa-mc-big" data-o="total"></div></div>
+      <div class="tpa-mc-head"><div><small>Estimated monthly payment</small><div class="tpa-mc-big" data-o="total"></div></div>${this.getAttribute('logo-src') ? `<img class="tpa-mc-logo" src="${this.getAttribute('logo-src')}" alt="${this.getAttribute('logo-alt') || this.getAttribute('brand') || ''}" loading="lazy">` : ''}</div>
       <div class="tpa-mc-donutwrap"><svg data-o="donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Payment breakdown"></svg><div class="tpa-mc-legend" data-o="legend"></div></div>
       <div class="tpa-mc-totals" data-o="totals"></div>
       <div class="tpa-mc-chart"><svg data-o="chart" viewBox="0 0 520 240" role="img" aria-label="Loan balance and cumulative interest over time"></svg></div>
