@@ -6,3 +6,4 @@ dist
 .DS_Store
 public/widgets/tpa-widgets.js
 public/widgets/tpa-widgets.css
+.tools
