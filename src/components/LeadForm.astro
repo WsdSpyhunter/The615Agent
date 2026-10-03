@@ -65,7 +65,7 @@ const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller:
       <fieldset>
         <legend>Areas you are interested in</legend>
         <div class="choices">
-          {['Franklin', 'Brentwood', 'Spring Hill', "Thompson's Station", 'Nolensville', 'Nashville', 'Not sure yet'].map((a) => (
+          {['Franklin', 'Brentwood', 'Spring Hill', "Thompson's Station", 'Nolensville', 'Nashville', 'Murfreesboro', 'Other', 'Not sure yet'].map((a) => (
             <label><input type="checkbox" name="areas" value={a} /><span>{a}</span></label>
           ))}
         </div>
@@ -80,7 +80,7 @@ const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller:
       </div>
       <label>Financing
         <select name="financing">
-          <option value="">Select</option><option>Pre-approved</option><option>Talking to a lender</option><option>Paying cash</option><option>Not started yet</option><option>Need a lender introduction</option>
+          <option value="">Select</option><option>Pre-approved</option><option>Talking to a lender</option><option>Paying cash</option><option>Not started yet</option><option>Need a lender recommendation</option>
         </select>
       </label>
       <label>Anything else I should know? <span class="opt">(optional)</span><textarea name="message" rows="3"></textarea></label>
