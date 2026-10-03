@@ -5,10 +5,68 @@
   "sources": [],
   "mortgageRate30": null,
   "cities": {
-    "franklin": { "name": "Franklin", "monthsSupply": 3.4, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
-    "brentwood": { "name": "Brentwood", "monthsSupply": 4.6, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
-    "spring-hill": { "name": "Spring Hill", "monthsSupply": 5.1, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
-    "thompsons-station": { "name": "Thompson's Station", "monthsSupply": 6.3, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
-    "nolensville": { "name": "Nolensville", "monthsSupply": 3.9, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null }
+    "franklin": {
+      "name": "Franklin",
+      "monthsSupply": 3.4,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "brentwood": {
+      "name": "Brentwood",
+      "monthsSupply": 4.6,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "spring-hill": {
+      "name": "Spring Hill",
+      "monthsSupply": 5.1,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "thompsons-station": {
+      "name": "Thompson's Station",
+      "monthsSupply": 6.3,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "nolensville": {
+      "name": "Nolensville",
+      "monthsSupply": 3.9,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "nashville": {
+      "name": "Nashville",
+      "monthsSupply": 4.2,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    },
+    "columbia": {
+      "name": "Columbia",
+      "monthsSupply": 5.4,
+      "medianPrice": null,
+      "yoy": null,
+      "dom": null,
+      "saleToList": null,
+      "inventory": null
+    }
   }
 }

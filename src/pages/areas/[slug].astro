@@ -20,6 +20,7 @@ const schema = [
   <PageHeader eyebrow="Area guide" title={`Moving to <em>${a.name}</em>`} lead={a.blurb} />
   <section class="s"><div class="wrap two area">
     <div class="prose">
+      <figure class="herofig"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt={`${a.name}, Tennessee area photo (placeholder)`} width="800" height="600" /></picture></figure>
       {c.intro.map((p: string) => <p>{p}</p>)}
       <h2>Good to know</h2>
       <ul>{c.goodToKnow.map((g: string) => <li>{g}</li>)}</ul>

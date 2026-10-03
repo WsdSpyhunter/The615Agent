@@ -5,6 +5,10 @@ pubDate: 2026-10-03
 category: Buyers
 keyword: "buying a home in Middle Tennessee"
 sample: true
+heroImage: /img/blog/getting-ready-to-buy.jpg
+heroAlt: "A real estate agent hands house keys to a couple in a new home"
+heroCredit: "Pexels"
+heroCreditUrl: "https://www.pexels.com/photo/7641899/"
 faq:
   - q: "What should I do first when buying a home?"
     a: "Get pre-approved so you know your real budget before you shop. Pre-approval is different from pre-qualification, because a lender has reviewed your documents."

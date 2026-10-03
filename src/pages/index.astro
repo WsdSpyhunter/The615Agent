@@ -102,7 +102,7 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
     <div class="cities">
       {areas.map((a) => (
         <a class={`city ${tint[a.tint]}`} href={`/areas/${a.slug}`}>
-          <div class="art" aria-hidden="true">{a.name.replace("Thompson's Station", "TS").split(' ').map((w) => w[0]).join('')}</div>
+          <div class="art"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt="" width="800" height="600" loading="lazy" decoding="async" /></picture></div>
           <div class="t"><b>{a.name}</b><small>{a.blurb}</small></div>
         </a>
       ))}

@@ -1,0 +1,38 @@
+{
+  "areas/franklin": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/31564837/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "areas/brentwood": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/8031873/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "areas/spring-hill": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/10628469/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "areas/thompsons-station": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/30400456/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "areas/nolensville": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/28918952/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "blog/getting-ready-to-buy": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/7641899/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo."
+  }
+}
