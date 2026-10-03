@@ -1,0 +1,79 @@
+{
+  "franklin": {
+    "title": "Franklin, TN",
+    "intro": ["Franklin is the county seat of Williamson County, south of Nashville along I-65. It is known for its historic downtown and Main Street, and it offers a wide range of home styles, from older homes near downtown to newer neighborhoods farther out.", "Whether you are buying your first home, moving up, or relocating from out of state, I can walk you through the neighborhoods and what each is like day to day."],
+    "goodToKnow": ["Home styles range from historic and established to newer construction.", "School assignment depends on the address. Parts of Franklin are served by Franklin Special School District and others by Williamson County Schools. Always verify zoning for a specific address with the district.", "Property taxes depend on the address and the assessment. Look up any property in the Williamson County property search linked below."],
+    "faq": [
+      { "q": "Is Franklin, TN in Williamson County?", "a": "Yes. Franklin is the county seat of Williamson County, Tennessee." },
+      { "q": "How do I find out which schools a Franklin home is zoned for?", "a": "Zoning depends on the exact address and can change. Check with the school district directly before you make decisions, and I am happy to point you to the right office." },
+      { "q": "How do I look up property taxes on a Franklin home?", "a": "Use the Williamson County property data search to view the assessment and tax information for a specific address." }
+    ],
+    "links": [
+      { "name": "City of Franklin", "url": "https://www.franklintn.gov" },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu" },
+      { "name": "Franklin Special School District", "url": "https://www.fssd.org" },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search" }
+    ]
+  },
+  "brentwood": {
+    "title": "Brentwood, TN",
+    "intro": ["Brentwood sits just south of Nashville in Williamson County, with easy access to I-65 and the city. The area is known for established neighborhoods, larger lots, and convenient access to shopping and services.", "If you are weighing Brentwood against nearby cities, I can help you compare homes, neighborhoods, and total monthly costs side by side."],
+    "goodToKnow": ["Many neighborhoods are established, and lot sizes and home styles vary widely.", "School assignment depends on the address. Verify zoning with Williamson County Schools for any home you are considering.", "Property taxes depend on the address and assessment. Use the county property search linked below to check a specific home."],
+    "faq": [
+      { "q": "Where is Brentwood, TN?", "a": "Brentwood is in Williamson County, just south of Nashville and near I-65." },
+      { "q": "How do I check school zoning for a Brentwood address?", "a": "Contact Williamson County Schools with the exact address. Zoning can change, so verify it before you decide." },
+      { "q": "Can you help me compare Brentwood to Franklin?", "a": "Yes. I can put homes, neighborhoods, and monthly costs side by side so you can compare." }
+    ],
+    "links": [
+      { "name": "City of Brentwood", "url": "https://www.brentwoodtn.gov" },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu" },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search" }
+    ]
+  },
+  "spring-hill": {
+    "title": "Spring Hill, TN",
+    "intro": ["Spring Hill is a growing city along the I-65 corridor south of Franklin. It includes many newer communities and new construction options, and it crosses the line between Williamson and Maury counties.", "Because the county line affects things like school assignment and property taxes, it is worth confirming the details for any specific address. I can help you do that."],
+    "goodToKnow": ["Many newer communities and new construction options.", "Spring Hill includes parts of both Williamson and Maury counties. Schools, taxes, and county services can differ by address, so verify each home you consider.", "New construction purchases have their own process. I can walk you through builder contracts and incentives."],
+    "faq": [
+      { "q": "Is Spring Hill in Williamson County?", "a": "Parts of Spring Hill are in Williamson County and parts are in Maury County. Check the county for any specific address." },
+      { "q": "Does the county affect my schools and taxes?", "a": "It can. Confirm school zoning and tax information for the specific address with the district and county before you decide." },
+      { "q": "Can you help me with new construction in Spring Hill?", "a": "Yes. I can help you review builder contracts, options, and timelines, and represent your interests as the buyer." }
+    ],
+    "links": [
+      { "name": "City of Spring Hill", "url": "https://www.springhilltn.org" },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu" },
+      { "name": "Maury County Public Schools", "url": "https://www.mauryk12.org" },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search" }
+    ]
+  },
+  "thompsons-station": {
+    "title": "Thompson's Station, TN",
+    "intro": ["Thompson's Station is on the southern edge of Williamson County, between Franklin and Spring Hill. It offers more space and a mix of newer communities, and it is a short drive from I-65.", "If you are relocating to Middle Tennessee, I can help you see how Thompson's Station compares with nearby towns for your budget and priorities."],
+    "goodToKnow": ["A mix of newer communities and homes with more space.", "School assignment depends on the address. Verify zoning with Williamson County Schools for any home you consider.", "Property taxes depend on the address. Use the county property search linked below to check a specific home."],
+    "faq": [
+      { "q": "Is Thompson's Station in Williamson County?", "a": "Yes. Thompson's Station is in Williamson County, Tennessee." },
+      { "q": "How do I confirm schools for a Thompson's Station address?", "a": "Ask Williamson County Schools with the exact address. Zoning can change, so verify before you decide." },
+      { "q": "I am moving from out of state. Where do I start?", "a": "Start with a short call. I will ask about your budget, timeline, and priorities, then suggest the areas that fit." }
+    ],
+    "links": [
+      { "name": "Town of Thompson's Station", "url": "https://www.thompsonsstation.com" },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu" },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search" }
+    ]
+  },
+  "nolensville": {
+    "title": "Nolensville, TN",
+    "intro": ["Nolensville is a town in Williamson County, east of I-65 and south of Nashville. It has a small-town center and a mix of established and newer neighborhoods.", "I can help you compare Nolensville with nearby towns on price, lot size, and commute so you can decide with confidence."],
+    "goodToKnow": ["A small-town center with a mix of established and newer neighborhoods.", "School assignment depends on the address. Verify zoning with Williamson County Schools for any home you consider.", "Property taxes depend on the address. Use the county property search linked below to check a specific home."],
+    "faq": [
+      { "q": "Where is Nolensville, TN?", "a": "Nolensville is in Williamson County, east of I-65 and south of Nashville." },
+      { "q": "How do I confirm school zoning in Nolensville?", "a": "Contact Williamson County Schools with the exact address and verify before you decide." },
+      { "q": "Can you help me compare Nolensville with other towns?", "a": "Yes. I can compare homes, lot sizes, and monthly costs across the areas you are considering." }
+    ],
+    "links": [
+      { "name": "Town of Nolensville", "url": "https://www.nolensvilletn.gov" },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu" },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search" }
+    ]
+  }
+}

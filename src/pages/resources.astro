@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ColorBar from '../components/ColorBar.astro';
+import resources from '../data/resources.json';
+---
+<Layout title="Resources for Buyers, Sellers, Relocators and Investors" description="Helpful links for Williamson County and Middle Tennessee: property records, school districts, utilities, lender programs, and city services.">
+  <PageHeader eyebrow="Resources" title="Helpful links for your <em>move</em>" lead="Official and trusted sources for property records, schools, utilities, financing programs and local services." />
+  <section class="s"><div class="wrap">
+    <div class="cta-band" style="margin-bottom:40px">
+      <div><h2>Free moving checklists</h2><p>Buyer and seller checklists you can view online or download.</p></div>
+      <a class="btn gold" href="/checklists">Open the checklists</a>
+    </div>
+    {resources.map((g) => (
+      <div class="resgroup" id={g.id}>
+        <h2>{g.title}</h2>
+        <ul class="reslist">
+          {g.links.map((l) => <li><a href={l.url} target="_blank" rel="noopener"><b>{l.name} ↗</b><small>{l.note}</small></a></li>)}
+        </ul>
+      </div>
+    ))}
+    <p class="hint">Links open official third-party sites. Always verify details for your specific property and situation.</p>
+  </div></section>
+</Layout>

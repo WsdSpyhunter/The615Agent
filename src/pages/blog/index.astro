@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostCard from '../../components/PostCard.astro';
+import { slugCat } from '../../lib/blog';
+const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const cats = [...new Set(posts.map((p) => p.data.category))];
+---
+<Layout title="Blog: Buying, Selling and Moving to Middle Tennessee" description="Guides and market updates for buyers, sellers, relocators and investors in Williamson County and Middle Tennessee.">
+  <PageHeader eyebrow="Blog" title="Guides for your move to <em>Middle TN</em>" lead="Practical advice for buyers, sellers, relocators and investors along the I-65 corridor." />
+  <section class="s"><div class="wrap">
+    <nav class="cats" aria-label="Categories">
+      <a href="/blog" aria-current="page">All</a>
+      {cats.map((c) => <a href={`/blog/category/${slugCat(c)}`}>{c}</a>)}
+    </nav>
+    <div class="postgrid">{posts.map((p) => <PostCard post={p} />)}</div>
+    {posts.length === 0 && <p>New posts are coming soon.</p>}
+    <p style="margin-top:28px"><a class="more" href="/rss.xml">Subscribe via RSS</a></p>
+  </div></section>
+</Layout>

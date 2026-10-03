@@ -1,0 +1,72 @@
+---
+import '@fontsource-variable/plus-jakarta-sans';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../site.config';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  schema?: object | object[];
+}
+const { title, description, image = '/img/skyline-night-1600.jpg', type = 'website', noindex = false, schema } = Astro.props;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).toString();
+const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
+const ogImage = new URL(image, site.url).toString();
+
+const agentSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  '@id': `${site.url}/#agent`,
+  name: site.name,
+  alternateName: `${site.agent}, ${site.title}`,
+  url: site.url,
+  image: new URL('/img/scott-davis.jpg', site.url).toString(),
+  logo: new URL('/img/logo-615-agent.png', site.url).toString(),
+  telephone: site.phone,
+  email: site.email,
+  areaServed: ['Franklin, TN', 'Brentwood, TN', 'Spring Hill, TN', "Thompson's Station, TN", 'Nolensville, TN', 'Williamson County, TN', 'Nashville, TN'],
+  parentOrganization: { '@type': 'Organization', name: site.brokerage },
+  employee: { '@type': 'Person', name: site.agent, jobTitle: site.title, telephone: site.phone, email: site.email },
+  sameAs: Object.values(site.social).filter(Boolean),
+};
+const schemas = [agentSchema, ...(Array.isArray(schema) ? schema : schema ? [schema] : [])];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} Blog`} href="/rss.xml" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    {site.cloudflareAnalyticsToken && (
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: site.cloudflareAnalyticsToken })}></script>
+    )}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../site.config';
+---
+<Layout title="Fair Housing Statement" description="The 615 Agent and Hive Nashville are committed to the Fair Housing Act and all applicable fair housing laws.">
+  <PageHeader eyebrow="Legal" title="Fair Housing <em>statement</em>" />
+  <section class="s"><div class="wrap narrow prose">
+    <h2 style="margin-top:0">Equal Housing Opportunity</h2>
+    <p>{site.name} and {site.brokerage} are committed to the principles of the Fair Housing Act and all applicable federal, state, and local fair housing laws. We provide real estate services without unlawful discrimination.</p>
+    <p>It is illegal to discriminate in the sale, rental, or financing of housing because of race, color, religion, sex, disability, familial status, or national origin. Tennessee and local laws may protect additional categories.</p>
+    <h2>What this means for you</h2>
+    <ul>
+      <li>Every client receives the same professional service.</li>
+      <li>I do not steer clients toward or away from any area based on who lives there. I share objective information and public resources, and you decide what is right for you.</li>
+      <li>If you believe you have experienced housing discrimination, you can learn about your rights and file a complaint with the U.S. Department of Housing and Urban Development at <a href="https://www.hud.gov/program_offices/fair_housing_equal_opp" rel="noopener">hud.gov</a>.</li>
+    </ul>
+    <p>{site.agent} · {site.license} · {site.brokerage}</p>
+  </div></section>
+</Layout>

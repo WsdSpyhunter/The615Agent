@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+<Layout title="Page not found" description="That page could not be found." noindex>
+  <PageHeader eyebrow="404" title="That page <em>moved</em> or never existed" lead="Try one of these instead." />
+  <section class="s"><div class="wrap cta-row">
+    <a class="btn primary" href="/">Home</a><a class="btn dark" href="/buy#form">Get Matched</a><a class="btn dark" href="/blog">Blog</a><a class="btn dark" href="/contact">Contact</a>
+  </div></section>
+</Layout>

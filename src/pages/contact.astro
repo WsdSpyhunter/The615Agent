@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { site } from '../site.config';
+---
+<Layout title="Contact Scott Davis, Realtor" description="Contact Scott Davis, Realtor with Hive Nashville, about buying, selling or relocating in Williamson County and Middle Tennessee.">
+  <PageHeader eyebrow="Contact" title="Let's talk about your <em>move</em>" lead="Questions about buying, selling or relocating? Send a note and I'll reply personally." />
+  <section class="s"><div class="wrap contact">
+    <div class="info">
+      <div class="line"><span class="dot"></span><a href={`tel:${site.phoneHref}`}>{site.phone}</a></div>
+      <div class="line"><span class="dot"></span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div class="line"><span class="dot"></span>Williamson County, Tennessee</div>
+      <p class="hint">{site.agent} · {site.title} · {site.brokerage} · {site.license}</p>
+    </div>
+    <LeadForm type="contact" id="contact-form" />
+  </div></section>
+</Layout>
+<script>
+  const note = new URLSearchParams(location.search).get('note');
+  const ta = document.querySelector<HTMLTextAreaElement>('#contact-form textarea[name=message]');
+  if (note && ta) ta.value = note;
+</script>

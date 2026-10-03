@@ -1,0 +1,14 @@
+{
+  "_note": "Phase A placeholder. Phase B replaces this file monthly from Redfin, Zillow Research, FRED and Census data. sample:true shows a 'Sample numbers' label and hides any stat that has no real value.",
+  "sample": true,
+  "asOf": null,
+  "sources": [],
+  "mortgageRate30": null,
+  "cities": {
+    "franklin": { "name": "Franklin", "monthsSupply": 3.4, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
+    "brentwood": { "name": "Brentwood", "monthsSupply": 4.6, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
+    "spring-hill": { "name": "Spring Hill", "monthsSupply": 5.1, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
+    "thompsons-station": { "name": "Thompson's Station", "monthsSupply": 6.3, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null },
+    "nolensville": { "name": "Nolensville", "monthsSupply": 3.9, "medianPrice": null, "yoy": null, "dom": null, "saleToList": null, "inventory": null }
+  }
+}

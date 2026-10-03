@@ -1,0 +1,138 @@
+---
+import { site } from '../site.config';
+interface Props { type: 'contact' | 'buyer' | 'seller' | 'checklist'; id?: string }
+const { type, id = `form-${type}` } = Astro.props;
+const subjects = {
+  contact: 'New website message',
+  buyer: 'New Get Matched request',
+  seller: 'New Home Value request',
+  checklist: 'Checklist copy requested',
+};
+const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller: 'Request my home value', checklist: 'Email me the checklist' }[type];
+---
+<form class="fcard" data-lead-form data-endpoint="https://api.web3forms.com/submit" id={id} novalidate>
+  <input type="hidden" name="access_key" value={site.web3formsKey} />
+  <input type="hidden" name="subject" value={`${subjects[type]} (the615agent.com)`} />
+  <input type="hidden" name="from_name" value={site.name} />
+  <input type="hidden" name="form_type" value={type} />
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  {type === 'checklist' ? (
+    <>
+      <div class="two-in">
+        <label>First name<input name="name" required autocomplete="given-name" /></label>
+        <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+      </div>
+      <label>Which checklist?
+        <select name="which"><option>Buyer's checklist</option><option>Seller's checklist</option><option>Both checklists</option></select>
+      </label>
+    </>
+  ) : (
+    <>
+      <div class="two-in">
+        <label>Name<input name="name" required autocomplete="name" /></label>
+        <label>Phone<input name="phone" type="tel" autocomplete="tel" required={type !== 'contact'} /></label>
+      </div>
+      <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+    </>
+  )}
+
+  {type === 'contact' && (
+    <>
+      <label>I am interested in
+        <select name="interest">
+          <option>Buying</option><option>Selling</option><option>Relocating</option><option>Investing</option><option>Something else</option>
+        </select>
+      </label>
+      <label>How can I help?<textarea name="message" rows="4"></textarea></label>
+    </>
+  )}
+
+  {type === 'buyer' && (
+    <>
+      <div class="two-in">
+        <label>Budget range
+          <select name="budget">
+            <option value="">Select</option><option>Under $400,000</option><option>$400,000 - $600,000</option><option>$600,000 - $800,000</option><option>$800,000 - $1,000,000</option><option>$1,000,000+</option><option>Not sure yet</option>
+          </select>
+        </label>
+        <label>Timeline
+          <select name="timeline">
+            <option value="">Select</option><option>As soon as possible</option><option>1 to 3 months</option><option>3 to 6 months</option><option>6 to 12 months</option><option>Just exploring</option>
+          </select>
+        </label>
+      </div>
+      <fieldset>
+        <legend>Areas you are interested in</legend>
+        <div class="choices">
+          {['Franklin', 'Brentwood', 'Spring Hill', "Thompson's Station", 'Nolensville', 'Nashville', 'Not sure yet'].map((a) => (
+            <label><input type="checkbox" name="areas" value={a} /><span>{a}</span></label>
+          ))}
+        </div>
+      </fieldset>
+      <div class="two-in">
+        <label>Bedrooms
+          <select name="beds"><option value="">Any</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option></select>
+        </label>
+        <label>Bathrooms
+          <select name="baths"><option value="">Any</option><option>2+</option><option>3+</option><option>4+</option></select>
+        </label>
+      </div>
+      <label>Financing
+        <select name="financing">
+          <option value="">Select</option><option>Pre-approved</option><option>Talking to a lender</option><option>Paying cash</option><option>Not started yet</option><option>Need a lender introduction</option>
+        </select>
+      </label>
+      <label>Anything else I should know? <span class="opt">(optional)</span><textarea name="message" rows="3"></textarea></label>
+    </>
+  )}
+
+  {type === 'seller' && (
+    <>
+      <label>Property address<input name="address" required autocomplete="street-address" /></label>
+      <div class="two-in">
+        <label>Condition
+          <select name="condition">
+            <option value="">Select</option><option>Move-in ready</option><option>Needs minor updates</option><option>Needs major work</option><option>Not sure</option>
+          </select>
+        </label>
+        <label>Timeline
+          <select name="timeline">
+            <option value="">Select</option><option>As soon as possible</option><option>1 to 3 months</option><option>3 to 6 months</option><option>6 to 12 months</option><option>Just curious</option>
+          </select>
+        </label>
+      </div>
+      <label>Anything else I should know? <span class="opt">(optional)</span><textarea name="message" rows="3"></textarea></label>
+    </>
+  )}
+
+  <button class="btn primary" type="submit">{submitLabel}</button>
+  <p class="fine-print">By submitting, you agree that {site.agent} may contact you about your request by phone, text, or email. Your information is not sold. See the <a href="/privacy" style="text-decoration:underline">privacy policy</a>.</p>
+  <div class="fmsg ok" data-ok hidden role="status">{type === 'checklist' ? 'Thank you! I will email your checklist shortly. You can also download it right away from the cards above.' : type === 'buyer' ? "Thank you! I have your request and we'll be on a call within the next 48 hours." : 'Thank you! I have your request and will be in touch within one business day.'}</div>
+  <div class="fmsg err" data-err hidden role="alert">Something went wrong sending that. Please call or text {site.phone}, or email {site.email}.</div>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-lead-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
+      const err = form.querySelector<HTMLElement>('[data-err]')!;
+      ok.hidden = true; err.hidden = true;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...';
+      const fd = new FormData(form);
+      const areas = fd.getAll('areas');
+      if (areas.length) { fd.delete('areas'); fd.set('areas', areas.join(', ')); }
+      try {
+        const res = await fetch(form.dataset.endpoint!, { method: 'POST', headers: { Accept: 'application/json' }, body: fd });
+        const data = await res.json();
+        if (res.ok && data.success) { ok.hidden = false; form.reset(); (window as any).__leadSent?.(); }
+        else { err.hidden = false; }
+      } catch { err.hidden = false; }
+      btn.disabled = false; btn.textContent = label;
+    });
+  });
+</script>

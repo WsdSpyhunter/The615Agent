@@ -1,0 +1,7 @@
+[
+  { "quote": "Placeholder testimonial. Your real client words go here, with their first name and what they did (bought, sold, relocated).", "name": "Client Name", "detail": "Bought in Franklin", "placeholder": true },
+  { "quote": "Placeholder testimonial. Short, specific quotes read best: what worried them, what you did, how it turned out.", "name": "Client Name", "detail": "Sold in Brentwood", "placeholder": true },
+  { "quote": "Placeholder testimonial. Each card can link to the original Zillow review once you have permission.", "name": "Client Name", "detail": "Relocated to Spring Hill", "placeholder": true },
+  { "quote": "Placeholder testimonial. Investor and first-time-buyer stories mix well with relocation stories.", "name": "Client Name", "detail": "Bought in Thompson's Station", "placeholder": true },
+  { "quote": "Placeholder testimonial. Only real reviews you have permission to use will ever appear here.", "name": "Client Name", "detail": "Sold in Nolensville", "placeholder": true }
+]

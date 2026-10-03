@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { slugCat } from '../../../lib/blog';
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const cats = [...new Set(posts.map((p) => p.data.category))];
+  return cats.map((c) => ({ params: { cat: slugCat(c) }, props: { cat: c, cats, posts: posts.filter((p) => p.data.category === c) } }));
+}
+const { cat, cats, posts } = Astro.props;
+---
+<Layout title={`${cat} Posts`} description={`Blog posts about ${cat.toLowerCase()} in Williamson County and Middle Tennessee.`}>
+  <PageHeader eyebrow="Blog" title={`${cat}`} />
+  <section class="s"><div class="wrap">
+    <nav class="cats" aria-label="Categories">
+      <a href="/blog">All</a>
+      {cats.map((c) => <a href={`/blog/category/${slugCat(c)}`} aria-current={c === cat ? 'page' : undefined}>{c}</a>)}
+    </nav>
+    <div class="postgrid">{posts.map((p) => <PostCard post={p} />)}</div>
+  </div></section>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { site } from '../site.config';
+---
+<Layout title="Client Reviews" description="Read what clients say about working with Scott Davis, Realtor with Hive Nashville, and verify reviews on Zillow.">
+  <PageHeader eyebrow="Reviews" title="What clients <em>say</em>" lead="Read client reviews and verify them on my Zillow profile." />
+  <Testimonials />
+  <section class="s"><div class="wrap narrow">
+    <div class="cta-band">
+      <div><h2>See every review on Zillow</h2><p>Verify any review directly on my Zillow agent profile.</p></div>
+      <a class="btn gold" href={site.social.zillow} target="_blank" rel="noopener">Verify on Zillow ↗</a>
+    </div>
+  </div></section>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import { site, nav } from '../site.config';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+---
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label={`${site.name} home`}><img src="/img/logo-615-agent.webp" alt={site.name} width="130" height="66" /></a>
+    <nav class="links" aria-label="Main">
+      {nav.map((n) => <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a>)}
+    </nav>
+    <a class="btn primary hdr-cta" href="/contact">Contact</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="mobile">Menu</button>
+  </div>
+  <div class="mobile" id="mobile">
+    <div class="wrap">
+      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      <a class="btn primary" href="/contact">Contact</a>
+    </div>
+  </div>
+</header>
+<script>
+  const b = document.getElementById('burger');
+  const m = document.getElementById('mobile');
+  b?.addEventListener('click', () => {
+    const open = m?.classList.toggle('open');
+    b.setAttribute('aria-expanded', String(!!open));
+    b.textContent = open ? 'Close' : 'Menu';
+  });
+</script>

@@ -1,0 +1,59 @@
+---
+import { site, areas, nav } from '../site.config';
+import ColorBar from './ColorBar.astro';
+const year = new Date().getFullYear();
+---
+<ColorBar rev />
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <img class="flogo" src="/img/logo-615-agent.webp" alt={site.name} width="280" height="142" loading="lazy" />
+        <b style="display:block">{site.name} | {site.agent}</b>
+        Affiliated with {site.brokerage}<br />
+        Tennessee Licensed Real Estate Professional · {site.license}<br />
+        <a href={`tel:${site.phoneHref}`}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        {site.brokerage}: {site.brokeragePhone}
+        <img class="hive" src="/img/hive-nashville.png" alt={site.brokerage} width="150" height="56" loading="lazy" />
+        <div class="socials">
+          {Object.entries(site.social).filter(([, v]) => v).map(([k, v]) => <a href={v} rel="noopener" target="_blank">{k[0].toUpperCase() + k.slice(1)}</a>)}
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="flinks">
+          <a href="/buy">Buy</a>
+          <a href="/sell">Sell</a>
+          {nav.filter((n) => n.href !== '/').map((n) => <a href={n.href}>{n.label}</a>)}
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4>Areas</h4>
+        <div class="flinks">
+          {areas.map((a) => <a href={`/areas/${a.slug}`}>{a.name}</a>)}
+        </div>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <div class="flinks">
+          <a href="/reviews">Reviews</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/fair-housing">Fair Housing</a>
+        </div>
+      </div>
+    </div>
+    <div class="fine">
+      <div class="eho">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C9D1DB" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8v10H3z"/><path d="M8 14h8M8 17h8"/></svg>
+        <span><b>Equal Housing Opportunity.</b> {site.name} and {site.brokerage} are committed to the principles of the Fair Housing Act and all applicable federal, state, and local fair housing laws. We provide real estate services without unlawful discrimination.</span>
+      </div>
+      <div class="disc">
+        <div><b>MLS &amp; IDX Disclosure</b>Property listings displayed on this website are provided through RealTracs MLS and/or other authorized listing data providers. Some or all of the listings may not belong to the firm whose website you are visiting. Listing information is deemed reliable but is not guaranteed and is subject to errors, omissions, changes in price, prior sale, or withdrawal without notice. Property information, including square footage, measurements, features, taxes, schools, and property condition, should be independently verified by the consumer. All listing data is provided for consumers' personal, non-commercial use and may not be reproduced or redistributed without appropriate authorization.</div>
+        <div><b>General Disclaimer</b>Information on this website is provided for general informational purposes only and does not constitute legal, tax, financial, lending, inspection, appraisal, or other professional advice. Property images, descriptions, estimates, and other representations are for illustrative purposes and may not reflect current property conditions. Visitors should independently verify all material information and consult qualified professionals as appropriate. Use of this website or submission of an inquiry does not, by itself, establish an agency or brokerage relationship.</div>
+        <div><b>Limitation of Liability</b>To the fullest extent permitted by law, neither {site.agent}, {site.name}, nor {site.brokerage} guarantees the accuracy, completeness, or availability of information provided on this website or by third-party sources. Nothing in this disclaimer limits any liability or obligation that cannot lawfully be excluded.</div>
+      </div>
+      <div><b>© {year} {site.name}. All rights reserved.</b></div>
+    </div>
+  </div>
+</footer>

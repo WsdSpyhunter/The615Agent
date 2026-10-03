@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PostCard from '../../components/PostCard.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import { site } from '../../site.config';
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return posts.map((p) => ({ params: { slug: p.id }, props: { post: p, related: posts.filter((r) => r.id !== p.id).sort((a, b) => Number(b.data.category === p.data.category) - Number(a.data.category === p.data.category)).slice(0, 3) } }));
+}
+const { post, related } = Astro.props;
+const d = post.data;
+const { Content } = await render(post);
+const date = d.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const url = `${site.url}/blog/${post.id}`;
+const schema: object[] = [
+  {
+    '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.title, description: d.description,
+    datePublished: d.pubDate.toISOString(), dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    mainEntityOfPage: url, url,
+    image: d.heroImage ? new URL(d.heroImage, site.url).toString() : new URL('/img/skyline-night-1600.jpg', site.url).toString(),
+    author: { '@type': 'Person', name: site.agent, url: `${site.url}/about` },
+    publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: `${site.url}/img/logo-615-agent.png` } },
+  },
+];
+if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+---
+<Layout title={d.title} description={d.description} type="article" image={d.heroImage} schema={schema}>
+  <div class="postbar"><div class="wrap">
+    <span><b>{site.agent}</b> · {site.name} · {site.brokerage} · {site.license}</span>
+    <span><a href={`tel:${site.phoneHref}`}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a> · <a href="/">The615Agent.com</a></span>
+  </div></div>
+  <PageHeader eyebrow={d.category} title={d.title}>
+    <div class="postmeta"><span>By {site.agent}</span><span>·</span><span>{date}</span></div>
+  </PageHeader>
+  <article class="s"><div class="wrap narrow">
+    {d.heroImage && (
+      <figure class="herofig">
+        <img src={d.heroImage} alt={d.heroAlt ?? ''} width="1200" height="600" />
+        {d.heroCredit && <figcaption>Photo: {d.heroCreditUrl ? <a href={d.heroCreditUrl} rel="noopener" target="_blank">{d.heroCredit}</a> : d.heroCredit}</figcaption>}
+      </figure>
+    )}
+    <div class="prose"><Content /></div>
+    {d.faq.length > 0 && (
+      <section class="faq" style="margin-top:40px">
+        <h2 class="h2" style="margin-bottom:16px">Frequently asked questions</h2>
+        {d.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </section>
+    )}
+    <div class="cta-band" style="margin-top:40px">
+      <div><h2>Ready to talk it through?</h2><p>Tell me your budget, area and timeline, and we'll be talking within the next 48 hours.</p></div>
+      <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
+    </div>
+  </div></article>
+  {related.length > 0 && (
+    <>
+      <ColorBar rev />
+      <section class="s band"><div class="wrap">
+        <div class="sh"><div><span class="kicker navy">Keep reading</span><h2>Related posts</h2></div></div>
+        <div class="postgrid">{related.map((p) => <PostCard post={p} />)}</div>
+      </div></section>
+    </>
+  )}
+</Layout>

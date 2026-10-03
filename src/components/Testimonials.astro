@@ -1,0 +1,41 @@
+---
+import { site } from '../site.config';
+import data from '../data/testimonials.json';
+const items = data.filter((t) => site.showPlaceholderTestimonials || !t.placeholder);
+const hasPlaceholder = items.some((t) => t.placeholder);
+---
+{items.length > 0 && (
+<section class="testi" id="reviews">
+  <div class="wrap">
+    <div class="sh">
+      <div>
+        <span class="kicker">Client reviews</span>
+        <h2>What clients say</h2>
+        <p>Real words from real buyers and sellers. {hasPlaceholder && <span class="sample">Placeholder cards</span>}</p>
+      </div>
+      <a class="btn ghost sm" href="/reviews" style="color:#fff">See reviews</a>
+    </div>
+  </div>
+  <div class="mq" id="mq">
+    <div class="mqmask">
+      <div class="mqrow">
+        {[0, 1].map((copy) => items.map((t) => (
+          <figure class="tc" aria-hidden={copy === 1 ? 'true' : undefined}>
+            <div class="stars" aria-label="5 stars">★★★★★</div>
+            <p>“{t.quote}”</p>
+            <figcaption class="who"><span class="av">{t.name[0]}</span><span><b>{t.name}</b>{t.detail}</span></figcaption>
+          </figure>
+        )))}
+      </div>
+    </div>
+  </div>
+  <div class="wrap ctl"><button id="pz" type="button">Pause scrolling</button><span>Hover to pause.</span></div>
+</section>
+)}
+<script>
+  const pz = document.getElementById('pz');
+  pz?.addEventListener('click', () => {
+    const p = document.getElementById('mq')!.classList.toggle('paused');
+    pz.textContent = p ? 'Resume scrolling' : 'Pause scrolling';
+  });
+</script>

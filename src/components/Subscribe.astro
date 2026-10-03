@@ -1,0 +1,18 @@
+---
+import { site } from '../site.config';
+---
+<div class="signup">
+  <div>
+    <h2>The monthly market report</h2>
+    <p>One short email each month with prices, days on market and inventory for the I-65 corridor. Unsubscribe any time.</p>
+  </div>
+  <div>
+    <form class="row" action={`https://buttondown.com/api/emails/embed-subscribe/${site.buttondownUser}`} method="post" target="popupwindow" onsubmit={`window.open('https://buttondown.com/${site.buttondownUser}', 'popupwindow')`}>
+      <label class="sr" for="sub-email">Email address</label>
+      <input id="sub-email" type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+      <input type="hidden" value="1" name="embed" />
+      <button class="btn" type="submit">Subscribe</button>
+    </form>
+    <small>Powered by Buttondown. We never share your email.</small>
+  </div>
+</div>

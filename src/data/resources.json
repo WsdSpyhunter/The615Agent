@@ -1,0 +1,65 @@
+[
+  {
+    "id": "buyers",
+    "title": "For buyers",
+    "tint": "t1",
+    "links": [
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search", "note": "Look up property records and assessments." },
+      { "name": "Williamson County Register of Deeds", "url": "https://williamsoncountyregister.com/", "note": "Deeds, plats, and recorded documents." },
+      { "name": "Tennessee Housing Development Agency (THDA)", "url": "https://www.thda.org", "note": "Down payment help and first-time buyer programs." },
+      { "name": "CFPB: Owning a Home", "url": "https://www.consumerfinance.gov/owning-a-home/", "note": "Plain-English guides to mortgages and closing." },
+      { "name": "HUD: Buying a Home", "url": "https://www.hud.gov/topics/buying_a_home", "note": "FHA basics and homebuyer resources." },
+      { "name": "VA Home Loans", "url": "https://www.va.gov/housing-assistance/home-loans/", "note": "Eligibility and benefits for veterans and service members." }
+    ]
+  },
+  {
+    "id": "sellers",
+    "title": "For sellers",
+    "tint": "t2",
+    "links": [
+      { "name": "Tennessee Real Estate Commission", "url": "https://www.tn.gov/commerce/regboards/trec.html", "note": "Licensing, forms, and consumer information." },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search", "note": "Check your property record before you list." },
+      { "name": "Williamson County Register of Deeds", "url": "https://williamsoncountyregister.com/", "note": "Find recorded deeds and plats." },
+      { "name": "Tennessee Department of Revenue", "url": "https://www.tn.gov/revenue.html", "note": "State tax information." },
+      { "name": "EPA: Radon", "url": "https://www.epa.gov/radon", "note": "What radon testing involves, often part of an inspection." }
+    ]
+  },
+  {
+    "id": "relocating",
+    "title": "For relocators",
+    "tint": "t3",
+    "links": [
+      { "name": "Williamson County Government", "url": "https://www.williamsoncounty-tn.gov/", "note": "County services and offices." },
+      { "name": "Williamson County Schools", "url": "https://www.wcs.edu", "note": "District information and school zoning." },
+      { "name": "Franklin Special School District", "url": "https://www.fssd.org", "note": "Serves parts of Franklin." },
+      { "name": "Maury County Public Schools", "url": "https://www.mauryk12.org", "note": "Serves parts of Spring Hill." },
+      { "name": "Middle Tennessee Electric", "url": "https://www.mte.com", "note": "Electric service in much of Williamson County." },
+      { "name": "Nashville Electric Service", "url": "https://www.nespower.com", "note": "Electric service in Davidson County." },
+      { "name": "TDOT SmartWay", "url": "https://smartway.tn.gov", "note": "Live traffic and road conditions." },
+      { "name": "TDOT", "url": "https://www.tn.gov/tdot.html", "note": "State roads and projects." }
+    ]
+  },
+  {
+    "id": "investors",
+    "title": "For investors",
+    "tint": "t4",
+    "links": [
+      { "name": "RealTracs MLS", "url": "https://www.realtracs.com", "note": "The MLS serving Middle Tennessee." },
+      { "name": "Williamson County Property Data Search", "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search", "note": "Ownership, assessments, and sales history." },
+      { "name": "Tennessee Department of Revenue", "url": "https://www.tn.gov/revenue.html", "note": "State tax information." },
+      { "name": "HUD: Single Family Housing", "url": "https://www.hud.gov/program_offices/housing/sfh", "note": "FHA programs and guidance." }
+    ]
+  },
+  {
+    "id": "cities",
+    "title": "City and local government",
+    "tint": "t1",
+    "links": [
+      { "name": "City of Franklin", "url": "https://www.franklintn.gov", "note": "Permits, utilities, and city services." },
+      { "name": "City of Brentwood", "url": "https://www.brentwoodtn.gov", "note": "Permits, utilities, and city services." },
+      { "name": "City of Spring Hill", "url": "https://www.springhilltn.org", "note": "Permits, utilities, and city services." },
+      { "name": "Town of Thompson's Station", "url": "https://www.thompsonsstation.com", "note": "Town services and information." },
+      { "name": "Town of Nolensville", "url": "https://www.nolensvilletn.gov", "note": "Town services and information." }
+    ]
+  }
+]

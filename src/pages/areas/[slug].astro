@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import MarketTemperature from '../../components/MarketTemperature.astro';
+import { site, areas } from '../../site.config';
+import content from '../../data/areas.json';
+export function getStaticPaths() {
+  return areas.map((a) => ({ params: { slug: a.slug }, props: { area: a } }));
+}
+const a = Astro.props.area;
+const c = (content as any)[a.slug];
+const others = areas.filter((x) => x.slug !== a.slug);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: `${c.title} real estate`, url: `${site.url}/areas/${a.slug}`, about: { '@type': 'Place', name: c.title }, publisher: { '@id': `${site.url}/#agent` } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: c.faq.map((f: any) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+---
+<Layout title={`${c.title} Homes and Neighborhood Guide`} description={`Thinking about ${c.title}? A guide to what to know, local resources, and answers to common questions, from Scott Davis, Realtor with Hive Nashville.`} schema={schema}>
+  <PageHeader eyebrow="Area guide" title={`Moving to <em>${a.name}</em>`} lead={a.blurb} />
+  <section class="s"><div class="wrap two area">
+    <div class="prose">
+      {c.intro.map((p: string) => <p>{p}</p>)}
+      <h2>Good to know</h2>
+      <ul>{c.goodToKnow.map((g: string) => <li>{g}</li>)}</ul>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">{c.faq.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </div>
+    <aside>
+      <div class="card t1" style="margin-bottom:18px">
+        <h3>Helpful links</h3>
+        <ul class="reslist">{c.links.map((l: any) => <li><a href={l.url} target="_blank" rel="noopener"><b>{l.name} ↗</b></a></li>)}</ul>
+      </div>
+      <div class="cta-band" style="display:grid">
+        <div><h2 style="font-size:1.3rem">Thinking about {a.name}?</h2><p>Tell me your budget, area and timeline, and we'll be talking within the next 48 hours.</p></div>
+        <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
+        <a class="btn ghost" href="/sell#form" style="color:#fff">What's My Home Worth?</a>
+      </div>
+    </aside>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Market</span><h2>Market temperature</h2></div></div>
+    <MarketTemperature />
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Nearby</span><h2>Other areas</h2></div></div>
+    <div class="cities">
+      {others.map((o) => <a class="city" href={`/areas/${o.slug}`}><div class="t"><b>{o.name}</b><small>{o.blurb}</small></div></a>)}
+    </div>
+  </div></section>
+</Layout>

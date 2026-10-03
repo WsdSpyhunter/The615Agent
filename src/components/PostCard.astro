@@ -1,0 +1,15 @@
+---
+const { post } = Astro.props;
+const d = post.data;
+const date = d.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+<article class="post">
+  {d.heroImage ? <img class="img" src={d.heroImage} alt={d.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
+  <div class="pbody">
+    <span class="chip">{d.category}</span>
+    <span class="meta">{date}</span>
+    <h3><a href={`/blog/${post.id}`}>{d.title}</a></h3>
+    <p>{d.description}</p>
+    <a class="more" href={`/blog/${post.id}`}>Read more →</a>
+  </div>
+</article>

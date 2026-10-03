@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../site.config';
+---
+<Layout title="Privacy Policy" description="How The 615 Agent collects, uses and protects information you share on this website.">
+  <PageHeader eyebrow="Legal" title="Privacy <em>policy</em>" lead="Last updated October 3, 2026" />
+  <section class="s"><div class="wrap narrow prose">
+    <p>This policy explains what information {site.name} ({site.agent}, {site.brokerage}) collects through this website and how it is used.</p>
+    <h2>Information you give us</h2>
+    <p>When you submit a form (contact, Get Matched, Home Value, or checklist request), we receive the details you enter, such as your name, email, phone number, property address, and preferences. We use this information only to respond to your request and to follow up about your real estate needs. We do not sell your information.</p>
+    <h2>How forms are processed</h2>
+    <p>Form submissions are delivered to us by email through Web3Forms. Your submission passes through their service so it can be sent to us. See <a href="https://web3forms.com/privacy" rel="noopener">Web3Forms' privacy policy</a>.</p>
+    <h2>Email newsletter</h2>
+    <p>If you subscribe to the monthly market report, your email address is stored by Buttondown, our newsletter provider. You can unsubscribe at any time using the link in every email.</p>
+    <h2>Analytics and cookies</h2>
+    <p>We may use privacy-friendly analytics (Cloudflare Web Analytics) to understand how the site is used. It does not use cookies to track you across sites. The checklist tick-boxes save your progress in your own browser only. That data never leaves your device.</p>
+    <h2>Third-party links</h2>
+    <p>This site links to other websites, such as government agencies and Zillow. We are not responsible for their privacy practices.</p>
+    <h2>Your choices</h2>
+    <p>To ask us to update or delete information you have shared, email <a href={`mailto:${site.email}`}>{site.email}</a> or call {site.phone}.</p>
+    <h2>Contact</h2>
+    <p>{site.agent}, {site.brokerage}. {site.license}. <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div></section>
+</Layout>

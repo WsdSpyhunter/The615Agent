@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ColorBar from '../components/ColorBar.astro';
+import MarketTemperature from '../components/MarketTemperature.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Subscribe from '../components/Subscribe.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { site, areas } from '../site.config';
+
+const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latest = posts[0];
+const excerpt = latest
+  ? (latest.body ?? '').replace(/^#+\s.*$/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`>#]/g, '').split(/\s+/).filter(Boolean).slice(0, 40).join(' ') + '…'
+  : '';
+const dateStr = latest?.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<string, string>;
+---
+<Layout
+  title="The 615 Agent | Scott Davis, Realtor in Williamson County and Middle TN"
+  description="Scott Davis is a Realtor with Hive Nashville serving Franklin, Brentwood, Spring Hill, Thompson's Station, Nolensville and Middle Tennessee. Get matched with homes or find your home's value."
+  image="/img/skyline-night-1600.jpg"
+>
+  <section class="hero">
+    <div class="photo">
+      <picture>
+        <source type="image/webp" srcset="/img/skyline-night-900.webp 900w, /img/skyline-night-1600.webp 1600w" sizes="100vw" />
+        <img src="/img/skyline-night-1600.jpg" alt="Downtown Nashville skyline and the pedestrian bridge at night" width="1600" height="1066" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+    <div class="body wrap">
+      <div class="agent">
+        <img class="logo" src="/img/logo-615-agent.webp" alt="The 615 Agent" width="648" height="329" />
+        <div class="agentrow">
+          <img src="/img/scott-davis.webp" alt="Scott Davis, Realtor" width="140" height="140" />
+          <div class="tag"><b>{site.agent}</b>{site.brokerage} · {site.license.replace('TN License ', 'TN ')}</div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">{site.agent} · Realtor at {site.brokerage}</span>
+        <h1>Your <em>615</em> agent for Williamson County and Middle TN.</h1>
+        <p class="lead">Local guidance for buyers, sellers, relocators and investors along the I-65 corridor. Straight answers and no pressure.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="/buy#form">Get Matched With Homes</a>
+          <a class="btn ghost" href="/sell#form">What's My Home Worth?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <ColorBar />
+
+  <div class="trust"><div class="wrap">
+    <span><b>{site.brokerage}</b> brokerage</span>
+    <span><b>TN License</b> #{site.licenseNumber}</span>
+    <span><b>Serving</b> Franklin · Brentwood · Spring Hill · Thompson's Station · Nolensville</span>
+  </div></div>
+  <ColorBar rev />
+
+  <section class="s charcoal" id="paths"><div class="wrap">
+    <div class="sh"><div><span class="kicker">Start here</span><h2>Two ways to get moving</h2></div></div>
+    <div class="paths">
+      <a class="path" href="/buy#form">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Get matched with homes</h3>
+        <p>Tell me your budget, area and timeline, then schedule a call with me. We'll be talking within the next 48 hours.</p>
+        <span class="more">Start the buyer form →</span>
+      </a>
+      <a class="path light" href="/sell#form">
+        <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M6 20V10m6 10V4m6 16v-7"/></svg></div>
+        <h3>What's my home worth?</h3>
+        <p>Share your address and a few details. I'll follow up with a local, real-world price opinion.</p>
+        <span class="more">Start the seller form →</span>
+      </a>
+    </div>
+  </div></section>
+  <ColorBar />
+
+  <section class="s band" id="blog"><div class="wrap two">
+    <div>
+      <span class="latest-label">Latest from the blog</span>
+      {latest ? (
+        <article class="post">
+          {latest.data.heroImage ? <img class="img" src={latest.data.heroImage} alt={latest.data.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
+          <div class="pbody">
+            <span class="chip">{latest.data.category}</span>
+            <span class="meta">{dateStr}</span>
+            <h3><a href="/blog">{latest.data.title}</a></h3>
+            <p>{excerpt}</p>
+            <a class="more" href={`/blog/${latest.id}`}>Read the post →</a>
+          </div>
+        </article>
+      ) : (
+        <article class="post"><div class="pbody"><h3>New posts coming soon</h3><p>Check back for guides on buying, selling and moving to Middle Tennessee.</p></div></article>
+      )}
+    </div>
+    <div id="market"><MarketTemperature /></div>
+  </div></section>
+  <ColorBar rev />
+
+  <section class="s" id="cities"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Areas</span><h2>Explore the corridor</h2><p>Each city has its own guide with what to know, local resources and answers to common questions.</p></div></div>
+    <div class="cities">
+      {areas.map((a) => (
+        <a class={`city ${tint[a.tint]}`} href={`/areas/${a.slug}`}>
+          <div class="art" aria-hidden="true">{a.name.replace("Thompson's Station", "TS").split(' ').map((w) => w[0]).join('')}</div>
+          <div class="t"><b>{a.name}</b><small>{a.blurb}</small></div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+  <ColorBar />
+
+  <Testimonials />
+  <ColorBar rev />
+
+  <section class="s signupband"><div class="wrap"><Subscribe /></div></section>
+  <ColorBar />
+
+  <section class="s" id="contact"><div class="wrap contact">
+    <div class="info">
+      <span class="kicker">Contact</span>
+      <h2 class="h2">Let's talk about your move</h2>
+      <p style="color:var(--muted);margin:0">Questions about buying, selling or relocating? Send a note and I'll reply personally.</p>
+      <div class="line"><span class="dot"></span><a href={`tel:${site.phoneHref}`}>{site.phone}</a></div>
+      <div class="line"><span class="dot"></span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div class="line"><span class="dot"></span>Williamson County, Tennessee</div>
+    </div>
+    <LeadForm type="contact" id="contact-form" />
+  </div></section>
+</Layout>
