@@ -4,10 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run build:widgets && astro dev",
+    "build": "npm run build:widgets && astro build",
     "preview": "astro preview",
-    "check-links": "node scripts/check-links.mjs"
+    "check-links": "node scripts/check-links.mjs",
+    "build:widgets": "esbuild src/widgets/index.ts --bundle --minify --format=esm --target=es2020 --outfile=public/widgets/tpa-widgets.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

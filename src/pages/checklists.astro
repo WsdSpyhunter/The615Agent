@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import LeadForm from '../components/LeadForm.astro';
 import ColorBar from '../components/ColorBar.astro';
-import checklists from '../data/checklists.json';
+import checklists from '../../public/data/checklists.json';
 import { site } from '../site.config';
 const cards = [
   { key: 'buyer', chip: "Buyer's edition", cls: '', title: "Buyer's Moving Checklist", desc: 'From pre-approval to your first 30 days at home. Eight stages, from getting ready to buy through settling in.', pdf: '/downloads/buyer-moving-checklist.pdf', img: '/img/checklist-buyer' },
@@ -39,12 +39,11 @@ const schema = {
   <ColorBar rev />
   <section class="s band" id="read"><div class="wrap narrow2">
     <div class="sh"><div><span class="kicker navy">Read it online</span><h2>Check items off as you go</h2><p>Your progress is saved on this device. Nothing is sent to anyone.</p></div></div>
-    <div class="tabs" role="tablist" aria-label="Choose a checklist">
-      <button role="tab" id="tab-buyer" aria-selected="true" data-tab="buyer">Buyer</button>
-      <button role="tab" id="tab-seller" aria-selected="false" data-tab="seller">Seller</button>
-    </div>
-    <div class="prog"><div class="progbar"><i id="bar"></i></div><span id="ptxt"></span><button id="reset" type="button">Reset</button></div>
-    <div id="steps" data-lists={JSON.stringify(checklists)}></div>
+    <tpa-checklist id="cl" src="/data/checklists.json" storage-key="cl615" labels='{"buyer":"Buyer","seller":"Seller"}'>
+      {Object.entries(checklists).map(([k, steps]: any) => (
+        <section><h3>{k === 'buyer' ? "Buyer's checklist" : "Seller's checklist"}</h3>{steps.map((s: any) => <div><h4>{s.title} ({s.when})</h4><ul>{s.items.map((i: string) => <li>{i}</li>)}</ul></div>)}</section>
+      ))}
+    </tpa-checklist>
   </div></section>
   <ColorBar />
   <section class="s"><div class="wrap narrow">
@@ -58,38 +57,9 @@ const schema = {
   </div></section>
 </Layout>
 <script>
-  type Step = { title: string; when: string; items: string[]; tip: string };
-  const host = document.getElementById('steps')!;
-  const DATA = JSON.parse(host.dataset.lists!) as Record<string, Step[]>;
-  let cur = 'buyer';
-  let state: Record<string, number> = {};
-  try { state = JSON.parse(localStorage.getItem('cl615') || '{}'); } catch {}
-  const save = () => { try { localStorage.setItem('cl615', JSON.stringify(state)); } catch {} };
-  const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  function update() {
-    const all = host.querySelectorAll('input').length;
-    const done = host.querySelectorAll('input:checked').length;
-    (document.getElementById('bar') as HTMLElement).style.width = (all ? (done / all) * 100 : 0) + '%';
-    document.getElementById('ptxt')!.textContent = `${done} of ${all} done`;
-  }
-  function render() {
-    host.innerHTML = DATA[cur].map((s, i) => `<section class="stp"><header><span class="n">${i + 1}</span><h3>${esc(s.title)}</h3><span class="when">${esc(s.when)}</span></header><ul>${
-      s.items.map((it, j) => { const id = `${cur}-${i}-${j}`; return `<li><label><input type="checkbox" data-id="${id}"${state[id] ? ' checked' : ''}><span>${esc(it)}</span></label></li>`; }).join('')
-    }</ul>${s.tip ? `<p class="tip">${esc(s.tip)}</p>` : ''}</section>`).join('');
-    update();
-  }
-  host.addEventListener('change', (e) => {
-    const t = e.target as HTMLInputElement; const id = t.dataset.id; if (!id) return;
-    if (t.checked) state[id] = 1; else delete state[id];
-    save(); update();
-  });
-  function tab(k: string, scroll = false) {
-    cur = k;
-    document.querySelectorAll<HTMLElement>('[role=tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === k)));
-    render();
-    if (scroll) document.getElementById('read')!.scrollIntoView({ behavior: 'smooth' });
-  }
-  document.querySelectorAll<HTMLElement>('[data-tab]').forEach((b) => b.addEventListener('click', () => tab(b.dataset.tab!, !b.hasAttribute('role'))));
-  document.getElementById('reset')!.addEventListener('click', () => { Object.keys(state).forEach((k) => { if (k.startsWith(cur + '-')) delete state[k]; }); save(); render(); });
-  render();
+  // The "Use the interactive version" buttons switch the widget to the right list and scroll to it.
+  document.querySelectorAll<HTMLElement>('button[data-tab]').forEach((b) => b.addEventListener('click', () => {
+    (document.getElementById('cl') as any)?.select(b.dataset.tab);
+    document.getElementById('read')?.scrollIntoView({ behavior: 'smooth' });
+  }));
 </script>

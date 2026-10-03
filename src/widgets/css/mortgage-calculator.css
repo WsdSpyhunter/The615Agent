@@ -1,0 +1,37 @@
+/* <tpa-mortgage-calculator>. Style with --tpa-* variables. */
+tpa-mortgage-calculator{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start;font-family:var(--tpa-font,inherit);color:var(--tpa-text,#0A0A0A)}
+@media(max-width:920px){tpa-mortgage-calculator{grid-template-columns:1fr}}
+.tpa-mc-panel{background:var(--tpa-card-bg,#fff);border:1px solid var(--tpa-card-border,#D4D9DF);border-radius:var(--tpa-radius,24px);padding:26px;box-shadow:var(--tpa-shadow,0 8px 24px rgba(10,10,10,.07));display:grid;gap:18px;min-width:0}
+.tpa-mc-field{display:grid;gap:6px;min-width:0}
+.tpa-mc-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-weight:700;font-size:14px}
+.tpa-mc-top output{font-variant-numeric:tabular-nums;color:var(--tpa-link,#173F8A)}
+tpa-mortgage-calculator input{font:inherit;color:inherit;background:var(--tpa-input-bg,#fff);border:1.5px solid var(--tpa-card-border,#D4D9DF);border-radius:14px;padding:13px 16px;width:100%;font-variant-numeric:tabular-nums}
+tpa-mortgage-calculator input[type=range]{padding:0;border:0;background:transparent;accent-color:var(--tpa-primary,#1473E6);height:28px}
+.tpa-mc-num{display:flex;gap:8px}
+.tpa-mc-field small,.tpa-mc-hint{font-size:13px;color:var(--tpa-muted-light,#4F5966);margin:0}
+.tpa-mc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.tpa-mc-grid{grid-template-columns:1fr}}
+.tpa-mc-seg{display:flex;flex-wrap:wrap;gap:6px}
+.tpa-mc-seg button{font:inherit;font-weight:700;font-size:13.5px;border:1.5px solid var(--tpa-card-border,#D4D9DF);background:var(--tpa-input-bg,#fff);color:inherit;border-radius:999px;padding:7px 15px;cursor:pointer}
+.tpa-mc-seg button[aria-pressed="true"]{background:var(--tpa-primary,#1473E6);border-color:var(--tpa-primary,#1473E6);color:#fff}
+.tpa-mc-res{background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-radius:var(--tpa-radius,24px);padding:26px;display:grid;gap:18px;border-top:4px solid var(--tpa-primary,#1473E6);position:sticky;top:var(--tpa-sticky-top,104px);min-width:0}
+@media(max-width:920px){.tpa-mc-res{position:static}}
+.tpa-mc-big{font-size:clamp(2.4rem,6vw,3.4rem);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.tpa-mc-res small,.tpa-mc-note{color:var(--tpa-muted,#9AA4B1)}
+.tpa-mc-note{font-size:12.5px;margin:0}
+.tpa-mc-donutwrap{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:center}
+@media(max-width:480px){.tpa-mc-donutwrap{grid-template-columns:1fr;justify-items:center}}
+.tpa-mc-track{stroke:var(--tpa-stat-border,#232A32)}
+.tpa-mc-legend{display:grid;gap:8px;font-size:14px;width:100%}
+.tpa-mc-legend div{display:flex;align-items:center;gap:8px}
+.tpa-mc-legend i{width:12px;height:12px;border-radius:4px;flex:none}
+.tpa-mc-legend b{margin-left:auto;font-variant-numeric:tabular-nums}
+.tpa-mc-totals{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tpa-mc-totals div{background:var(--tpa-stat-bg,#12171D);border:1px solid var(--tpa-stat-border,#232A32);border-radius:14px;padding:10px 14px}
+.tpa-mc-totals span{display:block;font-size:11.5px;color:var(--tpa-muted,#8B95A3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.tpa-mc-totals b{font-variant-numeric:tabular-nums}
+.tpa-mc-chart{background:var(--tpa-stat-bg,#12171D);border:1px solid var(--tpa-stat-border,#232A32);border-radius:16px;padding:14px}
+.tpa-mc-chart svg{width:100%;height:auto;display:block}
+.tpa-mc-grid-l{stroke:var(--tpa-stat-border,#232A32)}
+.tpa-mc-axis{fill:var(--tpa-muted,#8B95A3);font-family:sans-serif}.tpa-mc-axis2{fill:var(--tpa-chip-fg,#C9D1DB);font-family:sans-serif}
+.tpa-mc-cta{display:block;text-align:center;font-weight:700;background:var(--tpa-cta-bg,#FFC20E);color:var(--tpa-cta-fg,#0A0A0A);border-radius:999px;padding:13px 24px;text-decoration:none}

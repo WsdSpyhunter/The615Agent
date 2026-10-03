@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Widget demo (a different design)</title>
+<link rel="stylesheet" href="/widgets/tpa-widgets.css">
+<style>
+/* A completely different look: warm paper, serif type. Only --tpa-* variables are changed. */
+:root{
+  --tpa-font:Georgia,'Times New Roman',serif;
+  --tpa-primary:#9B2C2C; --tpa-primary-2:#6B1D1D; --tpa-accent:#C9A227;
+  --tpa-panel-bg:#2B2118; --tpa-panel-accent:#C9A227; --tpa-title-bg:#2B2118; --tpa-stat-bg:#3A2E22; --tpa-stat-border:#4A3B2C; --tpa-chip-bg:#3A2E22; --tpa-chip-border:#4A3B2C;
+  --tpa-radius:6px; --tpa-card-border:#D9CDB8; --tpa-text:#2B2118; --tpa-muted-light:#6B5B48; --tpa-head-bg:#2B2118;
+}
+body{margin:0;background:#F6F0E4;color:#2B2118;font-family:Georgia,serif;line-height:1.55}
+main{max-width:980px;margin:auto;padding:24px 20px 80px}
+h1,h2{font-weight:400}
+section{margin:48px 0}
+</style></head>
+<body><main>
+<h1>The same widgets in a different design</h1>
+<p>Nothing here is specific to the main site. Each tool is one custom element that reads a JSON file.</p>
+<section><h2>Market temperature</h2><tpa-market-temperature src="/data/market.json"></tpa-market-temperature></section>
+<section><h2>Mortgage calculator</h2><tpa-mortgage-calculator rate-src="/data/market.json" contact-url="/contact"></tpa-mortgage-calculator></section>
+<section><h2>Checklist</h2><tpa-checklist src="/data/checklists.json" storage-key="demo"></tpa-checklist></section>
+</main>
+<script type="module" src="/widgets/tpa-widgets.js"></script>
+</body></html>

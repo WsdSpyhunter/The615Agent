@@ -1,0 +1,34 @@
+/* <tpa-market-temperature>. Every color/size is a --tpa-* variable with a default, so a new design
+   only needs to set the variables (see docs/WIDGETS.md). */
+tpa-market-temperature{display:block;font-family:var(--tpa-font,inherit);min-width:0}
+.tpa-mt-titlebox{display:inline-flex;align-items:center;gap:10px;background:var(--tpa-title-bg,#1B1F25);border-radius:14px;padding:10px 20px;margin-bottom:14px}
+.tpa-mt-title{font-size:19px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tpa-mid,#F0B93B)}
+.tpa-mt-title.tpa-hot,.tpa-mt-icon.tpa-hot{color:var(--tpa-hot,#FF7D55)}
+.tpa-mt-title.tpa-cold,.tpa-mt-icon.tpa-cold{color:var(--tpa-cold,#A5D8FF)}
+.tpa-mt-icon{flex:none;overflow:visible;width:30px;height:30px;color:var(--tpa-mid,#F0B93B)}
+.tpa-fl{transform-origin:12px 22px;animation:tpa-flick .55s ease-in-out infinite alternate}
+.tpa-fl2{transform-origin:12px 22px;animation:tpa-flick2 .38s ease-in-out infinite alternate}
+@keyframes tpa-flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.94,1.1) rotate(3deg)}}
+@keyframes tpa-flick2{from{transform:scale(1,.9) rotate(3deg)}to{transform:scale(.9,1.12) rotate(-3deg)}}
+.tpa-snow{transform-origin:12px 12px;animation:tpa-spin 9s linear infinite}
+@keyframes tpa-spin{to{transform:rotate(360deg)}}
+.tpa-mt-sample{display:inline-block;margin-left:10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#FFF3C4;color:#6B5200;border-radius:6px;padding:3px 8px}
+.tpa-mt-panel{background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-top:4px solid var(--tpa-panel-accent,#1D4E9E);border-radius:var(--tpa-radius,24px);padding:28px;box-shadow:var(--tpa-shadow,0 8px 24px rgba(10,10,10,.12));display:grid;gap:18px;min-width:0}
+.tpa-mt-pills{display:flex;gap:8px;flex-wrap:wrap}
+.tpa-mt-pills button{font:inherit;font-size:13px;font-weight:600;color:var(--tpa-chip-fg,#C9D1DB);background:var(--tpa-chip-bg,#161B22);border:1px solid var(--tpa-chip-border,#2A323C);border-radius:999px;padding:7px 14px;cursor:pointer}
+.tpa-mt-pills button[aria-pressed="true"]{background:var(--tpa-primary,#1473E6);border-color:var(--tpa-primary,#1473E6);color:#fff}
+.tpa-mt-gaugewrap{display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:22px;align-items:center}
+@media(max-width:560px){.tpa-mt-gaugewrap{grid-template-columns:1fr}}
+.tpa-arc-seller{stroke:var(--tpa-gauge-seller,#F2593A)}.tpa-arc-balanced{stroke:var(--tpa-gauge-balanced,#FFC20E)}.tpa-arc-buyer{stroke:var(--tpa-gauge-buyer,#0E9F8E)}
+.tpa-needle{stroke:var(--tpa-needle,#fff)}.tpa-hub{fill:var(--tpa-needle,#fff)}
+.tpa-glabel{fill:var(--tpa-muted,#8B95A3);font-family:sans-serif}.tpa-gmid{fill:var(--tpa-chip-fg,#C3CBD6)}
+.tpa-mt-verdict{font-size:1.7rem;font-weight:800;letter-spacing:-.02em}
+.tpa-mt-verdict small{display:block;font-size:13px;font-weight:600;color:var(--tpa-muted,#9AA4B1);letter-spacing:0}
+.tpa-mt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:520px){.tpa-mt-stats{grid-template-columns:repeat(2,1fr)}}
+.tpa-mt-stat{background:var(--tpa-stat-bg,#12171D);border:1px solid var(--tpa-stat-border,#232A32);border-radius:14px;padding:12px 14px}
+.tpa-mt-stat span{display:block;font-size:11.5px;color:var(--tpa-muted,#8B95A3);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tpa-mt-stat b{font-size:1.2rem;font-variant-numeric:tabular-nums}
+.tpa-mt-src{font-size:12px;color:var(--tpa-muted,#8B95A3)}
+.tpa-mt-err{color:var(--tpa-muted,#8B95A3)}
+@media(prefers-reduced-motion:reduce){.tpa-fl,.tpa-fl2,.tpa-snow{animation:none}}

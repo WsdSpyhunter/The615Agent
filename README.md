@@ -10,6 +10,10 @@ npm run dev      # opens at http://localhost:4321
 npm run build    # builds the finished site into /dist
 ```
 
+## Built to be moved to a new design
+
+The tools (market temperature, mortgage calculator, checklists, reviews, forms) are plug-and-play web components that read plain JSON files in `public/data/`. A redesign only restyles them with CSS variables. See `docs/WIDGETS.md`, and open `/widgets/demo.html` to see them in a different design.
+
 ## Where to change things
 
 | I want to change... | Edit this file |
@@ -17,10 +21,10 @@ npm run build    # builds the finished site into /dist
 | Phone, email, license, brokerage, social links, Web3Forms key, Buttondown username, Cloudflare analytics token | `src/site.config.ts` |
 | Menu items | `nav` in `src/site.config.ts` |
 | Resource links | `src/data/resources.json` |
-| Testimonials (placeholders are labeled) | `src/data/testimonials.json`, then set `showPlaceholderTestimonials` to `false` in `site.config.ts` once real ones are in |
+| Testimonials (placeholders are labeled) | `public/data/testimonials.json`, then set `showPlaceholderTestimonials` to `false` in `site.config.ts` once real ones are in |
 | City guides (text, FAQ, links) | `src/data/areas.json` |
-| Market numbers (replaced monthly automatically in Phase B) | `src/data/market.json` |
-| Checklist wording (the online version) | `src/data/checklists.json` |
+| Market numbers (replaced monthly automatically in Phase B) | `public/data/market.json` (format: `docs/data-contracts/market.md`) |
+| Checklist wording (the online version) | `public/data/checklists.json` |
 | Checklist PDFs | replace the files in `public/downloads/` keeping the same names |
 | Blog posts | add a `.md` file to `src/content/posts/` (see the sample post for the format) |
 | Colors and fonts | `src/styles/global.css` (the `:root` block at the top) |

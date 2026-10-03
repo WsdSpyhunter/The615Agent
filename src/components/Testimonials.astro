@@ -1,8 +1,8 @@
 ---
 import { site } from '../site.config';
-import data from '../data/testimonials.json';
-const items = data.filter((t) => site.showPlaceholderTestimonials || !t.placeholder);
-const hasPlaceholder = items.some((t) => t.placeholder);
+import data from '../../public/data/testimonials.json';
+const items = data.filter((t: any) => site.showPlaceholderTestimonials || !t.placeholder);
+const hasPlaceholder = items.some((t: any) => t.placeholder);
 ---
 {items.length > 0 && (
 <section class="testi" id="reviews">
@@ -16,26 +16,12 @@ const hasPlaceholder = items.some((t) => t.placeholder);
       <a class="btn ghost sm" href="/reviews" style="color:#fff">See reviews</a>
     </div>
   </div>
-  <div class="mq" id="mq">
-    <div class="mqmask">
-      <div class="mqrow">
-        {[0, 1].map((copy) => items.map((t) => (
-          <figure class="tc" aria-hidden={copy === 1 ? 'true' : undefined}>
-            <div class="stars" aria-label="5 stars">★★★★★</div>
-            <p>“{t.quote}”</p>
-            <figcaption class="who"><span class="av">{t.name[0]}</span><span><b>{t.name}</b>{t.detail}</span></figcaption>
-          </figure>
-        )))}
-      </div>
-    </div>
+  <div class="wrap" style="max-width:none;padding-inline:0">
+    <tpa-testimonials src="/data/testimonials.json" show-placeholders={String(site.showPlaceholderTestimonials)}>
+      <ul class="wrap" style="list-style:none">
+        {items.slice(0, 3).map((t: any) => <li style="margin-bottom:10px">“{t.quote}” <b>{t.name}</b>, {t.detail}</li>)}
+      </ul>
+    </tpa-testimonials>
   </div>
-  <div class="wrap ctl"><button id="pz" type="button">Pause scrolling</button><span>Hover to pause.</span></div>
 </section>
 )}
-<script>
-  const pz = document.getElementById('pz');
-  pz?.addEventListener('click', () => {
-    const p = document.getElementById('mq')!.classList.toggle('paused');
-    pz.textContent = p ? 'Resume scrolling' : 'Pause scrolling';
-  });
-</script>

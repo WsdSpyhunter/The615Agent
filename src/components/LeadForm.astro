@@ -10,7 +10,7 @@ const subjects = {
 };
 const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller: 'Request my home value', checklist: 'Email me the checklist' }[type];
 ---
-<form class="fcard" data-lead-form data-endpoint="https://api.web3forms.com/submit" id={id} novalidate>
+<form class="fcard" data-tpa-lead data-endpoint="https://api.web3forms.com/submit" id={id} novalidate>
   <input type="hidden" name="access_key" value={site.web3formsKey} />
   <input type="hidden" name="subject" value={`${subjects[type]} (the615agent.com)`} />
   <input type="hidden" name="from_name" value={site.name} />
@@ -111,28 +111,3 @@ const submitLabel = { contact: 'Send message', buyer: 'Request my call', seller:
   <div class="fmsg ok" data-ok hidden role="status">{type === 'checklist' ? 'Thank you! I will email your checklist shortly. You can also download it right away from the cards above.' : type === 'buyer' ? "Thank you! I have your request and we'll be on a call within the next 48 hours." : 'Thank you! I have your request and will be in touch within one business day.'}</div>
   <div class="fmsg err" data-err hidden role="alert">Something went wrong sending that. Please call or text {site.phone}, or email {site.email}.</div>
 </form>
-
-<script>
-  document.querySelectorAll<HTMLFormElement>('form[data-lead-form]').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const ok = form.querySelector<HTMLElement>('[data-ok]')!;
-      const err = form.querySelector<HTMLElement>('[data-err]')!;
-      ok.hidden = true; err.hidden = true;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
-      const label = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Sending...';
-      const fd = new FormData(form);
-      const areas = fd.getAll('areas');
-      if (areas.length) { fd.delete('areas'); fd.set('areas', areas.join(', ')); }
-      try {
-        const res = await fetch(form.dataset.endpoint!, { method: 'POST', headers: { Accept: 'application/json' }, body: fd });
-        const data = await res.json();
-        if (res.ok && data.success) { ok.hidden = false; form.reset(); (window as any).__leadSent?.(); }
-        else { err.hidden = false; }
-      } catch { err.hidden = false; }
-      btn.disabled = false; btn.textContent = label;
-    });
-  });
-</script>

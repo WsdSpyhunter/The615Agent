@@ -1,0 +1,19 @@
+/* <tpa-testimonials>. Style with --tpa-* variables. */
+tpa-testimonials{display:block;font-family:var(--tpa-font,inherit);color:var(--tpa-panel-fg,#fff)}
+.tpa-t-mask{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);overflow:hidden}
+.tpa-t-row{display:flex;gap:16px;width:max-content;animation:tpa-roll 70s linear infinite}
+tpa-testimonials:hover .tpa-t-row,tpa-testimonials:focus-within .tpa-t-row,tpa-testimonials.tpa-paused .tpa-t-row{animation-play-state:paused}
+@keyframes tpa-roll{to{transform:translateX(-50%)}}
+.tpa-t-card{width:340px;flex:none;background:var(--tpa-tcard-bg,#15191E);border:1px solid var(--tpa-tcard-border,#262E37);border-radius:22px;padding:22px;display:grid;gap:12px;align-content:start;margin:0}
+.tpa-t-card:nth-child(4n+1){border-top:4px solid var(--tpa-accent,#FFC20E)}.tpa-t-card:nth-child(4n+2){border-top:4px solid var(--tpa-primary,#1473E6)}.tpa-t-card:nth-child(4n+3){border-top:4px solid var(--tpa-primary-2,#1D4E9E)}.tpa-t-card:nth-child(4n+4){border-top:4px solid var(--tpa-warm,#F2593A)}
+.tpa-t-card p{margin:0;color:#DDE3EA;font-size:15px}
+.tpa-t-stars{color:var(--tpa-accent,#FFC20E);letter-spacing:2px;font-size:18px}
+.tpa-t-card figcaption{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--tpa-muted,#9AA4B1)}
+.tpa-t-card figcaption b{display:block;color:#fff;font-size:14px}
+.tpa-t-card a{color:#7DB4F5;font-weight:600}
+.tpa-t-av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#0A0A0A;background:var(--tpa-accent,#FFC20E);flex:none}
+.tpa-t-ctl{margin:22px auto 0;max-width:var(--tpa-ctl-max,1160px);padding-inline:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tpa-t-ctl button{font:inherit;font-weight:600;font-size:13px;color:#fff;background:#1d232b;border:1px solid #2c3540;border-radius:999px;padding:7px 16px;cursor:pointer}
+.tpa-t-ctl span{color:var(--tpa-muted,#8B95A3);font-size:13px}
+@media(max-width:520px){.tpa-t-card{width:280px}}
+@media(prefers-reduced-motion:reduce){.tpa-t-row{animation:none}.tpa-t-mask{overflow-x:auto}}
