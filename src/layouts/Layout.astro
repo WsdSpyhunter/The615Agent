@@ -30,7 +30,7 @@ const agentSchema = {
   logo: new URL('/img/logo-615-agent.png', site.url).toString(),
   telephone: site.phone,
   email: site.email,
-  areaServed: ['Franklin, TN', 'Brentwood, TN', 'Spring Hill, TN', "Thompson's Station, TN", 'Nolensville, TN', 'Williamson County, TN', 'Nashville, TN'],
+  areaServed: ['Franklin, TN', 'Brentwood, TN', 'Spring Hill, TN', "Thompson's Station, TN", 'Nolensville, TN', 'Columbia, TN', 'Murfreesboro, TN', 'Williamson County, TN', 'Nashville, TN'],
   parentOrganization: { '@type': 'Organization', name: site.brokerage },
   employee: { '@type': 'Person', name: site.agent, jobTitle: site.title, telephone: site.phone, email: site.email },
   sameAs: Object.values(site.social).filter(Boolean),

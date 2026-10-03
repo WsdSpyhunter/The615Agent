@@ -34,5 +34,17 @@
     "url": "https://www.pexels.com/photo/7641899/",
     "license": "Pexels License (free to use, attribution not required)",
     "note": "Placeholder stock photo."
+  },
+  "areas/columbia": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/15452110/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
+  },
+  "areas/murfreesboro": {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/photo/2305098/",
+    "license": "Pexels License (free to use, attribution not required)",
+    "note": "Placeholder stock photo, not of this city. Replace with a real local photo."
   }
 }

@@ -93,7 +93,7 @@ p{margin:0 0 1em}
 /* trust strip */
 .trust{background:#5C9BE8;color:#08213F}
 .trust .wrap{display:flex;flex-wrap:wrap;gap:12px 36px;justify-content:space-between;padding-block:18px;font-size:14px;font-weight:600}
-.trust b{color:#04101F}
+.trust b{color:#04101F;margin-right:.55em}
 
 /* sections */
 section.s{padding-block:76px}
@@ -139,8 +139,9 @@ section.s{padding-block:76px}
 @keyframes zizzle{from{background-position:130% 0}to{background-position:-130% 0}}
 
 /* city cards */
-.cities{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-@media(max-width:1000px){.cities{grid-template-columns:repeat(3,1fr)}}
+.cities{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+@media(max-width:1100px){.cities{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:820px){.cities{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.cities{grid-template-columns:repeat(2,1fr)}}
 .city{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s;display:flex;flex-direction:column;border-top:4px solid var(--blue)}
 .city:hover{transform:translateY(-3px)}

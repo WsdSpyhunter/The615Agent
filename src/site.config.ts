@@ -55,6 +55,8 @@ export const areas = [
   { slug: 'spring-hill', name: 'Spring Hill', tint: 'teal', blurb: 'A growing city along I-65 with many newer communities and new construction.' },
   { slug: 'thompsons-station', name: "Thompson's Station", tint: 'coral', blurb: 'More space and newer communities on the southern edge of Williamson County.' },
   { slug: 'nolensville', name: 'Nolensville', tint: 'blue', blurb: 'A small-town feel on the Williamson County line, with steady growth.' },
+  { slug: 'columbia', name: 'Columbia', tint: 'coral', blurb: 'The Maury County seat, just south of Spring Hill.' },
+  { slug: 'murfreesboro', name: 'Murfreesboro', tint: 'gold', blurb: 'The Rutherford County seat, southeast of Nashville.' },
 ] as const;
 
 export type Area = (typeof areas)[number];
