@@ -40,7 +40,10 @@ const STREET = /^\d+\s+.*?\b(St|Street|Dr|Drive|Rd|Road|Ave|Avenue|Ln|Lane|Ct|Co
 const cityOnly = (s) => {
   let v = clean(s).replace(/\s+/g, ' ');
   if (!v) return '';
-  if (/^\d/.test(v)) v = v.replace(STREET, '');
+  // Zillow sometimes sends "Neighborhood,,City,County,Tennessee": keep just the city.
+  const parts = v.split(',').map((x) => x.trim()).filter(Boolean);
+  if (parts.length >= 4 && /^tennessee$/i.test(parts.at(-1))) return `${parts[1]}, TN`;
+  if (/^\d/.test(v)) v = v.replace(STREET, '').replace(/^(unit|apt|suite|ste|#)\s*\S+\s+/i, '');
   v = v.replace(/\b\d{5}(-\d{4})?\b/, '').replace(/[,\s]+$/, '').trim();
   return /^\d/.test(v) ? '' : v; // if a street number is still there, drop it rather than risk showing it
 };
