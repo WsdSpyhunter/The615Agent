@@ -72,7 +72,8 @@ export class TpaMortgageCalculator extends HTMLElement {
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-price">Home price</label><output data-o="price"></output></div><input id="tpa-price" data-f="price" type="range" min="100000" max="2000000" step="5000" value="${price}"></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-down">Down payment</label><output data-o="down"></output></div><input id="tpa-down" data-f="down" type="range" min="0" max="50" step="0.5" value="${down}">
         <div class="tpa-mc-num"><input data-f="downamt" inputmode="numeric" aria-label="Down payment in dollars"><input data-f="downpct" inputmode="decimal" aria-label="Down payment percent"></div></div>
-      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-rate">Interest rate</label><output data-o="rate"></output></div><input id="tpa-rate" data-f="rate" type="range" min="2" max="10" step="0.125" value="${rate}"><small>Example rate. Use the rate from your lender's quote.</small></div>
+      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-rate">Interest rate</label><output data-o="rate"></output></div><input id="tpa-rate" data-f="rate" type="range" min="2" max="10" step="0.125" value="${rate}">
+        <div class="tpa-mc-ratebox"><small>Example rate. Use the rate from your lender's quote, or type your own.</small><input data-f="ratenum" inputmode="decimal" aria-label="Interest rate percent"></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><span>Loan term</span></div><div class="tpa-mc-seg" data-seg="term" role="group" aria-label="Loan term"><button type="button" data-v="30" aria-pressed="true">30 years</button><button type="button" data-v="20" aria-pressed="false">20 years</button><button type="button" data-v="15" aria-pressed="false">15 years</button></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><span>Loan type</span></div><div class="tpa-mc-seg" data-seg="ltype" role="group" aria-label="Loan type"><button type="button" data-v="conv" aria-pressed="true">Conventional</button><button type="button" data-v="fha" aria-pressed="false">FHA</button><button type="button" data-v="va" aria-pressed="false">VA</button></div><small data-o="ltype"></small></div>
       <div class="tpa-mc-grid">
@@ -93,9 +94,20 @@ export class TpaMortgageCalculator extends HTMLElement {
       <p class="tpa-mc-note">Estimates only, not a loan offer or commitment to lend. Actual rates, taxes, insurance, mortgage insurance and fees vary. ${this.getAttribute('brand') || 'This site'} is not a lender. Equal Housing Opportunity.</p>
     </div>`;
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
-    ['price', 'down', 'rate', 'tax', 'ins', 'hoa', 'extra'].forEach((k) => f(k).addEventListener('input', () => this.render()));
+    ['price', 'down', 'tax', 'ins', 'hoa', 'extra'].forEach((k) => f(k).addEventListener('input', () => this.render()));
+    // The rate slider and the typed rate box control each other.
+    f('rate').addEventListener('input', () => { f('ratenum').value = ''; this.render(); });
+    f('ratenum').addEventListener('input', () => {
+      const v = parseFloat(f('ratenum').value.replace(/[^0-9.]/g, ''));
+      if (isFinite(v) && v > 0 && v <= 25) f('rate').value = String(Math.min(10, Math.max(2, v)));
+      this.render();
+    });
+    ['ratenum', 'downpct', 'downamt'].forEach((k) => {
+      f(k).addEventListener('focus', () => f(k).select());
+      f(k).addEventListener('blur', () => this.render());
+    });
     f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(50, Math.max(0, (v / +f('price').value) * 100))); this.render(); });
-    f('downpct').addEventListener('input', () => { const v = +f('downpct').value; if (!isNaN(v)) { f('down').value = String(Math.min(50, Math.max(0, v))); this.render(); } });
+    f('downpct').addEventListener('input', () => { const v = parseFloat(f('downpct').value.replace(/[^0-9.]/g, '')); if (!isNaN(v)) { f('down').value = String(Math.min(50, Math.max(0, v))); this.render(); } });
     this.querySelectorAll<HTMLElement>('[data-seg]').forEach((g) => g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
       if (g.dataset.seg === 'term') this.term = +b.dataset.v!; else this.ltype = b.dataset.v as any;
       g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
@@ -103,15 +115,21 @@ export class TpaMortgageCalculator extends HTMLElement {
     })));
     this.render();
   }
+  /** The interest rate in use: the typed number if it is valid, otherwise the slider. */
+  private rateVal() {
+    const typed = parseFloat(this.querySelector<HTMLInputElement>('[data-f=ratenum]')!.value.replace(/[^0-9.]/g, ''));
+    return isFinite(typed) && typed > 0 && typed <= 25 ? typed : +this.querySelector<HTMLInputElement>('[data-f=rate]')!.value;
+  }
   private render() {
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
     const o = (k: string) => this.querySelector<HTMLElement>(`[data-o=${k}]`)!;
-    const c = calculate({ price: +f('price').value, downPct: +f('down').value, rate: +f('rate').value, years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0 });
+    const c = calculate({ price: +f('price').value, downPct: +f('down').value, rate: this.rateVal(), years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0 });
     o('price').textContent = money0(c.price);
-    o('rate').textContent = (+f('rate').value).toFixed(3).replace(/0$/, '') + '%';
+    o('rate').textContent = this.rateVal().toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0') + '%';
+    if (document.activeElement !== f('ratenum')) f('ratenum').value = this.rateVal().toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0') + '%';
     o('down').textContent = `${money0(c.dAmt)} (${(+f('down').value).toFixed(1)}%)`;
     if (document.activeElement !== f('downamt')) f('downamt').value = Math.round(c.dAmt).toLocaleString();
-    if (document.activeElement !== f('downpct')) f('downpct').value = (+f('down').value).toFixed(1);
+    if (document.activeElement !== f('downpct')) f('downpct').value = (+f('down').value).toFixed(1) + '%';
     o('total').textContent = money2(c.total);
     const parts = [{ k: 'pi', n: 'Principal & interest', v: c.pi }, { k: 'tax', n: 'Property tax', v: c.tx }, { k: 'ins', n: 'Home insurance', v: c.is }, { k: 'mi', n: 'Mortgage insurance', v: c.mi }, { k: 'hoa', n: 'HOA', v: c.hoa }] as const;
     const tot = parts.reduce((a, p) => a + p.v, 0) || 1, R = 44, C = 2 * Math.PI * R; let off = 0;
@@ -127,7 +145,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     const cta = this.querySelector<HTMLAnchorElement>('[data-o=cta]');
     if (cta) {
       const base = this.getAttribute('contact-url') || '/contact';
-      const note = `Mortgage calculator numbers: price ${money0(c.price)}, down ${money0(c.dAmt)} (${(+f('down').value).toFixed(1)}%), ${this.term}-year ${this.ltype === 'conv' ? 'conventional' : this.ltype.toUpperCase()} at ${+f('rate').value}%, estimated payment ${money2(c.total)}/month.`;
+      const note = `Mortgage calculator numbers: price ${money0(c.price)}, down ${money0(c.dAmt)} (${(+f('down').value).toFixed(1)}%), ${this.term}-year ${this.ltype === 'conv' ? 'conventional' : this.ltype.toUpperCase()} at ${this.rateVal()}%, estimated payment ${money2(c.total)}/month.`;
       cta.href = base + (base.includes('?') ? '&' : '?') + 'note=' + encodeURIComponent(note);
     }
     emit(this, 'tpa-mortgage:change', { total: c.total, loan: c.loan, interest: c.interest, months: c.months, monthly: { pi: c.pi, tax: c.tx, insurance: c.is, mi: c.mi, hoa: c.hoa } });
