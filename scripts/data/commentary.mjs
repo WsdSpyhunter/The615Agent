@@ -46,10 +46,9 @@ function factsFor(slug, c) {
 }
 
 const numbersIn = (s) => (s.match(/\d[\d,]*\.?\d*/g) || []).map((n) => n.replace(/,/g, '').replace(/\.$/, ''));
-function valid(text, facts) {
+function badNumbers(text, facts) {
   const allowed = new Set(numbersIn(facts.join(' ')));
-  // allow the numbers "4" and "6" from the stated thresholds, which are in the facts already
-  return numbersIn(text).every((n) => allowed.has(n) || allowed.has(String(Number(n))));
+  return numbersIn(text).filter((n) => !(allowed.has(n) || allowed.has(String(Number(n)))));
 }
 
 async function ask(slug, c, facts, attempt) {
@@ -81,7 +80,8 @@ for (const [slug, c] of Object.entries(market.cities)) {
   for (let attempt = 0; attempt < 2 && !text; attempt++) {
     try {
       const out = await ask(slug, c, facts, attempt);
-      if (out && valid(out, facts)) text = out; else log(`  ${c.name}: attempt ${attempt + 1} rejected (missing text or a number not in the facts)`);
+      const bad = out ? badNumbers(out, facts) : ['(empty)'];
+      if (out && !bad.length) text = out; else log(`  ${c.name}: attempt ${attempt + 1} rejected, numbers not in the facts: ${bad.join(', ')}`);
     } catch (e) { log(`  ${c.name}: ${e.message}`); break; }
   }
   if (text) { c.commentary = text; made++; } else { delete c.commentary; }
