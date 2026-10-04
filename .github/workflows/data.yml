@@ -10,7 +10,7 @@ on:
         type: boolean
         default: true
       create_report_draft:
-        description: 'Also create this month\'s report as a draft in Buttondown'
+        description: "Also create this month's report as a draft in Buttondown"
         type: boolean
         default: false
 
