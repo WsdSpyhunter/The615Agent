@@ -9,6 +9,10 @@ on:
         description: 'Re-download Redfin, FRED and Zillow reviews first (turn off to only redo the commentary)'
         type: boolean
         default: true
+      create_report_draft:
+        description: 'Also create this month\'s report as a draft in Buttondown'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -52,6 +56,12 @@ jobs:
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: Create the monthly report draft (Buttondown)
+        if: github.event_name == 'schedule' || github.event.inputs.create_report_draft == 'true'
+        continue-on-error: true
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: node scripts/data/report-draft.mjs
       - name: Redeploy the site
         if: steps.commit.outputs.changed == 'true'
         env:
