@@ -17,7 +17,7 @@ import { getJSON, esc, flag, emit } from './lib/data';
 
 export type MarketCity = {
   name: string; monthsSupply: number;
-  medianPrice?: number | null; yoy?: number | null; dom?: number | null; saleToList?: number | null; inventory?: number | null;
+  commentary?: string | null; medianPrice?: number | null; yoy?: number | null; dom?: number | null; saleToList?: number | null; inventory?: number | null;
   asOf?: string | null; geography?: string | null;
 };
 export type MarketSource = string | { name: string; url?: string; note?: string };
@@ -72,6 +72,7 @@ export class TpaMarketTemperature extends HTMLElement {
         ${showSel ? `<div class="tpa-mt-pills" role="group" aria-label="Choose a city">${Object.entries(d.cities).map(([k, c]) => `<button type="button" data-city="${esc(k)}">${esc(c.name)}</button>`).join('')}</div>` : ''}
         <div class="tpa-mt-gaugewrap"><svg class="tpa-mt-gauge" viewBox="0 -4 240 144" role="img" aria-label="Market gauge"></svg><div class="tpa-mt-verdict"></div></div>
         <div class="tpa-mt-stats"></div>
+        <p class="tpa-mt-comment" hidden></p>
         <div class="tpa-mt-src"></div>
       </div>`;
     this.querySelectorAll<HTMLButtonElement>('.tpa-mt-pills button').forEach((b) => b.addEventListener('click', () => this.select(b.dataset.city!)));
@@ -98,6 +99,8 @@ export class TpaMarketTemperature extends HTMLElement {
     ];
     q('.tpa-mt-stats')!.innerHTML = rows.map(([k, v]) => `<div class="tpa-mt-stat"><span>${k}</span><b>${v}</b></div>`).join('');
     const asOf = c.asOf || d.asOf;
+    const com = q('.tpa-mt-comment') as HTMLElement;
+    com.hidden = !c.commentary; com.textContent = c.commentary || '';
     const srcEl = q('.tpa-mt-src')!;
     if (d.sample) srcEl.textContent = 'Real figures, sources and the "as of" date will appear here from the monthly data files. The gauge position is a sample.';
     else srcEl.innerHTML = `Data as of ${esc(longDate(asOf))}${c.geography ? ` (${esc(c.geography)})` : ''}. Sources: ${(d.sources || []).map(sourceHtml).join('; ')}.`;

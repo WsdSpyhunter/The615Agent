@@ -33,3 +33,5 @@ tpa-market-temperature{display:block;font-family:var(--tpa-font,inherit);min-wid
 .tpa-mt-err{color:var(--tpa-muted,#8B95A3)}
 @media(prefers-reduced-motion:reduce){.tpa-fl,.tpa-fl2,.tpa-snow{animation:none}}
 .tpa-mt-src a{color:var(--tpa-link-on-dark,#7DB4F5);text-decoration:underline}
+.tpa-mt-comment{margin:0;font-size:14.5px;line-height:1.55;color:var(--tpa-panel-fg,#fff);border-left:3px solid var(--tpa-accent,#FFC20E);padding-left:12px}
+.tpa-mt-comment[hidden]{display:none}
