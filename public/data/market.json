@@ -104,5 +104,7 @@
       "asOf": "2026-05-31",
       "geography": null
     }
-  }
+  },
+  "commentaryGenerated": "2026-10-04",
+  "commentaryModel": "claude-sonnet-5-5"
 }
