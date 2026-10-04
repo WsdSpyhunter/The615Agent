@@ -35,10 +35,19 @@ for (let page = 0; next && page < 20; page++) {
 log(`Fetched ${items.length} review records`);
 
 const clean = (s) => (s ?? '').toString().trim();
+// Privacy: Zillow's data can include the client's street address. Only the city and state are published.
+const STREET = /^\d+\s+.*?\b(St|Street|Dr|Drive|Rd|Road|Ave|Avenue|Ln|Lane|Ct|Court|Blvd|Boulevard|Cir|Circle|Way|Pl|Place|Pkwy|Parkway|Trl|Trail|Hwy|Highway|Ter|Terrace|Loop|Run|Pass|Path|Cv|Cove|Bend|Row|Walk)\b\.?\s*/i;
+const cityOnly = (s) => {
+  let v = clean(s).replace(/\s+/g, ' ');
+  if (!v) return '';
+  if (/^\d/.test(v)) v = v.replace(STREET, '');
+  v = v.replace(/\b\d{5}(-\d{4})?\b/, '').replace(/[,\s]+$/, '').trim();
+  return /^\d/.test(v) ? '' : v; // if a street number is still there, drop it rather than risk showing it
+};
 const reviews = items
   .filter((r) => clean(r.Description))
   .map((r) => {
-    const place = clean(r.PropertyLocationNames) || clean(r.FreeFormLocation);
+    const place = cityOnly(r.PropertyLocationNames) || cityOnly(r.FreeFormLocation);
     const role = clean(r.ServiceProviderDesc);
     const detail = [role, place, r.ServiceYear || ''].filter(Boolean).join(' · ');
     return {

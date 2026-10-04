@@ -1,6 +1,7 @@
 ---
 import { site } from '../site.config';
 import data from '../../public/data/testimonials.json';
+import summary from '../../public/data/reviews-summary.json';
 const items = data.filter((t: any) => site.showPlaceholderTestimonials || !t.placeholder);
 const hasPlaceholder = items.some((t: any) => t.placeholder);
 ---
@@ -12,6 +13,7 @@ const hasPlaceholder = items.some((t: any) => t.placeholder);
         <span class="kicker">Client reviews</span>
         <h2>What clients say</h2>
         <p>Real words from real buyers and sellers. {hasPlaceholder && <span class="sample">Placeholder cards</span>}</p>
+        {summary.reviewCount > 0 && !hasPlaceholder && <p><b style="color:var(--gold)">★ {Number(summary.averageRating).toFixed(1)}</b> average from {summary.reviewCount} {summary.reviewCount === 1 ? 'review' : 'reviews'} on <a href={summary.profileUrl} target="_blank" rel="noopener" style="text-decoration:underline">Zillow</a></p>}
       </div>
       <a class="btn ghost sm" href="/reviews" style="color:#fff">See reviews</a>
     </div>

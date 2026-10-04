@@ -7,6 +7,7 @@ tpa-testimonials:hover .tpa-t-row,tpa-testimonials:focus-within .tpa-t-row,tpa-t
 .tpa-t-card{width:340px;flex:none;background:var(--tpa-tcard-bg,#15191E);border:1px solid var(--tpa-tcard-border,#262E37);border-radius:22px;padding:22px;display:grid;gap:12px;align-content:start;margin:0}
 .tpa-t-card:nth-child(4n+1){border-top:4px solid var(--tpa-accent,#FFC20E)}.tpa-t-card:nth-child(4n+2){border-top:4px solid var(--tpa-primary,#1473E6)}.tpa-t-card:nth-child(4n+3){border-top:4px solid var(--tpa-primary-2,#1D4E9E)}.tpa-t-card:nth-child(4n+4){border-top:4px solid var(--tpa-warm,#F2593A)}
 .tpa-t-card p{margin:0;color:#DDE3EA;font-size:15px}
+.tpa-t-quote{display:-webkit-box;-webkit-line-clamp:var(--tpa-quote-lines,7);-webkit-box-orient:vertical;overflow:hidden}
 .tpa-t-stars{color:var(--tpa-accent,#FFC20E);letter-spacing:2px;font-size:18px}
 .tpa-t-card figcaption{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--tpa-muted,#9AA4B1)}
 .tpa-t-card figcaption b{display:block;color:#fff;font-size:14px}
