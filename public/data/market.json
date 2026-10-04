@@ -1,81 +1,99 @@
 {
-  "_note": "Phase A placeholder. Phase B replaces this file monthly from Redfin, Zillow Research, FRED and Census data. sample:true shows a 'Sample numbers' label and hides any stat that has no real value.",
-  "sample": true,
-  "asOf": null,
-  "sources": [],
+  "sample": false,
+  "asOf": "2026-05-31",
+  "sources": [
+    "Redfin Data Center (redfin.com/news/data-center), median sale price, days on market, sale-to-list ratio, inventory and months of supply"
+  ],
   "mortgageRate30": null,
+  "mortgageRateAsOf": null,
   "cities": {
     "franklin": {
       "name": "Franklin",
-      "monthsSupply": 3.4,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 3.3,
+      "medianPrice": 860000,
+      "yoy": 0,
+      "dom": 43,
+      "saleToList": 98.2,
+      "inventory": 533,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "brentwood": {
       "name": "Brentwood",
-      "monthsSupply": 4.6,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 3.8,
+      "medianPrice": 1425000,
+      "yoy": 16.3,
+      "dom": 50,
+      "saleToList": 97.6,
+      "inventory": 302,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "spring-hill": {
       "name": "Spring Hill",
-      "monthsSupply": 5.1,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 4,
+      "medianPrice": 559990,
+      "yoy": 4.5,
+      "dom": 57,
+      "saleToList": 99.1,
+      "inventory": 406,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "thompsons-station": {
       "name": "Thompson's Station",
-      "monthsSupply": 6.3,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 4.1,
+      "medianPrice": 890000,
+      "yoy": 15.6,
+      "dom": 61,
+      "saleToList": 99.6,
+      "inventory": 118,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "nolensville": {
       "name": "Nolensville",
-      "monthsSupply": 3.9,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 2.9,
+      "medianPrice": 909231,
+      "yoy": 1,
+      "dom": 63,
+      "saleToList": 99,
+      "inventory": 90,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "nashville": {
       "name": "Nashville",
-      "monthsSupply": 4.2,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 5.4,
+      "medianPrice": 483100,
+      "yoy": -1.3,
+      "dom": 59,
+      "saleToList": 98.1,
+      "inventory": 4892,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "columbia": {
       "name": "Columbia",
-      "monthsSupply": 5.4,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 5,
+      "medianPrice": 385000,
+      "yoy": 4.1,
+      "dom": 78,
+      "saleToList": 97.5,
+      "inventory": 458,
+      "asOf": "2026-05-31",
+      "geography": null
     },
     "murfreesboro": {
       "name": "Murfreesboro",
-      "monthsSupply": 4.8,
-      "medianPrice": null,
-      "yoy": null,
-      "dom": null,
-      "saleToList": null,
-      "inventory": null
+      "monthsSupply": 3.7,
+      "medianPrice": 401995,
+      "yoy": -5.7,
+      "dom": 58,
+      "saleToList": 98.6,
+      "inventory": 806,
+      "asOf": "2026-05-31",
+      "geography": null
     }
   }
 }

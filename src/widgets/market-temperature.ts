@@ -20,8 +20,9 @@ export type MarketCity = {
   medianPrice?: number | null; yoy?: number | null; dom?: number | null; saleToList?: number | null; inventory?: number | null;
   asOf?: string | null; geography?: string | null;
 };
+export type MarketSource = string | { name: string; url?: string; note?: string };
 export type MarketData = {
-  sample?: boolean; asOf?: string | null; sources?: string[]; mortgageRate30?: number | null;
+  sample?: boolean; asOf?: string | null; sources?: MarketSource[]; mortgageRate30?: number | null;
   cities: Record<string, MarketCity>;
 };
 
@@ -36,6 +37,8 @@ const ICON = {
 };
 
 const dash = '—';
+const longDate = (iso?: string | null) => (iso ? new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) : '');
+const sourceHtml = (s: MarketSource) => (typeof s === 'string' ? esc(s) : `${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}${s.note ? ` (${esc(s.note)})` : ''}`);
 const money = (v?: number | null) => (v == null ? dash : '$' + Math.round(v).toLocaleString());
 const pct = (v?: number | null, sign = false) => (v == null ? dash : (sign && v > 0 ? '+' : '') + v.toFixed(1) + '%');
 const num = (v?: number | null) => (v == null ? dash : Number(v).toLocaleString());
@@ -95,9 +98,9 @@ export class TpaMarketTemperature extends HTMLElement {
     ];
     q('.tpa-mt-stats')!.innerHTML = rows.map(([k, v]) => `<div class="tpa-mt-stat"><span>${k}</span><b>${v}</b></div>`).join('');
     const asOf = c.asOf || d.asOf;
-    q('.tpa-mt-src')!.textContent = d.sample
-      ? 'Real figures, sources and the "as of" date will appear here from the monthly data files. The gauge position is a sample.'
-      : `Data as of ${asOf}${c.geography ? ` (${c.geography})` : ''}. Sources: ${(d.sources || []).join('; ')}.`;
+    const srcEl = q('.tpa-mt-src')!;
+    if (d.sample) srcEl.textContent = 'Real figures, sources and the "as of" date will appear here from the monthly data files. The gauge position is a sample.';
+    else srcEl.innerHTML = `Data as of ${esc(longDate(asOf))}${c.geography ? ` (${esc(c.geography)})` : ''}. Sources: ${(d.sources || []).map(sourceHtml).join('; ')}.`;
     this.querySelectorAll<HTMLButtonElement>('.tpa-mt-pills button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.city === this.slug)));
     emit(this, 'tpa-market:city', { slug: this.slug, city: c.name, state: st });
   }

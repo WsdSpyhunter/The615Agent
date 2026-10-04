@@ -32,3 +32,4 @@ tpa-market-temperature{display:block;font-family:var(--tpa-font,inherit);min-wid
 .tpa-mt-src{font-size:12px;color:var(--tpa-muted,#8B95A3)}
 .tpa-mt-err{color:var(--tpa-muted,#8B95A3)}
 @media(prefers-reduced-motion:reduce){.tpa-fl,.tpa-fl2,.tpa-snow{animation:none}}
+.tpa-mt-src a{color:var(--tpa-link-on-dark,#7DB4F5);text-decoration:underline}

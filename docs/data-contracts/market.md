@@ -6,8 +6,12 @@ Read by `<tpa-market-temperature>` and `<tpa-mortgage-calculator>` (for the rate
 {
   "sample": false,                         // true shows a "Sample numbers" tag (placeholder data only)
   "asOf": "2026-09-30",                    // date the data describes
-  "sources": ["Redfin Data Center", "FRED (MORTGAGE30US)"],  // every source used, shown under the widget
+  "sources": [                             // every source used, shown (and linked) under the widget
+    { "name": "Redfin Data Center", "url": "https://www.redfin.com/news/data-center/", "note": "median sale price, days on market..." }
+    // a plain string is also accepted
+  ],
   "mortgageRate30": 6.34,                  // percent, from FRED. null if unavailable
+  "mortgageRateAsOf": "2026-10-01",        // week the rate is for
   "cities": {
     "franklin": {                          // slug, used by the city buttons and the "city" attribute
       "name": "Franklin",
