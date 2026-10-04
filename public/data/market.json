@@ -26,7 +26,7 @@
       "inventory": 533,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Franklin had 3.3 months of supply, which is a seller's market, down from 4.1 three months earlier and up from 2.6 a year earlier. The median sale price was $860,000, unchanged at 0.0% from a year earlier, and homes had a median of 43 days on market. Active listings numbered 533, up 4% from a year earlier."
+      "commentary": "As of May 31, 2026, Franklin has 3.3 months of supply, which falls in seller's market territory and is down from 4.1 three months earlier and up from 2.6 a year earlier. The median sale price is $860,000, unchanged at 0.0% from a year earlier, and homes have a median of 43 days on market. There are 533 active listings, up 4% from a year earlier."
     },
     "brentwood": {
       "name": "Brentwood",
@@ -38,7 +38,7 @@
       "inventory": 302,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Brentwood had 3.8 months of supply, which is a seller's market, down from 6.0 three months earlier and 4.0 a year earlier. The median sale price was $1,425,000, up 16.3% from a year earlier, and homes sold at an average of 97.6% of list price. Median days on market was 50, compared with 55 a year earlier, with 302 active listings."
+      "commentary": "As of May 31, 2026, Brentwood had 3.8 months of supply, a seller's market, down from 6.0 three months earlier and 4.0 a year earlier. The median sale price was $1,425,000, up 16.3% from a year earlier, and homes sold at an average of 97.6% of list price. Median days on market was 50, compared with 55 a year earlier, with 302 active listings."
     },
     "spring-hill": {
       "name": "Spring Hill",
@@ -50,7 +50,7 @@
       "inventory": 406,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Spring Hill had 4.0 months of supply, a balanced market, down from 5.1 three months earlier and up slightly from 3.9 a year ago. The median sale price was $559,990, up 4.5% from a year earlier, with homes selling at an average of 99.1% of list price. Median days on market was 57, compared with 58 a year earlier, and active listings stood at 406."
+      "commentary": "As of May 31, 2026, Spring Hill has 4.0 months of supply, which is a balanced market, down from 5.1 three months earlier. The median sale price is $559,990, up 4.5% from a year earlier, and homes sell at an average of 99.1% of list price. Median days on market is 57, and active listings number 406."
     },
     "thompsons-station": {
       "name": "Thompson's Station",
@@ -62,7 +62,7 @@
       "inventory": 118,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Thompson's Station had 4.1 months of supply, a balanced market, down from 8.9 three months earlier and up from 2.9a year earlier. The median sale price was $890,000, up 15.6% from a year earlier, and homes sold at an average of 99.6% of list price. Median days on market was 61, compared with 74 a year earlier."
+      "commentary": "As of May 31, 2026, Thompson's Station had 4.1 months of supply, a balanced market, down from 8.9 three months earlier and up from 2.9 a year earlier. The median sale price was $890,000, up 15.6% from a year earlier, and homes sold at an average of 99.6% of list price. Median days on market was 61, compared with 74 a year earlier, with 118 active listings."
     },
     "nolensville": {
       "name": "Nolensville",
@@ -74,7 +74,7 @@
       "inventory": 90,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Nolensville has 2.9 months of supply, which falls in seller's market territory and is down from 6.5 months three months earlier and 5.0 a year earlier. The median sale price is $909,231, up 1.0% from a year ago, and homes sold at an average of 99.0% of list price. Active listings total 90, down 13% from a year earlier, while median days on market is 63 compared with 58 a year ago."
+      "commentary": "As of May 31, 2026, Nolensville has 2.9 months of supply, which is a seller's market, down from 6.5 three months earlier and 5.0 a year earlier. The median sale price is $909,231, up 1.0% from a year earlier, and homes sell at an average of 99.0% of list price. Active listings number 90, down 13% from a year earlier, and median days on market is 63."
     },
     "nashville": {
       "name": "Nashville",
@@ -86,7 +86,7 @@
       "inventory": 4892,
       "asOf": "2026-05-31",
       "geography": null,
-      "commentary": "As of May 31, 2026, Nashville had 5.4 months of supply, a balanced market, down from 6.2 three months earlier and up from 4.9 a year earlier. The median sale price was $483,100, down 1.3% from a year earlier, with homes selling at 98.1% of list price on average. Median days on market was 59, compared with 55 a year earlier."
+      "commentary": "As of May 31, 2026, Nashville has 5.4 months of supply, a balanced market, down from 6.2 three months earlier and up from 4.9 a year ago. The median sale price is $483,100, down 1.3% from a year earlier, with homes selling at an average of 98.1% of list price. Median days on market is 59, compared with 55 a year earlier."
     },
     "columbia": {
       "name": "Columbia",
@@ -97,8 +97,7 @@
       "saleToList": 97.5,
       "inventory": 458,
       "asOf": "2026-05-31",
-      "geography": null,
-      "commentary": "As of May 31, 2026, Columbia has 5.0 months of supply, a balanced market, down from 7.4 three months earlier and up from 4.2a year earlier. The median sale price is $385,000, up 4.1% from a year earlier, and homes sold at an average of 97.5% of list price. Median days on market is 78, compared with 57 a year earlier, and active listings total 458, up 11%."
+      "geography": null
     },
     "murfreesboro": {
       "name": "Murfreesboro",
