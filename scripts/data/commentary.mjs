@@ -56,7 +56,7 @@ async function ask(slug, c, facts, attempt) {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: MODEL, max_tokens: 400,
+      model: MODEL, max_tokens: 2000,
       system: [
         'You write short housing-market summaries for a real estate agent\'s website.',
         'Use ONLY the facts provided. Do not add any outside information, forecasts, advice, or statistics.',
@@ -77,7 +77,7 @@ let made = 0;
 for (const [slug, c] of Object.entries(market.cities)) {
   const facts = factsFor(slug, c);
   let text = null;
-  for (let attempt = 0; attempt < 2 && !text; attempt++) {
+  for (let attempt = 0; attempt < 3 && !text; attempt++) {
     try {
       const out = await ask(slug, c, facts, attempt);
       const bad = out ? badNumbers(out, facts) : ['(empty)'];
