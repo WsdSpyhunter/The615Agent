@@ -69,7 +69,7 @@ async function ask(slug, c, facts, attempt) {
       messages: [{ role: 'user', content: `Facts for ${c.name}:\n- ${facts.join('\n- ')}${attempt > 0 ? '\n\nYour previous answer used a number that was not in the facts. Use only numbers from the facts.' : ''}` }],
     }),
   });
-  if (!res.ok) throw new Error(`Anthropic API returned HTTP ${res.status}`);
+  if (!res.ok) { const body = (await res.text()).slice(0, 300).replace(/sk-ant-[A-Za-z0-9_-]+/g, '[hidden]'); throw new Error(`Anthropic API returned HTTP ${res.status}: ${body}`); }
   const j = await res.json();
   return (j.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
 }
