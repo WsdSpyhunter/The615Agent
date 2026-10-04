@@ -2,10 +2,19 @@
   "sample": false,
   "asOf": "2026-05-31",
   "sources": [
-    "Redfin Data Center (redfin.com/news/data-center), median sale price, days on market, sale-to-list ratio, inventory and months of supply"
+    {
+      "name": "Redfin Data Center",
+      "url": "https://www.redfin.com/news/data-center/",
+      "note": "median sale price, days on market, sale-to-list ratio, inventory and months of supply"
+    },
+    {
+      "name": "Freddie Mac via FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "note": "30-year fixed mortgage rate, week of October 1, 2026"
+    }
   ],
-  "mortgageRate30": null,
-  "mortgageRateAsOf": null,
+  "mortgageRate30": 7.28,
+  "mortgageRateAsOf": "2026-10-01",
   "cities": {
     "franklin": {
       "name": "Franklin",
