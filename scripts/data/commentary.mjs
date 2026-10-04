@@ -57,7 +57,7 @@ async function ask(slug, c, facts, attempt) {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify({
-      model: MODEL, max_tokens: 400, temperature: 0.2,
+      model: MODEL, max_tokens: 400,
       system: [
         'You write short housing-market summaries for a real estate agent\'s website.',
         'Use ONLY the facts provided. Do not add any outside information, forecasts, advice, or statistics.',
