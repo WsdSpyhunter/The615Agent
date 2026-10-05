@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 import { esc, SITE } from './lib.mjs';
 
-const figure = (img, i) => `<figure style="margin:22px 0"><img src="${esc(img.url)}" alt="${esc(img.alt)}" style="width:100%;border-radius:12px;display:block"><figcaption style="font-size:12px;color:#6b7480;margin-top:6px">Photo by <a href="${esc(img.creditUrl)}" style="color:#1473E6">${esc(img.credit)}</a> on <a href="https://www.pexels.com" style="color:#1473E6">Pexels</a></figcaption></figure>`;
+const figure = (img, i) => `<figure style="margin:22px 0"><img src="${esc(img.url)}" alt="${esc(img.alt)}" style="width:100%;border-radius:12px;display:block"><figcaption style="font-size:12px;color:#6b7480;margin-top:6px">Photo by <a href="${esc(img.creditUrl)}" style="color:#1473E6">${esc(img.credit)}</a> on <a href="${esc(img.home || '#')}" style="color:#1473E6">${esc(img.provider || 'stock')}</a></figcaption></figure>`;
 
 /** The post body as HTML: inline image markers become photos. */
 export function bodyHtml(draft) {
@@ -17,7 +17,7 @@ export function approvalEmail(draft, links) {
   const c = draft.checks || {};
   const warn = [];
   if (c.dropped?.length) warn.push(`${c.dropped.length} link(s) failed the check and were removed: ${c.dropped.map((d) => d.id).join(', ')}.`);
-  if (!draft.hero) warn.push('No photos were added (no Pexels key or no match).');
+  if (!draft.hero) warn.push('No photos were added (no photo key or no match).');
   if (c.review && !c.review.ok) warn.push(`Compliance reviewer notes: ${c.review.issues.join(' ')}`);
   const buttons = btn(links.approve, 'APPROVE & PUBLISH', '#0E9F8E') + btn(links.edit, 'EDIT', '#1473E6') + btn(links.regenerate, 'REGENERATE', '#4F5966') + btn(links.reject, 'REJECT', '#F2593A');
   return `<!doctype html><html><body style="margin:0;background:#EEF0F2;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A">
@@ -27,7 +27,7 @@ export function approvalEmail(draft, links) {
   <p style="margin:0 0 6px;color:#4F5966;font-size:13px">${esc(draft.category)} · keyword: ${esc(draft.keyword)} · ${draft.checks?.words ?? ''} words · will publish at /blog/${esc(draft.slug)}</p>
   <div style="margin:10px 0 16px">${buttons}</div>
   ${warn.length ? `<div style="background:#FFF3C4;color:#6B5200;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>Check before you publish:</b><br>${warn.map(esc).join('<br>')}</div>` : ''}
-  ${draft.hero ? `<img src="${esc(draft.hero.url)}" alt="${esc(draft.hero.alt)}" style="width:100%;border-radius:12px;display:block"><div style="font-size:12px;color:#6b7480;margin:6px 0 14px">Photo by ${esc(draft.hero.credit)} on Pexels</div>` : ''}
+  ${draft.hero ? `<img src="${esc(draft.hero.url)}" alt="${esc(draft.hero.alt)}" style="width:100%;border-radius:12px;display:block"><div style="font-size:12px;color:#6b7480;margin:6px 0 14px">Photo by ${esc(draft.hero.credit)} on ${esc(draft.hero.provider || 'stock')}</div>` : ''}
   <h1 style="font-size:26px;line-height:1.2;margin:8px 0 6px">${esc(draft.title)}</h1>
   <p style="color:#4F5966;font-size:14px;margin:0 0 14px"><i>Meta description:</i> ${esc(draft.description)}</p>
   <div style="font-size:16px;line-height:1.65">${bodyHtml(draft)}</div>

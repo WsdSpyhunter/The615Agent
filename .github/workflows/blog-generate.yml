@@ -52,7 +52,7 @@ jobs:
         if: steps.guard.outputs.run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: |
           if [ -n "$REGEN" ]; then
             case "$REGEN" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
@@ -73,9 +73,9 @@ jobs:
       - name: Email the proof
         if: steps.gen.outputs.slug != ''
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           APPROVAL_SECRET: ${{ secrets.APPROVAL_SECRET }}
           WORKER_URL: ${{ vars.WORKER_URL }}
           APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
-          BLOG_FROM_EMAIL: ${{ vars.BLOG_FROM_EMAIL }}
+          BLOG_FROM_ADDRESS: ${{ vars.BLOG_FROM_ADDRESS }}
         run: node scripts/blog/send-proof.mjs "${{ steps.gen.outputs.slug }}"

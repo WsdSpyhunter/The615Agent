@@ -4,7 +4,7 @@ import { mkdirSync, writeFileSync, unlinkSync, appendFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { readJson, writeJson, today, SITE } from './lib.mjs';
 import { confirmEmail } from './render-email.mjs';
-import { sendEmail } from './email.mjs';
+import { sendEmail, emailConfigured } from './email.mjs';
 
 const [cmd, slug] = process.argv.slice(2);
 const log = console.log;
@@ -38,12 +38,12 @@ for (let i = 0; i < draft.inline.length; i++) inlinePaths.push(await download(dr
 
 let body = draft.body.replace(/\{\{img:(\d)\}\}/g, (all, n) => {
   const im = draft.inline[+n]; if (!im) return '';
-  return `![${(im.alt || '').replace(/[\[\]]/g, '')}](${inlinePaths[+n]})\n\n*Photo by [${im.credit}](${im.creditUrl}) on [Pexels](https://www.pexels.com)*`;
+  return `![${(im.alt || '').replace(/[\[\]]/g, '')}](${inlinePaths[+n]})\n\n*Photo by [${im.credit}](${im.creditUrl}) on [${im.provider || 'stock'}](${im.home || '#'})*`;
 });
 
 const fm = [
   '---', `title: ${q(draft.title)}`, `description: ${q(draft.description)}`, `pubDate: ${today()}`, `category: ${draft.category}`, `keyword: ${q(draft.keyword)}`,
-  ...(heroPath ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.hero.alt)}`, `heroCredit: ${q(`${draft.hero.credit} on Pexels`)}`, `heroCreditUrl: ${q(draft.hero.creditUrl)}`] : []),
+  ...(heroPath ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.hero.alt)}`, `heroCredit: ${q(`${draft.hero.credit} on ${draft.hero.provider || 'stock'}`)}`, `heroCreditUrl: ${q(draft.hero.creditUrl)}`] : []),
   'faq:', ...draft.faq.flatMap((f) => [`  - q: ${q(f.q)}`, `    a: ${q(f.a)}`]), '---', '',
 ].join('\n');
 writeFileSync(`src/content/posts/${slug}.md`, fm + body.trim() + '\n');
@@ -54,7 +54,7 @@ log(`Published src/content/posts/${slug}.md`);
 
 const url = `${SITE}/blog/${slug}`;
 if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `url=${url}\ntitle=${draft.title}\n`);
-if (process.env.RESEND_API_KEY) {
+if (emailConfigured()) {
   try { await sendEmail({ to: process.env.APPROVAL_EMAIL || 'scott@hivenashville.com', subject: `Published: ${draft.title}`, html: confirmEmail(draft.title, url) }); log('Confirmation email sent.'); }
   catch (e) { log('Confirmation email failed:', e.message); }
 }

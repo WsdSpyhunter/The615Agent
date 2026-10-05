@@ -33,9 +33,9 @@ jobs:
           case "$SLUG" in (''|*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
       - name: Publish or reject
         env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
-          BLOG_FROM_EMAIL: ${{ vars.BLOG_FROM_EMAIL }}
+          BLOG_FROM_ADDRESS: ${{ vars.BLOG_FROM_ADDRESS }}
         run: |
           if [ "$ACTION" = "blog-publish" ]; then node scripts/blog/publish.mjs publish "$SLUG"; else node scripts/blog/publish.mjs reject "$SLUG"; fi
       - name: Commit and redeploy
