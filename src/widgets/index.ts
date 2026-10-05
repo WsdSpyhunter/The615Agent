@@ -2,6 +2,7 @@
 // Each widget is also usable on its own: import './market-temperature' etc.
 import './market-temperature';
 import './market-chart';
+import './market-weekly';
 import './mortgage-calculator';
 import './checklist';
 import './testimonials';

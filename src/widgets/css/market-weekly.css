@@ -1,0 +1,15 @@
+/* <tpa-market-weekly>. Style with --tpa-* variables. */
+tpa-market-weekly{display:block;font-family:var(--tpa-font,inherit);min-width:0}
+.tpa-mw-panel{background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-top:4px solid var(--tpa-accent,#FFC20E);border-radius:var(--tpa-radius,24px);padding:22px 24px;box-shadow:var(--tpa-shadow,0 8px 24px rgba(10,10,10,.12));display:grid;gap:14px;min-width:0}
+.tpa-mw-head{display:flex;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;align-items:baseline}
+.tpa-mw-head b{font-size:1.1rem}
+.tpa-mw-head span{font-size:13px;color:var(--tpa-muted,#9AA4B1)}
+.tpa-mw-tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:960px){.tpa-mw-tiles{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.tpa-mw-tiles{grid-template-columns:repeat(2,1fr)}}
+.tpa-mw-tile{background:var(--tpa-stat-bg,#12171D);border:1px solid var(--tpa-stat-border,#232A32);border-radius:14px;padding:12px 14px;display:grid;gap:2px;align-content:start}
+.tpa-mw-tile span{font-size:11.5px;color:var(--tpa-muted,#8B95A3);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tpa-mw-tile b{font-size:1.2rem;font-variant-numeric:tabular-nums}
+.tpa-mw-tile small{font-size:12px;color:var(--tpa-muted,#9AA4B1)}
+.tpa-mw-src{font-size:12px;color:var(--tpa-muted,#8B95A3)}
+.tpa-mw-src a{color:var(--tpa-link-on-dark,#7DB4F5);text-decoration:underline}

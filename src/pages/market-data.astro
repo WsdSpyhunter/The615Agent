@@ -6,6 +6,10 @@ import ColorBar from '../components/ColorBar.astro';
 ---
 <Layout title="Market Data for Franklin, Brentwood, Spring Hill and Middle TN" description="Market temperature and housing data for Franklin, Brentwood, Spring Hill, Thompson's Station and Nolensville, with sources and as-of dates.">
   <PageHeader eyebrow="Market data" title="How's the market <em>moving?</em>" lead="Market temperature by city, based on months of supply, with the sources and date shown for every number." />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">This week</span><h2>The Nashville metro right now</h2><p>Refreshed every week. For individual cities, see the monthly numbers below.</p></div></div>
+    <tpa-market-weekly></tpa-market-weekly>
+  </div></section>
   <section class="s band"><div class="wrap two wl">
     <MarketTemperature />
     <div class="prose">

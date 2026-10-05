@@ -1,16 +1,19 @@
 name: Update market data
 
+# Runs every morning (about 7am Central). It checks whether Redfin has published a new file and only
+# does the heavy work when something changed, so new data appears the day Redfin releases it.
 on:
   schedule:
-    - cron: '0 12 4,20 * *'   # the 4th and 20th of every month, about 7am Central (Redfin's release day varies)
+    - cron: '0 12 * * *'
   workflow_dispatch:
     inputs:
-      refresh_data:
-        description: 'Re-download Redfin, FRED and Zillow reviews first (turn off to only redo the commentary)'
-        type: boolean
-        default: true
+      mode:
+        description: "force = refresh everything now, check = behave like the daily run, commentary = only rewrite the commentary"
+        type: choice
+        options: [force, check, commentary]
+        default: force
       create_report_draft:
-        description: "Also create this month's report as a draft in Buttondown"
+        description: "Also create the monthly report as a draft in Buttondown"
         type: boolean
         default: false
 
@@ -26,42 +29,64 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      MODE: ${{ github.event.inputs.mode || 'check' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Refresh market data (Redfin + FRED)
-        if: github.event.inputs.refresh_data != 'false'
+
+      - name: Has Redfin published new data?
+        id: check
+        env:
+          FORCE: ${{ env.MODE == 'force' && 'true' || 'false' }}
+        run: |
+          if [ "$MODE" = "commentary" ]; then printf 'monthly=false\nweekly=false\n' >> "$GITHUB_OUTPUT"; else node scripts/data/check-source.mjs; fi
+
+      - name: Monthly city data (Redfin) and mortgage rate
+        if: steps.check.outputs.monthly == 'true'
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: node scripts/data/update-market.mjs
-      - name: Refresh Zillow reviews (Bridge)
-        if: github.event.inputs.refresh_data != 'false'
+
+      - name: Weekly Nashville metro pulse (Redfin) and mortgage rate
+        if: steps.check.outputs.weekly == 'true'
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: node scripts/data/update-weekly.mjs
+
+      - name: Zillow reviews (Bridge)
+        if: env.MODE != 'commentary'
         env:
           BRIDGE_API_TOKEN: ${{ secrets.BRIDGE_API_TOKEN }}
         run: node scripts/data/reviews.mjs
-      - name: Write market commentary (Claude)
+
+      - name: Market commentary (Claude)
+        if: steps.check.outputs.monthly == 'true' || env.MODE == 'commentary'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/data/commentary.mjs
+
       - name: Commit changes
         id: commit
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add public/data
+          git add public/data scripts/data/state.json
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
-            git commit -m "Monthly market data update"
+            git commit -m "Data update"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-      - name: Create the monthly report draft (Buttondown)
-        if: github.event_name == 'schedule' || github.event.inputs.create_report_draft == 'true'
+
+      - name: Monthly report draft (Buttondown)
+        if: (steps.check.outputs.monthly == 'true' && github.event_name == 'schedule') || github.event.inputs.create_report_draft == 'true'
         continue-on-error: true
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: node scripts/data/report-draft.mjs
+
       - name: Redeploy the site
         if: steps.commit.outputs.changed == 'true'
         env:

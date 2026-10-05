@@ -69,6 +69,6 @@ if (!reviews.length) { log('No reviews with text. Leaving the testimonials as th
 writeFileSync(OUT, JSON.stringify(reviews, null, 2) + '\n');
 writeFileSync(SUMMARY, JSON.stringify({
   source: 'Zillow', profileUrl, reviewCount: reviewee.ReviewCount ?? reviews.length,
-  averageRating: reviewee.AverageReviewRating ?? null, updated: new Date().toISOString().slice(0, 10),
+  averageRating: reviewee.AverageReviewRating ?? null
 }, null, 2) + '\n');
 log(`Wrote ${reviews.length} reviews.`);

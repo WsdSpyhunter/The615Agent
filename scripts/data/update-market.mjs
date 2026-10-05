@@ -5,6 +5,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { PLACES, MAX_AGE_DAYS } from './config.mjs';
 import { fetchRedfin } from './redfin.mjs';
 import { fetchMortgageRate } from './fred.mjs';
+import { SOURCES, stamp, writeState } from './source-state.mjs';
 
 const MARKET = 'public/data/market.json';
 const HISTORY = 'public/data/market-history.json';
@@ -12,6 +13,9 @@ const previous = JSON.parse(readFileSync(MARKET, 'utf8'));
 const log = (...a) => console.log(...a);
 
 const fmt = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+let fingerprint = null;
+try { fingerprint = await stamp(SOURCES.monthly); } catch (e) { log('Could not read the monthly file date:', e.message); }
 
 let rate = null;
 try { rate = await fetchMortgageRate(process.env.FRED_API_KEY, log); } catch (e) { log('FRED failed:', e.message); }
@@ -45,7 +49,7 @@ const sources = [{
 }];
 if (rate) sources.push({
   name: 'Freddie Mac via FRED, Federal Reserve Bank of St. Louis', url: 'https://fred.stlouisfed.org/series/MORTGAGE30US',
-  note: `30-year fixed mortgage rate, week of ${fmt(rate.date)}`,
+  note: '30-year fixed mortgage rate, weekly',
 });
 
 const ageDays = Math.floor((Date.now() - new Date(newest + 'T00:00:00Z').getTime()) / 86400000);
@@ -65,3 +69,4 @@ const out = {
 writeFileSync(MARKET, JSON.stringify(out, null, 2) + '\n');
 writeFileSync(HISTORY, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), source: 'Redfin Data Center', note: 'Each point is a rolling 3-month figure.', cities: history }, null, 1) + '\n');
 log(`Wrote ${Object.keys(cities).length} cities, data through ${newest}.`);
+if (fingerprint) writeState({ monthly: fingerprint });
