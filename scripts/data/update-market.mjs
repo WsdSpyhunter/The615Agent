@@ -2,7 +2,7 @@
 // Run locally:  FRED_API_KEY=... node scripts/data/update-market.mjs
 // It never invents numbers: anything a source does not provide stays null (the site shows a dash).
 import { readFileSync, writeFileSync } from 'node:fs';
-import { PLACES } from './config.mjs';
+import { PLACES, MAX_AGE_DAYS } from './config.mjs';
 import { fetchRedfin } from './redfin.mjs';
 import { fetchMortgageRate } from './fred.mjs';
 
@@ -41,21 +41,27 @@ for (const p of PLACES) {
 
 const sources = [{
   name: 'Redfin Data Center', url: 'https://www.redfin.com/news/data-center/',
-  note: 'median sale price, days on market, sale-to-list ratio, inventory and months of supply',
+  note: 'median sale price, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures',
 }];
 if (rate) sources.push({
   name: 'Freddie Mac via FRED, Federal Reserve Bank of St. Louis', url: 'https://fred.stlouisfed.org/series/MORTGAGE30US',
   note: `30-year fixed mortgage rate, week of ${fmt(rate.date)}`,
 });
 
+const ageDays = Math.floor((Date.now() - new Date(newest + 'T00:00:00Z').getTime()) / 86400000);
+const stale = ageDays > MAX_AGE_DAYS;
+if (stale) log(`WARNING: the newest data is ${ageDays} days old (limit ${MAX_AGE_DAYS}). The site will flag it as out of date.`);
+
 const out = {
   sample: false,
   asOf: newest,
+  stale,
+  note: 'Redfin figures are rolling 3-month values ending on the "as of" date.',
   sources,
   mortgageRate30: rate?.rate ?? previous.mortgageRate30 ?? null,
   mortgageRateAsOf: rate?.date ?? previous.mortgageRateAsOf ?? null,
   cities,
 };
 writeFileSync(MARKET, JSON.stringify(out, null, 2) + '\n');
-writeFileSync(HISTORY, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), source: 'Redfin Data Center', cities: history }, null, 1) + '\n');
+writeFileSync(HISTORY, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), source: 'Redfin Data Center', note: 'Each point is a rolling 3-month figure.', cities: history }, null, 1) + '\n');
 log(`Wrote ${Object.keys(cities).length} cities, data through ${newest}.`);

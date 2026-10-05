@@ -1,54 +1,54 @@
-// Redfin Data Center (market tracker). Free to use with a citation and link to Redfin.
-// https://www.redfin.com/news/data-center/
+// Redfin Data Center (housing market, monthly files, rolling 3-month figures).
+// Free to use with a citation and link to Redfin: https://www.redfin.com/news/data-center/
 import { PLACES, REDFIN_BASE, HISTORY_MONTHS } from './config.mjs';
-import { streamTsvGz, norm, num } from './lib.mjs';
+import { streamCsv, norm, num } from './lib.mjs';
 
 const wantCity = new Map(PLACES.map((p) => [norm(p.redfin), p]));
-const wantCounty = new Map(PLACES.map((p) => [norm(p.county), p.county]));
+const wantCounty = new Set(PLACES.map((p) => norm(p.county)));
+const filled = (r) => Object.values(r).filter((v) => v != null).length;
 
-// One monthly "All Residential" record -> the fields the site shows.
+// One period record -> the fields the site shows. (Percent columns are already in percent.)
 const shape = (r) => ({
-  month: r.period_end?.slice(0, 7),
-  periodEnd: r.period_end,
-  region: r.region,
-  medianPrice: num(r.median_sale_price),
-  yoy: num(r.median_sale_price_yoy) == null ? null : +(num(r.median_sale_price_yoy) * 100).toFixed(1),
-  dom: num(r.median_dom),
-  saleToList: num(r.avg_sale_to_list) == null ? null : +(num(r.avg_sale_to_list) * 100).toFixed(1),
-  inventory: num(r.inventory),
-  monthsSupply: num(r.months_of_supply),
-  homesSold: num(r.homes_sold),
+  month: r['period end']?.slice(0, 7),
+  periodEnd: r['period end'],
+  region: r['region name'],
+  medianPrice: num(r['median sale price nsa ($)']),
+  yoy: num(r['median sale price nsa yoy (%)']),
+  dom: num(r['median days on market (days)']),
+  saleToList: num(r['average sale to list ratio (%)']),
+  inventory: num(r['inventory']),
+  monthsSupply: num(r['months of supply']),
+  homesSold: num(r['homes sold']),
 });
 
-async function pull(file, wanted, keyOf) {
-  const out = new Map(); // region key -> Map(month -> record)
-  const quick = (line) => line.includes(', TN"') && line.includes('"All Residential"');
-  const info = await streamTsvGz(`${REDFIN_BASE}/${file}`, quick, (r) => {
-    if (r.period_duration !== '30' || r.is_seasonally_adjusted !== 'false' || r.property_type !== 'All Residential') return;
-    const k = keyOf(r);
-    if (!wanted.has(k)) return;
+async function pull(file, isWanted) {
+  const out = new Map(); // normalized region -> Map(month -> record)
+  const quick = (line) => line.includes(', TN"');
+  const info = await streamCsv(`${REDFIN_BASE}/${file}`, quick, (r) => {
+    const k = norm(r['region name'] || '');
+    if (!isWanted(k)) return;
     const rec = shape(r);
     if (!rec.month) return;
     if (!out.has(k)) out.set(k, new Map());
-    out.get(k).set(rec.month, rec);
+    const prev = out.get(k).get(rec.month);
+    if (!prev || filled(rec) > filled(prev)) out.get(k).set(rec.month, rec); // duplicate region ids: keep the fuller row
   });
   return { out, info };
 }
 
 export async function fetchRedfin(log = console.log) {
   log('Redfin: reading the city file (large, streamed)...');
-  const city = await pull('city_market_tracker.tsv000.gz', wantCity, (r) => norm(r.region));
-  log(`Redfin city file: ${city.info.total.toLocaleString()} rows scanned, ${city.info.kept} candidate rows kept`);
+  const city = await pull('all_cities.csv', (k) => wantCity.has(k));
+  log(`Redfin city file: ${city.info.total.toLocaleString()} rows scanned`);
   log('Redfin: reading the county file...');
-  const county = await pull('county_market_tracker.tsv000.gz', new Set([...wantCounty.keys()]), (r) => norm(r.region));
+  const county = await pull('all_counties.csv', (k) => wantCounty.has(k));
   log(`Redfin county file: ${county.info.total.toLocaleString()} rows scanned`);
 
   const result = {};
   for (const p of PLACES) {
     let months = city.out.get(norm(p.redfin)), geography = null;
-    if (!months || ![...months.values()].some((r) => r.monthsSupply != null)) {
-      months = county.out.get(norm(p.county)); geography = p.county.replace(', TN', ' (county)');
-    }
+    const good = (m) => m && [...m.values()].some((r) => r.monthsSupply != null);
+    if (!good(months)) { months = county.out.get(norm(p.county)); geography = p.county.replace(', TN', ' (county)'); }
     if (!months) { log(`  ${p.name}: no Redfin data found`); continue; }
     const list = [...months.values()].sort((a, b) => a.month.localeCompare(b.month));
     const latest = [...list].reverse().find((r) => r.monthsSupply != null) ?? list.at(-1);

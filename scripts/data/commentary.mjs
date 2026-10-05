@@ -25,7 +25,7 @@ const pctChange = (a, b) => (a != null && b != null && b !== 0 ? ((a - b) / b) *
 function factsFor(slug, c) {
   const f = [];
   const place = c.geography ? `${c.name} (county-level data for ${c.geography})` : c.name;
-  f.push(`Place: ${place}. Data as of ${longDate(c.asOf || market.asOf)}.`);
+  f.push(`Place: ${place}. Data as of ${longDate(c.asOf || market.asOf)}. Figures are rolling 3-month values ending on that date.`);
   f.push(`Months of supply: ${c.monthsSupply.toFixed(1)}, which is ${label(c.monthsSupply)} (under 4 months favors sellers, 4 to 6 is balanced, over 6 favors buyers).`);
   if (c.medianPrice != null) f.push(`Median sale price: ${money(c.medianPrice)}.`);
   if (c.yoy != null) f.push(`Median sale price changed ${c.yoy > 0 ? 'up' : c.yoy < 0 ? 'down' : 'by'} ${Math.abs(c.yoy).toFixed(1)}% compared with a year earlier.`);

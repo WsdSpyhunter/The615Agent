@@ -14,7 +14,7 @@ import { getJSON, esc, flag, emit } from './lib/data';
  * Method: element.select(slug), element.setMetric(key)
  */
 type Month = { m: string; price: number | null; dom: number | null; inv: number | null; ms: number | null; s2l: number | null };
-type History = { generated?: string; source?: string; cities: Record<string, { name: string; geography?: string | null; months: Month[] }> };
+type History = { generated?: string; source?: string; note?: string; cities: Record<string, { name: string; geography?: string | null; months: Month[] }> };
 
 const METRICS: Record<string, { label: string; key: keyof Month; fmt: (v: number) => string; axis: (v: number) => string }> = {
   price: { label: 'Median sale price', key: 'price', fmt: (v) => '$' + Math.round(v).toLocaleString(), axis: (v) => '$' + (v >= 1e6 ? (v / 1e6).toFixed(2) + 'M' : Math.round(v / 1000) + 'k') },
@@ -87,7 +87,7 @@ class TpaMarketChart extends HTMLElement {
     };
     hit.addEventListener('pointermove', move as any); hit.addEventListener('pointerleave', () => { hov.style.display = 'none'; set(last); });
     const srcEl = q('.tpa-mch-src');
-    srcEl.innerHTML = `Data through ${esc(mon(c.months[c.months.length - 1].m))}${c.geography ? ` (${esc(c.geography)})` : ''}. Source: <a href="https://www.redfin.com/news/data-center/" target="_blank" rel="noopener">Redfin Data Center</a>.`;
+    srcEl.innerHTML = `Data through ${esc(mon(c.months[c.months.length - 1].m))}${c.geography ? ` (${esc(c.geography)})` : ''}. ${d.note ? esc(d.note) + ' ' : ''}Source: <a href="https://www.redfin.com/news/data-center/" target="_blank" rel="noopener">Redfin Data Center</a>.`;
   }
 }
 if (!customElements.get('tpa-market-chart')) customElements.define('tpa-market-chart', TpaMarketChart);

@@ -4,6 +4,8 @@ Read by `<tpa-market-temperature>` and `<tpa-mortgage-calculator>` (for the rate
 
 ```jsonc
 {
+  "stale": false,                          // true when the data is older than 62 days; the widget then warns visitors
+  "note": "Redfin figures are rolling 3-month values ending on the as-of date.",
   "sample": false,                         // true shows a "Sample numbers" tag (placeholder data only)
   "asOf": "2026-09-30",                    // date the data describes
   "sources": [                             // every source used, shown (and linked) under the widget

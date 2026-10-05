@@ -2,7 +2,7 @@ name: Update market data
 
 on:
   schedule:
-    - cron: '0 12 4 * *'   # the 4th of every month, about 7am Central
+    - cron: '0 12 4,20 * *'   # the 4th and 20th of every month, about 7am Central (Redfin's release day varies)
   workflow_dispatch:
     inputs:
       refresh_data:

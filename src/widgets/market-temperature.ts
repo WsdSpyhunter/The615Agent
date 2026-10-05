@@ -22,7 +22,7 @@ export type MarketCity = {
 };
 export type MarketSource = string | { name: string; url?: string; note?: string };
 export type MarketData = {
-  sample?: boolean; asOf?: string | null; sources?: MarketSource[]; mortgageRate30?: number | null;
+  sample?: boolean; stale?: boolean; note?: string; asOf?: string | null; sources?: MarketSource[]; mortgageRate30?: number | null;
   cities: Record<string, MarketCity>;
 };
 
@@ -103,7 +103,7 @@ export class TpaMarketTemperature extends HTMLElement {
     com.hidden = !c.commentary; com.textContent = c.commentary || '';
     const srcEl = q('.tpa-mt-src')!;
     if (d.sample) srcEl.textContent = 'Real figures, sources and the "as of" date will appear here from the monthly data files. The gauge position is a sample.';
-    else srcEl.innerHTML = `Data as of ${esc(longDate(asOf))}${c.geography ? ` (${esc(c.geography)})` : ''}. Sources: ${(d.sources || []).map(sourceHtml).join('; ')}.`;
+    else srcEl.innerHTML = `${d.stale ? '<b class="tpa-mt-stale">This data is more than two months old. Updated figures are on the way.</b><br>' : ''}Data as of ${esc(longDate(asOf))}${c.geography ? ` (${esc(c.geography)})` : ''}. ${d.note ? esc(d.note) + ' ' : ''}Sources: ${(d.sources || []).map(sourceHtml).join('; ')}.`;
     this.querySelectorAll<HTMLButtonElement>('.tpa-mt-pills button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.city === this.slug)));
     emit(this, 'tpa-market:city', { slug: this.slug, city: c.name, state: st });
   }

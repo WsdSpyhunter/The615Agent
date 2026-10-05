@@ -11,5 +11,8 @@ export const PLACES = [
   { slug: 'murfreesboro', name: 'Murfreesboro', redfin: 'Murfreesboro, TN', county: 'Rutherford County, TN' },
 ];
 
-export const REDFIN_BASE = 'https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker';
+// Redfin's current Data Center files (the older redfin_market_tracker files stopped updating in June 2026).
+export const REDFIN_BASE = 'https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_data_center/housing_market/monthly';
+// Data older than this is flagged on the site instead of being presented as current.
+export const MAX_AGE_DAYS = 62;
 export const HISTORY_MONTHS = 36;
