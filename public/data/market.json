@@ -13,6 +13,16 @@
       "name": "Freddie Mac via FRED, Federal Reserve Bank of St. Louis",
       "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
       "note": "30-year fixed mortgage rate, weekly"
+    },
+    {
+      "name": "Zillow Research",
+      "url": "https://www.zillow.com/research/data/",
+      "note": "Market Temperature Index"
+    },
+    {
+      "name": "Realtor.com Research",
+      "url": "https://www.realtor.com/research/data/",
+      "note": "county hotness and listing activity"
     }
   ],
   "mortgageRate30": 7.28,
@@ -28,7 +38,56 @@
       "inventory": 566,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Franklin has 3.6 months of supply, a seller's market, down from 4.0 three months earlier. The median sale price is $862,929, up 12.4% from a year earlier, and homes sold for an average of 98.3% of list price. Median days on market is 49, and active listings number 566."
+      "commentary": "As of August 31, 2026, Franklin has 3.6 months of supply, a seller's market, down from 4.0 three months earlier. The median sale price is $862,929, up 12.4% from a year earlier, and homes sold for an average of 98.3% of list price. Median days on market is 49, and active listings number 566.",
+      "temperature": {
+        "score": 0.09,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": null,
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -6,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 46",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Neutral",
+            "level": "balanced"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 3.6",
+            "detail": "City (30%), 566 listings, rolling 3 months to August 31, 2026",
+            "reading": "Seller's",
+            "level": "seller-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Williamson County",
+        "realtor": {
+          "month": "202609",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "active": 1677
+        },
+        "zillow": {
+          "value": 46,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 52
+        }
+      }
     },
     "brentwood": {
       "name": "Brentwood",
@@ -40,7 +99,56 @@
       "inventory": 328,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Brentwood had 4.2 months of supply, which is a balanced market, compared with 4.4 three months earlier and 4.1 a year earlier. The median sale price was $1,424,058, up 5.1% from a year earlier. Homes took a median of 63 days to sell and averaged 97.4% of list price, with 328 active listings, up 10% from last year."
+      "commentary": "As of August 31, 2026, Brentwood had 4.2 months of supply, which is a balanced market, compared with 4.4 three months earlier and 4.1 a year earlier. The median sale price was $1,424,058, up 5.1% from a year earlier. Homes took a median of 63 days to sell and averaged 97.4% of list price, with 328 active listings, up 10% from last year.",
+      "temperature": {
+        "score": -0.14,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": "buyers",
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -8,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 43",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Buyer's",
+            "level": "buyer-leaning"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 4.2",
+            "detail": "City (30%), 328 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "seller-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Williamson County",
+        "realtor": {
+          "month": "202609",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "active": 1677
+        },
+        "zillow": {
+          "value": 43,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 51
+        }
+      }
     },
     "spring-hill": {
       "name": "Spring Hill",
@@ -52,7 +160,56 @@
       "inventory": 467,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Spring Hill has 4.1 months of supply, a balanced market, down from 4.3 three months earlier and up from 3.7 a year ago. The median sale price is $508,284, down 4.1% from a year earlier, and homes are selling at an average of 98.8% of list price. Median days on market is 62, compared with 57 a year earlier."
+      "commentary": "As of August 31, 2026, Spring Hill has 4.1 months of supply, a balanced market, down from 4.3 three months earlier and up from 3.7 a year ago. The median sale price is $508,284, down 4.1% from a year earlier, and homes are selling at an average of 98.8% of list price. Median days on market is 62, compared with 57 a year earlier.",
+      "temperature": {
+        "score": -0.26,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": "buyers",
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -7,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 41",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Buyer's",
+            "level": "buyer-leaning"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 4.1",
+            "detail": "City (30%), 467 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "seller-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Maury County: hotness 32.6 of 100",
+            "detail": "County (15%), median 58 days listed, 20.5% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Maury County",
+        "realtor": {
+          "month": "202609",
+          "dom": 58,
+          "priceReducedShare": 0.2051,
+          "active": 760
+        },
+        "zillow": {
+          "value": 41,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 48
+        }
+      }
     },
     "thompsons-station": {
       "name": "Thompson's Station",
@@ -64,7 +221,56 @@
       "inventory": 141,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Thompson's Station had 5.2 months of supply, a balanced market, down from 5.7 three months earlier. The median sale price was $829,451, down 2.4% from a year earlier, with homes selling at an average of 99.2% of list price. Active listings numbered 141, up 41% from a year earlier, and median days on market was 64."
+      "commentary": "As of August 31, 2026, Thompson's Station had 5.2 months of supply, a balanced market, down from 5.7 three months earlier. The median sale price was $829,451, down 2.4% from a year earlier, with homes selling at an average of 99.2% of list price. Active listings numbered 141, up 41% from a year earlier, and median days on market was 64.",
+      "temperature": {
+        "score": -0.23,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": "buyers",
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -15,
+          "direction": "cooling"
+        },
+        "small": true,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 46",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Neutral",
+            "level": "balanced"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 5.2",
+            "detail": "City (30%), 141 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "balanced"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Williamson County",
+        "realtor": {
+          "month": "202609",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "active": 1677
+        },
+        "zillow": {
+          "value": 46,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 61
+        }
+      }
     },
     "nolensville": {
       "name": "Nolensville",
@@ -76,7 +282,56 @@
       "inventory": 95,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Nolensville had 3.9 months of supply, which falls in seller's market territory, up from 3.2 three months earlier and 3.3 a year earlier. The median sale price was $929,385, down 7.1% from a year earlier, with homes taking a median of 63 days to sell and an average sale-to-list ratio of 97.8%. Active listings numbered 95, down 4% from a year earlier."
+      "commentary": "As of August 31, 2026, Nolensville had 3.9 months of supply, which falls in seller's market territory, up from 3.2 three months earlier and 3.3 a year earlier. The median sale price was $929,385, down 7.1% from a year earlier, with homes taking a median of 63 days to sell and an average sale-to-list ratio of 97.8%. Active listings numbered 95, down 4% from a year earlier.",
+      "temperature": {
+        "score": -0.37,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": "buyers",
+        "mixed": true,
+        "confidence": "high",
+        "trend": {
+          "points": -12,
+          "direction": "cooling"
+        },
+        "small": true,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 35",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Buyer's",
+            "level": "buyer-leaning"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 3.9",
+            "detail": "City (30%), 95 listings, rolling 3 months to August 31, 2026",
+            "reading": "Seller's",
+            "level": "seller-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Williamson County",
+        "realtor": {
+          "month": "202609",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "active": 1677
+        },
+        "zillow": {
+          "value": 35,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 47
+        }
+      }
     },
     "nashville": {
       "name": "Nashville",
@@ -88,7 +343,56 @@
       "inventory": 5321,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Nashville has 5.8 months of supply, a balanced market, up from 5.3 three months earlier and 5.1 a year earlier. The median sale price is $475,538, down 0.5% from a year earlier, and homes have a median of 64 days on market. Active listings total 5,321, up 12% from a year earlier, and the average sale-to-list price ratio is 97.6%."
+      "commentary": "As of August 31, 2026, Nashville has 5.8 months of supply, a balanced market, up from 5.3 three months earlier and 5.1 a year earlier. The median sale price is $475,538, down 0.5% from a year earlier, and homes have a median of 64 days on market. Active listings total 5,321, up 12% from a year earlier, and the average sale-to-list price ratio is 97.6%.",
+      "temperature": {
+        "score": -0.61,
+        "level": "buyer-leaning",
+        "label": "Leans toward buyers",
+        "tilt": null,
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -6,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 44",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Neutral",
+            "level": "balanced"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 5.8",
+            "detail": "City (30%), 5,321 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "buyer-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Davidson County: hotness 16.6 of 100",
+            "detail": "County (15%), median 68 days listed, 24.0% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyers"
+          }
+        ],
+        "note": null,
+        "county": "Davidson County",
+        "realtor": {
+          "month": "202609",
+          "dom": 68,
+          "priceReducedShare": 0.2401,
+          "active": 4621
+        },
+        "zillow": {
+          "value": 44,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 50
+        }
+      }
     },
     "columbia": {
       "name": "Columbia",
@@ -100,7 +404,56 @@
       "inventory": 483,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Columbia has 4.7 months of supply, a balanced market, compared with 4.4 a year earlier. The median sale price is $368,006, down 1.1% from a year earlier. Median days on market is 78, up from 61 a year earlier, and active listings are 483."
+      "commentary": "As of August 31, 2026, Columbia has 4.7 months of supply, a balanced market, compared with 4.4 a year earlier. The median sale price is $368,006, down 1.1% from a year earlier. Median days on market is 78, up from 61 a year earlier, and active listings are 483.",
+      "temperature": {
+        "score": -0.46,
+        "level": "buyer-leaning",
+        "label": "Leans toward buyers",
+        "tilt": null,
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -5,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 39",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Buyer's",
+            "level": "buyer-leaning"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 4.7",
+            "detail": "City (30%), 483 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "balanced"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Maury County: hotness 32.6 of 100",
+            "detail": "County (15%), median 58 days listed, 20.5% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Maury County",
+        "realtor": {
+          "month": "202609",
+          "dom": 58,
+          "priceReducedShare": 0.2051,
+          "active": 760
+        },
+        "zillow": {
+          "value": 39,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 44
+        }
+      }
     },
     "murfreesboro": {
       "name": "Murfreesboro",
@@ -112,9 +465,59 @@
       "inventory": 881,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Murfreesboro had 4.0 months of supply, a balanced market, up from 3.7 a year earlier. The median sale price was $429,716, down 1.2% from a year earlier, with homes selling at an average of 99.0% of list price. Median days on market was 63, versus 56 a year earlier, and active listings numbered 881, up 10% from a year ago."
+      "commentary": "As of August 31, 2026, Murfreesboro had 4.0 months of supply, a balanced market, up from 3.7 a year earlier. The median sale price was $429,716, down 1.2% from a year earlier, with homes selling at an average of 99.0% of list price. Median days on market was 63, versus 56 a year earlier, and active listings numbered 881, up 10% from a year ago.",
+      "temperature": {
+        "score": 0.02,
+        "level": "balanced",
+        "label": "Balanced market",
+        "tilt": null,
+        "mixed": false,
+        "confidence": "high",
+        "trend": {
+          "points": -7,
+          "direction": "cooling"
+        },
+        "small": false,
+        "readings": [
+          {
+            "key": "zillow",
+            "title": "Zillow Market Temperature Index: 48",
+            "detail": "City, main driver (55%), as of August 31, 2026",
+            "reading": "Neutral",
+            "level": "balanced"
+          },
+          {
+            "key": "redfin",
+            "title": "Redfin months of supply: 4.0",
+            "detail": "City (30%), 881 listings, rolling 3 months to August 31, 2026",
+            "reading": "Balanced",
+            "level": "seller-leaning"
+          },
+          {
+            "key": "realtor",
+            "title": "Realtor.com Rutherford County: hotness 33.3 of 100",
+            "detail": "County (15%), median 55 days listed, 21.9% price cuts (2026-09)",
+            "reading": "Cool",
+            "level": "buyer-leaning"
+          }
+        ],
+        "note": null,
+        "county": "Rutherford County",
+        "realtor": {
+          "month": "202609",
+          "dom": 55,
+          "priceReducedShare": 0.2189,
+          "active": 1549
+        },
+        "zillow": {
+          "value": 48,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 55
+        }
+      }
     }
   },
   "commentaryGenerated": "2026-10-05",
-  "commentaryModel": "claude-sonnet-5-5"
+  "commentaryModel": "claude-sonnet-5-5",
+  "temperatureMethod": "Blended from up to three sources: Zillow's Market Temperature Index (55%), Redfin months of supply (30%) and Realtor.com county hotness (15%)."
 }

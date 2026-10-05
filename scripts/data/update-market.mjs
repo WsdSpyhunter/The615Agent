@@ -6,6 +6,7 @@ import { PLACES, MAX_AGE_DAYS } from './config.mjs';
 import { fetchRedfin } from './redfin.mjs';
 import { fetchMortgageRate } from './fred.mjs';
 import { SOURCES, stamp, writeState } from './source-state.mjs';
+import { applyTemperature } from './temperature-build.mjs';
 
 const MARKET = 'public/data/market.json';
 const HISTORY = 'public/data/market-history.json';
@@ -70,3 +71,12 @@ writeFileSync(MARKET, JSON.stringify(out, null, 2) + '\n');
 writeFileSync(HISTORY, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), source: 'Redfin Data Center', note: 'Each point is a rolling 3-month figure.', cities: history }, null, 1) + '\n');
 log(`Wrote ${Object.keys(cities).length} cities, data through ${newest}.`);
 if (fingerprint) writeState({ monthly: fingerprint });
+
+// Blend in Zillow and Realtor.com for the market temperature rating.
+try {
+  if (await applyTemperature(log)) {
+    const patch = {};
+    for (const k of ['zillow', 'realtor']) { try { patch[k] = await stamp(SOURCES[k]); } catch {} }
+    writeState(patch);
+  }
+} catch (e) { log('Temperature step failed:', e.message); }

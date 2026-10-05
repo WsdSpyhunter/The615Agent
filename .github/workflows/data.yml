@@ -1,6 +1,6 @@
 name: Update market data
 
-# Runs every morning (about 7am Central). It checks whether Redfin has published a new file and only
+# Runs every morning (about 7am Central). It checks whether Redfin, Zillow or Realtor.com has published a new file and only
 # does the heavy work when something changed, so new data appears the day Redfin releases it.
 on:
   schedule:
@@ -56,6 +56,10 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: node scripts/data/update-weekly.mjs
 
+      - name: Market temperature (Zillow + Realtor.com + Redfin blend)
+        if: steps.check.outputs.monthly != 'true' && (steps.check.outputs.zillow == 'true' || steps.check.outputs.realtor == 'true')
+        run: node scripts/data/update-temperature.mjs
+
       - name: Zillow reviews (Bridge)
         if: env.MODE != 'commentary'
         env:
@@ -63,7 +67,7 @@ jobs:
         run: node scripts/data/reviews.mjs
 
       - name: Market commentary (Claude)
-        if: steps.check.outputs.monthly == 'true' || env.MODE == 'commentary'
+        if: steps.check.outputs.monthly == 'true' || steps.check.outputs.zillow == 'true' || steps.check.outputs.realtor == 'true' || env.MODE == 'commentary'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/data/commentary.mjs

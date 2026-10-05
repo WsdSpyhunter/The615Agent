@@ -30,4 +30,20 @@ Read by `<tpa-market-temperature>` and `<tpa-mortgage-calculator>` (for the rate
 }
 ```
 
+Each city may also carry a blended `temperature` object (written by `scripts/data/temperature-build.mjs`):
+
+```jsonc
+"temperature": {
+  "score": 0.09,                    // -2 (buyers) .. +2 (sellers)
+  "level": "balanced",              // sellers | seller-leaning | balanced | buyer-leaning | buyers
+  "label": "Balanced market", "tilt": null,   // or "buyers" / "sellers" when balanced but leaning
+  "mixed": false,                   // sources disagree widely
+  "small": false,                   // fewer than 150 active listings
+  "confidence": "high",             // high = 3 sources, medium = 2, low = 1
+  "trend": { "points": -6, "direction": "cooling" },     // Zillow index change over 3 months
+  "readings": [ { "key": "zillow", "title": "...", "detail": "...", "reading": "Neutral", "level": "balanced" } ]
+}
+```
+The widget falls back to Redfin's months of supply when `temperature` is missing. A source older than 62 days is left out of the blend.
+
 Rules: never invent numbers; use `null` for anything the sources do not provide (the widget shows a dash). Every stat must be traceable to a source listed in `sources`.

@@ -1,0 +1,445 @@
+{
+  "generated": "2026-10-05",
+  "cities": {
+    "franklin": {
+      "name": "Franklin",
+      "score": 0.08,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": null,
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -6,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.23,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.93,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.42,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 46,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 52,
+          "yearAgo": 49
+        },
+        "redfin": {
+          "monthsSupply": 3.6,
+          "inventory": 566,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 41.676980198019805,
+          "county": "Williamson County",
+          "hotMonth": "202608",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "coreMonth": "202609",
+          "active": 1677
+        }
+      },
+      "zillowLabel": "Neutral market",
+      "redfinLabel": "Seller's market",
+      "small": false
+    },
+    "brentwood": {
+      "name": "Brentwood",
+      "score": -0.14,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": "buyers",
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -8,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.43,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.53,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.42,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 43,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 51,
+          "yearAgo": 45
+        },
+        "redfin": {
+          "monthsSupply": 4.2,
+          "inventory": 328,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 41.676980198019805,
+          "county": "Williamson County",
+          "hotMonth": "202608",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "coreMonth": "202609",
+          "active": 1677
+        }
+      },
+      "zillowLabel": "Buyer's market",
+      "redfinLabel": "Balanced market",
+      "small": false
+    },
+    "spring-hill": {
+      "name": "Spring Hill",
+      "score": -0.28,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": "buyers",
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -7,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.57,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.6,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.87,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 41,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 48,
+          "yearAgo": 45
+        },
+        "redfin": {
+          "monthsSupply": 4.1,
+          "inventory": 467,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 32.61138613861386,
+          "county": "Maury County",
+          "hotMonth": "202608",
+          "dom": 58,
+          "priceReducedShare": 0.2051,
+          "coreMonth": "202609",
+          "active": 760
+        }
+      },
+      "zillowLabel": "Buyer's market",
+      "redfinLabel": "Balanced market",
+      "small": false
+    },
+    "thompsons-station": {
+      "name": "Thompson's Station",
+      "score": -0.24,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": "buyers",
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -15,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.23,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": -0.13,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.42,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 46,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 61,
+          "yearAgo": 51
+        },
+        "redfin": {
+          "monthsSupply": 5.2,
+          "inventory": 141,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 41.676980198019805,
+          "county": "Williamson County",
+          "hotMonth": "202608",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "coreMonth": "202609",
+          "active": 1677
+        }
+      },
+      "zillowLabel": "Neutral market",
+      "redfinLabel": "Balanced market",
+      "small": true
+    },
+    "nolensville": {
+      "name": "Nolensville",
+      "score": -0.35,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": "buyers",
+      "mixed": true,
+      "confidence": "high",
+      "trend": {
+        "points": -12,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.97,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.73,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.42,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 35,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 47,
+          "yearAgo": 36
+        },
+        "redfin": {
+          "monthsSupply": 3.9,
+          "inventory": 95,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 41.676980198019805,
+          "county": "Williamson County",
+          "hotMonth": "202608",
+          "dom": 63,
+          "priceReducedShare": 0.1781,
+          "coreMonth": "202609",
+          "active": 1677
+        }
+      },
+      "zillowLabel": "Buyer's market",
+      "redfinLabel": "Seller's market",
+      "small": true
+    },
+    "nashville": {
+      "name": "Nashville",
+      "score": -0.68,
+      "level": "buyer-leaning",
+      "label": "Leans toward buyers",
+      "tilt": null,
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -6,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.37,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": -0.53,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -1.67,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 44,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 50,
+          "yearAgo": 47
+        },
+        "redfin": {
+          "monthsSupply": 5.8,
+          "inventory": 5321,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 16.584158415841582,
+          "county": "Davidson County",
+          "hotMonth": "202608",
+          "dom": 68,
+          "priceReducedShare": 0.2401,
+          "coreMonth": "202609",
+          "active": 4621
+        }
+      },
+      "zillowLabel": "Neutral market",
+      "redfinLabel": "Balanced market",
+      "small": false
+    },
+    "columbia": {
+      "name": "Columbia",
+      "score": -0.46,
+      "level": "buyer-leaning",
+      "label": "Leans toward buyers",
+      "tilt": null,
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -5,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.7,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.2,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.87,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 39,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 44,
+          "yearAgo": 48
+        },
+        "redfin": {
+          "monthsSupply": 4.7,
+          "inventory": 483,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 32.61138613861386,
+          "county": "Maury County",
+          "hotMonth": "202608",
+          "dom": 58,
+          "priceReducedShare": 0.2051,
+          "coreMonth": "202609",
+          "active": 760
+        }
+      },
+      "zillowLabel": "Buyer's market",
+      "redfinLabel": "Balanced market",
+      "small": false
+    },
+    "murfreesboro": {
+      "name": "Murfreesboro",
+      "score": -0.02,
+      "level": "balanced",
+      "label": "Balanced market",
+      "tilt": null,
+      "mixed": false,
+      "confidence": "high",
+      "trend": {
+        "points": -7,
+        "direction": "cooling"
+      },
+      "parts": [
+        {
+          "key": "zillow",
+          "score": -0.1,
+          "weight": 0.5
+        },
+        {
+          "key": "redfin",
+          "score": 0.67,
+          "weight": 0.3
+        },
+        {
+          "key": "realtor",
+          "score": -0.83,
+          "weight": 0.2
+        }
+      ],
+      "inputs": {
+        "zillow": {
+          "value": 48,
+          "asOf": "2026-08-31",
+          "threeMonthsAgo": 55,
+          "yearAgo": 52
+        },
+        "redfin": {
+          "monthsSupply": 4,
+          "inventory": 881,
+          "asOf": "2026-08-31"
+        },
+        "realtor": {
+          "hotness": 33.323019801980195,
+          "county": "Rutherford County",
+          "hotMonth": "202608",
+          "dom": 55,
+          "priceReducedShare": 0.2189,
+          "coreMonth": "202609",
+          "active": 1549
+        }
+      },
+      "zillowLabel": "Neutral market",
+      "redfinLabel": "Balanced market",
+      "small": false
+    }
+  }
+}

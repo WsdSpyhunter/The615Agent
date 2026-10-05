@@ -7,16 +7,17 @@ import { getJSON, esc, flag, emit } from './lib/data';
  * Attributes
  *   src            URL of the history JSON (default /data/market-history.json). See docs/data-contracts/market-history.md
  *   city           slug to show first (default: first city)
- *   metric         price | dom | inventory | supply | s2l   (default price)
+ *   metric         temp | price | dom | inventory | supply | s2l   (default price)
  *   show-selector  "false" hides the city buttons
  *   show-metrics   "false" hides the metric tabs
  *   follow         "true" makes the chart follow a <tpa-market-temperature> on the same page
  * Method: element.select(slug), element.setMetric(key)
  */
-type Month = { m: string; price: number | null; dom: number | null; inv: number | null; ms: number | null; s2l: number | null };
+type Month = { m: string; price: number | null; dom: number | null; inv: number | null; ms: number | null; s2l: number | null; z?: number | null };
 type History = { generated?: string; source?: string; note?: string; cities: Record<string, { name: string; geography?: string | null; months: Month[] }> };
 
 const METRICS: Record<string, { label: string; key: keyof Month; fmt: (v: number) => string; axis: (v: number) => string }> = {
+  temp: { label: 'Market temperature', key: 'z', fmt: (v) => `${Math.round(v)} (Zillow index)`, axis: (v) => String(Math.round(v)) },
   price: { label: 'Median sale price', key: 'price', fmt: (v) => '$' + Math.round(v).toLocaleString(), axis: (v) => '$' + (v >= 1e6 ? (v / 1e6).toFixed(2) + 'M' : Math.round(v / 1000) + 'k') },
   dom: { label: 'Days on market', key: 'dom', fmt: (v) => Math.round(v) + ' days', axis: (v) => String(Math.round(v)) },
   inventory: { label: 'Active listings', key: 'inv', fmt: (v) => Math.round(v).toLocaleString(), axis: (v) => String(Math.round(v)) },

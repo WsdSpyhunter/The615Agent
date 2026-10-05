@@ -15,12 +15,14 @@ const longDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US
 const monthYear = new Date(m.asOf + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 const money = (v) => (v == null ? 'n/a' : '$' + Math.round(v).toLocaleString('en-US'));
 const label = (x) => (x < 4 ? "Seller's market" : x <= 6 ? 'Balanced market' : "Buyer's market");
+const rating = (c) => (c.temperature ? `${c.temperature.label}${c.temperature.tilt ? ` (slightly toward ${c.temperature.tilt})` : ''}` : label(c.monthsSupply));
 
 const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
 
 const sections = Object.values(m.cities).map((c) => {
   const lines = [
-    `### ${c.name}: ${label(c.monthsSupply)} (${c.monthsSupply.toFixed(1)} months of supply)`,
+    `### ${c.name}: ${rating(c)}`,
+    c.temperature ? `*${c.temperature.readings.map((r) => `${r.title.split(':')[0]}: ${r.reading}`).join(' | ')}${c.temperature.trend ? ` | Trend: ${c.temperature.trend.direction}` : ''}${c.temperature.mixed ? ' | The sources disagree' : ''}*` : '',
     c.commentary ? c.commentary : '',
     '',
     `- Median sale price: ${money(c.medianPrice)}${c.yoy != null ? ` (${c.yoy > 0 ? '+' : ''}${c.yoy.toFixed(1)}% vs. a year earlier)` : ''}`,
@@ -35,7 +37,7 @@ const sections = Object.values(m.cities).map((c) => {
 const body = [
   `Here is where the market stands along the I-65 corridor and in greater Nashville, based on data through ${longDate(m.asOf)}.`,
   m.mortgageRate30 != null ? `The average 30-year fixed mortgage rate was **${m.mortgageRate30.toFixed(2)}%** (week of ${longDate(m.mortgageRateAsOf)}).` : '',
-  '**How to read it:** under 4 months of supply favors sellers, 4 to 6 is balanced, and over 6 favors buyers.',
+  `**How to read it:** each rating blends Zillow's Market Temperature Index, Redfin's months of supply and Realtor.com's county data. ${m.temperatureMethod ?? ''}`,
   ...sections,
   `Want to know what this means for your plans? [Get matched with homes](${SITE}/buy) or [find out what your home is worth](${SITE}/sell). Or just reply to this email.`,
   `---`,

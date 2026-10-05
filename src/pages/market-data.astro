@@ -13,13 +13,14 @@ import ColorBar from '../components/ColorBar.astro';
   <section class="s band"><div class="wrap two wl">
     <MarketTemperature />
     <div class="prose">
-      <h2 style="margin-top:0">How to read the gauge</h2>
+      <h2 style="margin-top:0">How to read the rating</h2>
+      <p>Each city is rated from up to three independent sources, so one number can't tell the whole story:</p>
       <ul>
-        <li><b>Seller's market:</b> under 4 months of supply. Homes tend to sell quickly.</li>
-        <li><b>Balanced market:</b> 4 to 6 months of supply.</li>
-        <li><b>Buyer's market:</b> over 6 months of supply. Buyers typically have more choices and negotiating room.</li>
+        <li><b>Zillow's Market Temperature Index</b> (main driver): built from listing views, price cuts and how quickly homes go pending.</li>
+        <li><b>Redfin's months of supply</b>: how long it would take to sell every active listing at the current pace.</li>
+        <li><b>Realtor.com's county "hotness"</b>: how active the county is compared with counties nationwide.</li>
       </ul>
-      <p>Months of supply is how long it would take to sell every active listing at the current pace of sales. Conditions vary by neighborhood and price range, so ask me how your area compares.</p>
+      <p>The result is one of five levels: Seller's market, leans toward sellers, balanced, leans toward buyers, or buyer's market. "Mixed signals" means the sources disagree, and "Small market" means few listings, so the numbers can swing. Conditions vary by neighborhood and price range, so ask me how your area compares.</p>
       <p class="hint">The numbers and charts update automatically each month from public sources, and each one shows its source and "as of" date. Conditions vary by neighborhood, price range and home type.</p>
     </div>
   </div></section>

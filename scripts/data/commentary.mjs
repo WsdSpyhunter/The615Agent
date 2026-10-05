@@ -26,7 +26,17 @@ function factsFor(slug, c) {
   const f = [];
   const place = c.geography ? `${c.name} (county-level data for ${c.geography})` : c.name;
   f.push(`Place: ${place}. Data as of ${longDate(c.asOf || market.asOf)}. Figures are rolling 3-month values ending on that date.`);
-  f.push(`Months of supply: ${c.monthsSupply.toFixed(1)}, which is ${label(c.monthsSupply)} (under 4 months favors sellers, 4 to 6 is balanced, over 6 favors buyers).`);
+  const T = c.temperature;
+  if (T) {
+    f.push(`Overall rating: ${T.label}${T.tilt ? `, tilting slightly toward ${T.tilt}` : ''}. The rating blends up to three sources.`);
+    for (const rd of T.readings || []) f.push(`${rd.title}. Reading: ${rd.reading}.`);
+    if (T.trend) f.push(`Trend: ${T.trend.direction}; Zillow's index moved ${T.trend.points > 0 ? 'up' : 'down'} ${Math.abs(T.trend.points)} points over three months.`);
+    if (T.mixed) f.push('The sources disagree noticeably with each other.');
+    if (T.small) f.push('This is a small market with relatively few active listings, so its numbers can swing from month to month.');
+  } else {
+    f.push(`Months of supply: ${c.monthsSupply.toFixed(1)}, which is ${label(c.monthsSupply)} (under 4 months favors sellers, 4 to 6 is balanced, over 6 favors buyers).`);
+  }
+  f.push(`Redfin months of supply: ${c.monthsSupply.toFixed(1)}.`);
   if (c.medianPrice != null) f.push(`Median sale price: ${money(c.medianPrice)}.`);
   if (c.yoy != null) f.push(`Median sale price changed ${c.yoy > 0 ? 'up' : c.yoy < 0 ? 'down' : 'by'} ${Math.abs(c.yoy).toFixed(1)}% compared with a year earlier.`);
   if (c.dom != null) f.push(`Median days on market: ${c.dom}.`);
@@ -60,10 +70,10 @@ async function ask(slug, c, facts, attempt) {
       system: [
         'You write short housing-market summaries for a real estate agent\'s website.',
         'Use ONLY the facts provided. Do not add any outside information, forecasts, advice, or statistics.',
-        'Write 2 to 3 plain sentences, under 70 words total, in a calm, neutral tone.',
+        'Write 2 to 3 plain sentences, under 80 words total, in a calm, neutral tone. Lead with the overall rating.',
         'Do not describe people, neighborhoods, schools, crime, or who should or should not live somewhere. No fair-housing-sensitive language.',
         'Do not tell the reader to buy or sell. Do not use hype, exclamation marks, or the words "hot" or "crash".',
-        'Every number you use must appear exactly in the facts. Say "as of" the date given. Return only the summary text.',
+        'If the sources disagree, say so plainly. Name the sources you rely on (Zillow, Redfin, Realtor.com). Every number you use must appear exactly in the facts. Say "as of" the date given. Return only the summary text.',
       ].join(' '),
       messages: [{ role: 'user', content: `Facts for ${c.name}:\n- ${facts.join('\n- ')}${attempt > 0 ? '\n\nYour previous answer used a number that was not in the facts. Use only numbers from the facts.' : ''}` }],
     }),
