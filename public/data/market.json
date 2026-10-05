@@ -8,6 +8,11 @@
       "name": "Redfin Data Center",
       "url": "https://www.redfin.com/news/data-center/",
       "note": "median sale price, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures"
+    },
+    {
+      "name": "Freddie Mac via FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "note": "30-year fixed mortgage rate, week of October 1, 2026"
     }
   ],
   "mortgageRate30": 7.28,
@@ -22,7 +27,8 @@
       "saleToList": 98.26,
       "inventory": 566,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Franklin has 3.6 months of supply, which is a seller's market, down from 4.0 three months earlier and up from 3.0 a year earlier. The median sale price is $862,929, up 12.4% from a year earlier, with a median of 49 days on market. Active listings are 566, up 22% from a year earlier."
     },
     "brentwood": {
       "name": "Brentwood",
@@ -33,7 +39,8 @@
       "saleToList": 97.4,
       "inventory": 328,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Brentwood had 4.2 months of supply, a balanced market, down from 4.4 three months earlier and up from 4.1 a year earlier. The median sale price was $1,424,058, up 5.1% from a year earlier. Median days on market was 63, and active listings of 328 were up 10% year over year."
     },
     "spring-hill": {
       "name": "Spring Hill",
@@ -44,7 +51,8 @@
       "saleToList": 98.79,
       "inventory": 467,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Spring Hill had 4.1 months of supply, a balanced market, down from 4.3 three months earlier and up from 3.7 a year earlier. The median sale price was $508,284, down 4.1% from a year earlier, with a median of 62 days on market and a 98.8% average sale-to-list ratio. Active listings stood at 467, up 7% from a year ago."
     },
     "thompsons-station": {
       "name": "Thompson's Station",
@@ -55,7 +63,8 @@
       "saleToList": 99.19,
       "inventory": 141,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Thompson's Station had 5.2 months of supply, a balanced market, down from 5.7 three months earlier and up from 3.7 a year earlier. The median sale price was $829,451, down 2.4% from a year earlier, and homes sold at an average of 99.2% of list price. Median days on market was 64, compared with 73 a year ago, with 141 active listings, up 41%."
     },
     "nolensville": {
       "name": "Nolensville",
@@ -66,7 +75,8 @@
       "saleToList": 97.77,
       "inventory": 95,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Nolensville has 3.9 months of supply, which falls in seller's market territory and is up from 3.2 three months earlier and 3.3 a year ago. The median sale price is $929,385, down 7.1% from a year earlier, with homes at a median of 63 days on market and an average sale-to-list price ratio of 97.8%. Active listings stand at 95, down 4% from last year."
     },
     "nashville": {
       "name": "Nashville",
@@ -77,7 +87,8 @@
       "saleToList": 97.56,
       "inventory": 5321,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Nashville has 5.8 months of supply, which is a balanced market, up from 5.3 three months earlier and 5.1 a year earlier. The median sale price is $475,538, down 0.5% from a year earlier, and homes have a median of 64 days on market. Active listings total 5,321, up 12% from a year earlier."
     },
     "columbia": {
       "name": "Columbia",
@@ -88,7 +99,8 @@
       "saleToList": 97.59,
       "inventory": 483,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Columbia had 4.7 months of supply, which is a balanced market, down from 5.1 three months earlier and up from 4.4 a year earlier. The median sale price was $368,006, down 1.1% from a year earlier, and homes took a median of 78 days on the market versus 61 a year ago. Active listings stood at 483, up 15% from last year."
     },
     "murfreesboro": {
       "name": "Murfreesboro",
@@ -99,7 +111,10 @@
       "saleToList": 98.96,
       "inventory": 881,
       "asOf": "2026-08-31",
-      "geography": null
+      "geography": null,
+      "commentary": "As of August 31, 2026, Murfreesboro had 4.0 months of supply, a balanced market, up from 3.7 a year earlier. The median sale price was $429,716, down 1.2% from a year earlier, with homes selling at an average of 99.0% of list price. Median days on market was 63, compared with 56 a year earlier, and active listings numbered 881, up 10%."
     }
-  }
+  },
+  "commentaryGenerated": "2026-10-05",
+  "commentaryModel": "claude-sonnet-5-5"
 }
