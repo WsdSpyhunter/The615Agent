@@ -1,0 +1,81 @@
+name: Blog draft
+
+# Writes a new blog draft on Monday, Wednesday and Friday at 8 AM Central and emails you the proof.
+# GitHub cron runs in UTC, so it starts twice (13:00 and 14:00 UTC) and scripts/blog/should-run.mjs picks the one that
+# lands at 8 AM Central in both summer and winter time. Nothing is published until you press Approve in the email.
+on:
+  schedule:
+    - cron: '0 13 * * 1,3,5'
+    - cron: '0 14 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional topic id from topics.json (for example t07). Leave blank to let the engine choose."
+        required: false
+        type: string
+      regenerate:
+        description: "Optional draft slug to throw away and rewrite on the same topic"
+        required: false
+        type: string
+  repository_dispatch:
+    types: [blog-regenerate]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: blog
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      REGEN: ${{ github.event.client_payload.slug || github.event.inputs.regenerate }}
+      TOPIC: ${{ github.event.inputs.topic }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Is it the right time to post?
+        id: guard
+        run: node scripts/blog/should-run.mjs
+
+      - name: Write the draft
+        id: gen
+        if: steps.guard.outputs.run == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          if [ -n "$REGEN" ]; then
+            case "$REGEN" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+            node scripts/blog/generate.mjs --regenerate "$REGEN"
+          elif [ -n "$TOPIC" ]; then node scripts/blog/generate.mjs --topic "$TOPIC"
+          else node scripts/blog/generate.mjs; fi
+
+      - name: Save the draft in the repo
+        if: steps.gen.outputs.slug != ''
+        run: |
+          git config user.name "the615agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add drafts topics.json
+          git commit -m "Blog draft: ${{ steps.gen.outputs.slug }}"
+          git pull --rebase -q
+          git push
+
+      - name: Email the proof
+        if: steps.gen.outputs.slug != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          APPROVAL_SECRET: ${{ secrets.APPROVAL_SECRET }}
+          WORKER_URL: ${{ vars.WORKER_URL }}
+          APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
+          BLOG_FROM_EMAIL: ${{ vars.BLOG_FROM_EMAIL }}
+        run: node scripts/blog/send-proof.mjs "${{ steps.gen.outputs.slug }}"

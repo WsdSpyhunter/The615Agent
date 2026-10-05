@@ -1,0 +1,54 @@
+name: Deploy blog approval Worker
+
+# Deploys worker/ to Cloudflare. Needs these repo secrets: CLOUDFLARE_API_TOKEN, APPROVAL_SECRET, WORKER_GITHUB_TOKEN
+# and this repo variable: CLOUDFLARE_ACCOUNT_ID.
+on:
+  push:
+    branches: [main]
+    paths: ['worker/**', '.github/workflows/worker-deploy.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run the Worker tests
+        run: node worker/test.mjs
+      - name: Are the Cloudflare secrets in place yet?
+        id: ready
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ] && [ -n "${{ secrets.APPROVAL_SECRET }}" ] && [ -n "${{ secrets.WORKER_GITHUB_TOKEN }}" ]; then echo "ready=true" >> "$GITHUB_OUTPUT"; else echo "ready=false" >> "$GITHUB_OUTPUT"; echo "Skipping the deploy: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, APPROVAL_SECRET or WORKER_GITHUB_TOKEN is not set yet."; fi
+      - name: Make sure the account has a workers.dev address
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain"
+          SUB=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$API" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).result.subdomain||'')}catch{console.log('')}})")
+          if [ -z "$SUB" ]; then curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" --data '{"subdomain":"the615agent"}' "$API" >/dev/null; SUB=the615agent; fi
+          echo "WORKER_URL will be: https://the615agent-blog.$SUB.workers.dev"
+      - name: Create the one-time-link storage (if it does not exist)
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          set -e
+          API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/storage/kv/namespaces"
+          ID=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$API?per_page=100" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const r=JSON.parse(s).result||[];const n=r.find(x=>x.title==='the615agent-blog-nonces');console.log(n?n.id:'')})")
+          if [ -z "$ID" ]; then
+            ID=$(curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" --data '{"title":"the615agent-blog-nonces"}' "$API" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).result.id))")
+          fi
+          sed -i "s/REPLACE_WITH_NAMESPACE_ID/$ID/" worker/wrangler.toml
+      - name: Deploy
+        if: steps.ready.outputs.ready == 'true'
+        working-directory: worker
+        run: |
+          npx --yes wrangler@4 deploy
+          printf '%s' "${{ secrets.APPROVAL_SECRET }}" | npx --yes wrangler@4 secret put APPROVAL_SECRET
+          printf '%s' "${{ secrets.WORKER_GITHUB_TOKEN }}" | npx --yes wrangler@4 secret put GITHUB_TOKEN

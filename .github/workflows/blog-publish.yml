@@ -1,0 +1,52 @@
+name: Blog publish
+
+# Runs when you press APPROVE (or REJECT) in the proof email, or Save & publish in the editor.
+# The Cloudflare Worker verifies the signed link and then triggers this workflow.
+on:
+  repository_dispatch:
+    types: [blog-publish, blog-reject]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: blog
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SLUG: ${{ github.event.client_payload.slug }}
+      ACTION: ${{ github.event.action }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check the slug
+        run: |
+          case "$SLUG" in (''|*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+      - name: Publish or reject
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
+          BLOG_FROM_EMAIL: ${{ vars.BLOG_FROM_EMAIL }}
+        run: |
+          if [ "$ACTION" = "blog-publish" ]; then node scripts/blog/publish.mjs publish "$SLUG"; else node scripts/blog/publish.mjs reject "$SLUG"; fi
+      - name: Commit and redeploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "the615agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A src/content/posts public/img/blog drafts topics.json
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "Blog: $ACTION $SLUG"
+          git pull --rebase -q
+          git push
+          gh workflow run deploy.yml --ref main

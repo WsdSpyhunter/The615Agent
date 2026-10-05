@@ -1,0 +1,18 @@
+[
+  { "id": "buy", "url": "/buy#form", "label": "Get matched with homes", "tags": ["buyers", "cta"] },
+  { "id": "sell", "url": "/sell#form", "label": "Find out what your home is worth", "tags": ["sellers", "cta"] },
+  { "id": "market-data", "url": "/market-data", "label": "Market data for the I-65 corridor", "tags": ["market update", "data"] },
+  { "id": "calculator", "url": "/mortgage-calculator", "label": "Mortgage calculator", "tags": ["financing", "buyers", "cost of living", "property taxes"] },
+  { "id": "checklists", "url": "/checklists", "label": "Free moving checklists", "tags": ["buyers", "sellers", "relocation", "moving"] },
+  { "id": "resources", "url": "/resources", "label": "Local resources", "tags": ["relocation", "schools", "utilities"] },
+  { "id": "contact", "url": "/contact", "label": "Contact Scott", "tags": ["cta"] },
+  { "id": "about", "url": "/about", "label": "About Scott", "tags": ["cta"] },
+  { "id": "franklin", "url": "/areas/franklin", "label": "Franklin area guide", "tags": ["franklin", "relocation"] },
+  { "id": "brentwood", "url": "/areas/brentwood", "label": "Brentwood area guide", "tags": ["brentwood", "relocation"] },
+  { "id": "spring-hill", "url": "/areas/spring-hill", "label": "Spring Hill area guide", "tags": ["spring hill", "relocation", "new construction"] },
+  { "id": "thompsons-station", "url": "/areas/thompsons-station", "label": "Thompson's Station area guide", "tags": ["thompsons station", "relocation", "new construction"] },
+  { "id": "nolensville", "url": "/areas/nolensville", "label": "Nolensville area guide", "tags": ["nolensville", "relocation"] },
+  { "id": "columbia", "url": "/areas/columbia", "label": "Columbia area guide", "tags": ["columbia", "relocation"] },
+  { "id": "murfreesboro", "url": "/areas/murfreesboro", "label": "Murfreesboro area guide", "tags": ["murfreesboro", "relocation"] },
+  { "id": "blog", "url": "/blog", "label": "The blog", "tags": [] }
+]

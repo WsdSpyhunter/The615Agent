@@ -1,0 +1,14 @@
+name = "the615agent-blog"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+GITHUB_REPO = "WsdSpyhunter/The615Agent"
+SITE_URL = "https://the615agent.com"
+
+# One-time-use markers for the approval links. The deploy workflow creates this namespace and fills in the id.
+[[kv_namespaces]]
+binding = "NONCES"
+id = "REPLACE_WITH_NAMESPACE_ID"
+
+# Secrets (set by the deploy workflow, never stored here): APPROVAL_SECRET, GITHUB_TOKEN
