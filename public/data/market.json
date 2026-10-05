@@ -38,7 +38,7 @@
       "inventory": 566,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Franklin has 3.6 months of supply, a seller's market, down from 4.0 three months earlier. The median sale price is $862,929, up 12.4% from a year earlier, and homes sold for an average of 98.3% of list price. Median days on market is 49, and active listings number 566.",
+      "commentary": "Franklin is rated a balanced market as of August 31, 2026, based on rolling 3-month figures. The sources differ: Zillow's index reads neutral at 46 and Realtor.com's Williamson County hotness score reads cool at 41.7 of 100, while Redfin's 3.6 months of supply reads as a seller's market. Zillow's index is down 6 points over three months, and the median sale price of $862,929 is up 12.4% from a year earlier.",
       "temperature": {
         "score": 0.09,
         "level": "balanced",
@@ -99,7 +99,7 @@
       "inventory": 328,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Brentwood had 4.2 months of supply, which is a balanced market, compared with 4.4 three months earlier and 4.1 a year earlier. The median sale price was $1,424,058, up 5.1% from a year earlier. Homes took a median of 63 days to sell and averaged 97.4% of list price, with 328 active listings, up 10% from last year.",
+      "commentary": "As of August 31, 2026, Brentwood is rated balanced, tilting slightly toward buyers, and cooling. Zillow's index of 43 reads Buyer's, Redfin's 4.2 months of supply reads Balanced, and Realtor.com's Williamson County hotness of 41.7 reads Cool, so the sources differ slightly. The median sale price is $1,424,058, up 5.1% from a year earlier, with a median of 63 days on market.",
       "temperature": {
         "score": -0.14,
         "level": "balanced",
@@ -160,7 +160,7 @@
       "inventory": 467,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Spring Hill has 4.1 months of supply, a balanced market, down from 4.3 three months earlier and up from 3.7 a year ago. The median sale price is $508,284, down 4.1% from a year earlier, and homes are selling at an average of 98.8% of list price. Median days on market is 62, compared with 57 a year earlier.",
+      "commentary": "As of August 31, 2026, Spring Hill is a balanced market tilting slightly toward buyers, and conditions are cooling. Zillow's index of 41 reads Buyer's, Redfin's 4.1 months of supply reads Balanced, and Realtor.com's Maury County hotness score of 32.6 reads Cool, so the sources differ slightly. The median sale price was $508,284, down 4.1% from a year earlier, with a median of 62 days on market.",
       "temperature": {
         "score": -0.26,
         "level": "balanced",
@@ -221,7 +221,7 @@
       "inventory": 141,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Thompson's Station had 5.2 months of supply, a balanced market, down from 5.7 three months earlier. The median sale price was $829,451, down 2.4% from a year earlier, with homes selling at an average of 99.2% of list price. Active listings numbered 141, up 41% from a year earlier, and median days on market was 64.",
+      "commentary": "Thompson's Station is a balanced market tilting slightly toward buyers as of August 31, 2026. Zillow's index reads 46 (neutral) and Redfin shows 5.2 months of supply (balanced), while Realtor.com rates Williamson County cool at 41.7 of 100. The median sale price is $829,451, down 2.4% from a year earlier, and because listings are few, the figures can swing.",
       "temperature": {
         "score": -0.23,
         "level": "balanced",
@@ -282,7 +282,7 @@
       "inventory": 95,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Nolensville had 3.9 months of supply, which falls in seller's market territory, up from 3.2 three months earlier and 3.3 a year earlier. The median sale price was $929,385, down 7.1% from a year earlier, with homes taking a median of 63 days to sell and an average sale-to-list ratio of 97.8%. Active listings numbered 95, down 4% from a year earlier.",
+      "commentary": "Nolensville is rated a balanced market tilting slightly toward buyers as of August 31, 2026, though the sources disagree noticeably. Zillow's index of 35 reads Buyer's and Realtor.com's Williamson County hotness score of 41.7 reads Cool, while Redfin's 3.9 months of supply reads Seller's. The median sale price was $929,385, down 7.1% from a year earlier, and with few listings, these figures can swing month to month.",
       "temperature": {
         "score": -0.37,
         "level": "balanced",
@@ -343,7 +343,7 @@
       "inventory": 5321,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Nashville has 5.8 months of supply, a balanced market, up from 5.3 three months earlier and 5.1 a year earlier. The median sale price is $475,538, down 0.5% from a year earlier, and homes have a median of 64 days on market. Active listings total 5,321, up 12% from a year earlier, and the average sale-to-list price ratio is 97.6%.",
+      "commentary": "As of August 31, 2026, Nashville's market leans toward buyers, based on rolling 3-month figures. Zillow reads Neutral (index 44, down 6 points over three months), Redfin reads Balanced at 5.8 months of supply, and Realtor.com rates Davidson County Cool (hotness 16.6 of 100). The median sale price is $475,538, down 0.5% from a year earlier, with homes at a median of 64 days on market.",
       "temperature": {
         "score": -0.61,
         "level": "buyer-leaning",
@@ -404,7 +404,7 @@
       "inventory": 483,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Columbia has 4.7 months of supply, a balanced market, compared with 4.4 a year earlier. The median sale price is $368,006, down 1.1% from a year earlier. Median days on market is 78, up from 61 a year earlier, and active listings are 483.",
+      "commentary": "As of August 31, 2026, Columbia's market leans toward buyers, though the sources differ. Zillow reads Buyer's (index 39, down 5 points over three months), Redfin reads Balanced (4.7 months of supply), and Realtor.com rates Maury County Cool (32.6 of 100). The median sale price was $368,006, down 1.1% from a year earlier, with a median of 78 days on market.",
       "temperature": {
         "score": -0.46,
         "level": "buyer-leaning",
@@ -465,7 +465,7 @@
       "inventory": 881,
       "asOf": "2026-08-31",
       "geography": null,
-      "commentary": "As of August 31, 2026, Murfreesboro had 4.0 months of supply, a balanced market, up from 3.7 a year earlier. The median sale price was $429,716, down 1.2% from a year earlier, with homes selling at an average of 99.0% of list price. Median days on market was 63, versus 56 a year earlier, and active listings numbered 881, up 10% from a year ago.",
+      "commentary": "Murfreesboro is a balanced market as of August 31, 2026, based on rolling 3-month figures. Zillow's index is 48 (neutral) and Redfin shows 4.0 months of supply (balanced), while Realtor.com's Rutherford County hotness score of 33.3 of 100 reads cool, and Zillow's index is down 7 points over three months. The median sale price is $429,716, down 1.2% from a year earlier, and median days on market is 63 versus 56 a year earlier.",
       "temperature": {
         "score": 0.02,
         "level": "balanced",
