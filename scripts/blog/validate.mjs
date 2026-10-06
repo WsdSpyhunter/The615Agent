@@ -37,7 +37,7 @@ export function validatePost(post, ctx) {
   const allText = body + ' ' + (post.faq || []).map((f) => f.q + ' ' + f.a).join(' ');
   const marketNums = new Set(numbersIn(ctx.marketFacts.join(' ')));
   const bad = [];
-  for (const n of numbersIn(allText.replace(/\{\{link:[^}]*\}\}/g, ''))) {
+  for (const n of numbersIn(allText.replace(/\{\{link:[^}]*\}\}/g, '').replace(/\bI-\d{2,3}\b/g, ''))) {
     const v = Number(n);
     const ok = ctx.allowedNumbers.has(n) || ctx.allowedNumbers.has(String(v)) || (Number.isInteger(v) && v >= 0 && v <= 12) || (Number.isInteger(v) && v >= 2024 && v <= 2030);
     if (!ok) bad.push(n);

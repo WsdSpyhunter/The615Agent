@@ -3,7 +3,7 @@
 // Basis: NAR Code of Ethics (Articles 1, 2, 12, 15 and the advertising Standards of Practice), the Fair Housing Act, Tennessee Real Estate
 // Commission advertising rules, RESPA anti-kickback rules, and the post-settlement rules on compensation statements. This is a safety net, not legal advice.
 
-const R = (id, hard, re, msg) => ({ id, hard, re, msg });
+const R = (id, hard, re, msg, skipQuestions = false) => ({ id, hard, re, msg, skipQuestions });
 
 export const RULES = [
   // Fair Housing: language that signals a preference or limitation
@@ -13,7 +13,7 @@ export const RULES = [
   R('fh-class', false, /\b(?:race|racial|religion|religious|disabled|disability|handicap|familial status|national origin|sexual orientation|gender identity|marital status|ethnic(?:ity)?)\b/i, 'Mentions a protected class. Fine in a Fair Housing explainer; confirm it is not describing who lives somewhere.'),
 
   // Honest advertising (Code of Ethics Article 12, Article 2) and no guarantees
-  R('guarantee', true, /(?<!not a |no |not |n['’]t a |n['’]t |never |without a |cannot |can['’]t )\bguarantee[ds]?\b|\brisk[- ]free\b|\bcan'?t lose\b|\bno[- ]brainer\b|\bsure thing\b|\bwithout (?:any )?risk\b|\bfoolproof\b/i, 'Guarantee or no-risk claim. Real estate outcomes cannot be guaranteed.'),
+  R('guarantee', true, /(?<!not a |no |not |n['’]t a |n['’]t |never |without a |cannot |can['’]t )\bguarantee[ds]?\b|\brisk[- ]free\b|\bcan'?t lose\b|\bno[- ]brainer\b|\bsure thing\b|\bwithout (?:any )?risk\b|\bfoolproof\b/i, 'Guarantee or no-risk claim. Real estate outcomes cannot be guaranteed.', true),
   R('prediction', true, /\b(?:prices?|values?|rates?|home values|the market|mortgage rates|inventory)\s+(?:will|are going to|is going to|are about to|is about to|are sure to)\s+(?:go |keep |continue |soon )?(?:up|down|rise|fall|drop|climb|crash|increase|decrease|soar|jump|surge)\b|\b(?:will|going to) appreciate\b|\bbest time (?:ever )?to (?:buy|sell)\b|\bnow is the time to (?:buy|sell)\b|\bbefore (?:it'?s|they'?re) too late\b|\bact now\b/i, 'Market or rate prediction, or pressure language, stated as fact.'),
   R('superlative', true, /(?:#\s?1\b|\bnumber (?:one|1)\b|\btop[- ](?:producing |rated )?(?:agent|realtor|producer|broker)s?\b|\bbest (?:agent|realtor|real estate agent|broker)s?\b|\baward[- ]winning\b|\bleading (?:agent|realtor|brokerage)\b|\b(?:most|highest) (?:successful|experienced|trusted) (?:agent|realtor)s?\b)/i, 'Unsubstantiated superlative or ranking about the agent or firm.'),
   R('sold-claims', true, /\b(?:just|recently|newly) (?:sold|listed)\b|\bi (?:just )?(?:sold|listed|closed)\b|\bnew listing\b|\bopen house (?:this|on)\b/i, 'Listing or sold claim. Posts must not advertise specific listings or sales (brokerage, MLS and Article 12 rules).'),
@@ -43,7 +43,7 @@ export function complianceIssues(post) {
   const text = flatten(post);
   const out = { hard: [], soft: [] };
   for (const r of RULES) {
-    const m = text.match(r.re);
+    const m = (r.skipQuestions ? text.replace(/[^.?!\n]*\?/g, ' ') : text).match(r.re);
     if (!m) continue;
     const quote = m[0].length > 60 ? m[0].slice(0, 57) + '...' : m[0];
     (r.hard ? out.hard : out.soft).push(`${r.msg} (found: "${quote}")`);
