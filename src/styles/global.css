@@ -326,3 +326,7 @@ footer a:hover{opacity:1;text-decoration:underline}
   .fgrid .flogo{margin-bottom:32px}
   .fgrid .hive{margin-top:36px}
 }
+
+/* Home contact section: Scott pointing at the form */
+.info .pointing{width:100%;max-width:440px;height:auto;margin-top:18px;justify-self:start}
+@media(max-width:600px){.info .pointing{max-width:300px;justify-self:center}}
