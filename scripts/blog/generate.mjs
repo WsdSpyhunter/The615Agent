@@ -1,6 +1,6 @@
 // Writes one blog draft: picks a topic, has Claude write it from supplied facts, checks it, verifies links, picks photos,
 // and saves drafts/<slug>.json. The workflow then commits the draft and runs send-proof.mjs to email you the proof.
-//   node scripts/blog/generate.mjs [--topic t07] [--regenerate <draft-slug>]
+//   node scripts/blog/generate.mjs [--topic t07] [--idea "your own topic"] [--regenerate <draft-slug>]
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { appendFileSync } from 'node:fs';
 import { readJson, writeJson, today, slugify, listDir, readPostMeta, words } from './lib.mjs';
@@ -32,6 +32,17 @@ if (regen) {
 const market = readJson('public/data/market.json', {});
 const marketOk = !!market.cities && !market.sample && !market.stale && Object.values(market.cities).some((c) => c.temperature);
 if (!topic && arg('topic')) topic = topics.find((t) => t.id === arg('topic'));
+
+// A topic of your own: Claude only classifies it (category, keyword, link tags); the post is then written and checked like any other.
+if (!topic && arg('idea')) {
+  const idea = arg('idea').trim().slice(0, 300);
+  const vocab = [...new Set([...readJson('src/data/blog-links.json', []), ...readJson('src/data/blog-internal.json', [])].flatMap((l) => l.tags || []).concat(Object.keys(market.cities || {})))];
+  const cats = ['Buyers', 'Sellers', 'Relocation', 'Investors', 'Market Update', 'New Construction', 'Schools', 'Cost of Living', 'Property Taxes', 'Commute'];
+  const c = parseJson(await ask({ system: 'You classify a blog topic for a Tennessee real estate site. Return ONLY JSON: {"category": one of ' + JSON.stringify(cats) + ', "keyword": a 3 to 6 word search phrase, "related": [3 short related search terms], "linkTags": [up to 6 tags chosen ONLY from this list: ' + vocab.join(', ') + '], "type": "data" if the topic is mainly about current local market numbers, else "evergreen"}.', user: idea, maxTokens: 400 }));
+  const n = topics.filter((t) => String(t.id).startsWith('c')).length + 1;
+  topic = { id: `c${String(n).padStart(2, '0')}`, category: cats.includes(c.category) ? c.category : 'Buyers', type: c.type === 'data' ? 'data' : 'evergreen', idea, keyword: String(c.keyword || idea).slice(0, 80), related: (c.related || []).slice(0, 4), linkTags: (c.linkTags || []).filter((t) => vocab.includes(t)), status: 'unused', custom: true };
+  topics.push(topic);
+}
 if (!topic) {
   const recent = [...posts.map((p) => ({ category: p.category, keyword: p.keyword, type: 'evergreen', date: p.pubDate })), ...drafts.map((d) => ({ category: d.category, keyword: d.keyword, type: topics.find((t) => t.id === d.topicId)?.type, date: d.created }))]
     .sort((a, b) => String(b.date).localeCompare(String(a.date)));

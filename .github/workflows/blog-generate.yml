@@ -13,6 +13,10 @@ on:
         description: "Optional topic id from topics.json (for example t07). Leave blank to let the engine choose."
         required: false
         type: string
+      idea:
+        description: "Optional: a topic of your own, in plain words (for example: What to know about buying a home with a well and septic). Overrides the topic list."
+        required: false
+        type: string
       regenerate:
         description: "Optional draft slug to throw away and rewrite on the same topic"
         required: false
@@ -35,6 +39,7 @@ jobs:
     env:
       REGEN: ${{ github.event.client_payload.slug || github.event.inputs.regenerate }}
       TOPIC: ${{ github.event.inputs.topic }}
+      IDEA: ${{ github.event.inputs.idea }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -57,6 +62,7 @@ jobs:
           if [ -n "$REGEN" ]; then
             case "$REGEN" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
             node scripts/blog/generate.mjs --regenerate "$REGEN"
+          elif [ -n "$IDEA" ]; then node scripts/blog/generate.mjs --idea "$IDEA"
           elif [ -n "$TOPIC" ]; then node scripts/blog/generate.mjs --topic "$TOPIC"
           else node scripts/blog/generate.mjs; fi
 
