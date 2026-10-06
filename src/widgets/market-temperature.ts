@@ -36,8 +36,9 @@ export type MarketData = {
 // Old single-measure fallback: Seller's market under 4 months of supply, balanced 4 to 6, buyer's over 6.
 export const classify = (m: number): 'hot' | 'mid' | 'cold' => (m < 4 ? 'hot' : m <= 6 ? 'mid' : 'cold');
 export const label = (m: number) => (m < 4 ? "Seller's market" : m <= 6 ? 'Balanced market' : "Buyer's market");
-// A flame means a confirmed seller's or buyer's market: either way the market is active ("hot"). Balanced and leaning markets are not moving decisively, so they get the cool icon.
-const kindOf = (level: string): 'hot' | 'mid' | 'cold' => (level === 'sellers' || level === 'buyers' ? 'hot' : 'cold');
+// Three tiers. Flame (flickering): a confirmed seller's or buyer's market, which is active either way. Thermometer (lukewarm, still): a market leaning
+// one way. Snowflake (cold): balanced, meaning nothing is moving decisively.
+const kindOf = (level: string): 'hot' | 'mid' | 'cold' => (level === 'sellers' || level === 'buyers' ? 'hot' : level === 'seller-leaning' || level === 'buyer-leaning' ? 'mid' : 'cold');
 
 const ICON = {
   hot: '<defs><linearGradient id="tpa-fg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E0300A"/><stop offset=".6" stop-color="#FF6A1F"/><stop offset="1" stop-color="#FFA24D"/></linearGradient><linearGradient id="tpa-ig" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#FFF1B8"/></linearGradient></defs><g class="tpa-fl"><path d="M12.6 1.8c.5 3.3 2.8 4.8 4.5 7.1 1.3 1.8 2 3.5 2 5.4a7.1 7.1 0 0 1-14.2 0c0-2.4 1.1-4.1 2.6-5.4.3 1.7 1 2.7 2.1 3.2-.4-3.6.9-7.4 3-10.3z" fill="url(#tpa-fg)"/></g><g class="tpa-fl2"><path d="M12 21.6a3.9 3.9 0 0 1-3.9-3.9c0-2 1.5-3.2 2.6-4.7.5-.7.8-1.4.9-2.3 1.9 1.6 4.3 3.4 4.3 7a3.9 3.9 0 0 1-3.9 3.9z" fill="url(#tpa-ig)"/></g>',
