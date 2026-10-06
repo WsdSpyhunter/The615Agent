@@ -24,7 +24,7 @@ export const site = {
   // Public Web3Forms access key (safe in page code; it can only send to your email).
   web3formsKey: 'fb6d20db-acfa-46b8-bb9b-bc90dd526eb7',
   // Buttondown newsletter username for the monthly market report. Update when the new account exists.
-  buttondownUser: 'the615agent',
+  buttondownUser: 'the615agentNL',
   // Cloudflare Web Analytics token (public). Leave empty until you create it.
   cloudflareAnalyticsToken: '',
   // Show placeholder testimonials until real ones are in src/data/testimonials.json

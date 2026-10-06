@@ -85,8 +85,7 @@ jobs:
           fi
 
       - name: Monthly report draft (Buttondown)
-        # OFF until The615Agent has its own Buttondown newsletter and key (the key on file belongs to another newsletter).
-        if: false
+        if: (steps.check.outputs.monthly == 'true' && github.event_name == 'schedule') || github.event.inputs.create_report_draft == 'true'
         continue-on-error: true
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
