@@ -359,7 +359,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 .logo-card.match{max-width:250px;margin:32px auto 0}
 
 /* Market data page (side-by-side layout): center the logo between the right edge of the temperature panel and the right edge of the page */
-@media(min-width:901px){.wl .logo-card{transform:translateX(max(0px,calc(25vw - 292px)))}}
+@media(min-width:901px){.two.wl{column-gap:76px}.wl .logo-card{transform:translateX(max(0px,calc(25vw - 318px)))}}
 
 /* Buyer and seller pages (side-by-side layout): push the headshot and logo down so the bottom of the logo lines up with the bottom of the form */
 @media(min-width:821px){
