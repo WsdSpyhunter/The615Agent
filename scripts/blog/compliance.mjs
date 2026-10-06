@@ -26,7 +26,7 @@ export const RULES = [
 
   // Lending: no endorsements, no rate offers, no lending advice (RESPA, TILA advertising)
   R('lender', true, /\b(?:preferred|recommended|favou?rite|our|my) (?:lender|mortgage (?:broker|company|lender)|title company|inspector|attorney)\b/i, 'Endorsement of a lender, title company or other provider. Referral relationships raise RESPA and disclosure issues; use neutral language.'),
-  R('lending-offer', true, /\b(?:as low as|rates? (?:starting|from)|apr of|get (?:pre-?approved|approved) (?:in|within)|no money down|zero down)\b/i, 'Reads like a loan advertisement or offer. Rate or payment claims must come from the supplied facts and cannot be presented as an offer.'),
+  R('lending-offer', true, /\b(?:as low as [\d.]+\s?(?:%|percent)?\s*(?:apr|interest|rate)|rates? (?:starting|from)|apr of|get (?:pre-?approved|approved) (?:in|within)|no money down|zero down)\b/i, 'Reads like a loan advertisement or offer. Rate or payment claims must come from the supplied facts and cannot be presented as an offer.'),
   R('advice', true, /\byou (?:should|must|need to|ought to) (?:refinance|sell now|buy now|invest|waive|skip (?:the )?inspection|pay cash|use a lender|stretch)\b|\bi (?:recommend|advise) (?:you )?(?:refinanc|waiv|skipping|buying now|selling now)/i, 'Directive legal, tax or lending advice. Explain how things work and point to professionals instead.'),
 
   // Fair dealing with other brokers and agents (Article 15)
