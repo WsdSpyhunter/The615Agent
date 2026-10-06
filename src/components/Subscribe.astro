@@ -27,8 +27,9 @@ import { site } from '../site.config';
       e.preventDefault();
       btn.disabled = true; say('Subscribing...');
       try {
-        const res = await fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form) as any) });
-        if (res.ok) { say('Almost done. Check your email and click the confirmation link to finish subscribing.'); form.reset(); }
+        const res = await fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form) as any), redirect: 'manual' });
+        // A good signup is answered with a redirect (to Buttondown's public page, which we do not use); a bad address gets a 400.
+        if (res.ok || res.type === 'opaqueredirect' || (res.status >= 300 && res.status < 400)) { say('Almost done. Check your email and click the confirmation link to finish subscribing.'); form.reset(); }
         else say('That email address did not look right. Please check it and try again.');
       } catch { say('Sorry, that did not go through. Please try again in a moment.'); }
       btn.disabled = false;
