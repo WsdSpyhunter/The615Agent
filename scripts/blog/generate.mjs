@@ -65,8 +65,13 @@ async function writePost() {
     const issues = validatePost(post, ctx);
     let review = { ok: true, issues: [] };
     if (!issues.length && !process.env.BLOG_FIXTURE) {
-      try { review = parseJson(await ask({ system: reviewSystem(), user: `FACTS SUPPLIED:\n${ctx.factsText}\n\nPOST (markdown):\n# ${post.title}\n${post.body}\n\nFAQ:\n${post.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n')}`, maxTokens: 1500 })); }
-      catch (e) { log('Compliance review failed to run:', e.message); review = { ok: true, issues: ['The automatic compliance review could not run; please read carefully.'] }; }
+      const reviewInput = `FACTS SUPPLIED:\n${ctx.factsText}\n\nPOST (markdown):\n# ${post.title}\n${post.body}\n\nFAQ:\n${post.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n')}`;
+      let lastError = null;
+      for (let t = 1; t <= 3; t++) {
+        try { review = parseJson(await ask({ system: reviewSystem(), user: reviewInput, maxTokens: 3000 })); lastError = null; break; }
+        catch (e) { lastError = e; log(`Compliance review attempt ${t} failed:`, e.message); }
+      }
+      if (lastError) review = { ok: true, issues: ['The automatic compliance review could not run; please read carefully.'] };
     }
     const all = [...issues, ...(review.ok ? [] : review.issues)];
     if (!all.length) return { post, review, attempt };
