@@ -357,3 +357,6 @@ footer a:hover{opacity:1;text-decoration:underline}
 .aboutcol{max-width:320px;width:100%}
 .aboutcol img:first-child{display:block}
 .logo-card.match{max-width:none;margin:36px 0 0}
+
+/* Market data page (side-by-side layout): center the logo between the right edge of the temperature panel and the right edge of the page */
+@media(min-width:901px){.wl .logo-card{transform:translateX(max(0px,calc(25vw - 292px)))}}
