@@ -237,8 +237,8 @@ input,select,textarea{font:inherit;color:var(--fg);background:var(--card);border
 .cta-band p{margin:6px 0 0;color:#AAB3BF}
 
 /* checklists page */
-.cl2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media(max-width:860px){.cl2{grid-template-columns:1fr}}
+.cl2{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media(max-width:860px){.cl2{grid-template-columns:1fr;gap:36px}}
 .clcard{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr}
 @media(max-width:1060px){.clcard{grid-template-columns:1fr}}
 .thumb{background:linear-gradient(160deg,#1B1F25,#0A0A0A);padding:18px;display:grid;place-items:center}
@@ -330,3 +330,12 @@ footer a:hover{opacity:1;text-decoration:underline}
 /* Home contact section: Scott pointing at the form */
 .info .pointing{width:100%;max-width:290px;height:auto;margin-top:18px;justify-self:start}
 @media(max-width:600px){.info .pointing{max-width:230px;justify-self:center}}
+
+/* Checklists page: the 615 Agent logo in the upper right of the "Have it emailed to you" section (wide screens only) */
+.logo-host{position:relative}
+.logo-host .host-in{max-width:780px;margin-inline:auto}
+.logo-tile{display:none}
+@media(min-width:1120px){
+  .logo-tile{display:grid;place-items:center;position:absolute;top:0;right:20px;width:164px;height:164px;background:var(--black);border-radius:24px;border-top:4px solid var(--blue);box-shadow:var(--shadow)}
+  .logo-tile img{width:128px;height:auto;display:block}
+}
