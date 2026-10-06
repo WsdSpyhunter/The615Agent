@@ -1,6 +1,6 @@
 /* <tpa-mortgage-calculator>. Style with --tpa-* variables. */
-tpa-mortgage-calculator{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start;font-family:var(--tpa-font,inherit);color:var(--tpa-text,#0A0A0A)}
-@media(max-width:920px){tpa-mortgage-calculator{grid-template-columns:1fr}}
+tpa-mortgage-calculator{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--tpa-mc-gap,60px);align-items:start;font-family:var(--tpa-font,inherit);color:var(--tpa-text,#0A0A0A)}
+@media(max-width:920px){tpa-mortgage-calculator{grid-template-columns:1fr;gap:28px}}
 .tpa-mc-panel{background:var(--tpa-card-bg,#fff);border:1px solid var(--tpa-card-border,#D4D9DF);border-radius:var(--tpa-radius,24px);padding:26px;box-shadow:var(--tpa-shadow,0 8px 24px rgba(10,10,10,.07));display:grid;gap:18px;min-width:0}
 .tpa-mc-field{display:grid;gap:6px;min-width:0}
 .tpa-mc-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-weight:700;font-size:14px}
