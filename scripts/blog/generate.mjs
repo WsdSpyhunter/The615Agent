@@ -79,7 +79,7 @@ const { post, review, failed } = await writePost();
 const links = await resolveLinks(post.body, ctx);
 log(`Links: ${links.outboundKept} outbound kept, ${links.dropped.length} dropped, ${links.internalKept} site links`);
 
-const photos = await choosePhotos(post.imageQueries || [topic.keyword, topic.category, 'home'], process.env, log);
+const photos = await choosePhotos(post.imageQueries || [topic.keyword, topic.category, 'home'], process.env, log, { title: post.title, keyword: topic.keyword, category: topic.category });
 
 // place inline photo markers after the 1st and 3rd section headings' first paragraph
 let body = links.markdown;

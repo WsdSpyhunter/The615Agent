@@ -1,0 +1,50 @@
+name: Blog photos
+
+# Re-picks the photos of a published post (they are checked by Claude against the topic), then redeploys the site.
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Slug of the published post (the last part of its web address)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: blog
+  cancel-in-progress: false
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SLUG: ${{ github.event.inputs.slug }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Pick new photos
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: |
+          case "$SLUG" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+          node scripts/blog/rephoto.mjs "$SLUG"
+      - name: Save and redeploy
+        run: |
+          git config user.name "the615agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/content/posts public/img/blog
+          if git diff --cached --quiet; then echo "No change."; exit 0; fi
+          git commit -m "Blog: new photos for $SLUG"
+          git pull --rebase
+          git push
+          gh workflow run deploy.yml
