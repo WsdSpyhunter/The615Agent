@@ -326,3 +326,12 @@ footer a:hover{opacity:1;text-decoration:underline}
   .fgrid .flogo{margin-bottom:32px}
   .fgrid .hive{margin-top:36px}
 }
+
+/* Home: the previous post sits under the latest one as a compact card */
+.post.mini{flex-direction:row;margin-top:26px}
+.post.mini .img{width:38%;aspect-ratio:auto;min-height:100%;flex:none}
+.post.mini .pbody{padding:18px 20px;gap:6px}
+.post.mini h3{font-size:1.1rem}
+.post.mini p{font-size:.95rem}
+.post.mini .meta .chip{margin-right:6px}
+@media(max-width:600px){.post.mini{flex-direction:column}.post.mini .img{width:100%;aspect-ratio:16/8;min-height:0}}

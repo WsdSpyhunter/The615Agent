@@ -10,6 +10,9 @@ import { site, areas } from '../site.config';
 
 const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const latest = posts[0];
+const previous = posts[1];
+const excerptOf = (p: any, n: number) => (p?.body ?? '').replace(/^#+\s.*$/gm, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`>#]/g, '').split(/\s+/).filter(Boolean).slice(0, n).join(' ') + '…';
+const dateOf = (p: any) => p?.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 const excerpt = latest
   ? (latest.body ?? '').replace(/^#+\s.*$/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`>#]/g, '').split(/\s+/).filter(Boolean).slice(0, 40).join(' ') + '…'
   : '';
@@ -84,13 +87,24 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
           <div class="pbody">
             <span class="chip">{latest.data.category}</span>
             <span class="meta">{dateStr}</span>
-            <h3><a href="/blog">{latest.data.title}</a></h3>
+            <h3><a href={`/blog/${latest.id}`}>{latest.data.title}</a></h3>
             <p>{excerpt}</p>
             <a class="more" href={`/blog/${latest.id}`}>Read the post →</a>
           </div>
         </article>
       ) : (
         <article class="post"><div class="pbody"><h3>New posts coming soon</h3><p>Check back for guides on buying, selling and moving to Middle Tennessee.</p></div></article>
+      )}
+      {previous && (
+        <article class="post mini">
+          {previous.data.heroImage ? <img class="img" src={previous.data.heroImage} alt={previous.data.heroAlt ?? ''} loading="lazy" width="320" height="200" /> : <div class="img" aria-hidden="true"></div>}
+          <div class="pbody">
+            <span class="meta"><span class="chip">{previous.data.category}</span> {dateOf(previous)}</span>
+            <h3><a href={`/blog/${previous.id}`}>{previous.data.title}</a></h3>
+            <p>{excerptOf(previous, 22)}</p>
+            <a class="more" href={`/blog/${previous.id}`}>Read the post →</a>
+          </div>
+        </article>
       )}
     </div>
     <div id="market"><MarketTemperature /></div>
