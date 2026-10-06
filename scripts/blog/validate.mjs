@@ -23,6 +23,8 @@ export function validatePost(post, ctx) {
   issues.push(...complianceIssues(post).hard);
   if (/\]\(\s*\[|\]\(\s*\{\{/.test(body)) issues.push('Link tokens are wrapped in markdown link syntax; use only {{link:ID|anchor text}}.');
 
+  if (/\b(?:i|we) (?:also )?(?:wrote|published|posted)\b|\b(?:another|a separate|my other|our other|a related) (?:post|article|blog)\b/i.test(body)) issues.push('Refers to another post by description. Do not mention other posts in the text.');
+
   const tokens = [...body.matchAll(/\{\{link:([a-z0-9-]+)\|([^}]+)\}\}/g)];
   const outIds = new Set(ctx.outbound.map((l) => l.id)), inIds = new Set(ctx.inbound.map((l) => l.id));
   const unknown = tokens.filter((t) => !outIds.has(t[1]) && !inIds.has(t[1])).map((t) => t[1]);

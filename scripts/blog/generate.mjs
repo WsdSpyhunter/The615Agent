@@ -40,7 +40,8 @@ if (!topic) {
 if (!topic) { log('No unused topic is available. Add more to topics.json.'); process.exit(1); }
 log(`Topic ${topic.id}: ${topic.idea}`);
 
-const existing = [...posts.map((p) => ({ title: p.title })), ...drafts.map((d) => ({ title: d.title }))];
+// Only live posts may be mentioned: a pending or replaced draft is not on the site (this caused a reference to a post that never existed).
+const existing = posts.map((p) => ({ title: p.title }));
 const ctx = buildContext(topic, existing);
 
 async function writePost() {

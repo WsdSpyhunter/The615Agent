@@ -28,7 +28,7 @@ Here is how the rate connects to your payment, and three examples you can run yo
 
 *Photo by [Mohamed_hassan](https://pixabay.com/users/Mohamed_hassan-5229782/) on [Pixabay](https://pixabay.com)*
 
-Freddie Mac, reported through the Federal Reserve Bank of St. Louis, put the average 30-year fixed mortgage rate at 7.28% for the week of 2026-10-01. You can check the latest weekly reading yourself on the [Freddie Mac rate series at FRED](Freddie Mac 30-year rate on FRED).
+Freddie Mac, reported through the Federal Reserve Bank of St. Louis, put the average 30-year fixed mortgage rate at 7.28% for the week of 2026-10-01. You can check the latest weekly reading yourself on the [Freddie Mac rate series at FRED](https://fred.stlouisfed.org/series/MORTGAGE30US).
 
 Keep in mind that this is a national average. The rate a lender quotes you depends on your credit, your down payment, the loan type and the day you lock. Treat 7.28% as a starting point for examples, not a promise.
 
@@ -84,8 +84,6 @@ A calculator gives you an estimate. A lender gives you the actual terms. Pre-app
 A lender must send the Closing Disclosure at least 3 business days before closing. Compare it with the Loan Estimate and ask questions about anything that changed. Also plan for closing costs, which typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs.
 
 From the time you apply through closing, avoid opening new credit, financing furniture, or changing jobs. Any of those can change your loan terms. I am not a lender or a tax professional, so check your specific situation with a licensed lender and your tax advisor.
-
-I also wrote a separate post, Mortgage Rates and Monthly Payment: What 7.28% Looks Like, if you want another walk-through of the same rate.
 
 ## Next step
 

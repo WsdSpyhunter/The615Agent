@@ -42,7 +42,7 @@ ${ctx.outbound.map((l) => `- ${l.id}: ${l.label}`).join('\n')}
 SITE-PAGE LINK IDS:
 ${ctx.inbound.map((l) => `- ${l.id}: ${l.label}`).join('\n')}
 
-EXISTING POSTS (do not repeat them; you may mention one naturally):
+EXISTING POSTS (do not repeat them; never mention a post by title in the text; to point to one, use only a site-page link token):
 ${ctx.existing.map((p) => `- ${p.title}`).join('\n') || '- (none yet)'}
 ${extra}
 Write the post now.`;
