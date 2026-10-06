@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
         {site.brokerage}: {site.brokeragePhone}
         <img class="hive" src="/img/hive-nashville.png" alt={site.brokerage} width="150" height="56" loading="lazy" />
         <div class="socials">
-          {Object.entries(site.social).filter(([, v]) => v).map(([k, v]) => <a href={v} rel="noopener" target="_blank">{k[0].toUpperCase() + k.slice(1)}</a>)}
+          {Object.entries(site.social).filter(([k, v]) => v && k !== 'zillow').map(([k, v]) => <a href={v} rel="noopener" target="_blank">{k[0].toUpperCase() + k.slice(1)}</a>)}
         </div>
       </div>
       <div>
