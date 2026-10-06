@@ -106,7 +106,7 @@ section.s{padding-block:76px}
 .sh.center{justify-content:center;text-align:center}.sh.center p{margin-inline:auto}
 .sh.stack{flex-direction:column;align-items:center}
 .center-label{text-align:center}
-#blog .wrap.two{column-gap:72px;row-gap:48px}
+#blog .wrap.two{column-gap:104px;row-gap:56px}
 #market .tpa-mt-titlebox{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
 .charcoal .sh p{color:#B7C0CB}
 .kicker{display:inline-block;font-size:14.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
