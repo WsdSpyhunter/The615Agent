@@ -103,6 +103,9 @@ section.s{padding-block:76px}
 .sh{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:30px}
 .sh h2,.h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800}
 .sh p{margin:6px 0 0;color:var(--muted);max-width:56ch}
+.sh.center{justify-content:center;text-align:center}.sh.center p{margin-inline:auto}
+.center-label{text-align:center}
+#market .tpa-mt-titlebox{display:flex;width:fit-content;margin-left:auto;margin-right:auto}
 .charcoal .sh p{color:#B7C0CB}
 .kicker{display:inline-block;font-size:14.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
 .charcoal .kicker{color:#7DB4F5}

@@ -77,7 +77,7 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
 
   <section class="s band" id="blog"><div class="wrap two">
     <div>
-      <span class="latest-label">Latest from the blog</span>
+      <div class="center-label"><span class="latest-label">Latest from the blog</span></div>
       {latest ? (
         <article class="post">
           {latest.data.heroImage ? <img class="img" src={latest.data.heroImage} alt={latest.data.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
@@ -98,7 +98,7 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
   <ColorBar rev />
 
   <section class="s" id="cities"><div class="wrap">
-    <div class="sh"><div><span class="kicker navy">Areas</span><h2>Explore the corridor</h2><p>Each city has its own guide with what to know, local resources and answers to common questions.</p></div></div>
+    <div class="sh center"><div><span class="kicker navy">Areas</span><h2>Explore the corridor</h2><p>Each city has its own guide with what to know, local resources and answers to common questions.</p></div></div>
     <div class="cities">
       {areas.map((a) => (
         <a class={`city ${tint[a.tint]}`} href={`/areas/${a.slug}`}>
