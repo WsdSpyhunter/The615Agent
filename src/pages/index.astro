@@ -82,29 +82,20 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
     <div>
       <div class="center-label"><span class="latest-label">Latest from the blog</span></div>
       {latest ? (
-        <article class="post">
-          {latest.data.heroImage ? <img class="img" src={latest.data.heroImage} alt={latest.data.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
-          <div class="pbody">
-            <span class="chip">{latest.data.category}</span>
-            <span class="meta">{dateStr}</span>
-            <h3><a href={`/blog/${latest.id}`}>{latest.data.title}</a></h3>
-            <p>{excerpt}</p>
-            <a class="more" href={`/blog/${latest.id}`}>Read the post →</a>
-          </div>
-        </article>
+        [latest, previous].filter(Boolean).map((p: any, i: number) => (
+          <article class="post" style={i > 0 ? 'margin-top:26px' : undefined}>
+            {p.data.heroImage ? <img class="img" src={p.data.heroImage} alt={p.data.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
+            <div class="pbody">
+              <span class="chip">{p.data.category}</span>
+              <span class="meta">{dateOf(p)}</span>
+              <h3><a href={`/blog/${p.id}`}>{p.data.title}</a></h3>
+              <p>{excerptOf(p, 40)}</p>
+              <a class="more" href={`/blog/${p.id}`}>Read the post →</a>
+            </div>
+          </article>
+        ))
       ) : (
         <article class="post"><div class="pbody"><h3>New posts coming soon</h3><p>Check back for guides on buying, selling and moving to Middle Tennessee.</p></div></article>
-      )}
-      {previous && (
-        <article class="post mini">
-          {previous.data.heroImage ? <img class="img" src={previous.data.heroImage} alt={previous.data.heroAlt ?? ''} loading="lazy" width="320" height="200" /> : <div class="img" aria-hidden="true"></div>}
-          <div class="pbody">
-            <span class="meta"><span class="chip">{previous.data.category}</span> {dateOf(previous)}</span>
-            <h3><a href={`/blog/${previous.id}`}>{previous.data.title}</a></h3>
-            <p>{excerptOf(previous, 22)}</p>
-            <a class="more" href={`/blog/${previous.id}`}>Read the post →</a>
-          </div>
-        </article>
       )}
     </div>
     <div id="market"><MarketTemperature /></div>
