@@ -1,6 +1,6 @@
 // Writes one blog draft: picks a topic, has Claude write it from supplied facts, checks it, verifies links, picks photos,
 // and saves drafts/<slug>.json. The workflow then commits the draft and runs send-proof.mjs to email you the proof.
-//   node scripts/blog/generate.mjs [--topic t07] [--idea "your own topic"] [--regenerate <draft-slug>]
+//   node scripts/blog/generate.mjs [--topic t07] [--idea "your own topic"] [--date 2026-10-02] [--regenerate <draft-slug>]
 import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { appendFileSync } from 'node:fs';
 import { readJson, writeJson, today, slugify, listDir, readPostMeta, words } from './lib.mjs';
@@ -24,9 +24,10 @@ const drafts = listDir('drafts').filter((f) => f.endsWith('.json')).map((f) => r
 
 // regenerate: free the old draft's topic and delete the draft
 const regen = arg('regenerate');
-let topic = null;
+let topic = null, carriedDate = null;
 if (regen) {
   const old = readJson(`drafts/${regen}.json`);
+  carriedDate = old?.pubDate || null;
   if (old) { topic = topics.find((t) => t.id === old.topicId); if (topic) { topic.status = 'unused'; topic.slug = null; } try { unlinkSync(`drafts/${regen}.json`); } catch {} }
 }
 const market = readJson('public/data/market.json', {});
@@ -91,8 +92,9 @@ photos.inline.slice(0, 2).forEach((_, i) => {
 body = parts.join('\n');
 
 const slug = slugify(post.slug || post.title);
+const pubDate = /^\d{4}-\d{2}-\d{2}$/.test(arg('date') || '') ? arg('date') : carriedDate;
 const draft = {
-  version: 1, slug, topicId: topic.id, created: today(), status: 'draft',
+  version: 1, slug, topicId: topic.id, created: today(), ...(pubDate ? { pubDate } : {}), status: 'draft',
   title: post.title.trim(), description: post.description.trim(), category: topic.category, keyword: topic.keyword,
   body, faq: post.faq, hero: photos.hero, inline: photos.inline.slice(0, 2), choices: photos.choices,
   checks: { words: words(body), linksChecked: links.checked, dropped: links.dropped, review, compliance: complianceIssues({ ...post, body: links.markdown }), dataPointsUsed: post.dataPointsUsed || [], model: MODEL, failedChecks: !!failed },

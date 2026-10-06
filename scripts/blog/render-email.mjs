@@ -28,7 +28,7 @@ export function approvalEmail(draft, links) {
 <div style="max-width:680px;margin:0 auto;padding:18px">
  <div style="background:#0A0A0A;color:#fff;border-radius:14px 14px 0 0;padding:16px 22px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">The 615 Agent · blog draft for your approval</div>
  <div style="background:#fff;padding:22px;border-radius:0 0 14px 14px">
-  <p style="margin:0 0 6px;color:#4F5966;font-size:13px">${esc(draft.category)} · keyword: ${esc(draft.keyword)} · ${draft.checks?.words ?? ''} words · will publish at /blog/${esc(draft.slug)}</p>
+  <p style="margin:0 0 6px;color:#4F5966;font-size:13px">${esc(draft.category)} · keyword: ${esc(draft.keyword)} · ${draft.checks?.words ?? ''} words · will publish at /blog/${esc(draft.slug)}${draft.pubDate ? ` · dated ${esc(draft.pubDate)}` : ''}</p>
   <div style="margin:10px 0 16px">${buttons}</div>
   ${blocked ? `<div style="background:#FDE2DC;color:#8A1F0B;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>This draft did not pass the Realtor-rules checks, so there is no Approve button.</b> Use EDIT to fix it or REGENERATE for a new draft.<br>${[...live.hard, ...(c.review && !c.review.ok ? c.review.issues : [])].map(esc).join('<br>')}</div>` : ''}
   ${soft.length ? `<div style="background:#FFF3C4;color:#6B5200;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>Please look at:</b><br>${soft.map(esc).join('<br>')}</div>` : ''}

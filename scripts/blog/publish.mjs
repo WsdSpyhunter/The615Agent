@@ -57,7 +57,7 @@ let body = draft.body.replace(/\{\{img:(\d)\}\}/g, (all, n) => {
 });
 
 const fm = [
-  '---', `title: ${q(draft.title)}`, `description: ${q(draft.description)}`, `pubDate: ${today()}`, `category: ${draft.category}`, `keyword: ${q(draft.keyword)}`,
+  '---', `title: ${q(draft.title)}`, `description: ${q(draft.description)}`, `pubDate: ${draft.pubDate || today()}`, `category: ${draft.category}`, `keyword: ${q(draft.keyword)}`,
   ...(heroPath ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.hero.alt)}`, `heroCredit: ${q(`${draft.hero.credit} on ${draft.hero.provider || 'stock'}`)}`, `heroCreditUrl: ${q(draft.hero.creditUrl)}`] : []),
   'faq:', ...draft.faq.flatMap((f) => [`  - q: ${q(f.q)}`, `    a: ${q(f.a)}`]), '---', '',
 ].join('\n');

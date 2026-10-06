@@ -28,7 +28,7 @@ export const user = (topic, ctx, extra = '') => `TOPIC: ${topic.idea}
 PRIMARY KEYWORD: ${topic.keyword}
 RELATED TERMS: ${topic.related.join(', ')}
 CATEGORY: ${topic.category}
-TODAY: ${new Date().toISOString().slice(0, 10)}
+TODAY: ${process.env.PUBDATE || new Date().toISOString().slice(0, 10)}
 
 GENERAL FACTS (vetted):
 ${ctx.evergreen.map((f) => `- ${f}`).join('\n')}
