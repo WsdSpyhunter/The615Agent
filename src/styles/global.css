@@ -349,7 +349,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 @media(max-width:600px){.brandstack{max-width:260px}}
 
 /* Market data page: the 615 Agent logo under the "How to read the rating" copy */
-.logo-card{background:var(--black);border-radius:24px;border-top:4px solid var(--blue);padding:30px 34px;box-shadow:var(--shadow);width:100%;max-width:300px;margin:56px auto 0}
+.logo-card{background:var(--black);border-radius:24px;border-top:4px solid var(--blue);padding:30px 34px;box-shadow:var(--shadow);width:100%;max-width:300px;margin:104px auto 0}
 .logo-card img{width:100%;height:auto;display:block}
 @media(max-width:900px){.logo-card{margin-top:36px}}
 
