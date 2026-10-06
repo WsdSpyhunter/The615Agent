@@ -7,12 +7,34 @@ import { site } from '../site.config';
     <p>One short email each month with prices, days on market and inventory for the I-65 corridor. Unsubscribe any time.</p>
   </div>
   <div>
-    <form class="row" action={`https://buttondown.com/api/emails/embed-subscribe/${site.buttondownUser}`} method="post" target="popupwindow" onsubmit={`window.open('https://buttondown.com/${site.buttondownUser}', 'popupwindow')`}>
+    <form class="row" action={`https://buttondown.com/api/emails/embed-subscribe/${site.buttondownUser}`} method="post" data-subscribe>
       <label class="sr" for="sub-email">Email address</label>
       <input id="sub-email" type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
       <input type="hidden" value="1" name="embed" />
       <button class="btn" type="submit">Subscribe</button>
     </form>
+    <p class="sub-msg" role="status" aria-live="polite" hidden></p>
     <small>Powered by Buttondown. We never share your email.</small>
   </div>
 </div>
+<script>
+  // Subscribes in place (no popup, no redirect to Buttondown's public page) and shows the result under the form.
+  document.querySelectorAll<HTMLFormElement>('form[data-subscribe]').forEach((form) => {
+    const msg = form.parentElement!.querySelector<HTMLElement>('.sub-msg')!;
+    const btn = form.querySelector<HTMLButtonElement>('button')!;
+    const say = (t: string) => { msg.textContent = t; msg.hidden = false; };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true; say('Subscribing...');
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form) as any) });
+        if (res.ok) { say('Almost done. Check your email and click the confirmation link to finish subscribing.'); form.reset(); }
+        else say('That email address did not look right. Please check it and try again.');
+      } catch { say('Sorry, that did not go through. Please try again in a moment.'); }
+      btn.disabled = false;
+    });
+  });
+</script>
+<style>
+  .sub-msg{margin:10px 0 0;font-weight:700}
+</style>
