@@ -116,6 +116,7 @@ section.s{padding-block:76px}
 
 /* two paths */
 .paths{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(min-width:721px){.paths{gap:64px}}
 .path{border:1px solid #3A414B;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;transition:transform .2s;background:var(--black);color:#fff}
 .path:hover{transform:translateY(-3px)}
 .path.light{background:#EEF0F2;border-color:#EEF0F2;color:var(--fg)}
