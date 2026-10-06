@@ -1,0 +1,14 @@
+name: Buttondown check
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          K: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          get(){ curl -s -H "Authorization: Token $K" "https://api.buttondown.com/v1/$1"; }
+          echo "== newsletters"; get newsletters | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{const d=JSON.parse(s);for(const n of d.results||[])console.log(JSON.stringify({username:n.username,name:n.name,status:n.status,email_domain:n.email_domain,from:n.from_name||null,created:n.creation_date}));if(!d.results)console.log(s.slice(0,400))}catch{console.log(s.slice(0,400))}})"
+          echo "== subscribers (latest 5)"; get "subscribers?ordering=-creation_date" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{const d=JSON.parse(s);console.log('count',d.count);for(const x of (d.results||[]).slice(0,5))console.log(JSON.stringify({email:x.email_address,type:x.type,created:x.creation_date,source:x.source,notes:(x.notes||'').slice(0,80)}));if(!d.results)console.log(s.slice(0,400))}catch{console.log(s.slice(0,400))}})"
