@@ -36,9 +36,34 @@ export type MarketData = {
 // Old single-measure fallback: Seller's market under 4 months of supply, balanced 4 to 6, buyer's over 6.
 export const classify = (m: number): 'hot' | 'mid' | 'cold' => (m < 4 ? 'hot' : m <= 6 ? 'mid' : 'cold');
 export const label = (m: number) => (m < 4 ? "Seller's market" : m <= 6 ? 'Balanced market' : "Buyer's market");
-// Three tiers. Flame (flickering): a confirmed seller's or buyer's market, which is active either way. Thermometer (lukewarm, still): a market leaning
-// one way. Snowflake (cold): balanced, meaning nothing is moving decisively.
-const kindOf = (level: string): 'hot' | 'mid' | 'cold' => (level === 'sellers' || level === 'buyers' ? 'hot' : level === 'seller-leaning' || level === 'buyer-leaning' ? 'mid' : 'cold');
+// Market SPEED (not direction): how fast homes are moving. 0 = cold, stale and slow; 1 = hot and moving fast. It is independent of the
+// seller's/buyer's rating, so a fast buyer's market or a stalled seller's market shows what is really happening. Inputs are published numbers:
+// days on market (20 days or less is hottest, 80 or more coldest), sale-to-list (101% hottest, 96% or less coldest) and months of supply
+// (2 or less hottest, 7 or more coldest), weighted 40/30/30. A city can supply its own `speed` (0 to 1) to override.
+const scale = (v: number, cold: number, hot: number) => Math.max(0, Math.min(1, (v - cold) / (hot - cold)));
+export const speedScore = (c: MarketCity & { speed?: number | null }): number | null => {
+  if (typeof c.speed === 'number') return Math.max(0, Math.min(1, c.speed));
+  const parts: [number, number][] = [];
+  if (c.dom != null) parts.push([scale(c.dom, 80, 20), 0.4]);
+  if (c.saleToList != null) parts.push([scale(c.saleToList, 96, 101), 0.3]);
+  if (c.monthsSupply != null) parts.push([scale(c.monthsSupply, 7, 2), 0.3]);
+  if (!parts.length) return null;
+  const w = parts.reduce((a, [, x]) => a + x, 0);
+  return parts.reduce((a, [v, x]) => a + v * x, 0) / w;
+};
+// Cold blue -> pale ice -> gold -> orange -> red, blended smoothly so the color follows the score.
+const STOPS: [number, [number, number, number]][] = [[0, [58, 134, 255]], [0.3, [150, 205, 255]], [0.42, [232, 222, 190]], [0.55, [240, 185, 59]], [0.75, [255, 138, 61]], [1, [255, 69, 40]]];
+export const speedColor = (t: number): string => {
+  for (let i = 1; i < STOPS.length; i++) {
+    if (t <= STOPS[i][0]) {
+      const [t0, a] = STOPS[i - 1], [t1, b] = STOPS[i], f = (t - t0) / (t1 - t0);
+      return `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * f)).join(',')})`;
+    }
+  }
+  return `rgb(${STOPS[STOPS.length - 1][1].join(',')})`;
+};
+// Icon anchors: flame (flickering) when clearly hot, snowflake (spinning) when clearly cold, thermometer between.
+const kindOfSpeed = (t: number): 'hot' | 'mid' | 'cold' => (t >= 0.65 ? 'hot' : t <= 0.35 ? 'cold' : 'mid');
 
 const ICON = {
   hot: '<defs><linearGradient id="tpa-fg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E0300A"/><stop offset=".6" stop-color="#FF6A1F"/><stop offset="1" stop-color="#FFA24D"/></linearGradient><linearGradient id="tpa-ig" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#FFF1B8"/></linearGradient></defs><g class="tpa-fl"><path d="M12.6 1.8c.5 3.3 2.8 4.8 4.5 7.1 1.3 1.8 2 3.5 2 5.4a7.1 7.1 0 0 1-14.2 0c0-2.4 1.1-4.1 2.6-5.4.3 1.7 1 2.7 2.1 3.2-.4-3.6.9-7.4 3-10.3z" fill="url(#tpa-fg)"/></g><g class="tpa-fl2"><path d="M12 21.6a3.9 3.9 0 0 1-3.9-3.9c0-2 1.5-3.2 2.6-4.7.5-.7.8-1.4.9-2.3 1.9 1.6 4.3 3.4 4.3 7a3.9 3.9 0 0 1-3.9 3.9z" fill="url(#tpa-ig)"/></g>',
@@ -114,10 +139,12 @@ export class TpaMarketTemperature extends HTMLElement {
     const d = this.data!, c = d.cities[this.slug], T = c.temperature;
     const m = c.monthsSupply;
     const level = T ? T.level : m < 4 ? 'sellers' : m <= 6 ? 'balanced' : 'buyers';
-    const st = T ? kindOf(T.level) : classify(m);
+    const sp = speedScore(c as MarketCity & { speed?: number | null });
+    const st = sp != null ? kindOfSpeed(sp) : classify(m);
+    const tone = sp != null ? speedColor(sp) : '';
     const q = <E extends Element>(s: string) => this.querySelector<E>(s)!;
-    const title = q('.tpa-mt-title'); if (title) title.className = 'tpa-mt-title tpa-' + st;
-    const icon = q('.tpa-mt-icon'); if (icon) { icon.setAttribute('class', 'tpa-mt-icon tpa-' + st); icon.innerHTML = ICON[st]; }
+    const title = q('.tpa-mt-title'); if (title) { title.className = 'tpa-mt-title tpa-' + st; title.style.color = tone; }
+    const icon = q('.tpa-mt-icon'); if (icon) { icon.setAttribute('class', 'tpa-mt-icon tpa-' + st); (icon as unknown as HTMLElement).style.color = tone; icon.innerHTML = ICON[st]; }
     q('.tpa-mt-gauge').innerHTML = this.gauge(T ? T.score : null, m);
     const verdictText = T ? T.label : label(m);
     const tilt = T?.tilt === 'buyers' ? 'Slightly toward buyers' : T?.tilt === 'sellers' ? 'Slightly toward sellers' : '';

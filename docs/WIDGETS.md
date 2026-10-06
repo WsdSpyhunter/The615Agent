@@ -4,7 +4,7 @@ The interactive tools on the site are built as **custom elements** (web componen
 
 ```
 src/widgets/
-  market-temperature.ts   <tpa-market-temperature>   gauge, flame / snowflake, city selector, stats
+  market-temperature.ts   <tpa-market-temperature>   gauge (direction), speed-colored icon (flame / thermometer / snowflake), city selector, stats
   mortgage-calculator.ts  <tpa-mortgage-calculator>  payment, breakdown, amortization chart
   checklist.ts            <tpa-checklist>            tick-off checklists with saved progress
   testimonials.ts         <tpa-testimonials>         auto-scrolling review cards
