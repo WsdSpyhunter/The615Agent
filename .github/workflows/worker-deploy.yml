@@ -33,7 +33,13 @@ jobs:
         run: |
           API="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain"
           SUB=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$API" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).result.subdomain||'')}catch{console.log('')}})")
-          if [ -z "$SUB" ]; then curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" --data '{"subdomain":"the615agent"}' "$API" >/dev/null; SUB=the615agent; fi
+          if [ -z "$SUB" ]; then
+            for CAND in the615agent the615agent-blog scottdavis-615 the615agent-realty; do
+              OK=$(curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" --data "{\"subdomain\":\"$CAND\"}" "$API" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{try{console.log(JSON.parse(s).success)}catch{console.log(false)}})")
+              if [ "$OK" = "true" ]; then SUB=$CAND; break; fi
+            done
+          fi
+          if [ -z "$SUB" ]; then echo "Could not create a workers.dev subdomain. Open https://dash.cloudflare.com/?to=/:account/workers/workers-and-pages once to create it, then re-run this workflow."; exit 1; fi
           echo "WORKER_URL will be: https://the615agent-blog.$SUB.workers.dev"
       - name: Create the one-time-link storage (if it does not exist)
         if: steps.ready.outputs.ready == 'true'
