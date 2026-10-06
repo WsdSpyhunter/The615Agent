@@ -328,5 +328,5 @@ footer a:hover{opacity:1;text-decoration:underline}
 }
 
 /* Home contact section: Scott pointing at the form */
-.info .pointing{width:100%;max-width:340px;height:auto;margin-top:18px;justify-self:start}
-@media(max-width:600px){.info .pointing{max-width:260px;justify-self:center}}
+.info .pointing{width:100%;max-width:290px;height:auto;margin-top:18px;justify-self:start}
+@media(max-width:600px){.info .pointing{max-width:230px;justify-self:center}}
