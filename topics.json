@@ -968,6 +968,30 @@
       "custom": true,
       "slug": "buying-home-with-well-and-septic-tennessee",
       "usedOn": "2026-10-06"
+    },
+    {
+      "id": "c02",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "How to get pre-qualified and find a good mortgage lender: the difference between pre-qualification and pre-approval, why to get Loan Estimates and rate quotes from multiple lenders and compare them, asking a trusted real estate agent for lender referrals (while remembering the buyer chooses their ow",
+      "keyword": "pre-qualification vs pre-approval mortgage lender",
+      "related": [
+        "compare Loan Estimates multiple lenders",
+        "mortgage lender referrals from agent",
+        "how to choose a mortgage lender"
+      ],
+      "linkTags": [
+        "buyers",
+        "pre-approval",
+        "mortgage",
+        "financing",
+        "first-time buyers",
+        "closing disclosure"
+      ],
+      "status": "draft",
+      "custom": true,
+      "slug": "pre-qualification-vs-pre-approval-mortgage-lender",
+      "usedOn": "2026-10-06"
     }
   ]
 }
