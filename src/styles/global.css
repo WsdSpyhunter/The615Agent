@@ -298,3 +298,25 @@ footer a:hover{opacity:1;text-decoration:underline}
   .mqmask{overflow-x:auto}
   *{transition:none!important}
 }
+
+/* Phones only (600px and narrower): centered layouts requested for the home page, footer brand block and Contact page. Desktop and tablet are untouched. */
+@media(max-width:600px){
+  .hero .body{text-align:center}
+  .hero .agentrow{justify-content:center}
+  .hero .eyebrow{display:flex;justify-content:center;text-align:center}
+  .hero .eyebrow::before{display:none}
+  .hero .lead{margin-inline:auto}
+  .hero .cta-row{justify-content:center}
+  .path{align-items:center;text-align:center}
+  #market .tpa-mt-pills{justify-content:center}
+  #market .tpa-mt-verdict{text-align:center}
+  #market .tpa-mt-chips{justify-content:center}
+  .fgrid > div:first-child{text-align:center}
+  .fgrid .flogo,.fgrid .hive{margin-inline:auto}
+  .fgrid .socials{justify-content:center}
+  .phead.center-m .wrap{text-align:center}
+  .phead.center-m .eyebrow{justify-content:center}
+  .phead.center-m h1,.phead.center-m .lead{margin-inline:auto}
+  .contact .info{justify-items:center;text-align:center}
+  .contact .info .line{justify-content:center}
+}

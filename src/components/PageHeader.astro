@@ -1,7 +1,7 @@
 ---
-const { eyebrow, title, lead } = Astro.props;
+const { eyebrow, title, lead, center } = Astro.props;
 ---
-<section class="phead">
+<section class={center ? 'phead center-m' : 'phead'}>
   <div class="wrap">
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}
     <h1 set:html={title} />
