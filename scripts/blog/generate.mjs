@@ -7,6 +7,7 @@ import { readJson, writeJson, today, slugify, listDir, readPostMeta, words } fro
 import { pickTopic } from './topics.mjs';
 import { buildContext } from './context.mjs';
 import { system, user, reviewSystem } from './prompt.mjs';
+import { complianceIssues } from './compliance.mjs';
 import { ask, parseJson, MODEL } from './claude.mjs';
 import { validatePost } from './validate.mjs';
 import { resolveLinks } from './links.mjs';
@@ -82,7 +83,7 @@ const draft = {
   version: 1, slug, topicId: topic.id, created: today(), status: 'draft',
   title: post.title.trim(), description: post.description.trim(), category: topic.category, keyword: topic.keyword,
   body, faq: post.faq, hero: photos.hero, inline: photos.inline.slice(0, 2), choices: photos.choices,
-  checks: { words: words(body), linksChecked: links.checked, dropped: links.dropped, review, dataPointsUsed: post.dataPointsUsed || [], model: MODEL, failedChecks: !!failed },
+  checks: { words: words(body), linksChecked: links.checked, dropped: links.dropped, review, compliance: complianceIssues({ ...post, body: links.markdown }), dataPointsUsed: post.dataPointsUsed || [], model: MODEL, failedChecks: !!failed },
 };
 if (existsSync(`drafts/${slug}.json`)) draft.slug = `${slug}-${today()}`;
 writeJson(`drafts/${draft.slug}.json`, draft);

@@ -1,5 +1,6 @@
 import { words, numbersIn } from './lib.mjs';
 import { BANNED } from './prompt.mjs';
+import { complianceIssues } from './compliance.mjs';
 
 const STEERING = /\b(good|great|best|top|bad|worst|safe|safest|dangerous|desirable|undesirable|prestigious|exclusive|upscale|ghetto|sketchy)\s+(school|schools|neighborhood|neighborhoods|area|areas|community|communities|district|districts)\b|\b(crime|crime rate)\b|\bfamily[- ]friendly\b|\bpeople like you\b|\bdemographic/i;
 
@@ -18,6 +19,9 @@ export function validatePost(post, ctx) {
   for (const b of BANNED) if (lower.includes(b)) issues.push(`Uses the banned phrase "${b}".`);
   if (/!\s/.test(body) && /\w!/.test(body)) issues.push('Uses an exclamation mark.');
   if (STEERING.test(body + ' ' + (post.faq || []).map((f) => f.q + ' ' + f.a).join(' '))) issues.push('Contains language that could read as steering (Fair Housing).');
+
+  issues.push(...complianceIssues(post).hard);
+  if (/\]\(\s*\[|\]\(\s*\{\{/.test(body)) issues.push('Link tokens are wrapped in markdown link syntax; use only {{link:ID|anchor text}}.');
 
   const tokens = [...body.matchAll(/\{\{link:([a-z0-9-]+)\|([^}]+)\}\}/g)];
   const outIds = new Set(ctx.outbound.map((l) => l.id)), inIds = new Set(ctx.inbound.map((l) => l.id));

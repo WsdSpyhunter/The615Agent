@@ -34,7 +34,7 @@ Write down your must-haves, your nice-to-haves, and your dealbreakers. Then rese
 
 From the day you apply through closing, avoid opening new credit, financing furniture, or changing jobs. Lenders look at your finances again before closing, and surprises can delay or derail a loan.
 
-## Find a Realtor you trust
+## Find an agent you trust
 
 Sign a buyer representation agreement with someone who will explain the process and answer every question, big or small. Ask how they communicate, how they handle negotiations, and what happens at each stage.
 

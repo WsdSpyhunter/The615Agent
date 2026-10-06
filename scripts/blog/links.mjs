@@ -10,7 +10,13 @@ export async function checkUrl(url) {
   } catch { return 0; }
 }
 
+/** Models sometimes wrap a token in markdown link syntax, which would produce [text]([text](url)). Unwrap those first. */
+export const unwrapTokens = (body) => body
+  .replace(/\[[^\]]*\]\(\s*(\{\{link:[a-z0-9-]+\|[^}]+\}\})\s*\)/g, '$1')
+  .replace(/\[(\{\{link:[a-z0-9-]+\|[^}]+\}\})\]/g, '$1');
+
 export async function resolveLinks(body, ctx) {
+  body = unwrapTokens(body);
   const out = new Map(ctx.outbound.map((l) => [l.id, l])), inn = new Map(ctx.inbound.map((l) => [l.id, l]));
   const checked = [], dropped = [];
   const cache = new Map();

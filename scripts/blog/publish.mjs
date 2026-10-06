@@ -5,6 +5,8 @@ import sharp from 'sharp';
 import { readJson, writeJson, today, SITE } from './lib.mjs';
 import { confirmEmail } from './render-email.mjs';
 import { sendEmail, emailConfigured } from './email.mjs';
+import { complianceIssues } from './compliance.mjs';
+import { unwrapTokens } from './links.mjs';
 
 const [cmd, slug] = process.argv.slice(2);
 const log = console.log;
@@ -17,6 +19,19 @@ if (cmd === 'reject') {
   unlinkSync(`drafts/${slug}.json`);
   if (topic) topic.status = 'rejected';
   writeJson('topics.json', topicsFile); log(`Rejected ${slug}.`); process.exit(0);
+}
+
+// Final gate: runs on the text as it is NOW, including any edits made in the editor. Hard problems stop the publish.
+draft.body = unwrapTokens(draft.body).replace(/\[([^\]]+)\]\(\[[^\]]+\]\(([^)]+)\)\)/g, '[$1]($2)');
+const gate = complianceIssues(draft);
+if (gate.hard.length) {
+  log(`NOT published. Realtor-rules checks failed:\n - ${gate.hard.join('\n - ')}`);
+  if (emailConfigured()) {
+    const html = `<div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;padding:20px"><h2>Not published: ${draft.title.replace(/</g, '&lt;')}</h2><p>The Realtor-rules checks found problems, so nothing went live. Open the draft's Edit link from the proof email (or ask for a Regenerate) and fix:</p><ul>${gate.hard.map((h) => `<li>${h.replace(/</g, '&lt;')}</li>`).join('')}</ul></div>`;
+    try { await sendEmail({ to: process.env.APPROVAL_EMAIL || 'scott@hivenashville.com', subject: `NOT published (rules check): ${draft.title}`, html }); } catch (e) { log('Email failed:', e.message); }
+  }
+  writeJson(`drafts/${slug}.json`, draft);
+  process.exit(0);
 }
 
 async function download(img, name, width, height) {

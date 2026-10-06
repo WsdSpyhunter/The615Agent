@@ -20,7 +20,7 @@ faq:
 ---
 Most people shopping for a home look at the price first. The rate is what decides how that price feels each month. A mortgage rate is the cost of borrowing, and the payment is where you actually feel it.
 
-Here is how the rate connects to your payment, and three examples you can run yourself in the [mortgage calculator]([mortgage calculator](/mortgage-calculator)). I am giving you the inputs, not printed payment figures, because your own numbers will differ and the calculator does the math better than I can on a page.
+Here is how the rate connects to your payment, and three examples you can run yourself in the [mortgage calculator](/mortgage-calculator). I am giving you the inputs, not printed payment figures, because your own numbers will differ and the calculator does the math better than I can on a page.
 
 ## Where the rate stands
 
@@ -53,7 +53,7 @@ Each example uses a real median sale price from our data files and the 7.28% rat
 
 **Example one: the Nashville metro median.** Redfin reports a median sale price of $461,491 for the Nashville metro area over the four weeks ending 2026-09-27. Enter that price, a 20 percent down payment, a 30-year term and 7.28%. Note the principal and interest figure.
 
-**Example two: same price, smaller down payment.** Use the same $461,491 price and rate, but change the down payment to 3.5 percent, the minimum on an FHA loan. Compare the new payment against example one. Then remember that a smaller down payment usually means mortgage insurance on top, which a basic calculation may not show. The [HUD buying a home page]([HUD's guide to buying a home](https://www.hud.gov/topics/buying_a_home)) explains how FHA loans work.
+**Example two: same price, smaller down payment.** Use the same $461,491 price and rate, but change the down payment to 3.5 percent, the minimum on an FHA loan. Compare the new payment against example one. Then remember that a smaller down payment usually means mortgage insurance on top, which a basic calculation may not show. The [HUD buying a home page](https://www.hud.gov/topics/buying_a_home) explains how FHA loans work.
 
 **Example three: a higher price point.** Franklin's median sale price was $862,929 as of 2026-08-31, per Redfin's rolling three-month data. Enter that price at 20 percent down and 7.28%. Then compare it with Spring Hill, where the median was $508,284 for the same period. The gap between the two results shows how much price drives the payment at a fixed rate.
 
@@ -69,13 +69,13 @@ The calculator is most useful when you move one input and leave the rest alone. 
 
 Two things often surprise people. First, the rate affects the payment on the same price, so a home that fit a budget at one rate may not at another. Second, price and rate are separate levers. Neither one tells the whole story.
 
-If you are a veteran, test the numbers separately. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. The [VA home loans page]([VA home loan information](https://www.va.gov/housing-assistance/home-loans/)) lays out the details. For state programs that may help with costs, the [Tennessee Housing Development Agency]([THDA](https://www.thda.org)) is the official source.
+If you are a veteran, test the numbers separately. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. The [VA home loans page](https://www.va.gov/housing-assistance/home-loans/) lays out the details. For state programs that may help with costs, the [Tennessee Housing Development Agency](https://www.thda.org) is the official source.
 
 ## What the local market adds
 
 The rate is only half the picture. Redfin's figures for the Nashville metro area, covering four weeks ending 2026-09-27, show a median of 68 days on market, homes selling at 97.8% of list price and 5.6 months of supply. Months of supply is how long it would take to sell every active listing at the current pace of sales. Over 6 months favors buyers, 4 to 6 months is balanced, and under 4 months favors sellers, so 5.6 sits in the balanced range.
 
-That sale-to-list figure matters when you run examples. Homes in this data are closing a little under the asking price on average. Your own result depends on the specific home and the negotiation, so use the list price for planning, then update your numbers as the real price takes shape. You can browse more local numbers on our [market data page]([market data for the I-65 corridor](/market-data)), and the source figures are available at the [Redfin Data Center]([Redfin Data Center](https://www.redfin.com/news/data-center/)).
+That sale-to-list figure matters when you run examples. Homes in this data are closing a little under the asking price on average. Your own result depends on the specific home and the negotiation, so use the list price for planning, then update your numbers as the real price takes shape. You can browse more local numbers on our [market data page](/market-data), and the source figures are available at the [Redfin Data Center](https://www.redfin.com/news/data-center/).
 
 ## Make the numbers real before you rely on them
 
@@ -89,4 +89,4 @@ I also wrote a separate post, Mortgage Rates and Monthly Payment: What 7.28% Loo
 
 ## Next step
 
-Run the three examples, then swap in a price you are actually considering. If you want help making sense of the results, fill out the [Get Matched form]([Get Matched form](/buy#form)) and Scott will schedule a call. You will be talking within the next 48 hours. If you have a general question first, you can [contact Scott]([reach out to Scott](/contact)) directly.
+Run the three examples, then swap in a price you are actually considering. If you want help making sense of the results, fill out the [Get Matched form](/buy#form) and Scott will schedule a call. You will be talking within the next 48 hours. If you have a general question first, you can [contact Scott](/contact) directly.
