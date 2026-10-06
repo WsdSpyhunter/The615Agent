@@ -5,9 +5,9 @@ pubDate: 2026-10-06
 category: Buyers
 keyword: "buying home with well and septic Tennessee"
 heroImage: /img/blog/buying-home-with-well-and-septic-tennessee/hero.jpg
-heroAlt: "Photo: Giraffes, heads, ossicones, giraffe heads, artiodactyl"
-heroCredit: "birder62 on Pixabay"
-heroCreditUrl: "https://pixabay.com/users/birder62-1326477/"
+heroAlt: "Photo: Well, nature, the old well, countryside, history"
+heroCredit: "reijotelaranta on Pixabay"
+heroCreditUrl: "https://pixabay.com/users/reijotelaranta-6656376/"
 faq:
   - q: "Do I need a separate inspection for a septic system?"
     a: "A standard home inspection usually does not cover the septic system in depth, so buyers often arrange a dedicated septic inspection. Ask your inspector what is and is not included."
@@ -26,9 +26,9 @@ None of them are complicated, but they take time and they should be planned for 
 
 ## Why a well and septic system change the process
 
-![Photo: Microscope, slide, research, close-up, test](/img/blog/buying-home-with-well-and-septic-tennessee/inline-1.jpg)
+![Photo: House, home, facade, exterior, stone house](/img/blog/buying-home-with-well-and-septic-tennessee/inline-1.jpg)
 
-*Photo by [PublicDomainPictures](https://pixabay.com/users/PublicDomainPictures-14/) on [Pixabay](https://pixabay.com)*
+*Photo by [FrankyFromGermany](https://pixabay.com/users/FrankyFromGermany-64960/) on [Pixabay](https://pixabay.com)*
 
 With public utilities, a city or utility district maintains the system and you pay a monthly bill. With a well and septic system, the equipment is on the property and the upkeep is the owner's responsibility.
 
@@ -53,9 +53,9 @@ You may also hear the term perk test, which is a soil evaluation tied to how wel
 
 ## Well water: testing before you commit
 
-![Photo: Field, road, rural, country road, rural road](/img/blog/buying-home-with-well-and-septic-tennessee/inline-2.jpg)
+![Photo: Winter, snow scene, house, home, brick](/img/blog/buying-home-with-well-and-septic-tennessee/inline-2.jpg)
 
-*Photo by [wobogre](https://pixabay.com/users/wobogre-50016/) on [Pixabay](https://pixabay.com)*
+*Photo by [JamesDeMers](https://pixabay.com/users/JamesDeMers-3416/) on [Pixabay](https://pixabay.com)*
 
 With a private well, there is no utility testing the water for you. Well water testing during a home purchase is how you learn what is actually coming out of the tap.
 
