@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "slug": "mortgage-rates-and-monthly-payment-calculator-examples",
+  "topicId": "t49",
+  "created": "2026-10-06",
+  "status": "draft",
+  "title": "Mortgage Rates and Monthly Payment: What 7.28% Looks Like",
+  "description": "See how the current 30-year fixed rate of 7.28% shapes your monthly payment, and how to run your own numbers in a mortgage calculator.",
+  "category": "Market Update",
+  "keyword": "mortgage rates and monthly payment",
+  "body": "The rate you see in the headlines is not your payment. It is one input. The number that lands in your budget each month depends on the price, your down payment, the loan type, and a few costs that have nothing to do with the rate.\n\nThis post walks through how those pieces fit together and how to use the [mortgage calculator](/mortgage-calculator) on this site to test real scenarios before you talk to a lender.\n\n## Where rates stand right now\n\n{{img:0}}\n\nThe 30-year fixed mortgage rate was 7.28% for the week of 2026-10-01, according to Freddie Mac via FRED, the Federal Reserve Bank of St. Louis. You can check the latest weekly reading yourself on the Freddie Mac rate page at FRED.\n\nTwo things to keep in mind. First, that figure is a national weekly average. The rate a lender quotes you can differ based on your credit, your down payment, the loan type and the day you lock. Second, it changes weekly, so any example built on it is a snapshot, not a forecast.\n\n## The four pieces of a monthly payment\n\nMost people say \"payment\" and mean one number. A lender usually means a bundle of four things:\n\n- **Principal and interest.** This is the part the rate and loan amount drive directly. On a 30-year fixed loan it stays the same for the life of the loan.\n- **Property taxes.** These depend on the exact address. Check them with the county for any home you are serious about.\n- **Homeowner's insurance.** Quotes vary by home and by carrier.\n- **Mortgage insurance, if it applies.** Private mortgage insurance is typically required on conventional loans when the down payment is under 20 percent.\n\nLoan type matters here too. FHA loans allow a down payment as low as 3.5 percent. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. The [VA home loans page](https://www.va.gov/housing-assistance/home-loans/) and the [HUD guide to buying a home](https://www.hud.gov/topics/buying_a_home) explain the basics of each program.\n\nThe calculator on this site lets you see how these pieces stack up. Treat the result as an estimate, and ask a lender for a Loan Estimate for your actual numbers.\n\n## Three ways to use the calculator with real local prices\n\n{{img:1}}\n\nI am not going to hand you a single payment figure, because the right number depends on your inputs. Instead, here are three scenarios worth running yourself, using the current 7.28% rate as your starting point.\n\n**Scenario one: the metro median.** For the four weeks ending 2026-09-27, the Nashville metro area had a median sale price of $461,491, according to Redfin. Enter that price, 7.28% as the rate, and a 30-year term. Then change only the down payment and watch what happens to the monthly principal and interest. This shows you how much of the payment is driven by how much you borrow.\n\n**Scenario two: a lower-priced city in the corridor.** Spring Hill had a median sale price of $508,284 as of 2026-08-31, down 4.1% from a year earlier (Redfin, rolling 3 months). Spring Hill includes parts of both Williamson and Maury counties, so taxes and county services can differ by address. Run the same price twice, once with a smaller down payment and once with a larger one, and note where mortgage insurance might enter the picture.\n\n**Scenario three: a higher price point.** Franklin had a median sale price of $862,929 as of 2026-08-31, up 12.4% from a year earlier (Redfin, rolling 3 months). At a price like this, even a small change in the rate moves the monthly payment by a noticeable amount in dollars. Try the same price at a slightly lower and slightly higher rate to see the spread.\n\nThe lesson from all three is simple. Price and rate both matter, and the calculator shows you which one is doing more of the work for your situation.\n\n## What the market numbers add to the picture\n\nThe payment is only half the story. The other half is how the market is behaving. In the Nashville metro, the median home spent 68 days on the market and sold at 97.8% of list price, with 5.6 months of supply (Redfin, four weeks ending 2026-09-27). Months of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers. At 5.6, the metro sits in the balanced range.\n\nIt also means the typical home sold for a little under its list price. Whether that matters for your purchase depends on the specific home and its price history, which is something we can look at together. For more city-level numbers, see the [market data for the I-65 corridor](/market-data), or browse the raw data at the [Redfin Data Center](https://www.redfin.com/news/data-center/).\n\n## Costs that sit outside the monthly payment\n\nA calculator that only shows monthly cost can leave out cash you need up front. A few reminders:\n\n- Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs.\n- Pre-approval is different from pre-qualification. Pre-approval means a lender has reviewed your documents, so it gives you a firmer picture of what you can borrow.\n- Avoid opening new credit, financing furniture, or changing jobs from the time you apply for a loan through closing.\n- Your lender must send the Closing Disclosure at least 3 business days before closing. Compare it with your Loan Estimate and ask questions about anything that changed.\n\nIf you want help finding assistance programs for first-time buyers in the state, the [Tennessee Housing Development Agency](https://www.thda.org) is the official place to start. I can also point you to more options on our [local resources](/resources) page.\n\n## Next steps\n\nRun the calculator with two or three prices and a few down payment amounts. Write down the monthly range that feels workable, then talk to a lender about how a real quote compares. I am not a lender, so I cannot give lending advice, but I can help you match that range to homes in Williamson County and nearby areas.\n\nWhen you are ready, fill out the [Get Matched form](/buy#form) and I will schedule a call. You will be talking with me within the next 48 hours. If you would rather ask a question first, you can [contact me directly](/contact).",
+  "faq": [
+    {
+      "q": "What is the current 30-year fixed mortgage rate?",
+      "a": "The 30-year fixed mortgage rate was 7.28% for the week of 2026-10-01, according to Freddie Mac via FRED. The rate you are offered can differ based on your credit, down payment and loan type."
+    },
+    {
+      "q": "What is included in a monthly mortgage payment?",
+      "a": "A monthly payment usually includes principal and interest, property taxes and homeowner's insurance. Private mortgage insurance may also apply on a conventional loan when the down payment is under 20 percent."
+    },
+    {
+      "q": "How much down payment do I need?",
+      "a": "It depends on the loan. FHA loans allow a down payment as low as 3.5 percent, and VA loans typically require no down payment, though a funding fee may apply. A lender can tell you what fits your situation."
+    },
+    {
+      "q": "Do closing costs affect my monthly payment?",
+      "a": "Closing costs are paid up front rather than monthly. They typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs."
+    },
+    {
+      "q": "Are property taxes the same everywhere in Williamson County?",
+      "a": "No. Property taxes depend on the exact address, so verify them with the county for any home you are serious about. Spring Hill includes parts of both Williamson and Maury counties, so details can differ there."
+    }
+  ],
+  "hero": {
+    "provider": "Pixabay",
+    "id": 6688945,
+    "url": "https://pixabay.com/get/g4dc9a45fa2be2c34d09dcf8a0a4dcb78f4c44fec4db25c02990935559f86166c37c9998613a1903aeb6b0fcc251ee8811569c32240752a9adf12b7e86eaacefd_1280.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+    "credit": "OleksandrPidvalnyi",
+    "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+    "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+    "home": "https://pixabay.com"
+  },
+  "inline": [
+    {
+      "provider": "Pixabay",
+      "id": 3370178,
+      "url": "https://pixabay.com/get/g97c3ee9a20f4e68b14f16dd891673c2a3baf176716f9d86030260dc411272b13addbcf9745ea0dd0cb063b446a731373cdd31309e89e160d08ae9d37d70b5579_1280.jpg",
+      "width": 5500,
+      "height": 3667,
+      "alt": "Photo: Home, couple, mortgage, real estate, moving",
+      "credit": "Tumisu",
+      "creditUrl": "https://pixabay.com/users/Tumisu-148124/",
+      "page": "https://pixabay.com/photos/home-couple-mortgage-real-estate-3370178/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1682300,
+      "url": "https://pixabay.com/get/g28884dbb2c555be1219eda102ba7f7f0204c180074d3696c5839d28dcf8821524dea40ebc44672698eaeef8bab5861db8b9aecce73fb70069300bb23f29d07bf_1280.jpg",
+      "width": 2996,
+      "height": 2235,
+      "alt": "Photo: Home, for sale, buy, sell, mortgage",
+      "credit": "paulbr75",
+      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
+      "page": "https://pixabay.com/photos/home-for-sale-buy-sell-mortgage-1682300/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "choices": [
+    {
+      "provider": "Pixabay",
+      "id": 6688945,
+      "url": "https://pixabay.com/get/g4dc9a45fa2be2c34d09dcf8a0a4dcb78f4c44fec4db25c02990935559f86166c37c9998613a1903aeb6b0fcc251ee8811569c32240752a9adf12b7e86eaacefd_1280.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+      "credit": "OleksandrPidvalnyi",
+      "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+      "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 2811703,
+      "url": "https://pixabay.com/get/g16153cad48260a11916f696ce9b6a36538a7218fc2b339e496e1dcf79e264d4c7fec46b4044a32ddf19663f1554bf83946553564d0bfb81b4b6387a839e3f6ad_1280.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Calculator, computer, how to calculate, calculate, office",
+      "credit": "betexion",
+      "creditUrl": "https://pixabay.com/users/betexion-6116769/",
+      "page": "https://pixabay.com/photos/calculator-computer-how-to-calculate-2811703/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 2511065,
+      "url": "https://pixabay.com/get/g1999fe2989a8c7237c314b5645fba53d3f2f7cfa78e324fe6e2d7a8639d15132636cfe4522b110027ddbb68d21ae436cdd9fcb880281df6c0749e840e88d0bf9_1280.jpg",
+      "width": 4032,
+      "height": 3024,
+      "alt": "Photo: Coffee, glasses, open book, study, desk",
+      "credit": "hudsoncrafted",
+      "creditUrl": "https://pixabay.com/users/hudsoncrafted-5201554/",
+      "page": "https://pixabay.com/photos/coffee-glasses-open-book-study-2511065/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 861325,
+      "url": "https://pixabay.com/get/g1acb3f9eaba3620f0e8ab9c3c46e61f3192b5fb79f05966e14f4c65114e70c404856ad5717d1a33a24b021ec6bb56912532a34576a28af2c362936c48abe0b7d_1280.jpg",
+      "width": 4425,
+      "height": 3319,
+      "alt": "Photo: Business, calculator, calculation, assurance, finances",
+      "credit": "Edar",
+      "creditUrl": "https://pixabay.com/users/Edar-609103/",
+      "page": "https://pixabay.com/photos/business-calculator-calculation-861325/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 3370178,
+      "url": "https://pixabay.com/get/g97c3ee9a20f4e68b14f16dd891673c2a3baf176716f9d86030260dc411272b13addbcf9745ea0dd0cb063b446a731373cdd31309e89e160d08ae9d37d70b5579_1280.jpg",
+      "width": 5500,
+      "height": 3667,
+      "alt": "Photo: Home, couple, mortgage, real estate, moving",
+      "credit": "Tumisu",
+      "creditUrl": "https://pixabay.com/users/Tumisu-148124/",
+      "page": "https://pixabay.com/photos/home-couple-mortgage-real-estate-3370178/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 440782,
+      "url": "https://pixabay.com/get/g772fa27efcdd1fe2301075c99eee9481dec14c7f8a7737118708ca3d0d33d68288b718c27670639910c22b9eb7fab216e12f6256aaf6252436eab15f3fcb0b19_1280.jpg",
+      "width": 5242,
+      "height": 3451,
+      "alt": "Photo: Savings, real estate, mortgage bond, mortgage contract, finance documents",
+      "credit": "stevepb",
+      "creditUrl": "https://pixabay.com/users/stevepb-282134/",
+      "page": "https://pixabay.com/photos/savings-real-estate-mortgage-bond-440782/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 10186547,
+      "url": "https://pixabay.com/get/g218d624dc25d859f7dd7e3c5d178005223f48155bb66fb6dc25516262da45340cf1e495630db71ee4eac014f863e951895cb7f73583429e177a82041a192d1b1_1280.jpg",
+      "width": 5504,
+      "height": 3072,
+      "alt": "Photo: Rent, couple, money, finance, debt",
+      "credit": "u_c48rf6ybx8",
+      "creditUrl": "https://pixabay.com/users/u_c48rf6ybx8-55127632/",
+      "page": "https://pixabay.com/photos/rent-couple-money-finance-debt-10186547/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1682300,
+      "url": "https://pixabay.com/get/g28884dbb2c555be1219eda102ba7f7f0204c180074d3696c5839d28dcf8821524dea40ebc44672698eaeef8bab5861db8b9aecce73fb70069300bb23f29d07bf_1280.jpg",
+      "width": 2996,
+      "height": 2235,
+      "alt": "Photo: Home, for sale, buy, sell, mortgage",
+      "credit": "paulbr75",
+      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
+      "page": "https://pixabay.com/photos/home-for-sale-buy-sell-mortgage-1682300/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 2409512,
+      "url": "https://pixabay.com/get/gdf70939219a8ff16886c3a3da878181ab0c36ef787af775b394c220da8d029a4706b688307b6f6c1d358332d0fac082319d981b981160c3711a80defc6c44b52_1280.jpg",
+      "width": 3918,
+      "height": 3169,
+      "alt": "Photo: New home, house, real estate, construction, home",
+      "credit": "paulbr75",
+      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
+      "page": "https://pixabay.com/photos/new-home-house-real-estate-2409512/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1530833,
+      "url": "https://pixabay.com/get/gfac8a6db46c1bdd2df9fc667d4852369a33795c00720a5c5c167b7ec7b330958c622669f0d9efa1080e3a466d819c8f34089e8a11dcd4538f7100b39cfe83776_1280.jpg",
+      "width": 4837,
+      "height": 2893,
+      "alt": "Photo: New home, for sale, home, house, mortgage",
+      "credit": "paulbr75",
+      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
+      "page": "https://pixabay.com/photos/new-home-for-sale-home-house-1530833/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1633889,
+      "url": "https://pixabay.com/get/gb2629c196a2493200893efdc76d71303b44e06cfbdf0594e58ac3f49e0ab4d7a51eccfa960b2c45e5bfe9a7e7846122200d2821c4fe743318ad3d312fd5a850a_1280.jpg",
+      "width": 2845,
+      "height": 1953,
+      "alt": "Photo: New home, for sale, construction, industry, nature",
+      "credit": "paulbr75",
+      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
+      "page": "https://pixabay.com/photos/new-home-for-sale-construction-1633889/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "checks": {
+    "words": 1126,
+    "linksChecked": [
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      },
+      {
+        "id": "va-home-loans",
+        "url": "https://www.va.gov/housing-assistance/home-loans/",
+        "status": 200
+      },
+      {
+        "id": "hud-buying",
+        "url": "https://www.hud.gov/topics/buying_a_home",
+        "status": 200
+      },
+      {
+        "id": "redfin-data",
+        "url": "https://www.redfin.com/news/data-center/",
+        "status": 200
+      },
+      {
+        "id": "thda",
+        "url": "https://www.thda.org",
+        "status": 200
+      }
+    ],
+    "dropped": [
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      }
+    ],
+    "review": {
+      "ok": false,
+      "issues": [
+        "Scenario two calls Spring Hill \"a lower-priced city in the corridor.\" Its median of $508,284 is higher than the Nashville metro median of $461,491 in scenario one, and higher than Nashville, Murfreesboro and Columbia. Only Franklin and Brentwood are higher. The supplied facts don't support the label, so it could mislead readers. Rephrase it as a mid-priced example, or say it is lower than Franklin."
+      ]
+    },
+    "dataPointsUsed": [
+      "30-year fixed mortgage rate: 7.28% (Freddie Mac via FRED, week of 2026-10-01)",
+      "Nashville metro, 4 weeks ending 2026-09-27: median sale price $461,491, median days on market 68, sale-to-list 97.8%, months of supply 5.6 (Redfin)",
+      "Spring Hill (as of 2026-08-31): median sale price $508,284, down 4.1% year over year (Redfin, rolling 3 months)",
+      "Franklin (as of 2026-08-31): median sale price $862,929, up 12.4% year over year (Redfin, rolling 3 months)"
+    ],
+    "model": "claude-sonnet-5-5",
+    "failedChecks": true
+  }
+}

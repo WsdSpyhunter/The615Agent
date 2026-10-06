@@ -1,949 +1,949 @@
 {
- "_note": "Topic backlog. status: unused | draft | published | rejected. The generator picks the best unused topic each run (rotating categories, mixing evergreen and data-driven posts). Add your own ideas to the end.",
- "topics": [
-  {
-   "id": "t01",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "A first-time buyer's step-by-step path from pre-approval to closing in Middle Tennessee",
-   "keyword": "first-time home buyer Middle Tennessee",
-   "related": [
-    "pre-approval",
-    "closing costs",
-    "earnest money"
-   ],
-   "linkTags": [
-    "buyers",
-    "first-time buyers",
-    "financing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t02",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "Pre-approval vs pre-qualification: what lenders actually check and why it matters when you make an offer",
-   "keyword": "pre-approval vs pre-qualification",
-   "related": [
-    "mortgage pre-approval",
-    "credit score",
-    "documents"
-   ],
-   "linkTags": [
-    "buyers",
-    "pre-approval",
-    "financing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t03",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "What closing costs include and how to estimate your cash to close",
-   "keyword": "closing costs Tennessee",
-   "related": [
-    "cash to close",
-    "earnest money",
-    "closing disclosure"
-   ],
-   "linkTags": [
-    "buyers",
-    "closing",
-    "closing disclosure"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t04",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "Home inspection add-ons worth considering in Tennessee: radon, sewer scope and termites",
-   "keyword": "home inspection Tennessee",
-   "related": [
-    "radon test",
-    "sewer scope",
-    "WDO inspection"
-   ],
-   "linkTags": [
-    "inspection",
-    "radon",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t05",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "How to read your Closing Disclosure line by line",
-   "keyword": "closing disclosure explained",
-   "related": [
-    "loan estimate",
-    "3 business days"
-   ],
-   "linkTags": [
-    "buyers",
-    "closing disclosure",
-    "closing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t06",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "FHA, VA and conventional loans compared in plain English",
-   "keyword": "FHA vs VA vs conventional loan",
-   "related": [
-    "down payment",
-    "mortgage insurance"
-   ],
-   "linkTags": [
-    "fha",
-    "va loan",
-    "financing",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t07",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "Down payment help and first-time buyer programs in Tennessee and how to find them",
-   "keyword": "Tennessee first-time home buyer programs",
-   "related": [
-    "THDA",
-    "down payment assistance"
-   ],
-   "linkTags": [
-    "first-time buyers",
-    "down payment",
-    "thda"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t08",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "How to compare two homes with the same price but different monthly costs",
-   "keyword": "monthly cost of owning a home",
-   "related": [
-    "property taxes",
-    "insurance",
-    "HOA fees"
-   ],
-   "linkTags": [
-    "buyers",
-    "financing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t09",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "Wire fraud at closing: how to protect your money",
-   "keyword": "real estate wire fraud",
-   "related": [
-    "closing",
-    "title company"
-   ],
-   "linkTags": [
-    "buyers",
-    "closing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t10",
-   "category": "Buyers",
-   "type": "evergreen",
-   "idea": "What to do in the first 30 days after you buy a home",
-   "keyword": "first 30 days after closing",
-   "related": [
-    "change locks",
-    "address change",
-    "homeowner checklist"
-   ],
-   "linkTags": [
-    "buyers",
-    "moving",
-    "checklists"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t11",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "Getting your Middle Tennessee home ready to sell: what to fix, clean and skip",
-   "keyword": "how to prepare your home to sell",
-   "related": [
-    "staging",
-    "curb appeal",
-    "repairs"
-   ],
-   "linkTags": [
-    "sellers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t12",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "How to compare offers beyond price: financing, contingencies and timing",
-   "keyword": "comparing home offers",
-   "related": [
-    "contingencies",
-    "appraisal",
-    "closing date"
-   ],
-   "linkTags": [
-    "sellers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t13",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "Tennessee seller disclosures explained: the property condition disclosure and the 1978 lead paint rule",
-   "keyword": "Tennessee seller disclosure",
-   "related": [
-    "residential property condition disclosure",
-    "lead-based paint"
-   ],
-   "linkTags": [
-    "sellers",
-    "disclosures",
-    "trec"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t14",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "Pricing your home: what a real price opinion looks at that an online estimate misses",
-   "keyword": "what is my home worth",
-   "related": [
-    "comparable sales",
-    "net sheet",
-    "price opinion"
-   ],
-   "linkTags": [
-    "sellers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t15",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "Showing-ready checklist: living in a house while it is on the market",
-   "keyword": "showing your home",
-   "related": [
-    "open house",
-    "photos",
-    "pets"
-   ],
-   "linkTags": [
-    "sellers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t16",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "What happens between accepting an offer and closing day when you sell",
-   "keyword": "selling a home timeline",
-   "related": [
-    "due diligence",
-    "appraisal",
-    "closing"
-   ],
-   "linkTags": [
-    "sellers",
-    "closing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t17",
-   "category": "Sellers",
-   "type": "evergreen",
-   "idea": "Termite and WDO inspections when selling in Tennessee",
-   "keyword": "termite inspection Tennessee",
-   "related": [
-    "WDO",
-    "repairs"
-   ],
-   "linkTags": [
-    "sellers",
-    "inspection"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t18",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Middle Tennessee: a practical checklist for relocating families",
-   "keyword": "moving to Middle Tennessee",
-   "related": [
-    "relocation checklist",
-    "utilities",
-    "driver's license"
-   ],
-   "linkTags": [
-    "relocation",
-    "moving",
-    "checklists"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t19",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Thompson's Station: what to know before choosing a neighborhood",
-   "keyword": "moving to Thompson's Station",
-   "related": [
-    "Williamson County",
-    "new communities"
-   ],
-   "linkTags": [
-    "thompsons station",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t20",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Franklin, TN: understanding the area and how to research it",
-   "keyword": "moving to Franklin TN",
-   "related": [
-    "downtown Franklin",
-    "Williamson County"
-   ],
-   "linkTags": [
-    "franklin",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t21",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Spring Hill, TN: two counties, and why the county matters",
-   "keyword": "moving to Spring Hill TN",
-   "related": [
-    "Maury County",
-    "Williamson County"
-   ],
-   "linkTags": [
-    "spring hill",
-    "relocation",
-    "maury county"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t22",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Nolensville, TN: what to research first",
-   "keyword": "moving to Nolensville TN",
-   "related": [
-    "Williamson County",
-    "small town"
-   ],
-   "linkTags": [
-    "nolensville",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t23",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Columbia, TN: a guide for buyers coming from Nashville or out of state",
-   "keyword": "moving to Columbia TN",
-   "related": [
-    "Maury County",
-    "Duck River"
-   ],
-   "linkTags": [
-    "columbia",
-    "relocation",
-    "maury county"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t24",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Moving to Murfreesboro, TN: what to research before you buy",
-   "keyword": "moving to Murfreesboro TN",
-   "related": [
-    "Rutherford County",
-    "MTSU"
-   ],
-   "linkTags": [
-    "murfreesboro",
-    "relocation",
-    "rutherford county"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t25",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Relocating from out of state: how to buy a home you have not fully toured yet",
-   "keyword": "buying a home from out of state",
-   "related": [
-    "virtual tours",
-    "relocation"
-   ],
-   "linkTags": [
-    "relocation",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t26",
-   "category": "Relocation",
-   "type": "evergreen",
-   "idea": "Setting up utilities and services when you move to Williamson County",
-   "keyword": "setting up utilities moving",
-   "related": [
-    "electric",
-    "water",
-    "internet"
-   ],
-   "linkTags": [
-    "utilities",
-    "moving",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t27",
-   "category": "Schools",
-   "type": "evergreen",
-   "idea": "How school zoning works in Williamson and Maury counties and how to verify it for an address",
-   "keyword": "school zoning Williamson County",
-   "related": [
-    "school district",
-    "zoning",
-    "address"
-   ],
-   "linkTags": [
-    "schools",
-    "zoning"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t28",
-   "category": "Schools",
-   "type": "evergreen",
-   "idea": "A parent's guide to researching schools when you move: what to check, and who to ask",
-   "keyword": "researching schools when moving",
-   "related": [
-    "school district",
-    "enrollment",
-    "zoning"
-   ],
-   "linkTags": [
-    "schools",
-    "zoning",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t29",
-   "category": "Property Taxes",
-   "type": "evergreen",
-   "idea": "How Tennessee property taxes work: assessment, tax rate and how to look up a home",
-   "keyword": "Tennessee property taxes",
-   "related": [
-    "assessment",
-    "county trustee",
-    "tax rate"
-   ],
-   "linkTags": [
-    "property taxes",
-    "assessment"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t30",
-   "category": "Property Taxes",
-   "type": "evergreen",
-   "idea": "Estimating the true monthly cost of a home: taxes, insurance, HOA and mortgage insurance",
-   "keyword": "true monthly cost of a home",
-   "related": [
-    "escrow",
-    "PITI",
-    "HOA"
-   ],
-   "linkTags": [
-    "property taxes",
-    "financing",
-    "cost of living"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t31",
-   "category": "Cost of Living",
-   "type": "evergreen",
-   "idea": "Cost of living when moving to Williamson County: what to budget beyond the mortgage",
-   "keyword": "cost of living Williamson County",
-   "related": [
-    "utilities",
-    "insurance",
-    "commute costs"
-   ],
-   "linkTags": [
-    "cost of living",
-    "relocation"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t32",
-   "category": "Cost of Living",
-   "type": "evergreen",
-   "idea": "Nashville to Williamson County: how to compare housing costs fairly",
-   "keyword": "Nashville vs Franklin cost of housing",
-   "related": [
-    "price per square foot",
-    "property taxes"
-   ],
-   "linkTags": [
-    "cost of living",
-    "relocation",
-    "market update"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t33",
-   "category": "Commute",
-   "type": "evergreen",
-   "idea": "Commuting on I-65 from Spring Hill, Thompson's Station and Franklin: how to plan for it",
-   "keyword": "I-65 commute Franklin Nashville",
-   "related": [
-    "commute",
-    "traffic",
-    "TDOT"
-   ],
-   "linkTags": [
-    "commute",
-    "traffic",
-    "i-65"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t34",
-   "category": "Commute",
-   "type": "evergreen",
-   "idea": "How to test a commute before you buy a home",
-   "keyword": "test your commute before buying",
-   "related": [
-    "rush hour",
-    "route",
-    "remote work"
-   ],
-   "linkTags": [
-    "commute",
-    "traffic",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t35",
-   "category": "New Construction",
-   "type": "evergreen",
-   "idea": "Buying new construction in Spring Hill and Thompson's Station: what to ask the builder",
-   "keyword": "buying new construction Tennessee",
-   "related": [
-    "builder contract",
-    "incentives",
-    "inspection"
-   ],
-   "linkTags": [
-    "new construction",
-    "buyers",
-    "spring hill"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t36",
-   "category": "New Construction",
-   "type": "evergreen",
-   "idea": "Why you should still get an independent inspection on a new build",
-   "keyword": "new construction home inspection",
-   "related": [
-    "builder",
-    "punch list",
-    "warranty"
-   ],
-   "linkTags": [
-    "new construction",
-    "inspection",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t37",
-   "category": "New Construction",
-   "type": "evergreen",
-   "idea": "Builder incentives and lender incentives: how to compare them honestly",
-   "keyword": "builder incentives",
-   "related": [
-    "rate buydown",
-    "closing cost credit"
-   ],
-   "linkTags": [
-    "new construction",
-    "financing",
-    "buyers"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t38",
-   "category": "Investors",
-   "type": "evergreen",
-   "idea": "Buying a first rental property in Middle Tennessee: the numbers to run before you offer",
-   "keyword": "buying a rental property Tennessee",
-   "related": [
-    "cash flow",
-    "property taxes",
-    "insurance"
-   ],
-   "linkTags": [
-    "investors",
-    "financing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t39",
-   "category": "Investors",
-   "type": "evergreen",
-   "idea": "Checking ownership, liens and recorded documents before you buy an investment property",
-   "keyword": "property records Tennessee",
-   "related": [
-    "register of deeds",
-    "liens",
-    "title"
-   ],
-   "linkTags": [
-    "investors",
-    "deeds",
-    "title"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t40",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Franklin housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Franklin TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "franklin"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t41",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Brentwood housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Brentwood TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "brentwood"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t42",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Spring Hill housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Spring Hill TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "spring-hill"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t43",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Thompson's Station housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Thompson's Station TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "thompsons-station"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t44",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Nolensville housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Nolensville TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "nolensville"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t45",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Columbia housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Columbia TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "columbia"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t46",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Murfreesboro housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Murfreesboro TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "murfreesboro"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t47",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "Nashville housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
-   "keyword": "Nashville TN housing market",
-   "related": [
-    "market temperature",
-    "days on market",
-    "months of supply"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "nashville"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t48",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "The Middle Tennessee housing market this month: where buyers and sellers stand across the I-65 corridor",
-   "keyword": "Middle Tennessee housing market",
-   "related": [
-    "months of supply",
-    "mortgage rates"
-   ],
-   "linkTags": [
-    "market update",
-    "data",
-    "mortgage rates"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  },
-  {
-   "id": "t49",
-   "category": "Market Update",
-   "type": "data",
-   "idea": "What today's mortgage rate means for your monthly payment: examples using the calculator",
-   "keyword": "mortgage rates and monthly payment",
-   "related": [
-    "30-year fixed",
-    "payment"
-   ],
-   "linkTags": [
-    "mortgage rates",
-    "market update",
-    "financing"
-   ],
-   "status": "unused",
-   "usedOn": null,
-   "slug": null
-  }
- ]
+  "_note": "Topic backlog. status: unused | draft | published | rejected. The generator picks the best unused topic each run (rotating categories, mixing evergreen and data-driven posts). Add your own ideas to the end.",
+  "topics": [
+    {
+      "id": "t01",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "A first-time buyer's step-by-step path from pre-approval to closing in Middle Tennessee",
+      "keyword": "first-time home buyer Middle Tennessee",
+      "related": [
+        "pre-approval",
+        "closing costs",
+        "earnest money"
+      ],
+      "linkTags": [
+        "buyers",
+        "first-time buyers",
+        "financing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t02",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "Pre-approval vs pre-qualification: what lenders actually check and why it matters when you make an offer",
+      "keyword": "pre-approval vs pre-qualification",
+      "related": [
+        "mortgage pre-approval",
+        "credit score",
+        "documents"
+      ],
+      "linkTags": [
+        "buyers",
+        "pre-approval",
+        "financing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t03",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "What closing costs include and how to estimate your cash to close",
+      "keyword": "closing costs Tennessee",
+      "related": [
+        "cash to close",
+        "earnest money",
+        "closing disclosure"
+      ],
+      "linkTags": [
+        "buyers",
+        "closing",
+        "closing disclosure"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t04",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "Home inspection add-ons worth considering in Tennessee: radon, sewer scope and termites",
+      "keyword": "home inspection Tennessee",
+      "related": [
+        "radon test",
+        "sewer scope",
+        "WDO inspection"
+      ],
+      "linkTags": [
+        "inspection",
+        "radon",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t05",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "How to read your Closing Disclosure line by line",
+      "keyword": "closing disclosure explained",
+      "related": [
+        "loan estimate",
+        "3 business days"
+      ],
+      "linkTags": [
+        "buyers",
+        "closing disclosure",
+        "closing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t06",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "FHA, VA and conventional loans compared in plain English",
+      "keyword": "FHA vs VA vs conventional loan",
+      "related": [
+        "down payment",
+        "mortgage insurance"
+      ],
+      "linkTags": [
+        "fha",
+        "va loan",
+        "financing",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t07",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "Down payment help and first-time buyer programs in Tennessee and how to find them",
+      "keyword": "Tennessee first-time home buyer programs",
+      "related": [
+        "THDA",
+        "down payment assistance"
+      ],
+      "linkTags": [
+        "first-time buyers",
+        "down payment",
+        "thda"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t08",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "How to compare two homes with the same price but different monthly costs",
+      "keyword": "monthly cost of owning a home",
+      "related": [
+        "property taxes",
+        "insurance",
+        "HOA fees"
+      ],
+      "linkTags": [
+        "buyers",
+        "financing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t09",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "Wire fraud at closing: how to protect your money",
+      "keyword": "real estate wire fraud",
+      "related": [
+        "closing",
+        "title company"
+      ],
+      "linkTags": [
+        "buyers",
+        "closing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t10",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "What to do in the first 30 days after you buy a home",
+      "keyword": "first 30 days after closing",
+      "related": [
+        "change locks",
+        "address change",
+        "homeowner checklist"
+      ],
+      "linkTags": [
+        "buyers",
+        "moving",
+        "checklists"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t11",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "Getting your Middle Tennessee home ready to sell: what to fix, clean and skip",
+      "keyword": "how to prepare your home to sell",
+      "related": [
+        "staging",
+        "curb appeal",
+        "repairs"
+      ],
+      "linkTags": [
+        "sellers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t12",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "How to compare offers beyond price: financing, contingencies and timing",
+      "keyword": "comparing home offers",
+      "related": [
+        "contingencies",
+        "appraisal",
+        "closing date"
+      ],
+      "linkTags": [
+        "sellers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t13",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "Tennessee seller disclosures explained: the property condition disclosure and the 1978 lead paint rule",
+      "keyword": "Tennessee seller disclosure",
+      "related": [
+        "residential property condition disclosure",
+        "lead-based paint"
+      ],
+      "linkTags": [
+        "sellers",
+        "disclosures",
+        "trec"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t14",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "Pricing your home: what a real price opinion looks at that an online estimate misses",
+      "keyword": "what is my home worth",
+      "related": [
+        "comparable sales",
+        "net sheet",
+        "price opinion"
+      ],
+      "linkTags": [
+        "sellers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t15",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "Showing-ready checklist: living in a house while it is on the market",
+      "keyword": "showing your home",
+      "related": [
+        "open house",
+        "photos",
+        "pets"
+      ],
+      "linkTags": [
+        "sellers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t16",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "What happens between accepting an offer and closing day when you sell",
+      "keyword": "selling a home timeline",
+      "related": [
+        "due diligence",
+        "appraisal",
+        "closing"
+      ],
+      "linkTags": [
+        "sellers",
+        "closing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t17",
+      "category": "Sellers",
+      "type": "evergreen",
+      "idea": "Termite and WDO inspections when selling in Tennessee",
+      "keyword": "termite inspection Tennessee",
+      "related": [
+        "WDO",
+        "repairs"
+      ],
+      "linkTags": [
+        "sellers",
+        "inspection"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t18",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Middle Tennessee: a practical checklist for relocating families",
+      "keyword": "moving to Middle Tennessee",
+      "related": [
+        "relocation checklist",
+        "utilities",
+        "driver's license"
+      ],
+      "linkTags": [
+        "relocation",
+        "moving",
+        "checklists"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t19",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Thompson's Station: what to know before choosing a neighborhood",
+      "keyword": "moving to Thompson's Station",
+      "related": [
+        "Williamson County",
+        "new communities"
+      ],
+      "linkTags": [
+        "thompsons station",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t20",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Franklin, TN: understanding the area and how to research it",
+      "keyword": "moving to Franklin TN",
+      "related": [
+        "downtown Franklin",
+        "Williamson County"
+      ],
+      "linkTags": [
+        "franklin",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t21",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Spring Hill, TN: two counties, and why the county matters",
+      "keyword": "moving to Spring Hill TN",
+      "related": [
+        "Maury County",
+        "Williamson County"
+      ],
+      "linkTags": [
+        "spring hill",
+        "relocation",
+        "maury county"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t22",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Nolensville, TN: what to research first",
+      "keyword": "moving to Nolensville TN",
+      "related": [
+        "Williamson County",
+        "small town"
+      ],
+      "linkTags": [
+        "nolensville",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t23",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Columbia, TN: a guide for buyers coming from Nashville or out of state",
+      "keyword": "moving to Columbia TN",
+      "related": [
+        "Maury County",
+        "Duck River"
+      ],
+      "linkTags": [
+        "columbia",
+        "relocation",
+        "maury county"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t24",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Moving to Murfreesboro, TN: what to research before you buy",
+      "keyword": "moving to Murfreesboro TN",
+      "related": [
+        "Rutherford County",
+        "MTSU"
+      ],
+      "linkTags": [
+        "murfreesboro",
+        "relocation",
+        "rutherford county"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t25",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Relocating from out of state: how to buy a home you have not fully toured yet",
+      "keyword": "buying a home from out of state",
+      "related": [
+        "virtual tours",
+        "relocation"
+      ],
+      "linkTags": [
+        "relocation",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t26",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Setting up utilities and services when you move to Williamson County",
+      "keyword": "setting up utilities moving",
+      "related": [
+        "electric",
+        "water",
+        "internet"
+      ],
+      "linkTags": [
+        "utilities",
+        "moving",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t27",
+      "category": "Schools",
+      "type": "evergreen",
+      "idea": "How school zoning works in Williamson and Maury counties and how to verify it for an address",
+      "keyword": "school zoning Williamson County",
+      "related": [
+        "school district",
+        "zoning",
+        "address"
+      ],
+      "linkTags": [
+        "schools",
+        "zoning"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t28",
+      "category": "Schools",
+      "type": "evergreen",
+      "idea": "A parent's guide to researching schools when you move: what to check, and who to ask",
+      "keyword": "researching schools when moving",
+      "related": [
+        "school district",
+        "enrollment",
+        "zoning"
+      ],
+      "linkTags": [
+        "schools",
+        "zoning",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t29",
+      "category": "Property Taxes",
+      "type": "evergreen",
+      "idea": "How Tennessee property taxes work: assessment, tax rate and how to look up a home",
+      "keyword": "Tennessee property taxes",
+      "related": [
+        "assessment",
+        "county trustee",
+        "tax rate"
+      ],
+      "linkTags": [
+        "property taxes",
+        "assessment"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t30",
+      "category": "Property Taxes",
+      "type": "evergreen",
+      "idea": "Estimating the true monthly cost of a home: taxes, insurance, HOA and mortgage insurance",
+      "keyword": "true monthly cost of a home",
+      "related": [
+        "escrow",
+        "PITI",
+        "HOA"
+      ],
+      "linkTags": [
+        "property taxes",
+        "financing",
+        "cost of living"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t31",
+      "category": "Cost of Living",
+      "type": "evergreen",
+      "idea": "Cost of living when moving to Williamson County: what to budget beyond the mortgage",
+      "keyword": "cost of living Williamson County",
+      "related": [
+        "utilities",
+        "insurance",
+        "commute costs"
+      ],
+      "linkTags": [
+        "cost of living",
+        "relocation"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t32",
+      "category": "Cost of Living",
+      "type": "evergreen",
+      "idea": "Nashville to Williamson County: how to compare housing costs fairly",
+      "keyword": "Nashville vs Franklin cost of housing",
+      "related": [
+        "price per square foot",
+        "property taxes"
+      ],
+      "linkTags": [
+        "cost of living",
+        "relocation",
+        "market update"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t33",
+      "category": "Commute",
+      "type": "evergreen",
+      "idea": "Commuting on I-65 from Spring Hill, Thompson's Station and Franklin: how to plan for it",
+      "keyword": "I-65 commute Franklin Nashville",
+      "related": [
+        "commute",
+        "traffic",
+        "TDOT"
+      ],
+      "linkTags": [
+        "commute",
+        "traffic",
+        "i-65"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t34",
+      "category": "Commute",
+      "type": "evergreen",
+      "idea": "How to test a commute before you buy a home",
+      "keyword": "test your commute before buying",
+      "related": [
+        "rush hour",
+        "route",
+        "remote work"
+      ],
+      "linkTags": [
+        "commute",
+        "traffic",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t35",
+      "category": "New Construction",
+      "type": "evergreen",
+      "idea": "Buying new construction in Spring Hill and Thompson's Station: what to ask the builder",
+      "keyword": "buying new construction Tennessee",
+      "related": [
+        "builder contract",
+        "incentives",
+        "inspection"
+      ],
+      "linkTags": [
+        "new construction",
+        "buyers",
+        "spring hill"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t36",
+      "category": "New Construction",
+      "type": "evergreen",
+      "idea": "Why you should still get an independent inspection on a new build",
+      "keyword": "new construction home inspection",
+      "related": [
+        "builder",
+        "punch list",
+        "warranty"
+      ],
+      "linkTags": [
+        "new construction",
+        "inspection",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t37",
+      "category": "New Construction",
+      "type": "evergreen",
+      "idea": "Builder incentives and lender incentives: how to compare them honestly",
+      "keyword": "builder incentives",
+      "related": [
+        "rate buydown",
+        "closing cost credit"
+      ],
+      "linkTags": [
+        "new construction",
+        "financing",
+        "buyers"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t38",
+      "category": "Investors",
+      "type": "evergreen",
+      "idea": "Buying a first rental property in Middle Tennessee: the numbers to run before you offer",
+      "keyword": "buying a rental property Tennessee",
+      "related": [
+        "cash flow",
+        "property taxes",
+        "insurance"
+      ],
+      "linkTags": [
+        "investors",
+        "financing"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t39",
+      "category": "Investors",
+      "type": "evergreen",
+      "idea": "Checking ownership, liens and recorded documents before you buy an investment property",
+      "keyword": "property records Tennessee",
+      "related": [
+        "register of deeds",
+        "liens",
+        "title"
+      ],
+      "linkTags": [
+        "investors",
+        "deeds",
+        "title"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t40",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Franklin housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Franklin TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "franklin"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t41",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Brentwood housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Brentwood TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "brentwood"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t42",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Spring Hill housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Spring Hill TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "spring-hill"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t43",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Thompson's Station housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Thompson's Station TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "thompsons-station"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t44",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Nolensville housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Nolensville TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "nolensville"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t45",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Columbia housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Columbia TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "columbia"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t46",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Murfreesboro housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Murfreesboro TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "murfreesboro"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t47",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "Nashville housing market update: what the latest data from Zillow, Redfin and Realtor.com shows",
+      "keyword": "Nashville TN housing market",
+      "related": [
+        "market temperature",
+        "days on market",
+        "months of supply"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "nashville"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t48",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "The Middle Tennessee housing market this month: where buyers and sellers stand across the I-65 corridor",
+      "keyword": "Middle Tennessee housing market",
+      "related": [
+        "months of supply",
+        "mortgage rates"
+      ],
+      "linkTags": [
+        "market update",
+        "data",
+        "mortgage rates"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
+    },
+    {
+      "id": "t49",
+      "category": "Market Update",
+      "type": "data",
+      "idea": "What today's mortgage rate means for your monthly payment: examples using the calculator",
+      "keyword": "mortgage rates and monthly payment",
+      "related": [
+        "30-year fixed",
+        "payment"
+      ],
+      "linkTags": [
+        "mortgage rates",
+        "market update",
+        "financing"
+      ],
+      "status": "draft",
+      "usedOn": "2026-10-06",
+      "slug": "mortgage-rates-and-monthly-payment-calculator-examples"
+    }
+  ]
 }
