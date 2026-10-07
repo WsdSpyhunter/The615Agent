@@ -454,8 +454,8 @@ article.s{padding-top:48px}
 .hero .eyebrow-row{display:none;margin-top:0}
 @media(min-width:861px){
   .hero .eyebrow-col{display:none}
-  .hero .eyebrow-row{display:flex;flex:1;min-width:0;align-items:center;margin-top:0;width:auto}
-  .hero .agentrow{justify-content:flex-start;gap:30px;padding-top:60px;padding-left:44px}
+  .hero .eyebrow-row{display:flex;flex:0 1 auto;min-width:0;align-items:center;margin-top:0;width:auto}
+  .hero .agentrow{justify-content:center;gap:30px;padding-top:60px;padding-left:0}
   .hero .eyebrow-row .er-lines{display:flex;flex-direction:column;gap:6px}
   .hero .body{align-items:start}
   .hero .body > div:last-child{padding-bottom:0}
