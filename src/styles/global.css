@@ -400,3 +400,9 @@ footer a:hover{opacity:1;text-decoration:underline}
 
 /* Home hero: the headshot and name tag are centered under the logo on every screen size */
 .hero .agentrow{justify-content:center}
+
+/* About page, computer and tablet widths: more space below the headshot before the logo, and above the two buttons */
+@media(min-width:601px){
+  .logo-card.match{margin-top:64px}
+  .prose .about-cta{margin-top:52px!important}
+}
