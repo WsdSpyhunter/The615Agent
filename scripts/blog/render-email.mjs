@@ -27,7 +27,7 @@ export function approvalEmail(draft, links) {
   const buttons = (blocked ? '' : btn(links.approve, report ? 'APPROVE & PUBLISH TO BLOG' : 'APPROVE & PUBLISH', '#0E9F8E')) + btn(links.edit, 'EDIT', '#1473E6') + (report ? '' : btn(links.regenerate, 'REGENERATE', '#4F5966')) + btn(links.reject, 'REJECT', '#F2593A');
   return `<!doctype html><html><body style="margin:0;background:#EEF0F2;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A">
 <div style="max-width:680px;margin:0 auto;padding:18px">
- <div style="background:#0A0A0A;color:#fff;border-radius:14px 14px 0 0;padding:16px 22px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">The 615 Agent · ${report ? 'monthly market report' : 'blog draft'} for your approval</div>
+ <div style="background:#0A0A0A;border-top:4px solid #1473E6;border-radius:14px 14px 0 0;padding:22px 18px;text-align:center"><img src="${SITE}/img/email/logo-615-agent.png" alt="The 615 Agent" width="170" style="display:block;margin:0 auto 12px;width:170px;max-width:100%;height:auto"><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#FFC20E;font-weight:bold">${report ? 'Monthly market report' : 'Blog draft'} for your approval</div></div>
  <div style="background:#fff;padding:22px;border-radius:0 0 14px 14px">
   <p style="margin:0 0 6px;color:#4F5966;font-size:13px">${esc(draft.category)} · keyword: ${esc(draft.keyword)} · ${draft.checks?.words ?? ''} words · will publish at /blog/${esc(draft.slug)}${draft.pubDate ? ` · dated ${esc(draft.pubDate)}` : ''}</p>
   <div style="margin:10px 0 16px">${buttons}</div>
