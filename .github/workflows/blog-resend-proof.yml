@@ -1,0 +1,37 @@
+name: Blog resend proof
+
+# Re-sends the approval email (fresh Approve / Edit / Regenerate / Reject links) for a draft that is already saved in drafts/.
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Slug of the saved draft (the file name in drafts/ without .json)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  resend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SLUG: ${{ github.event.inputs.slug }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Email the proof
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          APPROVAL_SECRET: ${{ secrets.APPROVAL_SECRET }}
+          WORKER_URL: ${{ vars.WORKER_URL }}
+          APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
+          BLOG_FROM_ADDRESS: ${{ vars.BLOG_FROM_ADDRESS }}
+        run: |
+          case "$SLUG" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+          node scripts/blog/send-proof.mjs "$SLUG"
