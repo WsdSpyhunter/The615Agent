@@ -53,7 +53,7 @@ const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring
 
 const sections = Object.values(m.cities).map((c) => {
   const lines = [
-    `<h3 style="margin:46px 0 14px">${esc(`${c.name}: ${rating(c)}`)}</h3>`,
+    `<h3 style="margin:68px 0 14px">${esc(`${c.name}: ${rating(c)}`)}</h3>`,
     '',
     c.temperature ? `*${c.temperature.readings.map((r) => `${r.title.split(':')[0]}: ${r.reading}`).join(' | ')}${c.temperature.trend ? ` | Trend: ${c.temperature.trend.direction}` : ''}${c.temperature.mixed ? ' | The sources disagree' : ''}*` : '',
     c.commentary ? c.commentary : '',
