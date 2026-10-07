@@ -2,7 +2,7 @@
 title: "Mortgage Rates and Monthly Payment: Try Your Own Numbers"
 description: "See how the 30-year fixed rate shapes your monthly payment, and how to run your own examples in the mortgage calculator with local price data."
 pubDate: 2026-10-06
-category: Market Update
+category: Buyers
 keyword: "mortgage rates and monthly payment"
 heroImage: /img/blog/mortgage-rates-monthly-payment-calculator-examples/hero.jpg
 heroAlt: "Photo: Chairs, living room, table, contemporary, furniture"

@@ -8,7 +8,7 @@ const figure = (img, i) => `<figure style="margin:22px 0"><img src="${esc(img.ur
 export function bodyHtml(draft) {
   const md = draft.body.replace(/\{\{img:(\d)\}\}/g, (all, n) => `\n\n<!--IMG${n}-->\n\n`);
   let html = marked.parse(md, { gfm: true, breaks: false });
-  html = html.replace(/<!--IMG(\d)-->/g, (all, n) => (draft.inline[+n] ? figure(draft.inline[+n]) : ''));
+  html = html.replace(/<!--IMG(\d)-->/g, (all, n) => ((draft.inline || [])[+n] ? figure(draft.inline[+n]) : ''));
   return html.replace(/href="\//g, `href="${SITE}/`);
 }
 
@@ -16,29 +16,32 @@ const btn = (href, label, bg, fg = '#fff') => `<a href="${esc(href)}" style="dis
 
 export function approvalEmail(draft, links) {
   const c = draft.checks || {};
+  const report = draft.kind === 'report';
   const warn = [];
   if (c.dropped?.length) warn.push(`${c.dropped.length} link(s) failed the check and were removed: ${c.dropped.map((d) => d.id).join(', ')}.`);
-  if (!draft.hero) warn.push('No photos were added (no photo key or no match).');
+  if (!draft.hero && !draft.heroLocal) warn.push('No photos were added (no photo key or no match).');
   if (c.review && !c.review.ok) warn.push(`Compliance reviewer notes: ${c.review.issues.join(' ')}`);
   const live = complianceIssues(draft);
   const blocked = !!c.failedChecks || live.hard.length > 0 || (c.review && c.review.ok === false);
   const soft = [...new Set([...(c.compliance?.soft || []), ...live.soft])];
-  const buttons = (blocked ? '' : btn(links.approve, 'APPROVE & PUBLISH', '#0E9F8E')) + btn(links.edit, 'EDIT', '#1473E6') + btn(links.regenerate, 'REGENERATE', '#4F5966') + btn(links.reject, 'REJECT', '#F2593A');
+  const buttons = (blocked ? '' : btn(links.approve, report ? 'APPROVE & PUBLISH TO BLOG' : 'APPROVE & PUBLISH', '#0E9F8E')) + btn(links.edit, 'EDIT', '#1473E6') + (report ? '' : btn(links.regenerate, 'REGENERATE', '#4F5966')) + btn(links.reject, 'REJECT', '#F2593A');
   return `<!doctype html><html><body style="margin:0;background:#EEF0F2;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A">
 <div style="max-width:680px;margin:0 auto;padding:18px">
- <div style="background:#0A0A0A;color:#fff;border-radius:14px 14px 0 0;padding:16px 22px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">The 615 Agent · blog draft for your approval</div>
+ <div style="background:#0A0A0A;color:#fff;border-radius:14px 14px 0 0;padding:16px 22px;font-size:13px;letter-spacing:.08em;text-transform:uppercase">The 615 Agent · ${report ? 'monthly market report' : 'blog draft'} for your approval</div>
  <div style="background:#fff;padding:22px;border-radius:0 0 14px 14px">
   <p style="margin:0 0 6px;color:#4F5966;font-size:13px">${esc(draft.category)} · keyword: ${esc(draft.keyword)} · ${draft.checks?.words ?? ''} words · will publish at /blog/${esc(draft.slug)}${draft.pubDate ? ` · dated ${esc(draft.pubDate)}` : ''}</p>
   <div style="margin:10px 0 16px">${buttons}</div>
   ${blocked ? `<div style="background:#FDE2DC;color:#8A1F0B;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>This draft did not pass the Realtor-rules checks, so there is no Approve button.</b> Use EDIT to fix it or REGENERATE for a new draft.<br>${[...live.hard, ...(c.review && !c.review.ok ? c.review.issues : [])].map(esc).join('<br>')}</div>` : ''}
   ${soft.length ? `<div style="background:#FFF3C4;color:#6B5200;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>Please look at:</b><br>${soft.map(esc).join('<br>')}</div>` : ''}
   ${warn.length ? `<div style="background:#FFF3C4;color:#6B5200;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>Check before you publish:</b><br>${warn.map(esc).join('<br>')}</div>` : ''}
+  ${report ? `<div style="background:#E3EEFC;color:#173F8A;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>About this report:</b> Approving publishes it on your blog (blue Market Update tag). It does <b>not</b> email your subscribers. The newsletter version is a draft in your Buttondown account. Open it there, look it over, and press Send when you are ready.</div>` : ''}
+  ${!draft.hero && draft.heroLocal ? `<img src="${esc(SITE + draft.heroLocal.path)}" alt="${esc(draft.heroLocal.alt)}" style="width:100%;border-radius:12px;display:block;margin-bottom:14px">` : ''}
   ${draft.hero ? `<img src="${esc(draft.hero.url)}" alt="${esc(draft.hero.alt)}" style="width:100%;border-radius:12px;display:block"><div style="font-size:12px;color:#6b7480;margin:6px 0 14px">Photo by ${esc(draft.hero.credit)} on ${esc(draft.hero.provider || 'stock')}</div>` : ''}
   <h1 style="font-size:26px;line-height:1.2;margin:8px 0 6px">${esc(draft.title)}</h1>
   <p style="color:#4F5966;font-size:14px;margin:0 0 14px"><i>Meta description:</i> ${esc(draft.description)}</p>
   <div style="font-size:16px;line-height:1.65">${bodyHtml(draft)}</div>
-  <h2 style="font-size:20px;margin-top:26px">Frequently asked questions</h2>
-  ${draft.faq.map((f) => `<p style="margin:0 0 4px"><b>${esc(f.q)}</b></p><p style="margin:0 0 12px;color:#4F5966">${esc(f.a)}</p>`).join('')}
+  ${(draft.faq || []).length ? '<h2 style="font-size:20px;margin-top:26px">Frequently asked questions</h2>' : ''}
+  ${(draft.faq || []).map((f) => `<p style="margin:0 0 4px"><b>${esc(f.q)}</b></p><p style="margin:0 0 12px;color:#4F5966">${esc(f.a)}</p>`).join('')}
   <hr style="border:0;border-top:1px solid #D4D9DF;margin:22px 0">
   <p style="font-size:13px;color:#4F5966;margin:0 0 10px"><b>Data points used:</b> ${esc((draft.checks?.dataPointsUsed || []).join(' | ') || 'none listed')}</p>
   <p style="font-size:13px;color:#4F5966;margin:0 0 14px"><b>Links verified (HTTP 200):</b> ${esc((c.linksChecked || []).filter((l) => l.status === 200).map((l) => l.url.replace(/^https?:\/\//, '')).join(', ') || 'none')}</p>

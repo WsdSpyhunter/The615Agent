@@ -16,6 +16,10 @@ on:
         description: "Also create the monthly report as a draft in Buttondown"
         type: boolean
         default: false
+      report_test:
+        description: "Send me a TEST approval email for the monthly report blog post (press Reject on it afterward)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -72,21 +76,35 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/data/commentary.mjs
 
-      - name: Monthly report blog post
-        if: steps.check.outputs.monthly == 'true' || github.event.inputs.create_report_draft == 'true'
-        run: node scripts/data/report-post.mjs
+      - name: Monthly report blog draft (for your approval)
+        id: report
+        if: steps.check.outputs.monthly == 'true' || github.event.inputs.create_report_draft == 'true' || github.event.inputs.report_test == 'true'
+        env:
+          TEST_MODE: ${{ github.event.inputs.report_test == 'true' && '--test' || '' }}
+        run: node scripts/data/report-post.mjs $TEST_MODE
 
       - name: Commit changes
         id: commit
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add public/data scripts/data/state.json src/content/posts
+          git add public/data scripts/data/state.json drafts
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
             git commit -m "Data update"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Email the monthly report for your approval
+        if: steps.report.outputs.slug != ''
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          APPROVAL_SECRET: ${{ secrets.APPROVAL_SECRET }}
+          WORKER_URL: ${{ vars.WORKER_URL }}
+          APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
+          BLOG_FROM_ADDRESS: ${{ vars.BLOG_FROM_ADDRESS }}
+          SLUG: ${{ steps.report.outputs.slug }}
+        run: node scripts/blog/send-proof.mjs "$SLUG"
 
       - name: Monthly report draft (Buttondown)
         if: (steps.check.outputs.monthly == 'true' && github.event_name == 'schedule') || github.event.inputs.create_report_draft == 'true'

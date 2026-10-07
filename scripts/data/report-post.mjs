@@ -1,8 +1,13 @@
-// Publishes the monthly market report as a blog post (category "Market Update", shown with the blue tag on the blog page).
+// Prepares the monthly market report as a blog DRAFT (category "Market Update", shown with the blue tag on the blog page).
+// Nothing is published here: the draft is saved in drafts/ and emailed to you with Approve / Edit / Reject buttons.
+// Pressing Approve publishes it on the blog (same flow as the other posts). It never emails subscribers; the newsletter
+// version is a separate draft in Buttondown that you send yourself.
 // Built only from public/data/market.json, the same data as the Buttondown newsletter, so every figure is sourced and dated.
-// Safe to re-run: the post for a given data month is rewritten in place and keeps its original publish date.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+//   node scripts/data/report-post.mjs [--test]   (--test makes a throwaway "-test" draft so the approval email can be tried)
+import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } from 'node:fs';
 import { complianceIssues } from '../blog/compliance.mjs';
+import { words } from '../blog/lib.mjs';
+const TEST = process.argv.includes('--test');
 
 const log = (...a) => console.log(...a);
 const m = JSON.parse(readFileSync('public/data/market.json', 'utf8'));
@@ -16,14 +21,13 @@ const rating = (c) => (c.temperature ? `${c.temperature.label}${c.temperature.ti
 const q = (s) => JSON.stringify(String(s));
 const today = new Date().toISOString().slice(0, 10);
 
-const title = `${monthYear} Housing Market Report: Franklin, Brentwood, Spring Hill and More`;
+const title = `${TEST ? 'TEST (press Reject): ' : ''}${monthYear} Housing Market Report: Franklin, Brentwood, Spring Hill and More`;
 const description = `A city-by-city look at prices, days on market and inventory along the I-65 corridor, with sources and dates, through ${longDate(m.asOf)}.`;
-const slug = `monthly-market-report-${m.asOf.slice(0, 7)}`;
-const file = `src/content/posts/${slug}.md`;
-
-// keep the original publish date if this month's post already exists
-let pubDate = today;
-if (existsSync(file)) { const mm = readFileSync(file, 'utf8').match(/^pubDate:\s*(\d{4}-\d{2}-\d{2})/m); if (mm) pubDate = mm[1]; }
+const slug = `monthly-market-report-${m.asOf.slice(0, 7)}${TEST ? '-test' : ''}`;
+const postFile = `src/content/posts/${slug}.md`;
+const draftFile = `drafts/${slug}.json`;
+const out = (k, v) => { if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `${k}=${v}\n`); };
+if (existsSync(postFile)) { log(`The ${monthYear} report is already published (${postFile}). Nothing to do.`); out('slug', ''); process.exit(0); }
 
 const sections = Object.values(m.cities).map((c) => [
   `## ${c.name}: ${rating(c)}`,
@@ -51,7 +55,15 @@ const body = [
 const issues = complianceIssues({ title, description, body });
 if (issues.hard.length) { log('NOT published. Realtor-rules checks failed:\n - ' + issues.hard.join('\n - ')); process.exit(1); }
 
-const fm = ['---', `title: ${q(title)}`, `description: ${q(description.slice(0, 200))}`, `pubDate: ${pubDate}`, 'category: Market Update', `keyword: ${q(`${monthYear.toLowerCase()} housing market report`)}`,
-  'heroImage: /img/skyline-night-1600.jpg', `heroAlt: ${q('Downtown Nashville skyline and the pedestrian bridge at night')}`, '---', ''].join('\n');
-writeFileSync(file, fm + body + '\n');
-log(`Wrote ${file} (dated ${pubDate}).`);
+const prior = existsSync(draftFile) ? JSON.parse(readFileSync(draftFile, 'utf8')) : null;
+if (prior && prior.body === body && prior.title === title) { log(`The ${monthYear} report draft is already waiting for approval. Nothing new to send.`); out('slug', ''); process.exit(0); }
+const draft = {
+  version: 1, kind: 'report', slug, topicId: null, created: new Date().toISOString().slice(0, 10), status: 'draft',
+  title, description: description.slice(0, 200), category: 'Market Update', keyword: `${monthYear.toLowerCase()} housing market report`,
+  body, faq: [], hero: null, heroLocal: { path: '/img/skyline-night-1600.jpg', alt: 'Downtown Nashville skyline and the pedestrian bridge at night' }, inline: [], choices: [],
+  checks: { words: words(body), linksChecked: [], dropped: [], review: { ok: true, issues: [] }, compliance: { soft: issues.soft }, dataPointsUsed: [`Market data through ${longDate(m.asOf)}`, m.mortgageRate30 != null ? `30-year fixed rate ${m.mortgageRate30.toFixed(2)}%` : ''].filter(Boolean), model: 'none (built from the data files)', failedChecks: false },
+};
+mkdirSync('drafts', { recursive: true });
+writeFileSync(draftFile, JSON.stringify(draft, null, 2) + '\n');
+log(`Saved ${draftFile} for your approval.`);
+out('slug', slug);

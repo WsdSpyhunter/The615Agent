@@ -48,18 +48,19 @@ async function download(img, name, width, height) {
 const q = (s) => JSON.stringify(String(s ?? ''));
 let heroPath = '';
 if (draft.hero) heroPath = await download(draft.hero, 'hero', 1200, 600);
+else if (draft.heroLocal) heroPath = draft.heroLocal.path; // a photo already on the site (used by the monthly report)
 const inlinePaths = [];
-for (let i = 0; i < draft.inline.length; i++) inlinePaths.push(await download(draft.inline[i], `inline-${i + 1}`, 1000, 625));
+for (let i = 0; i < (draft.inline || []).length; i++) inlinePaths.push(await download(draft.inline[i], `inline-${i + 1}`, 1000, 625));
 
 let body = draft.body.replace(/\{\{img:(\d)\}\}/g, (all, n) => {
-  const im = draft.inline[+n]; if (!im) return '';
+  const im = (draft.inline || [])[+n]; if (!im) return '';
   return `![${(im.alt || '').replace(/[\[\]]/g, '')}](${inlinePaths[+n]})\n\n*Photo by [${im.credit}](${im.creditUrl}) on [${im.provider || 'stock'}](${im.home || '#'})*`;
 });
 
 const fm = [
   '---', `title: ${q(draft.title)}`, `description: ${q(draft.description)}`, `pubDate: ${draft.pubDate || today()}`, `category: ${draft.category}`, `keyword: ${q(draft.keyword)}`,
-  ...(heroPath ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.hero.alt)}`, `heroCredit: ${q(`${draft.hero.credit} on ${draft.hero.provider || 'stock'}`)}`, `heroCreditUrl: ${q(draft.hero.creditUrl)}`] : []),
-  'faq:', ...draft.faq.flatMap((f) => [`  - q: ${q(f.q)}`, `    a: ${q(f.a)}`]), '---', '',
+  ...(draft.hero ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.hero.alt)}`, `heroCredit: ${q(`${draft.hero.credit} on ${draft.hero.provider || 'stock'}`)}`, `heroCreditUrl: ${q(draft.hero.creditUrl)}`] : draft.heroLocal ? [`heroImage: ${heroPath}`, `heroAlt: ${q(draft.heroLocal.alt)}`] : []),
+  ...((draft.faq || []).length ? ['faq:', ...draft.faq.flatMap((f) => [`  - q: ${q(f.q)}`, `    a: ${q(f.a)}`])] : []), '---', '',
 ].join('\n');
 writeFileSync(`src/content/posts/${slug}.md`, fm + body.trim() + '\n');
 unlinkSync(`drafts/${slug}.json`);
