@@ -366,3 +366,19 @@ footer a:hover{opacity:1;text-decoration:underline}
   .contact .info:has(.brandstack){display:flex;flex-direction:column;gap:14px;align-content:normal}
   .contact .info:has(.brandstack) .brandstack{margin-top:auto;padding-top:26px}
 }
+
+/* Phones only (600px and narrower): centered section headings and page headers, footer brand spacing, About photo, centered numbered list */
+@media(max-width:600px){
+  .sh{justify-content:center;text-align:center}
+  .sh p{margin-inline:auto}
+  .sh .kicker{display:block;margin-bottom:8px}
+  .phead .wrap{text-align:center}
+  .phead .eyebrow{justify-content:center}
+  .phead h1,.phead .lead{margin-inline:auto}
+  .wl .prose > h2{text-align:center}
+  .fgrid .flogo{margin-bottom:32px}
+  .fgrid .hive{margin-top:36px}
+  .aboutcol{margin-inline:auto}
+  .aboutcol > img:first-child{margin-inline:auto}
+  .contact .info ol.bullets{text-align:left}
+}
