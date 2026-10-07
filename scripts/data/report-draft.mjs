@@ -43,8 +43,8 @@ const signature = `<div style="background:${BLACK};border-radius:14px;padding:24
 <div style="font-size:14px;margin-top:10px"><a href="tel:+16153264055" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">(615) 326-4055</span></a> &middot; <a href="mailto:scott@hivenashville.com" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">scott@hivenashville.com</span></a></div>
 <div style="font-size:14px;margin-top:6px"><a href="${SITE}" style="color:${GOLD} !important;text-decoration:none;font-weight:bold"><span style="color:${GOLD} !important">The615Agent.com</span></a></div>
 <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:22px auto 0;width:100%;max-width:420px"><tr>
-<td align="center" style="width:50%;padding:0 14px"><img src="${IMG}/logo-615-agent.png" alt="The 615 Agent" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
-<td align="center" style="width:50%;padding:0 14px"><img src="${IMG}/hive-nashville.png" alt="Hive Nashville" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
+<td align="center" valign="bottom" style="width:50%;padding:0 14px;vertical-align:bottom"><img src="${IMG}/logo-615-agent.png" alt="The 615 Agent" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
+<td align="center" valign="bottom" style="width:50%;padding:0 14px;vertical-align:bottom"><img src="${IMG}/hive-nashville.png" alt="Hive Nashville" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
 </tr></table>
 </div>`;
 
