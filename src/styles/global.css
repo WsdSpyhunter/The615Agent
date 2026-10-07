@@ -385,3 +385,12 @@ footer a:hover{opacity:1;text-decoration:underline}
 
 /* Phones only: the pointing photo sits above the form there (not beside it), so it points at nothing. Hidden on phones; desktop and tablet are unchanged. */
 @media(max-width:600px){.info .pointing{display:none}}
+
+/* Phones only: more breathing room in the home hero (logo, headshot row, label, headline, text and buttons) */
+@media(max-width:600px){
+  .hero .agent{gap:44px}
+  .hero .agentrow{padding-top:34px;gap:36px}
+  .hero .eyebrow{margin-bottom:20px}
+  .hero .lead{margin-bottom:38px}
+  .hero .cta-row{gap:24px}
+}
