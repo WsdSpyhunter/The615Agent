@@ -10,15 +10,15 @@
  "latest": {
   "periodBegin": "2026-08-31",
   "periodEnd": "2026-09-27",
-  "homesSold": 2490,
-  "medianPrice": 462241,
-  "yoy": 2.72,
+  "homesSold": 2489,
+  "medianPrice": 462304,
+  "yoy": 2.73,
   "dom": 68,
   "saleToList": 97.85,
-  "monthsSupply": 5.5,
-  "newListings": 3614,
-  "activeListings": 17604,
-  "pending": 2411
+  "monthsSupply": 5.4,
+  "newListings": 3602,
+  "activeListings": 17409,
+  "pending": 2415
  },
  "history": [
   {
@@ -31,7 +31,7 @@
    "saleToList": 98.03,
    "monthsSupply": 4.7,
    "newListings": 3957,
-   "activeListings": 15472,
+   "activeListings": 15474,
    "pending": 3094
   },
   {
@@ -43,8 +43,8 @@
    "dom": 78,
    "saleToList": 98,
    "monthsSupply": 4.7,
-   "newListings": 4117,
-   "activeListings": 15866,
+   "newListings": 4116,
+   "activeListings": 15867,
    "pending": 3058
   },
   {
@@ -56,8 +56,8 @@
    "dom": 77,
    "saleToList": 98.02,
    "monthsSupply": 4.5,
-   "newListings": 4198,
-   "activeListings": 16227,
+   "newListings": 4197,
+   "activeListings": 16228,
    "pending": 3138
   },
   {
@@ -70,7 +70,7 @@
    "saleToList": 98.02,
    "monthsSupply": 4.6,
    "newListings": 4261,
-   "activeListings": 16545,
+   "activeListings": 16547,
    "pending": 3262
   },
   {
@@ -82,8 +82,8 @@
    "dom": 68,
    "saleToList": 97.96,
    "monthsSupply": 4.3,
-   "newListings": 4335,
-   "activeListings": 16666,
+   "newListings": 4336,
+   "activeListings": 16669,
    "pending": 3311
   },
   {
@@ -95,8 +95,8 @@
    "dom": 65,
    "saleToList": 98.08,
    "monthsSupply": 4.3,
-   "newListings": 4272,
-   "activeListings": 16902,
+   "newListings": 4273,
+   "activeListings": 16904,
    "pending": 3329
   },
   {
@@ -109,8 +109,8 @@
    "saleToList": 98.15,
    "monthsSupply": 4.3,
    "newListings": 4239,
-   "activeListings": 17060,
-   "pending": 3288
+   "activeListings": 17061,
+   "pending": 3287
   },
   {
    "periodBegin": "2026-04-27",
@@ -121,9 +121,9 @@
    "dom": 62,
    "saleToList": 98.18,
    "monthsSupply": 4.1,
-   "newListings": 4068,
-   "activeListings": 17158,
-   "pending": 3169
+   "newListings": 4067,
+   "activeListings": 17159,
+   "pending": 3170
   },
   {
    "periodBegin": "2026-05-04",
@@ -134,66 +134,66 @@
    "dom": 63,
    "saleToList": 98.27,
    "monthsSupply": 4.2,
-   "newListings": 3844,
-   "activeListings": 16933,
-   "pending": 3006
+   "newListings": 3841,
+   "activeListings": 16932,
+   "pending": 3007
   },
   {
    "periodBegin": "2026-05-11",
    "periodEnd": "2026-06-07",
-   "homesSold": 3087,
-   "medianPrice": 497500,
-   "yoy": 2.58,
+   "homesSold": 3086,
+   "medianPrice": 498000,
+   "yoy": 2.68,
    "dom": 62,
    "saleToList": 98.27,
    "monthsSupply": 4.1,
-   "newListings": 3856,
+   "newListings": 3855,
    "activeListings": 17115,
-   "pending": 2960
+   "pending": 2962
   },
   {
    "periodBegin": "2026-05-18",
    "periodEnd": "2026-06-14",
-   "homesSold": 3065,
-   "medianPrice": 499000,
-   "yoy": 2.89,
+   "homesSold": 3063,
+   "medianPrice": 499900,
+   "yoy": 3.07,
    "dom": 61,
-   "saleToList": 98.33,
+   "saleToList": 98.31,
    "monthsSupply": 4.1,
-   "newListings": 3824,
-   "activeListings": 17230,
-   "pending": 2964
+   "newListings": 3823,
+   "activeListings": 17229,
+   "pending": 2967
   },
   {
    "periodBegin": "2026-05-25",
    "periodEnd": "2026-06-21",
-   "homesSold": 3035,
+   "homesSold": 3033,
    "medianPrice": 500000,
    "yoy": 3.09,
    "dom": 61,
-   "saleToList": 98.37,
+   "saleToList": 98.36,
    "monthsSupply": 4.2,
-   "newListings": 3837,
-   "activeListings": 17272,
-   "pending": 2940
+   "newListings": 3836,
+   "activeListings": 17271,
+   "pending": 2941
   },
   {
    "periodBegin": "2026-06-01",
    "periodEnd": "2026-06-28",
-   "homesSold": 2895,
+   "homesSold": 2893,
    "medianPrice": 500000,
    "yoy": 2.88,
    "dom": 62,
-   "saleToList": 98.32,
+   "saleToList": 98.31,
    "monthsSupply": 4.4,
-   "newListings": 3928,
-   "activeListings": 17237,
-   "pending": 3055
+   "newListings": 3930,
+   "activeListings": 17238,
+   "pending": 3057
   },
   {
    "periodBegin": "2026-06-08",
    "periodEnd": "2026-07-05",
-   "homesSold": 2968,
+   "homesSold": 2966,
    "medianPrice": 495000,
    "yoy": 3.56,
    "dom": 63,
@@ -206,93 +206,93 @@
   {
    "periodBegin": "2026-06-15",
    "periodEnd": "2026-07-12",
-   "homesSold": 2906,
+   "homesSold": 2905,
    "medianPrice": 495000,
    "yoy": 3.77,
    "dom": 64,
-   "saleToList": 98.14,
+   "saleToList": 98.15,
    "monthsSupply": 4.3,
-   "newListings": 3568,
-   "activeListings": 17039,
+   "newListings": 3566,
+   "activeListings": 17036,
    "pending": 2972
   },
   {
    "periodBegin": "2026-06-22",
    "periodEnd": "2026-07-19",
-   "homesSold": 2943,
+   "homesSold": 2942,
    "medianPrice": 480000,
    "yoy": 0.02,
    "dom": 67,
-   "saleToList": 98.14,
+   "saleToList": 98.15,
    "monthsSupply": 4.3,
-   "newListings": 3535,
-   "activeListings": 17074,
+   "newListings": 3531,
+   "activeListings": 17069,
    "pending": 2921
   },
   {
    "periodBegin": "2026-06-29",
    "periodEnd": "2026-07-26",
-   "homesSold": 2833,
-   "medianPrice": 484500,
-   "yoy": 1.61,
+   "homesSold": 2832,
+   "medianPrice": 484700,
+   "yoy": 1.65,
    "dom": 66,
-   "saleToList": 98.22,
-   "monthsSupply": 4.4,
-   "newListings": 3489,
-   "activeListings": 17026,
-   "pending": 2818
+   "saleToList": 98.23,
+   "monthsSupply": 4.5,
+   "newListings": 3483,
+   "activeListings": 17021,
+   "pending": 2816
   },
   {
    "periodBegin": "2026-07-06",
    "periodEnd": "2026-08-02",
-   "homesSold": 2869,
+   "homesSold": 2868,
    "medianPrice": 489000,
    "yoy": 1.88,
    "dom": 67,
    "saleToList": 98.24,
    "monthsSupply": 4.3,
-   "newListings": 3635,
-   "activeListings": 16852,
-   "pending": 2820
+   "newListings": 3626,
+   "activeListings": 16834,
+   "pending": 2818
   },
   {
    "periodBegin": "2026-07-13",
    "periodEnd": "2026-08-09",
-   "homesSold": 2843,
-   "medianPrice": 494700,
-   "yoy": 3.06,
+   "homesSold": 2842,
+   "medianPrice": 494900,
+   "yoy": 3.1,
    "dom": 66,
-   "saleToList": 98.21,
+   "saleToList": 98.22,
    "monthsSupply": 4.4,
-   "newListings": 3629,
-   "activeListings": 16975,
-   "pending": 2756
+   "newListings": 3624,
+   "activeListings": 16930,
+   "pending": 2755
   },
   {
    "periodBegin": "2026-07-20",
    "periodEnd": "2026-08-16",
-   "homesSold": 2712,
+   "homesSold": 2711,
    "medianPrice": 495000,
    "yoy": 2.06,
    "dom": 66,
    "saleToList": 98.11,
    "monthsSupply": 4.7,
-   "newListings": 3643,
-   "activeListings": 17048,
-   "pending": 2729
+   "newListings": 3638,
+   "activeListings": 16975,
+   "pending": 2728
   },
   {
    "periodBegin": "2026-07-27",
    "periodEnd": "2026-08-23",
-   "homesSold": 2682,
-   "medianPrice": 494500,
-   "yoy": 1.96,
+   "homesSold": 2681,
+   "medianPrice": 494605,
+   "yoy": 1.98,
    "dom": 63,
    "saleToList": 98.04,
-   "monthsSupply": 4.8,
-   "newListings": 3649,
-   "activeListings": 17126,
-   "pending": 2683
+   "monthsSupply": 4.7,
+   "newListings": 3644,
+   "activeListings": 17028,
+   "pending": 2682
   },
   {
    "periodBegin": "2026-08-03",
@@ -303,9 +303,9 @@
    "dom": 63,
    "saleToList": 97.95,
    "monthsSupply": 4.9,
-   "newListings": 3609,
-   "activeListings": 16955,
-   "pending": 2689
+   "newListings": 3607,
+   "activeListings": 16826,
+   "pending": 2690
   },
   {
    "periodBegin": "2026-08-10",
@@ -316,48 +316,48 @@
    "dom": 64,
    "saleToList": 97.98,
    "monthsSupply": 4.6,
-   "newListings": 3568,
-   "activeListings": 17076,
-   "pending": 2701
+   "newListings": 3562,
+   "activeListings": 16923,
+   "pending": 2704
   },
   {
    "periodBegin": "2026-08-17",
    "periodEnd": "2026-09-13",
-   "homesSold": 2602,
-   "medianPrice": 466307,
-   "yoy": 2.26,
+   "homesSold": 2601,
+   "medianPrice": 466340,
+   "yoy": 2.27,
    "dom": 64,
    "saleToList": 97.91,
    "monthsSupply": 5.1,
-   "newListings": 3558,
-   "activeListings": 17400,
-   "pending": 2645
+   "newListings": 3551,
+   "activeListings": 17233,
+   "pending": 2648
   },
   {
    "periodBegin": "2026-08-24",
    "periodEnd": "2026-09-20",
-   "homesSold": 2579,
-   "medianPrice": 461915,
-   "yoy": 1.52,
+   "homesSold": 2576,
+   "medianPrice": 461943,
+   "yoy": 1.53,
    "dom": 68,
    "saleToList": 97.83,
    "monthsSupply": 5.2,
-   "newListings": 3584,
-   "activeListings": 17516,
-   "pending": 2575
+   "newListings": 3579,
+   "activeListings": 17336,
+   "pending": 2578
   },
   {
    "periodBegin": "2026-08-31",
    "periodEnd": "2026-09-27",
-   "homesSold": 2490,
-   "medianPrice": 462241,
-   "yoy": 2.72,
+   "homesSold": 2489,
+   "medianPrice": 462304,
+   "yoy": 2.73,
    "dom": 68,
    "saleToList": 97.85,
-   "monthsSupply": 5.5,
-   "newListings": 3614,
-   "activeListings": 17604,
-   "pending": 2411
+   "monthsSupply": 5.4,
+   "newListings": 3602,
+   "activeListings": 17409,
+   "pending": 2415
   }
  ]
 }
