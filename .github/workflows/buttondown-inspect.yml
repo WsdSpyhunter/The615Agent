@@ -15,6 +15,6 @@ jobs:
           console.log('RESULT: emails in account =', r.length);
           for (const e of r.slice(0,5)) {
             const b=e.body||'';
-            const h3=(b.match(/<h3[^>]*>/g)||[]);
-            console.log('RESULT: '+JSON.stringify({status:e.status, subject:(e.subject||'').slice(0,50), modified:e.modification_date, bodyLen:b.length, firstH3Tag:h3[0]||'none', h3Count:h3.length, markdownH3:(b.match(/^### /gm)||[]).length}));
+            const h3=(b.match(/<h3[^>]*>/g)||[]); const spacers=(b.match(/td height=.64./g)||[]).length;
+            console.log('RESULT: '+JSON.stringify({status:e.status, subject:(e.subject||'').slice(0,50), modified:e.modification_date, bodyLen:b.length, firstH3Tag:h3[0]||'none', h3Count:h3.length, spacers, markdownH3:(b.match(/^### /gm)||[]).length}));
           }"
