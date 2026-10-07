@@ -394,3 +394,6 @@ footer a:hover{opacity:1;text-decoration:underline}
   .hero .lead{margin-bottom:38px}
   .hero .cta-row{gap:24px}
 }
+
+/* Market data page: the "How to read the rating" heading is centered over its text on every screen size */
+.wl .prose > h2{text-align:center}
