@@ -14,6 +14,22 @@ export function bodyHtml(draft) {
 
 const btn = (href, label, bg, fg = '#fff') => `<a href="${esc(href)}" style="display:inline-block;background:${bg};color:${fg};font-weight:700;text-decoration:none;border-radius:999px;padding:13px 24px;margin:4px 6px 4px 0;font-family:Arial,Helvetica,sans-serif;font-size:15px">${esc(label)}</a>`;
 
+
+/** Email-safe preview of the author card the website adds to the end of every post (so you see the branding while reviewing). */
+const authorCardPreview = () => `<div style="margin:26px 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#4F5966;font-weight:bold">How the end of this post will look on your website (added automatically)</div>
+<div style="background:#ffffff;border:1px solid #D4D9DF;border-top:5px solid #1473E6;border-radius:18px;padding:20px;text-align:center">
+<img src="${SITE}/img/email/headshot.jpg" alt="Scott Davis" width="88" height="88" style="display:block;margin:0 auto 10px;width:88px;height:88px;border-radius:50%;border:4px solid #1473E6">
+<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1473E6;font-weight:bold">About the author</div>
+<div style="font-size:19px;font-weight:bold;margin-top:2px">Scott Davis, REALTOR&reg;</div>
+<div style="font-size:13px;color:#4F5966;margin:3px 0 8px">The 615 Agent &middot; Hive Nashville &middot; TN License #369664</div>
+<div style="font-size:14px;line-height:1.5;margin:0 0 12px">I help people buy, sell, invest and relocate along the I-65 corridor south of Nashville. Questions about anything in this post? Reach out and I will get back to you.</div>
+<div style="margin:0 0 14px"><span style="display:inline-block;background:#1473E6;color:#ffffff;font-weight:bold;font-size:13px;border-radius:999px;padding:10px 18px;margin:3px">Contact me</span><span style="display:inline-block;border:1.5px solid #0A0A0A;color:#0A0A0A;font-weight:bold;font-size:13px;border-radius:999px;padding:8px 16px;margin:3px">Get matched with homes</span><span style="display:inline-block;color:#173F8A;font-weight:bold;font-size:13px;margin:3px 6px">(615) 326-4055</span></div>
+<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;width:100%;max-width:380px;border-top:1px solid #D4D9DF"><tr>
+<td align="center" valign="middle" style="padding:14px 8px 0"><span style="display:inline-block;background:#0A0A0A;border-radius:10px;padding:8px 12px"><img src="${SITE}/img/email/logo-615-agent.png" alt="The 615 Agent" width="100" style="display:block;width:100px;height:auto"></span></td>
+<td align="center" valign="middle" style="padding:14px 8px 0"><span style="display:inline-block;background:#0A0A0A;border-radius:10px;padding:8px 12px"><img src="${SITE}/img/email/hive-nashville.png" alt="Hive Nashville" width="100" style="display:block;width:100px;height:auto"></span></td>
+</tr></table>
+</div>`;
+
 export function approvalEmail(draft, links) {
   const c = draft.checks || {};
   const report = draft.kind === 'report';
@@ -42,6 +58,7 @@ export function approvalEmail(draft, links) {
   <div style="font-size:16px;line-height:1.65">${bodyHtml(draft)}</div>
   ${(draft.faq || []).length ? '<h2 style="font-size:20px;margin-top:26px">Frequently asked questions</h2>' : ''}
   ${(draft.faq || []).map((f) => `<p style="margin:0 0 4px"><b>${esc(f.q)}</b></p><p style="margin:0 0 12px;color:#4F5966">${esc(f.a)}</p>`).join('')}
+  ${authorCardPreview()}
   <hr style="border:0;border-top:1px solid #D4D9DF;margin:22px 0">
   <p style="font-size:13px;color:#4F5966;margin:0 0 10px"><b>Data points used:</b> ${esc((draft.checks?.dataPointsUsed || []).join(' | ') || 'none listed')}</p>
   <p style="font-size:13px;color:#4F5966;margin:0 0 14px"><b>Links verified (HTTP 200):</b> ${esc((c.linksChecked || []).filter((l) => l.status === 200).map((l) => l.url.replace(/^https?:\/\//, '')).join(', ') || 'none')}</p>
