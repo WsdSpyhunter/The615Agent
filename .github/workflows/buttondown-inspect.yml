@@ -1,0 +1,12 @@
+name: Buttondown inspect
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          K: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          curl -s -H "Authorization: Token $K" https://api.buttondown.com/v1/newsletters | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>{const n=JSON.parse(s).results[0];const out={};for(const [k,v] of Object.entries(n)){if(/api|key|token|secret|email_address|description|from_name|id\$/i.test(k))continue;out[k]=typeof v==='string'?v.slice(0,70):(v&&typeof v==='object'?'['+(Array.isArray(v)?'list':'object')+']':v)}console.log(JSON.stringify(out,null,1))})"
