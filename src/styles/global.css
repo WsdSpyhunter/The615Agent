@@ -444,3 +444,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 .author-card .ac-tile img{height:44px;width:auto;display:block}
 .author-card .ac-eho{font-size:11.5px;color:var(--muted);max-width:300px;text-align:center}
 @media(max-width:620px){.author-card{grid-template-columns:1fr;text-align:center;justify-items:center;padding:22px 18px}.author-card .ac-btns{justify-content:center}.author-card .ac-phone{margin-left:0}.author-card .ac-marks{flex-direction:column;gap:12px}}
+
+/* Blog posts and monthly reports: breathing room between the header's color bar and the first image or paragraph */
+article.s{padding-top:48px}
+@media(max-width:600px){article.s{padding-top:32px}}
