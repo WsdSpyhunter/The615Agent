@@ -16,6 +16,10 @@ on:
         description: "Also create the monthly report as a draft in Buttondown"
         type: boolean
         default: false
+      newsletter_test:
+        description: "Make a throwaway TEST draft of the newsletter in Buttondown (to check it on a phone, then delete it)"
+        type: boolean
+        default: false
       report_test:
         description: "Send me a TEST approval email for the monthly report blog post (press Reject on it afterward)"
         type: boolean
@@ -111,11 +115,12 @@ jobs:
         run: node scripts/blog/send-proof.mjs "$SLUG"
 
       - name: Monthly report draft (Buttondown)
-        if: (steps.check.outputs.monthly == 'true' && github.event_name == 'schedule') || github.event.inputs.create_report_draft == 'true'
+        if: (steps.check.outputs.monthly == 'true' && github.event_name == 'schedule') || github.event.inputs.create_report_draft == 'true' || github.event.inputs.newsletter_test == 'true'
         continue-on-error: true
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-        run: node scripts/data/report-draft.mjs
+          TEST_MODE: ${{ github.event.inputs.newsletter_test == 'true' && '--test' || '' }}
+        run: node scripts/data/report-draft.mjs $TEST_MODE
 
       - name: Redeploy the site
         if: steps.commit.outputs.changed == 'true'

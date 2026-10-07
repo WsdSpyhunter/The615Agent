@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 
 const key = process.env.BUTTONDOWN_API_KEY;
 const PREVIEW = process.argv.includes('--preview');
+const TEST = process.argv.includes('--test'); // makes a clearly labeled throwaway draft so a design change can be checked on a phone
 const log = (...a) => console.log(...a);
 if (!key && !PREVIEW) { log('No BUTTONDOWN_API_KEY, skipping the report draft.'); process.exit(0); }
 
@@ -49,7 +50,7 @@ const signature = `<div style="background:${BLACK};border-radius:14px;padding:24
 </tr></table>
 </div>`;
 
-const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
+const subject = `${TEST ? 'TEST (delete me): ' : ''}${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
 
 const SPACER = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="8" style="height:8px;line-height:8px;font-size:1px;padding:0">&nbsp;</td></tr></table>';
 
