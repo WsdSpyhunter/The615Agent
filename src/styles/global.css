@@ -420,3 +420,6 @@ footer a:hover{opacity:1;text-decoration:underline}
 /* Home hero: the "Scott Davis · Realtor at Hive Nashville" label now sits under the two buttons */
 .hero .eyebrow{display:flex;width:fit-content;margin-top:38px}
 @media(max-width:600px){.hero .eyebrow{margin-top:38px;margin-inline:auto}}
+
+/* Home hero, side-by-side layout: lift the text block so the headline's top lines up with the top of the logo */
+@media(min-width:861px){.hero .body > div:last-child{padding-bottom:64px}}
