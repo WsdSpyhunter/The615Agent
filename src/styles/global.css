@@ -428,3 +428,19 @@ footer a:hover{opacity:1;text-decoration:underline}
 /* Home: "Start here / Two ways to get moving" is centered over the two boxes */
 #paths .sh{justify-content:center;text-align:center}
 #paths .sh .kicker{display:block;margin-bottom:8px}
+
+/* End-of-post author and brand card (blog posts and monthly reports) */
+.author-card{background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:22px;padding:26px;display:grid;grid-template-columns:132px 1fr;gap:24px;align-items:center;box-shadow:var(--shadow);margin-top:40px}
+.author-card .ac-photo{width:132px;height:132px;border-radius:50%;border:4px solid var(--blue);background:#DCE7F8;object-fit:cover;display:block}
+.author-card .ac-kick{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.author-card h3{margin:2px 0;font-size:1.4rem;font-weight:800}
+.author-card .ac-lic{font-size:13.5px;color:var(--muted);font-weight:600;margin:0 0 8px}
+.author-card .ac-bio{margin:0 0 14px;font-size:15px}
+.author-card .ac-btns{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.author-card .ac-btns .btn{padding:11px 20px;font-size:14px}
+.author-card .ac-phone{font-size:14px;font-weight:600;color:var(--navy-text);margin-left:6px}
+.author-card .ac-marks{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:16px}
+.author-card .ac-tile{background:var(--black);border-radius:12px;padding:10px 16px;display:flex;flex:none}
+.author-card .ac-tile img{height:44px;width:auto;display:block}
+.author-card .ac-eho{font-size:11.5px;color:var(--muted);max-width:300px;text-align:center}
+@media(max-width:620px){.author-card{grid-template-columns:1fr;text-align:center;justify-items:center;padding:22px 18px}.author-card .ac-btns{justify-content:center}.author-card .ac-phone{margin-left:0}.author-card .ac-marks{flex-direction:column;gap:12px}}
