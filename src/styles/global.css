@@ -390,7 +390,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 @media(max-width:600px){
   .hero .agent{gap:44px}
   .hero .agentrow{padding-top:34px;gap:36px}
-  .hero .eyebrow{margin-bottom:20px}
+  .hero .eyebrow{margin-bottom:0}
   .hero .lead{margin-bottom:38px}
   .hero .cta-row{gap:24px}
 }
@@ -416,3 +416,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 }
 
 #blog .post + .post{margin-top:26px}
+
+/* Home hero: the "Scott Davis · Realtor at Hive Nashville" label now sits under the two buttons */
+.hero .eyebrow{display:flex;width:fit-content;margin-top:38px}
+@media(max-width:600px){.hero .eyebrow{margin-top:38px;margin-inline:auto}}
