@@ -382,3 +382,6 @@ footer a:hover{opacity:1;text-decoration:underline}
   .aboutcol > img:first-child{margin-inline:auto}
   .contact .info ol.bullets{text-align:left}
 }
+
+/* Phones only: the pointing photo sits above the form there (not beside it), so it points at nothing. Hidden on phones; desktop and tablet are unchanged. */
+@media(max-width:600px){.info .pointing{display:none}}
