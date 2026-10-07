@@ -72,12 +72,16 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/data/commentary.mjs
 
+      - name: Monthly report blog post
+        if: steps.check.outputs.monthly == 'true' || github.event.inputs.create_report_draft == 'true'
+        run: node scripts/data/report-post.mjs
+
       - name: Commit changes
         id: commit
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add public/data scripts/data/state.json
+          git add public/data scripts/data/state.json src/content/posts
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
             git commit -m "Data update"
             git push

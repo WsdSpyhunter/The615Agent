@@ -33,7 +33,7 @@ export const RULES = [
   R('competitors', true, /\b(?:unlike|better than|worse than) (?:other|most|many|typical|traditional|big[- ]box) (?:agents?|realtors?|brokers?|brokerages?)\b|\b(?:other|most|many) (?:agents?|realtors?|brokers?) (?:will|won'?t|don'?t|never|only|just|lie|overprice)\b|\bdiscount brokers?\b|\bbad agents?\b/i, 'Disparages other agents or brokers (Article 15). Describe your own service only.'),
 
   // The REALTOR(R) trademark: member use, capital letters, registered mark
-  R('realtor-mark', true, /(?<![A-Za-z])(?:[Rr]ealtors?)(?![A-Za-z®])|\bREALTORS?(?!®)\b(?![^<]*®)/, 'Use "REALTOR®" in capitals with the ® mark and only to refer to Scott as a member. Do not use "realtor" as a generic word for agents; use "agent" or "real estate agent".'),
+  R('realtor-mark', true, /(?<![A-Za-z])(?:[Rr]ealtors?)(?![A-Za-z®]|\.com)|\bREALTORS?(?!®)\b(?![^<]*®)/, 'Use "REALTOR®" in capitals with the ® mark and only to refer to Scott as a member. Do not use "realtor" as a generic word for agents; use "agent" or "real estate agent".'),
 ];
 
 const flatten = (p) => [p.title, p.description, p.body, ...(p.faq || []).flatMap((f) => [f.q, f.a])].filter(Boolean).join('\n').replace(/\{\{link:[^|}]*\|([^}]*)\}\}/g, '$1').replace(/\{\{img:\d\}\}/g, '');
