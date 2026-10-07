@@ -28,9 +28,9 @@ const header = `<div style="background:${BLACK};border-top:4px solid ${BLUE};bor
 <div style="margin-top:30px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px;color:${GOLD};font-weight:bold">MONTHLY MARKET REPORT &middot; ${monthYear.toUpperCase()}</div>
 <div style="margin-top:18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:#C4CCD6">Franklin &middot; Brentwood &middot; Spring Hill &middot; Thompson's Station &middot; Nolensville &middot; Columbia &middot; Murfreesboro &middot; Nashville</div>
 </div>`;
-const greeting = `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 18px"><tr>
-<td style="padding-right:14px;vertical-align:middle"><img src="${IMG}/headshot.jpg" alt="Scott Davis" width="76" height="76" style="display:block;width:76px;height:76px;border-radius:50%;border:3px solid ${BLUE}"></td>
-<td style="vertical-align:middle;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.4;color:#222"><strong>Hi, it's Scott.</strong><br>Here is your monthly look at the Williamson County and Middle Tennessee market.</td>
+const greeting = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;width:100%"><tr>
+<td width="96" valign="middle" style="width:96px;min-width:96px;padding:0 14px 0 0;vertical-align:middle"><img src="${IMG}/headshot.jpg" alt="Scott Davis" width="76" height="76" style="display:block;width:76px;min-width:76px;max-width:76px;height:76px;min-height:76px;max-height:76px;object-fit:cover;border-radius:50%;border:3px solid ${BLUE}"></td>
+<td valign="middle" style="vertical-align:middle;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.4;color:#222"><strong>Hi, it's Scott.</strong><br>Here is your monthly look at the Williamson County and Middle Tennessee market.</td>
 </tr></table>`;
 const websiteCta = `<div style="background:#EEF0F2;border-radius:14px;padding:22px 18px;text-align:center;margin:26px 0 0;font-family:Arial,Helvetica,sans-serif">
 <div style="font-size:18px;font-weight:bold;color:${BLACK}">Explore more at The615Agent.com</div>
@@ -38,7 +38,7 @@ const websiteCta = `<div style="background:#EEF0F2;border-radius:14px;padding:22
 <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto"><tr><td bgcolor="${BLUE}" style="background:${BLUE};border-radius:999px;padding:0"><a href="${SITE}" style="display:inline-block;background:${BLUE};color:#ffffff !important;text-decoration:none;font-weight:bold;font-size:15px;border-radius:999px;padding:13px 28px"><span style="color:#ffffff !important">Visit The615Agent.com &rarr;</span></a></td></tr></table>
 </div>`;
 const signature = `<div style="background:${BLACK};border-radius:14px;padding:24px 18px;text-align:center;margin:26px 0 0;font-family:Arial,Helvetica,sans-serif;color:#ffffff">
-<img src="${IMG}/headshot.jpg" alt="Scott Davis" width="96" height="96" style="display:block;margin:0 auto 12px;width:96px;height:96px;border-radius:50%;border:4px solid ${BLUE}">
+<img src="${IMG}/headshot.jpg" alt="Scott Davis" width="96" height="96" style="display:block;margin:0 auto 12px;width:96px;min-width:96px;max-width:96px;height:96px;min-height:96px;max-height:96px;object-fit:cover;border-radius:50%;border:4px solid ${BLUE}">
 <div style="font-size:18px;font-weight:bold;color:#ffffff">Scott Davis, REALTOR&reg;</div>
 <div style="font-size:13px;color:#C4CCD6;margin-top:4px">The 615 Agent &middot; Hive Nashville &middot; TN License #369664</div>
 <div style="font-size:14px;margin-top:10px"><a href="tel:+16153264055" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">(615) 326-4055</span></a> &middot; <a href="mailto:scott@hivenashville.com" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">scott@hivenashville.com</span></a></div>
