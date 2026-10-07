@@ -397,3 +397,6 @@ footer a:hover{opacity:1;text-decoration:underline}
 
 /* Market data page: the "How to read the rating" heading is centered over its text on every screen size */
 .wl .prose > h2{text-align:center}
+
+/* Home hero: the headshot and name tag are centered under the logo on every screen size */
+.hero .agentrow{justify-content:center}
