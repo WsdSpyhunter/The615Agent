@@ -1,0 +1,24 @@
+name: Buttondown inspect
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          K: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          curl -s -H "Authorization: Token $K" "https://api.buttondown.com/v1/emails?ordering=-creation_date" > /tmp/e.json
+          curl -s -H "Authorization: Token $K" "https://api.buttondown.com/v1/subscribers" > /tmp/s.json
+          node -e "
+          const e=require('/tmp/e.json').results||[], s=require('/tmp/s.json');
+          const subs=s.results||[];
+          const types={}; for (const x of subs) types[x.type]=(types[x.type]||0)+1;
+          console.log('RESULT: subscribers total =', s.count, '| by type =', JSON.stringify(types));
+          console.log('RESULT: subscriber emails (masked) =', subs.map(x=>x.email_address.replace(/^(.).*(@.*)\$/,'\$1***\$2')).join(', '));
+          for (const m of e) {
+            const keys=Object.keys(m).filter(k=>/public|archive|visib|status|publish|send|recipient|delivery|analytics|slug|absolute_url|email_type|source/i.test(k));
+            const o={}; for (const k of keys) { const v=m[k]; o[k]=(v&&typeof v==='object')?JSON.stringify(v).slice(0,120):v; }
+            console.log('RESULT: '+JSON.stringify({id:m.id.slice(0,8), subject:(m.subject||'').slice(0,40), ...o}));
+          }"
