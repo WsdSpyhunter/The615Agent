@@ -83,7 +83,7 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
       <div class="center-label"><span class="latest-label">Latest from the blog</span></div>
       {latest ? (
         [latest, previous].filter(Boolean).map((p: any, i: number) => (
-          <article class="post" style={i > 0 ? 'margin-top:26px' : undefined}>
+          <article class="post">
             {p.data.heroImage ? <img class="img" src={p.data.heroImage} alt={p.data.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
             <div class="pbody">
               <span class="chip">{p.data.category}</span>

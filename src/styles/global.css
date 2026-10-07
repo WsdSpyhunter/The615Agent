@@ -406,3 +406,13 @@ footer a:hover{opacity:1;text-decoration:underline}
   .logo-card.match{margin-top:64px}
   .prose .about-cta{margin-top:52px!important}
 }
+
+/* Home, side-by-side layout: the second blog card sits at the bottom of its column, so its bottom lines up with the bottom of the Market Temperature panel (both cards stay the same size; the extra space goes between them) */
+@media(min-width:901px){
+  #blog .wrap.two{align-items:stretch}
+  #blog .wrap.two > div:first-child{display:flex;flex-direction:column}
+  #blog .wrap.two > div:first-child .post:last-of-type{margin-top:auto}
+  #blog .wrap.two > div:first-child .post:first-of-type{margin-bottom:26px}
+}
+
+#blog .post + .post{margin-top:26px}
