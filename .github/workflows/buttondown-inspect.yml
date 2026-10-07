@@ -1,0 +1,16 @@
+name: Buttondown inspect
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          K: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          curl -s -H "Authorization: Token $K" "https://api.buttondown.com/v1/emails?ordering=-creation_date" > /tmp/e.json
+          node -e "
+          const e=require('/tmp/e.json').results||[];
+          console.log('RESULT: emails =', e.length);
+          for (const m of e) { const a=m.analytics||{}; console.log('RESULT: '+JSON.stringify({id:m.id.slice(0,8), status:m.status, subject:(m.subject||'').slice(0,34), created:m.creation_date, published:m.publish_date, modified:m.modification_date, bodyLen:(m.body||'').length, hasSpacer8:/height=.8./.test(m.body||''), hasBranding:/email\/logo-615-agent/.test(m.body||''), recipients:a.recipients, deliveries:a.deliveries})); }"
