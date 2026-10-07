@@ -22,10 +22,10 @@ const rating = (c) => (c.temperature ? `${c.temperature.label}${c.temperature.ti
 // ---- Branding blocks. Inline styles only, images on the live site, no indentation or blank lines (markdown would break them).
 const IMG = `${SITE}/img/email`;
 const BLUE = '#1473E6', GOLD = '#FFC20E', BLACK = '#0A0A0A';
-const header = `<div style="background:${BLACK};border-top:4px solid ${BLUE};border-radius:14px;padding:26px 18px;text-align:center;margin:0 0 22px">
+const header = `<div style="background:${BLACK};border-top:4px solid ${BLUE};border-radius:14px;padding:34px 18px 32px;text-align:center;margin:0 0 22px">
 <img src="${IMG}/logo-615-agent.png" alt="The 615 Agent" width="240" style="display:block;margin:0 auto;width:240px;max-width:100%;height:auto">
-<div style="margin-top:16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px;color:${GOLD};font-weight:bold">MONTHLY MARKET REPORT &middot; ${monthYear.toUpperCase()}</div>
-<div style="margin-top:6px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#C4CCD6">Franklin &middot; Brentwood &middot; Spring Hill &middot; Thompson's Station &middot; Nolensville &middot; Columbia &middot; Murfreesboro &middot; Nashville</div>
+<div style="margin-top:30px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px;color:${GOLD};font-weight:bold">MONTHLY MARKET REPORT &middot; ${monthYear.toUpperCase()}</div>
+<div style="margin-top:18px;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:#C4CCD6">Franklin &middot; Brentwood &middot; Spring Hill &middot; Thompson's Station &middot; Nolensville &middot; Columbia &middot; Murfreesboro &middot; Nashville</div>
 </div>`;
 const greeting = `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 18px"><tr>
 <td style="padding-right:14px;vertical-align:middle"><img src="${IMG}/headshot.jpg" alt="Scott Davis" width="76" height="76" style="display:block;width:76px;height:76px;border-radius:50%;border:3px solid ${BLUE}"></td>
@@ -34,15 +34,18 @@ const greeting = `<table role="presentation" cellpadding="0" cellspacing="0" sty
 const websiteCta = `<div style="background:#EEF0F2;border-radius:14px;padding:22px 18px;text-align:center;margin:26px 0 0;font-family:Arial,Helvetica,sans-serif">
 <div style="font-size:18px;font-weight:bold;color:${BLACK}">Explore more at The615Agent.com</div>
 <div style="font-size:14px;color:#4F5966;margin:8px 0 16px;line-height:1.5">Live market data for every city, a mortgage calculator, free buyer and seller checklists, and local guides on the blog.</div>
-<a href="${SITE}" style="display:inline-block;background:${BLUE};color:#ffffff;text-decoration:none;font-weight:bold;font-size:15px;border-radius:999px;padding:13px 28px">Visit The615Agent.com</a>
+<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto"><tr><td bgcolor="${BLUE}" style="background:${BLUE};border-radius:999px;padding:0"><a href="${SITE}" style="display:inline-block;background:${BLUE};color:#ffffff !important;text-decoration:none;font-weight:bold;font-size:15px;border-radius:999px;padding:13px 28px"><span style="color:#ffffff !important">Visit The615Agent.com &rarr;</span></a></td></tr></table>
 </div>`;
 const signature = `<div style="background:${BLACK};border-radius:14px;padding:24px 18px;text-align:center;margin:26px 0 0;font-family:Arial,Helvetica,sans-serif;color:#ffffff">
 <img src="${IMG}/headshot.jpg" alt="Scott Davis" width="96" height="96" style="display:block;margin:0 auto 12px;width:96px;height:96px;border-radius:50%;border:4px solid ${BLUE}">
-<div style="font-size:18px;font-weight:bold">Scott Davis, REALTOR&reg;</div>
+<div style="font-size:18px;font-weight:bold;color:#ffffff">Scott Davis, REALTOR&reg;</div>
 <div style="font-size:13px;color:#C4CCD6;margin-top:4px">The 615 Agent &middot; Hive Nashville &middot; TN License #369664</div>
-<div style="font-size:14px;margin-top:10px"><a href="tel:+16153264055" style="color:#7DB4F5;text-decoration:none">(615) 326-4055</a> &middot; <a href="mailto:scott@hivenashville.com" style="color:#7DB4F5;text-decoration:none">scott@hivenashville.com</a></div>
-<div style="font-size:14px;margin-top:6px"><a href="${SITE}" style="color:${GOLD};text-decoration:none;font-weight:bold">The615Agent.com</a></div>
-<img src="${IMG}/hive-nashville.png" alt="Hive Nashville" width="150" style="display:block;margin:16px auto 0;width:150px;max-width:100%;height:auto">
+<div style="font-size:14px;margin-top:10px"><a href="tel:+16153264055" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">(615) 326-4055</span></a> &middot; <a href="mailto:scott@hivenashville.com" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">scott@hivenashville.com</span></a></div>
+<div style="font-size:14px;margin-top:6px"><a href="${SITE}" style="color:${GOLD} !important;text-decoration:none;font-weight:bold"><span style="color:${GOLD} !important">The615Agent.com</span></a></div>
+<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:22px auto 0;width:100%;max-width:420px"><tr>
+<td align="center" style="width:50%;padding:0 14px"><img src="${IMG}/logo-615-agent.png" alt="The 615 Agent" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
+<td align="center" style="width:50%;padding:0 14px"><img src="${IMG}/hive-nashville.png" alt="Hive Nashville" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
+</tr></table>
 </div>`;
 
 const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
@@ -89,11 +92,17 @@ if (PREVIEW) {
 const api = 'https://api.buttondown.com/v1/emails';
 const headers = { Authorization: `Token ${key}`, 'Content-Type': 'application/json' };
 
-// Skip if a draft for this month already exists.
+// If a draft for this month already exists, update its body in place (so design changes reach it). Nothing is ever sent.
 const existing = await fetch(`${api}?status=draft`, { headers });
 if (existing.ok) {
   const j = await existing.json();
-  if ((j.results || []).some((e) => e.subject === subject)) { log(`A draft titled "${subject}" already exists. Nothing to do.`); process.exit(0); }
+  const found = (j.results || []).find((e) => e.subject === subject);
+  if (found) {
+    const up = await fetch(`${api}/${found.id}`, { method: 'PATCH', headers, body: JSON.stringify({ body }) });
+    const t = (await up.text()).slice(0, 300).replace(/[A-Za-z0-9-]{30,}/g, '[hidden]');
+    if (!up.ok) { log(`Could not update the existing draft (HTTP ${up.status}): ${t}`); process.exit(1); }
+    log(`Updated the existing draft "${subject}".`); process.exit(0);
+  }
 } else {
   log(`Could not list existing drafts (HTTP ${existing.status}). Continuing.`);
 }
