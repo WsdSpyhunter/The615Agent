@@ -448,3 +448,14 @@ footer a:hover{opacity:1;text-decoration:underline}
 /* Blog posts and monthly reports: breathing room between the header's color bar and the first image or paragraph */
 article.s{padding-top:48px}
 @media(max-width:600px){article.s{padding-top:32px}}
+
+/* Home hero, side-by-side layout: headshot at the left edge with the name label beside it, centered between the logo's divider line and the strip below.
+   On narrower screens the label stays under the buttons, as before. */
+.hero .eyebrow-row{display:none;margin-top:0}
+@media(min-width:861px){
+  .hero .eyebrow-col{display:none}
+  .hero .eyebrow-row{display:flex;flex:1;min-width:0;align-items:center;margin-top:0;width:auto}
+  .hero .agentrow{justify-content:flex-start;gap:30px;padding-top:60px}
+  .hero .body{align-items:start}
+  .hero .body > div:last-child{padding-bottom:0}
+}
