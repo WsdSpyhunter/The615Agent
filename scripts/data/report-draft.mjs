@@ -15,6 +15,7 @@ const SITE = 'https://the615agent.com';
 const longDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 const monthYear = new Date(m.asOf + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 const money = (v) => (v == null ? 'n/a' : '$' + Math.round(v).toLocaleString('en-US'));
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const label = (x) => (x < 4 ? "Seller's market" : x <= 6 ? 'Balanced market' : "Buyer's market");
 const rating = (c) => (c.temperature ? `${c.temperature.label}${c.temperature.tilt ? ` (slightly toward ${c.temperature.tilt})` : ''}` : label(c.monthsSupply));
 
@@ -52,7 +53,8 @@ const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring
 
 const sections = Object.values(m.cities).map((c) => {
   const lines = [
-    `### ${c.name}: ${rating(c)}`,
+    `<h3 style="margin:46px 0 14px">${esc(`${c.name}: ${rating(c)}`)}</h3>`,
+    '',
     c.temperature ? `*${c.temperature.readings.map((r) => `${r.title.split(':')[0]}: ${r.reading}`).join(' | ')}${c.temperature.trend ? ` | Trend: ${c.temperature.trend.direction}` : ''}${c.temperature.mixed ? ' | The sources disagree' : ''}*` : '',
     c.commentary ? c.commentary : '',
     '',
