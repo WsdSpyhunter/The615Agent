@@ -95,6 +95,10 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Install the email tools
+        if: steps.report.outputs.slug != ''
+        run: npm ci
+
       - name: Email the monthly report for your approval
         if: steps.report.outputs.slug != ''
         env:
