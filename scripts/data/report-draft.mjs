@@ -51,7 +51,7 @@ const signature = `<div style="background:${BLACK};border-radius:14px;padding:24
 
 const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
 
-const SPACER = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="30" style="height:30px;line-height:30px;font-size:1px;padding:0">&nbsp;</td></tr></table>';
+const SPACER = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="18" style="height:18px;line-height:18px;font-size:1px;padding:0">&nbsp;</td></tr></table>';
 
 const sections = Object.values(m.cities).map((c) => {
   const lines = [
