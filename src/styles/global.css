@@ -423,3 +423,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 
 /* Home hero, side-by-side layout: lift the text block so the headline's top lines up with the top of the logo */
 @media(min-width:861px){.hero .body > div:last-child{padding-bottom:64px}}
+
+/* Home: "Start here / Two ways to get moving" is centered over the two boxes */
+#paths .sh{justify-content:center;text-align:center}
+#paths .sh .kicker{display:block;margin-bottom:8px}
