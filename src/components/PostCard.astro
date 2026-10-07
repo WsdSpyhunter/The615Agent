@@ -6,7 +6,7 @@ const date = d.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'sh
 <article class="post">
   {d.heroImage ? <img class="img" src={d.heroImage} alt={d.heroAlt ?? ''} loading="lazy" width="800" height="400" /> : <div class="img" aria-hidden="true"></div>}
   <div class="pbody">
-    <span class="chip">{d.category}</span>
+    <span class={d.category === 'Market Update' ? 'chip mu' : 'chip'}>{d.category}</span>
     <span class="meta">{date}</span>
     <h3><a href={`/blog/${post.id}`}>{d.title}</a></h3>
     <p>{d.description}</p>
