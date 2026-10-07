@@ -51,10 +51,13 @@ const signature = `<div style="background:${BLACK};border-radius:14px;padding:24
 
 const subject = `${monthYear} housing market report: Franklin, Brentwood, Spring Hill and more`;
 
+const SPACER = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="64" style="height:64px;line-height:64px;font-size:1px;padding:0">&nbsp;</td></tr></table>';
+
 const sections = Object.values(m.cities).map((c) => {
   const lines = [
-    `<h3 style="margin:68px 0 14px">${esc(`${c.name}: ${rating(c)}`)}</h3>`,
+    SPACER,
     '',
+    `### ${c.name}: ${rating(c)}`,
     c.temperature ? `*${c.temperature.readings.map((r) => `${r.title.split(':')[0]}: ${r.reading}`).join(' | ')}${c.temperature.trend ? ` | Trend: ${c.temperature.trend.direction}` : ''}${c.temperature.mixed ? ' | The sources disagree' : ''}*` : '',
     c.commentary ? c.commentary : '',
     '',
