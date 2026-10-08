@@ -13,7 +13,7 @@
   {
    "slug": "neighborhoods",
    "label": "Neighborhoods",
-   "live": false
+   "live": true
   },
   {
    "slug": "property-taxes",
@@ -38,7 +38,7 @@
   {
    "slug": "new-construction",
    "label": "New construction",
-   "live": false
+   "live": true
   },
   {
    "slug": "buying-in-franklin",
@@ -63,6 +63,16 @@
   {
    "slug": "franklin-vs-thompsons-station",
    "label": "Franklin vs Thompson's Station",
+   "live": true
+  },
+  {
+   "slug": "older-homes",
+   "label": "Older homes",
+   "live": true
+  },
+  {
+   "slug": "luxury-homes",
+   "label": "Homes $1M and up",
    "live": true
   }
  ]

@@ -32,3 +32,7 @@ export function chart2(a: (number | null)[], b: (number | null)[]) {
   const path = (s: (number | null)[]) => s.map((p, i) => [i, p] as const).filter(([, p]) => p != null).map(([i, p], k) => `${k ? 'L' : 'M'}${X(i).toFixed(1)},${Y(p as number).toFixed(1)}`).join(' ');
   return { a: path(a), b: path(b) };
 }
+export const pct = (n: number) => n.toFixed(1) + '%';
+export const builtSince2010 = (c: any) => c.builtPct.b2020 + c.builtPct.b2010;
+export const builtBefore1980 = (c: any) => c.builtPct.b1970 + c.builtPct.b1960 + c.builtPct.b1950 + c.builtPct.b1940 + c.builtPct.b1939;
+export const builtBefore1970 = (c: any) => c.builtPct.b1960 + c.builtPct.b1950 + c.builtPct.b1940 + c.builtPct.b1939;

@@ -2,7 +2,7 @@
  "source": "U.S. Census Bureau, American Community Survey 5-Year Estimates, Data Profiles (2020-2024)",
  "url": "https://www.census.gov/data/developers/data-sets/acs-5year.html",
  "vintage": "2024 (5-year, 2020-2024)",
- "note": "Median household income is in 2024 inflation-adjusted dollars. Median home value is for owner-occupied units (self-reported). Median gross rent is for units paying rent.",
+ "note": "Median household income is in 2024 inflation-adjusted dollars. Median home value is for owner-occupied units (self-reported). Median gross rent is for units paying rent. ZIP code figures are Census ZIP Code Tabulation Areas (ZCTAs), which approximate postal ZIP codes and do not match city limits exactly.",
  "retrieved": "2026-10-08",
  "cities": {
   "brentwood": {
@@ -12,7 +12,22 @@
    "medianHouseholdIncome": 182088,
    "medianHomeValue": 1031300,
    "medianGrossRent": 2825,
-   "ownerOccupiedPct": 90.4
+   "ownerOccupiedPct": 90.4,
+   "housingUnits": 15557,
+   "builtPct": {
+    "b2020": 1.8,
+    "b2010": 16.7,
+    "b2000": 24.3,
+    "b1990": 18.5,
+    "b1980": 16.5,
+    "b1970": 15.5,
+    "b1960": 5.1,
+    "b1950": 0.6,
+    "b1940": 0.3,
+    "b1939": 0.8
+   },
+   "valuePct500to999k": 38.2,
+   "valuePct1mPlus": 52.6
   },
   "columbia": {
    "name": "Columbia",
@@ -21,7 +36,22 @@
    "medianHouseholdIncome": 63719,
    "medianHomeValue": 308700,
    "medianGrossRent": 1197,
-   "ownerOccupiedPct": 63.3
+   "ownerOccupiedPct": 63.3,
+   "housingUnits": 19918,
+   "builtPct": {
+    "b2020": 7.3,
+    "b2010": 15.0,
+    "b2000": 10.5,
+    "b1990": 10.5,
+    "b1980": 7.7,
+    "b1970": 14.9,
+    "b1960": 10.6,
+    "b1950": 9.6,
+    "b1940": 7.6,
+    "b1939": 6.2
+   },
+   "valuePct500to999k": 7.2,
+   "valuePct1mPlus": 0.8
   },
   "franklin": {
    "name": "Franklin",
@@ -30,7 +60,22 @@
    "medianHouseholdIncome": 119528,
    "medianHomeValue": 705400,
    "medianGrossRent": 1923,
-   "ownerOccupiedPct": 63.8
+   "ownerOccupiedPct": 63.8,
+   "housingUnits": 36239,
+   "builtPct": {
+    "b2020": 4.1,
+    "b2010": 28.1,
+    "b2000": 21.3,
+    "b1990": 23.1,
+    "b1980": 10.7,
+    "b1970": 5.7,
+    "b1960": 2.2,
+    "b1950": 2.1,
+    "b1940": 0.7,
+    "b1939": 2.1
+   },
+   "valuePct500to999k": 58.6,
+   "valuePct1mPlus": 18.7
   },
   "murfreesboro": {
    "name": "Murfreesboro",
@@ -39,7 +84,22 @@
    "medianHouseholdIncome": 80108,
    "medianHomeValue": 402100,
    "medianGrossRent": 1481,
-   "ownerOccupiedPct": 52.4
+   "ownerOccupiedPct": 52.4,
+   "housingUnits": 66400,
+   "builtPct": {
+    "b2020": 5.3,
+    "b2010": 27.7,
+    "b2000": 22.6,
+    "b1990": 15.9,
+    "b1980": 10.1,
+    "b1970": 7.6,
+    "b1960": 3.6,
+    "b1950": 3.8,
+    "b1940": 1.3,
+    "b1939": 2.1
+   },
+   "valuePct500to999k": 25.8,
+   "valuePct1mPlus": 1.9
   },
   "nolensville": {
    "name": "Nolensville",
@@ -48,7 +108,22 @@
    "medianHouseholdIncome": 177148,
    "medianHomeValue": 777800,
    "medianGrossRent": 2454,
-   "ownerOccupiedPct": 93.6
+   "ownerOccupiedPct": 93.6,
+   "housingUnits": 4538,
+   "builtPct": {
+    "b2020": 11.0,
+    "b2010": 49.5,
+    "b2000": 14.0,
+    "b1990": 11.7,
+    "b1980": 7.2,
+    "b1970": 4.3,
+    "b1960": 1.2,
+    "b1950": 0.0,
+    "b1940": 0.3,
+    "b1939": 0.8
+   },
+   "valuePct500to999k": 63.3,
+   "valuePct1mPlus": 18.4
   },
   "spring-hill": {
    "name": "Spring Hill",
@@ -57,7 +132,22 @@
    "medianHouseholdIncome": 112013,
    "medianHomeValue": 493800,
    "medianGrossRent": 1844,
-   "ownerOccupiedPct": 73.4
+   "ownerOccupiedPct": 73.4,
+   "housingUnits": 20536,
+   "builtPct": {
+    "b2020": 8.9,
+    "b2010": 38.0,
+    "b2000": 35.5,
+    "b1990": 13.0,
+    "b1980": 0.8,
+    "b1970": 1.1,
+    "b1960": 0.9,
+    "b1950": 0.4,
+    "b1940": 0.2,
+    "b1939": 1.2
+   },
+   "valuePct500to999k": 47.2,
+   "valuePct1mPlus": 1.4
   },
   "thompsons-station": {
    "name": "Thompson's Station",
@@ -66,7 +156,57 @@
    "medianHouseholdIncome": 132647,
    "medianHomeValue": 700500,
    "medianGrossRent": 2088,
-   "ownerOccupiedPct": 81.3
+   "ownerOccupiedPct": 81.3,
+   "housingUnits": 3034,
+   "builtPct": {
+    "b2020": 8.3,
+    "b2010": 57.5,
+    "b2000": 10.4,
+    "b1990": 5.6,
+    "b1980": 2.4,
+    "b1970": 10.4,
+    "b1960": 0.0,
+    "b1950": 0.0,
+    "b1940": 0.0,
+    "b1939": 5.3
+   },
+   "valuePct500to999k": 52.7,
+   "valuePct1mPlus": 23.0
+  }
+ },
+ "zips": {
+  "37064": {
+   "population": 67513,
+   "meanCommuteMinutes": 26.2,
+   "medianHouseholdIncome": 127771,
+   "medianHomeValue": 735100,
+   "medianGrossRent": 1916,
+   "ownerOccupiedPct": 77.1,
+   "housingUnits": 25718,
+   "builtSince2020Pct": 3.7,
+   "valuePct1mPlus": 23.6
+  },
+  "37067": {
+   "population": 31556,
+   "meanCommuteMinutes": 23.2,
+   "medianHouseholdIncome": 111759,
+   "medianHomeValue": 756300,
+   "medianGrossRent": 1938,
+   "ownerOccupiedPct": 51.7,
+   "housingUnits": 14654,
+   "builtSince2020Pct": 5.5,
+   "valuePct1mPlus": 24.1
+  },
+  "37069": {
+   "population": 20209,
+   "meanCommuteMinutes": 26.1,
+   "medianHouseholdIncome": 157939,
+   "medianHomeValue": 815600,
+   "medianGrossRent": 1974,
+   "ownerOccupiedPct": 87.1,
+   "housingUnits": 7376,
+   "builtSince2020Pct": 1.2,
+   "valuePct1mPlus": 31.7
   }
  }
 }
