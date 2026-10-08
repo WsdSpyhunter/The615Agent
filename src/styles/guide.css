@@ -36,3 +36,7 @@
 .fg .linkgrid a{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;text-decoration:none;color:inherit;display:block}
 .fg .linkgrid a b{display:block;margin-bottom:4px;color:var(--navy-text,#173F8A)}.fg .linkgrid a small{color:var(--muted)}
 .fg .vh{position:absolute;left:-9999px}
+/* Spacing polish: more room under the blue labels, same gap on every section (including prose sections), and a clear space before the blue words in the page title */
+.fg .sh .kicker{display:block;margin-bottom:18px}
+.fg .sh h2{margin-top:0}
+.fg .phead h1 em{margin-left:.2em}
