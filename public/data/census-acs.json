@@ -1,0 +1,72 @@
+{
+ "source": "U.S. Census Bureau, American Community Survey 5-Year Estimates, Data Profiles (2020-2024)",
+ "url": "https://www.census.gov/data/developers/data-sets/acs-5year.html",
+ "vintage": "2024 (5-year, 2020-2024)",
+ "note": "Median household income is in 2024 inflation-adjusted dollars. Median home value is for owner-occupied units (self-reported). Median gross rent is for units paying rent.",
+ "retrieved": "2026-10-08",
+ "cities": {
+  "brentwood": {
+   "name": "Brentwood",
+   "population": 45556,
+   "meanCommuteMinutes": 25.7,
+   "medianHouseholdIncome": 182088,
+   "medianHomeValue": 1031300,
+   "medianGrossRent": 2825,
+   "ownerOccupiedPct": 90.4
+  },
+  "columbia": {
+   "name": "Columbia",
+   "population": 45441,
+   "meanCommuteMinutes": 28.0,
+   "medianHouseholdIncome": 63719,
+   "medianHomeValue": 308700,
+   "medianGrossRent": 1197,
+   "ownerOccupiedPct": 63.3
+  },
+  "franklin": {
+   "name": "Franklin",
+   "population": 87133,
+   "meanCommuteMinutes": 23.9,
+   "medianHouseholdIncome": 119528,
+   "medianHomeValue": 705400,
+   "medianGrossRent": 1923,
+   "ownerOccupiedPct": 63.8
+  },
+  "murfreesboro": {
+   "name": "Murfreesboro",
+   "population": 161445,
+   "meanCommuteMinutes": 26.7,
+   "medianHouseholdIncome": 80108,
+   "medianHomeValue": 402100,
+   "medianGrossRent": 1481,
+   "ownerOccupiedPct": 52.4
+  },
+  "nolensville": {
+   "name": "Nolensville",
+   "population": 15074,
+   "meanCommuteMinutes": 36.8,
+   "medianHouseholdIncome": 177148,
+   "medianHomeValue": 777800,
+   "medianGrossRent": 2454,
+   "ownerOccupiedPct": 93.6
+  },
+  "spring-hill": {
+   "name": "Spring Hill",
+   "population": 55765,
+   "meanCommuteMinutes": 30.0,
+   "medianHouseholdIncome": 112013,
+   "medianHomeValue": 493800,
+   "medianGrossRent": 1844,
+   "ownerOccupiedPct": 73.4
+  },
+  "thompsons-station": {
+   "name": "Thompson's Station",
+   "population": 8294,
+   "meanCommuteMinutes": 30.5,
+   "medianHouseholdIncome": 132647,
+   "medianHomeValue": 700500,
+   "medianGrossRent": 2088,
+   "ownerOccupiedPct": 81.3
+  }
+ }
+}
