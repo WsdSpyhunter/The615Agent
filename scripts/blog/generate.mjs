@@ -41,7 +41,7 @@ if (!topic && arg('idea')) {
   const cats = ['Buyers', 'Sellers', 'Relocation', 'Investors', 'Market Update', 'New Construction', 'Schools', 'Cost of Living', 'Property Taxes', 'Commute'];
   const c = parseJson(await ask({ system: 'You classify a blog topic for a Tennessee real estate site. Return ONLY JSON: {"category": one of ' + JSON.stringify(cats) + ', "keyword": a 3 to 6 word search phrase, "related": [3 short related search terms], "linkTags": [up to 6 tags chosen ONLY from this list: ' + vocab.join(', ') + '], "type": "data" if the topic is mainly about current local market numbers, else "evergreen"}.', user: idea, maxTokens: 400 }));
   const n = topics.filter((t) => String(t.id).startsWith('c')).length + 1;
-  topic = { id: `c${String(n).padStart(2, '0')}`, category: cats.includes(c.category) ? c.category : 'Buyers', type: c.type === 'data' ? 'data' : 'evergreen', idea, keyword: String(c.keyword || idea).slice(0, 80), related: (c.related || []).slice(0, 4), linkTags: (c.linkTags || []).filter((t) => vocab.includes(t)), status: 'unused', custom: true };
+  topic = { id: `c${String(n).padStart(2, '0')}`, category: cats.includes(c.category) && c.category !== 'Market Update' ? c.category : 'Buyers', type: c.type === 'data' ? 'data' : 'evergreen', idea, keyword: String(c.keyword || idea).slice(0, 80), related: (c.related || []).slice(0, 4), linkTags: (c.linkTags || []).filter((t) => vocab.includes(t)), status: 'unused', custom: true };
   topics.push(topic);
 }
 if (!topic) {
