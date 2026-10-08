@@ -40,3 +40,4 @@
 .fg .sh .kicker{display:block;margin-bottom:18px}
 .fg .sh h2{margin-top:0}
 .fg .phead h1 em{margin-left:.2em}
+@media(min-width:561px){.fg .tpa-mt-gaugewrap{grid-template-columns:minmax(200px,260px) auto;justify-content:center}}

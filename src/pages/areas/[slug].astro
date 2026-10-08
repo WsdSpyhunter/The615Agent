@@ -4,6 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import ColorBar from '../../components/ColorBar.astro';
 import MarketTemperature from '../../components/MarketTemperature.astro';
 import { site, areas } from '../../site.config';
+import { livePages } from '../../data/franklin-guide';
 import content from '../../data/areas.json';
 export function getStaticPaths() {
   return areas.map((a) => ({ params: { slug: a.slug }, props: { area: a } }));
@@ -28,6 +29,16 @@ const schema = [
       <div class="faq">{c.faq.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
     </div>
     <aside>
+      {a.slug === 'franklin' && (
+        <div class="card t1" style="margin-bottom:18px">
+          <h3>Franklin Real Estate Guide</h3>
+          <p style="margin:0 0 8px;color:var(--muted)">Local data and plain answers, with the source and date next to every number.</p>
+          <ul class="reslist">
+            {livePages.filter((g) => ['housing-market', 'home-prices', 'buying-in-franklin', 'selling-in-franklin', 'schools', 'property-taxes'].includes(g.slug)).map((g) => <li><a href={`/franklin/${g.slug}`}><b>{g.label} →</b></a></li>)}
+            <li><a href="/franklin"><b>See all guide pages →</b></a></li>
+          </ul>
+        </div>
+      )}
       <div class="card t1" style="margin-bottom:18px">
         <h3>Helpful links</h3>
         <ul class="reslist">{c.links.map((l: any) => <li><a href={l.url} target="_blank" rel="noopener"><b>{l.name} ↗</b></a></li>)}</ul>
@@ -40,15 +51,24 @@ const schema = [
     </aside>
   </div></section>
   <ColorBar rev />
-  <section class="s band"><div class="wrap">
+  <section class="s band areatemp"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">Market</span><h2>Market temperature</h2></div></div>
     <MarketTemperature city={a.slug} />
   </div></section>
   <ColorBar />
   <section class="s"><div class="wrap">
-    <div class="sh"><div><span class="kicker navy">Nearby</span><h2>Other areas</h2></div></div>
-    <div class="cities">
+    <div class="sh center"><div><span class="kicker navy">Nearby</span><h2>Other areas</h2></div></div>
+    <div class="cities centered">
       {others.map((o) => <a class="city" href={`/areas/${o.slug}`}><div class="t"><b>{o.name}</b><small>{o.blurb}</small></div></a>)}
     </div>
   </div></section>
 </Layout>
+<style is:global>
+  .cities.centered{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .cities.centered .city{flex:0 0 calc((100% - 70px) / 6)}
+  @media(max-width:1100px){.cities.centered .city{flex-basis:calc((100% - 42px) / 4)}}
+  @media(max-width:820px){.cities.centered .city{flex-basis:calc((100% - 28px) / 3)}}
+  @media(max-width:620px){.cities.centered .city{flex-basis:calc((100% - 14px) / 2)}}
+  .sh.center .kicker{display:block}
+  @media(min-width:561px){.areatemp .tpa-mt-gaugewrap{grid-template-columns:minmax(200px,260px) auto;justify-content:center}}
+</style>
