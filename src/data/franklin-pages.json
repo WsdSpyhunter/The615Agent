@@ -48,7 +48,22 @@
   {
    "slug": "selling-in-franklin",
    "label": "Selling in Franklin",
-   "live": false
+   "live": true
+  },
+  {
+   "slug": "franklin-vs-brentwood",
+   "label": "Franklin vs Brentwood",
+   "live": true
+  },
+  {
+   "slug": "franklin-vs-spring-hill",
+   "label": "Franklin vs Spring Hill",
+   "live": true
+  },
+  {
+   "slug": "franklin-vs-thompsons-station",
+   "label": "Franklin vs Thompson's Station",
+   "live": true
   }
  ]
 }

@@ -1,0 +1,82 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import GuideClose from '../../components/GuideClose.astro';
+import { M, H, C, usd, num, dateLong, monthShort, signed, chart2 } from '../../lib-guide';
+import { site } from '../../site.config';
+export function getStaticPaths() {
+  return ['brentwood', 'spring-hill', 'thompsons-station'].map((peer) => ({ params: { peer } }));
+}
+const { peer } = Astro.params as { peer: string };
+const f = M.cities.franklin, p = M.cities[peer], cf = C.cities.franklin, cp = C.cities[peer];
+const FN = 'Franklin', PN = p.name, when = dateLong(f.asOf), monS = monthShort(f.asOf), UPDATED = C.retrieved;
+const hf = H.cities.franklin.months, hp = H.cities[peer].months;
+const ch = chart2(hf.map((m: any) => m.price), hp.map((m: any) => m.price));
+const slug = `franklin-vs-${peer}`;
+const sharedCounty = peer === 'spring-hill' ? 'Franklin is in Williamson County. Spring Hill includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address.' : 'Franklin and ' + PN + ' are both in Williamson County.';
+const title = `${FN} vs ${PN} TN: Home Prices and Market Data (${monS})`;
+const description = `${FN} vs ${PN}, TN by the numbers: median sale price ${usd(f.medianPrice)} vs ${usd(p.medianPrice)}, days on market ${f.dom} vs ${p.dom}, price per sq ft and Census income. Redfin and Census data.`;
+const rows: [string, string, string][] = [
+  ['Median sale price', usd(f.medianPrice), usd(p.medianPrice)],
+  ['Change vs. a year earlier', signed(f.yoy), signed(p.yoy)],
+  ['Price per square foot', '$' + Math.round(f.ppsf), '$' + Math.round(p.ppsf)],
+  ['Median days on market', String(f.dom), String(p.dom)],
+  ['Average sale-to-list', f.saleToList.toFixed(1) + '%', p.saleToList.toFixed(1) + '%'],
+  ['Months of supply', String(f.monthsSupply), String(p.monthsSupply)],
+  ['Homes for sale', num(f.inventory), num(p.inventory)],
+  ['Market temperature rating', f.temperature.label, p.temperature.label],
+];
+const crows: [string, string, string][] = [
+  ['Population', num(cf.population), num(cp.population)],
+  ['Median household income', usd(cf.medianHouseholdIncome), usd(cp.medianHouseholdIncome)],
+  ['Median rent', usd(cf.medianGrossRent), usd(cp.medianGrossRent)],
+  ['Median home value (owner estimate)', usd(cf.medianHomeValue), usd(cp.medianHomeValue)],
+  ['Owner-occupied homes', cf.ownerOccupiedPct + '%', cp.ownerOccupiedPct + '%'],
+  ['Average commute (minutes)', String(cf.meanCommuteMinutes), String(cp.meanCommuteMinutes)],
+];
+const answer = `As of ${when}, the median sale price was ${usd(f.medianPrice)} in ${FN} and ${usd(p.medianPrice)} in ${PN}, with homes taking a median of ${f.dom} days to sell in ${FN} and ${p.dom} in ${PN} (source: Redfin Data Center). The median price per square foot was about $${Math.round(f.ppsf)} in ${FN} and $${Math.round(p.ppsf)} in ${PN}.`;
+const faq = [
+  { q: `How do home prices in ${FN} and ${PN} compare?`, a: `For the three months ending ${when}, Redfin's median sale price was ${usd(f.medianPrice)} in ${FN} (${signed(f.yoy)} from a year earlier) and ${usd(p.medianPrice)} in ${PN} (${signed(p.yoy)}). Price per square foot was about $${Math.round(f.ppsf)} and $${Math.round(p.ppsf)}.` },
+  { q: `How long do homes take to sell in ${FN} and ${PN}?`, a: `The median was ${f.dom} days on market in ${FN} and ${p.dom} in ${PN}, with homes selling for an average of ${f.saleToList.toFixed(1)}% and ${p.saleToList.toFixed(1)}% of list price (Redfin, rolling 3 months ending ${when}).` },
+  { q: `Is ${FN} or ${PN} a better place to buy?`, a: `Neither is better in general. They are different places with different home types, prices and commutes, and the right choice depends on your budget, timeline and priorities. I do not rank cities. Compare the numbers here, visit both and look at specific homes.` },
+  { q: `Are ${FN} and ${PN} in the same county?`, a: sharedCounty + ' Taxes, schools and services depend on the exact address, so verify them for any home you are serious about.' },
+  { q: `Where do these numbers come from?`, a: `Market figures are from the Redfin Data Center (rolling 3-month values ending ${when}). Population, income, rent, home value and commute are from the U.S. Census Bureau's American Community Survey 5-year estimates for 2020-2024.` },
+];
+const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) }];
+---
+<GuideLayout title={title} description={description} h1={`${FN} <em>vs ${PN}</em>`} lead={`${FN} and ${PN}, Tennessee side by side: prices, days on market, supply, income, rent and commute, with the source and date next to every number.`} slug={slug} label={`${FN} vs ${PN}`} updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Right now · data through {when}</span><h2>{FN} vs {PN} at a glance</h2></div></div>
+    <p class="answer">{answer}</p>
+    <div class="tablewrap"><table class="data"><caption>Market data, Redfin (rolling 3-month figures ending {when})</caption>
+      <thead><tr><th>Measure</th><th>{FN}</th><th>{PN}</th></tr></thead>
+      <tbody>{rows.map((r) => <tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table></div>
+    <p class="sources" style="margin-top:12px">Sources: <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a>; temperature rating blends Zillow's Market Temperature Index, Redfin months of supply and Realtor.com county data. Numbers only: a higher or lower figure is not a ranking.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Three years</span><h2>{FN} and {PN} median sale price over time</h2></div></div>
+    {ch && <figure class="chartcard" style="margin:0"><h3>Median sale price, {monthShort(hf[0].m + '-01')} to {monS}</h3>
+      <div class="note"><span style="color:#1473E6;font-weight:800">● {FN}</span> &nbsp; <span style="color:#E58A12;font-weight:800">● {PN}</span> &nbsp; Both lines use the same scale.</div>
+      <svg viewBox="0 0 560 150" role="img" aria-label={`${FN} and ${PN} median sale price, ${monthShort(hf[0].m + '-01')} to ${monS}.`}><path d={ch.a} fill="none" stroke="#1473E6" stroke-width="3" stroke-linejoin="round" /><path d={ch.b} fill="none" stroke="#E58A12" stroke-width="3" stroke-linejoin="round" /></svg></figure>}
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">People and housing</span><h2>{FN} and {PN} Census numbers</h2></div></div>
+    <div class="tablewrap"><table class="data"><caption>U.S. Census Bureau, American Community Survey 5-year estimates (2020-2024)</caption>
+      <thead><tr><th>Measure</th><th>{FN}</th><th>{PN}</th></tr></thead>
+      <tbody>{crows.map((r) => <tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table></div>
+    <p class="sources" style="margin-top:12px">Income is in 2024 inflation-adjusted dollars. Home value is the owner's own estimate, so it differs from Redfin's sale prices. Estimates have margins of error. {sharedCounty}</p>
+  </div></section>
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{FN} vs {PN} FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or neighborhoods and do not steer buyers toward or away from any place. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href="/franklin/housing-market"><b>Franklin housing market</b><small>Prices, days on market and supply.</small></a>
+      <a href={`/areas/${peer}`}><b>{PN} area page</b><small>Helpful local links and answers.</small></a>
+      <a href="/franklin/cost-of-living"><b>Franklin cost of living</b><small>Income, rent and home value.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

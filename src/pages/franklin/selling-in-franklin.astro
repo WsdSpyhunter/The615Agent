@@ -1,0 +1,64 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import GuideClose from '../../components/GuideClose.astro';
+import { M, usd, dateLong, monthShort, signed } from '../../lib-guide';
+
+const f = M.cities.franklin, when = dateLong(f.asOf), monS = monthShort(f.asOf), t = f.temperature;
+const tilt = t.tilt === 'sellers' ? ', leaning toward sellers' : t.tilt === 'buyers' ? ', leaning toward buyers' : '';
+const title = `Selling a Home in Franklin TN: Steps and Local Data (${monS})`;
+const description = `How to sell a home in Franklin, Tennessee, with today's local numbers: median price ${usd(f.medianPrice)}, ${f.dom} days on market, ${f.saleToList.toFixed(1)}% sale-to-list. By Scott Davis, REALTOR®.`;
+const steps = [
+  { h: 'Understand the local numbers', p: [`As of ${when}, the median sale price in Franklin was ${usd(f.medianPrice)} (${signed(f.yoy)} from a year earlier), homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price, with ${f.monthsSupply} months of supply and ${f.inventory} homes for sale (source: Redfin Data Center). Our blended market rating is a ${t.label.toLowerCase()}${tilt}. See the full <a href="/franklin/housing-market">Franklin housing market</a> page.`, 'These are citywide figures. Conditions can differ a lot by price range, condition and location, so they describe the market and are not a price for any one home.'] },
+  { h: 'Price your home with local data', p: ['A pricing review compares your home with recent sales of similar homes nearby, and with the homes that are competing with yours right now. A free home value review from me starts with the <a href="/sell#form">What’s My Home Worth form</a>.', 'Local data for your own city, such as months of supply, days on market and sale-to-list ratio, is more useful than national headlines, because conditions can differ a lot between cities, price ranges and neighborhoods.'] },
+  { h: 'Complete your Tennessee disclosures', p: ['Tennessee sellers complete the residential property condition disclosure (or exemption), and the lead-based paint disclosure applies to homes built before 1978.'] },
+  { h: 'Prepare for inspections and offers', p: ['Radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection. Termite and wood-destroying organism (WDO) inspections are commonly requested by buyers and lenders in Tennessee.', 'Buyers can ask about negotiating, including asking the seller to pay some closing costs or to fund a temporary or permanent interest rate buydown. Whether that is available depends on the seller, the home and the market.'] },
+  { h: 'Plan for closing and your move', p: ['Wire fraud is real: verify wire instructions by phone using a number you already trust, and never rely on emailed wire instructions.', 'Request quotes from at least 3 licensed moving companies and book early for month-end dates. Cancel homeowner’s insurance on a sold home only after closing is confirmed.', 'For a walkthrough of the timeline, read <a href="/blog/selling-a-home-timeline-offer-to-closing">selling a home: the timeline from offer to closing</a>.'] },
+];
+const faq = [
+  { q: 'Is Franklin a good time to sell?', a: `I cannot predict the market, and the best time depends on your own finances, timeline and the specific home. As of ${when}, we rate Franklin a ${t.label.toLowerCase()}${tilt}, with the trend ${t.trend?.direction ?? 'steady'}. The rating is a snapshot of recent sales, not a forecast.` },
+  { q: 'How long does it take to sell a home in Franklin?', a: `The median was ${f.dom} days on market for the three months ending ${when} (source: Redfin Data Center). Individual homes vary widely by price range, condition and pricing.` },
+  { q: 'Do Franklin homes sell for the asking price?', a: `Homes sold for an average of ${f.saleToList.toFixed(1)}% of list price for the three months ending ${when} (source: Redfin Data Center). Some sold for more and some for less.` },
+  { q: 'What is the median sale price in Franklin?', a: `${usd(f.medianPrice)} for the three months ending ${when}, ${f.yoy >= 0 ? 'up' : 'down'} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). The median is the middle sale price, so it does not describe any one home.` },
+  { q: 'What disclosures do Tennessee sellers complete?', a: 'Tennessee sellers complete the residential property condition disclosure (or exemption), and the lead-based paint disclosure applies to homes built before 1978.' },
+  { q: 'How do I find out what my Franklin home is worth?', a: 'Request a free home value review through the What’s My Home Worth form. A review compares your home with recent sales of similar homes nearby, and an online estimate alone cannot account for condition and updates.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+  { '@context': 'https://schema.org', '@type': 'HowTo', name: 'How to sell a home in Franklin, Tennessee', step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.h, text: s.p.join(' ').replace(/<[^>]+>/g, '') })) },
+];
+---
+<GuideLayout title={title} description={description} h1={`Selling a home in <em>Franklin, TN</em>`} lead="The steps to sell a home in Franklin, Tennessee, with today’s local numbers and the source next to each one." slug="selling-in-franklin" label="Selling in Franklin" updated={f.asOf} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">The short version</span><h2>How to sell a home in Franklin</h2></div></div>
+    <p class="answer">Selling in Franklin follows five steps: understand the local numbers, price your home with local data, complete your Tennessee disclosures, prepare for inspections and offers, and plan for closing and your move. As of {when}, the median sale price was {usd(f.medianPrice)}, homes took a median of {f.dom} days to sell and sold for an average of {f.saleToList.toFixed(1)}% of list price (source: Redfin Data Center).</p>
+    <div class="stats">
+      <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>{signed(f.yoy)} vs. a year earlier</small></div>
+      <div class="stat"><span>Days on market</span><b>{f.dom}</b><small>median</small></div>
+      <div class="stat"><span>Sale-to-list</span><b>{f.saleToList.toFixed(1)}%</b><small>average</small></div>
+      <div class="stat"><span>Months of supply</span><b>{f.monthsSupply}</b><small>{t.label}</small></div>
+      <div class="stat"><span>Homes for sale</span><b>{f.inventory}</b><small>at period end</small></div>
+      <div class="stat"><span>Market rating</span><b style="font-size:1.35rem">{t.label}</b><small>snapshot, not a forecast</small></div>
+    </div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">Step by step</span><h2>The Franklin home-selling process</h2></div></div>
+    {steps.map((s, i) => (<div style="margin-bottom:26px"><h3>{i + 1}. {s.h}</h3>{s.p.map((x) => <p set:html={x} />)}</div>))}
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>Selling in Franklin FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Source for market figures: <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a>, rolling 3-month values ending {when}. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href="/franklin/housing-market"><b>Franklin housing market</b><small>Prices, days on market and supply.</small></a>
+      <a href="/franklin/home-prices"><b>Franklin home prices</b><small>Three years of prices.</small></a>
+      <a href="/sell"><b>Seller resources</b><small>Checklists and the home value form.</small></a>
+      <a href="/blog/selling-a-home-timeline-offer-to-closing"><b>Selling timeline</b><small>From offer to closing.</small></a>
+      <a href="/franklin/buying-in-franklin"><b>Buying in Franklin</b><small>The buyer-side steps.</small></a>
+      <a href="/sell#form"><b>What’s my home worth?</b><small>Request a free home value review.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>
