@@ -1,0 +1,62 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import GuideClose from '../../components/GuideClose.astro';
+import { M, usd, dateLong, monthShort, signed } from '../../lib-guide';
+
+const f = M.cities.franklin, when = dateLong(f.asOf), monS = monthShort(f.asOf);
+const title = `Buying a Home in Franklin TN: Step-by-Step Guide (${monS})`;
+const description = `How to buy a home in Franklin, Tennessee, from pre-approval to closing, with today's local numbers: median price ${usd(f.medianPrice)}, ${f.dom} days on market. By Scott Davis, REALTOR®.`;
+const steps = [
+  { h: 'Get pre-approved', p: ['A pre-qualification is a quick estimate of what you might be able to borrow, based on information you tell a lender. A pre-approval goes further: the lender reviews your documents and credit before issuing a letter.', 'A pre-approval letter is not a final loan commitment. Final approval depends on the appraisal, underwriting and your finances staying the same until closing.'] },
+  { h: 'Compare lenders and loan types', p: ['The CFPB encourages borrowers to get Loan Estimates from more than one lender and compare them, because interest rates and fees can differ from lender to lender. After you apply, a lender must give you a Loan Estimate within three business days, and it is a standard form, so estimates can be compared side by side.', 'You choose your own lender and are free to use any lender you like. Lenders include banks, credit unions, mortgage brokers and online lenders. The Tennessee Housing Development Agency (THDA) offers home loan programs through participating lenders, so ask any lender you are considering whether they take part.', 'FHA loans allow a down payment as low as 3.5 percent. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. Private mortgage insurance is typically required on conventional loans when the down payment is under 20 percent.'] },
+  { h: 'Plan your full budget', p: ['Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. Beyond the loan payment, count property taxes, homeowner’s insurance and maintenance.', 'Property taxes and school assignment depend on the exact address, so verify them with the county and the school district for any home you are serious about. You can estimate a payment in the <a href="/mortgage-calculator">mortgage calculator</a>.'] },
+  { h: 'Read the Franklin market', p: [`As of ${when}, the median sale price in Franklin was ${usd(f.medianPrice)} (${signed(f.yoy)} from a year earlier), homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price, with ${f.monthsSupply} months of supply (source: Redfin Data Center). See the full <a href="/franklin/housing-market">Franklin housing market</a> page and <a href="/franklin/home-prices">home prices</a> page.`, 'Local data for your own city, such as months of supply, days on market and sale-to-list ratio, is more useful than national headlines, because conditions can differ a lot between cities, price ranges and neighborhoods.'] },
+  { h: 'Search, tour and make an offer', p: ['This site does not display live listings. Tell me your budget, area and timeline through the <a href="/buy#form">Get Matched form</a>, and we’ll be talking within the next 48 hours.', 'Buyers can ask about negotiating, including asking the seller to pay some closing costs or to fund a temporary or permanent interest rate buydown. Whether that is available depends on the seller, the home and the market, and a lender must confirm what is allowed for the loan.'] },
+  { h: 'Inspect the home', p: ['Radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection. Termite and wood-destroying organism (WDO) inspections are commonly requested by buyers and lenders in Tennessee.', 'Tennessee sellers complete the residential property condition disclosure (or exemption), and the lead-based paint disclosure applies to homes built before 1978.'] },
+  { h: 'Close on the home', p: ['A lender must send the Closing Disclosure at least 3 business days before closing. Compare it with the Loan Estimate and ask questions.', 'Avoid opening new credit, financing furniture, or changing jobs from the time you apply for a loan through closing. Wire fraud is real: verify wire instructions by phone using a number you already trust, and never rely on emailed wire instructions.'] },
+];
+const faq = [
+  { q: 'How do I buy a home in Franklin, TN?', a: 'The usual steps are to get pre-approved, compare lenders and loan types, plan your full budget, read the local market, search and make an offer, inspect the home, and close. Each step is explained on this page.' },
+  { q: 'How much do I need to buy a home in Franklin?', a: `It depends on the loan. FHA loans allow a down payment as low as 3.5 percent, VA loans typically require no down payment, and 20 percent down on a conventional loan avoids private mortgage insurance. Closing costs typically run 2 to 4 percent of the purchase price. For context, the median sale price in Franklin was ${usd(f.medianPrice)} as of ${when} (Redfin).` },
+  { q: 'How long do homes take to sell in Franklin?', a: `The median was ${f.dom} days on market for the three months ending ${when}, and homes sold for an average of ${f.saleToList.toFixed(1)}% of list price (source: Redfin Data Center). Individual homes vary widely.` },
+  { q: 'Do I need a pre-approval before I look at homes?', a: 'It is not required to look at homes, but a pre-approval shows what a lender has reviewed and helps you set a budget. A pre-approval letter is not a final loan commitment.' },
+  { q: 'Can I use any lender?', a: 'Yes. You choose your own lender. Your agent can share names of lenders they have seen do good work, but you are free to use any lender you like.' },
+  { q: 'Should I wait for mortgage rates to fall?', a: 'Nobody can reliably predict where rates will go, so waiting is a bet in either direction, and the cost of waiting (rent paid, price changes, a lost home you wanted) is real even though it is easy to overlook. Focusing on personal readiness and a monthly payment that fits comfortably is another way to approach it.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+  { '@context': 'https://schema.org', '@type': 'HowTo', name: 'How to buy a home in Franklin, Tennessee', step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.h, text: s.p.join(' ').replace(/<[^>]+>/g, '') })) },
+];
+---
+<GuideLayout title={title} description={description} h1={`Buying a home in <em>Franklin, TN</em>`} lead="The steps to buy a home in Franklin, Tennessee, from pre-approval to closing, with today’s local numbers and the source next to each one." slug="buying-in-franklin" label="Buying in Franklin" updated={f.asOf} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">The short version</span><h2>How to buy a home in Franklin</h2></div></div>
+    <p class="answer">Buying in Franklin follows seven steps: get pre-approved, compare lenders and loan types, plan your full budget, read the local market, search and make an offer, inspect the home, and close. As of {when}, the median sale price was {usd(f.medianPrice)} and homes took a median of {f.dom} days to sell (source: Redfin Data Center).</p>
+    <div class="stats">
+      <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>{signed(f.yoy)} vs. a year earlier</small></div>
+      <div class="stat"><span>Days on market</span><b>{f.dom}</b><small>median</small></div>
+      <div class="stat"><span>Sale-to-list</span><b>{f.saleToList.toFixed(1)}%</b><small>average</small></div>
+    </div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">Step by step</span><h2>The Franklin home-buying process</h2></div></div>
+    {steps.map((s, i) => (<div style="margin-bottom:26px"><h3>{i + 1}. {s.h}</h3>{s.p.map((t) => <p set:html={t} />)}</div>))}
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>Buying in Franklin FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Sources: <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a> for market figures (rolling 3-month values ending {when}); the Consumer Financial Protection Bureau for Loan Estimate and Closing Disclosure timing. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href="/franklin/housing-market"><b>Franklin housing market</b><small>Days on market, supply and market temperature.</small></a>
+      <a href="/franklin/home-prices"><b>Franklin home prices</b><small>Three years of prices and a sample payment.</small></a>
+      <a href="/blog/pre-qualification-vs-pre-approval-mortgage-lender"><b>Pre-qualification vs. pre-approval</b><small>What each one means.</small></a>
+      <a href="/buy"><b>Buyer resources</b><small>Checklists and the Get Matched form.</small></a>
+      <a href="/mortgage-calculator"><b>Mortgage calculator</b><small>Estimate a monthly payment.</small></a>
+      <a href="/blog/is-now-a-good-time-to-buy-middle-tennessee"><b>Is now a good time to buy?</b><small>The questions that matter more than timing.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>
