@@ -32,6 +32,13 @@ let r = await req('/act?t=' + t1); assert.equal(r.status, 200); assert.match(awa
 assert.ok(calls.some((c) => c[0] === 'POST' && c[1].endsWith('/dispatches')), 'dispatch sent');
 r = await req('/act?t=' + t1); assert.equal(r.status, 409, 'second click refused');
 
+// guide approval: one page, then all pages
+const tg = signToken({ s: 'schools', a: 'guide' }, SECRET);
+calls.length = 0;
+r = await req('/act?t=' + tg); assert.equal(r.status, 200); assert.match(await r.text(), /Approved for Google/);
+assert.ok(calls.some((c) => c[0] === 'POST' && c[1].endsWith('/dispatches')), 'guide dispatch sent');
+r = await req('/act?t=' + tg); assert.equal(r.status, 409, 'guide link works once');
+
 // bad link
 r = await req('/act?t=garbage'); assert.equal(r.status, 400);
 

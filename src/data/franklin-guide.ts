@@ -1,18 +1,11 @@
-// The Franklin Real Estate Guide: hub plus a ring of pages. Add a page here when it ships.
-// Only pages with live:true are linked, so the site never links to a page that does not exist.
-// Set INDEXABLE to true only after the page copy has been approved.
-export const INDEXABLE = false;
+// The Franklin Real Estate Guide: hub plus a ring of pages.
+// franklin-pages.json lists the pages (only live:true pages are linked, so the site never links to a page that does not exist).
+// franklin-approved.json lists the pages you approved for Google. Approving in the email adds a page here; until then a page is noindex and left out of the sitemap.
+// The hub page uses the name "index".
+import pagesJson from './franklin-pages.json';
+import approvedJson from './franklin-approved.json';
 
-export const guidePages = [
-  { slug: 'housing-market', label: 'Housing market', live: true },
-  { slug: 'home-prices', label: 'Home prices', live: true },
-  { slug: 'neighborhoods', label: 'Neighborhoods', live: false },
-  { slug: 'property-taxes', label: 'Property taxes', live: true },
-  { slug: 'schools', label: 'Schools', live: true },
-  { slug: 'commute', label: 'Commute', live: true },
-  { slug: 'cost-of-living', label: 'Cost of living', live: true },
-  { slug: 'new-construction', label: 'New construction', live: false },
-  { slug: 'buying-in-franklin', label: 'Buying in Franklin', live: true },
-  { slug: 'selling-in-franklin', label: 'Selling in Franklin', live: false },
-];
+export const guidePages: { slug: string; label: string; live: boolean }[] = pagesJson.pages;
 export const livePages = guidePages.filter((p) => p.live);
+export const approved: string[] = approvedJson.approved;
+export const isIndexable = (slug: string) => approved.includes(slug || 'index');

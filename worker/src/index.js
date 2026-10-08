@@ -63,10 +63,11 @@ async function putDraft(env, slug, draft, sha, attempt = 0) {
 
 const used = async (env, nonce) => !!(await env.NONCES.get(`n:${nonce}`));
 const burn = (env, nonce) => env.NONCES.put(`n:${nonce}`, '1', { expirationTtl: 9 * 24 * 3600 });
-const EVENTS = { approve: 'blog-publish', reject: 'blog-reject', regenerate: 'blog-regenerate' };
+const EVENTS = { approve: 'blog-publish', reject: 'blog-reject', regenerate: 'blog-regenerate', guide: 'guide-publish' };
 const DONE = {
   approve: ['Approved', 'Your post is being published. It should be live on the site in about a minute, and you will get a confirmation email with the link.'],
   reject: ['Rejected', 'The draft was discarded and the topic will not be used again.'],
+  guide: ['Approved for Google', 'The Franklin guide page is being approved. In about a minute the site updates, the page becomes eligible for Google and is added to the sitemap.'],
   regenerate: ['Writing a new draft', 'A fresh draft on the same topic is being written. You will get a new proof email in a couple of minutes.'],
 };
 
@@ -78,7 +79,7 @@ async function handleAct(url, env) {
   const res = await dispatch(env, EVENTS[p.a], p.s);
   if (!res.ok) { await env.NONCES.delete(`n:${p.nonce}`); return page('Something went wrong', `<h1>That did not go through</h1><p class="err">GitHub answered ${res.status}. Press the button again in a moment.</p>`, 502); }
   const [h, msg] = DONE[p.a];
-  return page(h, `<h1>${esc(h)}</h1><p>${esc(msg)}</p><p class="hint">Post: ${esc(p.s)}</p>`);
+  return page(h, `<h1>${esc(h)}</h1><p>${esc(msg)}</p><p class="hint">${p.a === 'guide' ? 'Guide page' : 'Post'}: ${esc(p.s === 'all' ? 'all pages' : p.s)}</p>`);
 }
 
 const editor = (d, session, note = '') => {

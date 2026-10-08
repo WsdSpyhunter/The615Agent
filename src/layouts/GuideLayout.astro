@@ -3,7 +3,7 @@ import Layout from './Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import '../styles/guide.css';
 import { site } from '../site.config';
-import { INDEXABLE, livePages } from '../data/franklin-guide';
+import { isIndexable, livePages } from '../data/franklin-guide';
 interface Props { title: string; description: string; h1: string; lead: string; slug?: string; label?: string; updated: string; schema?: object[]; }
 const { title, description, h1, lead, slug = '', label = 'Franklin Real Estate Guide', updated, schema = [] } = Astro.props;
 const url = `${site.url}/franklin${slug ? '/' + slug : ''}`;
@@ -14,7 +14,7 @@ const page = { '@context': 'https://schema.org', '@type': slug ? 'Article' : 'Co
   publisher: { '@id': `${site.url}/#agent` }, about: { '@type': 'City', name: 'Franklin', containedInPlace: { '@type': 'AdministrativeArea', name: 'Williamson County, Tennessee' } },
   isPartOf: { '@type': 'WebSite', name: site.name, url: site.url }, image: `${site.url}/img/skyline-night-1600.jpg` };
 ---
-<Layout title={title} description={description} noindex={!INDEXABLE} schema={[page, breadcrumb, ...schema]}>
+<Layout title={title} description={description} noindex={!isIndexable(slug)} schema={[page, breadcrumb, ...schema]}>
   <div class="fg">
     <PageHeader eyebrow="Franklin real estate guide" title={h1} lead={lead}>
       <nav class="crumbs" aria-label="Breadcrumb" style="margin-top:14px">
