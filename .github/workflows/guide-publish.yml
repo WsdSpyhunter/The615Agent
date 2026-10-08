@@ -11,7 +11,7 @@ permissions:
   actions: write
 
 concurrency:
-  group: guide
+  group: guide-${{ github.event.client_payload.slug }}
   cancel-in-progress: false
 
 jobs:
@@ -36,9 +36,13 @@ jobs:
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add src/data/franklin-approved.json
+          git add src/data/franklin-approved
           if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
           git commit -m "Guide: approved $SLUG for Google"
-          git pull --rebase -q
-          git push
+          # Several approvals can arrive at once: retry the push until it goes through.
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase -q && git push -q && break
+            echo "push retry $i"; sleep $((RANDOM % 6 + 3))
+          done
+          git status -sb | head -1
           gh workflow run deploy.yml --ref main

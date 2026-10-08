@@ -1,14 +1,14 @@
 // Emails you ONE proof for the whole Franklin guide: a card per page with a preview link, a Realtor-rules check result,
 // and a signed APPROVE FOR GOOGLE button, plus APPROVE ALL. Needs a built site (dist/).
 //   node scripts/guide/send-proof.mjs            (add --preview to write guide-proof-preview.html instead of sending)
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { signToken } from '../blog/sign.mjs';
 import { sendEmail } from '../blog/email.mjs';
 import { complianceIssues, CHECKLIST } from '../blog/compliance.mjs';
 import { esc, SITE } from '../blog/lib.mjs';
 
 const pages = JSON.parse(readFileSync('src/data/franklin-pages.json', 'utf8')).pages.filter((p) => p.live);
-const approved = JSON.parse(readFileSync('src/data/franklin-approved.json', 'utf8')).approved;
+const approved = existsSync('src/data/franklin-approved') ? readdirSync('src/data/franklin-approved').filter((f) => f.endsWith('.txt')).map((f) => f.slice(0, -4)) : [];
 const all = [{ slug: 'index', label: 'Guide home (hub)', path: '/franklin' }, ...pages.map((p) => ({ ...p, path: `/franklin/${p.slug}` }))];
 const secret = process.env.APPROVAL_SECRET, worker = (process.env.WORKER_URL || '').replace(/\/$/, ''), to = process.env.APPROVAL_EMAIL || 'scott@hivenashville.com';
 const preview = process.argv.includes('--preview') || !secret || !worker;
