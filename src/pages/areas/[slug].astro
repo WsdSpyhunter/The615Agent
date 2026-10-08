@@ -70,5 +70,8 @@ const schema = [
   @media(max-width:820px){.cities.centered .city{flex-basis:calc((100% - 28px) / 3)}}
   @media(max-width:620px){.cities.centered .city{flex-basis:calc((100% - 14px) / 2)}}
   .sh.center .kicker{display:block}
+  /* Area pages: box titles and the call-to-action text are centered in their boxes (keep this on every area page) */
+  .area aside .card>h3,.area aside .card>p{text-align:center}
+  .area aside .cta-band{text-align:center}
   @media(min-width:561px){.areatemp .tpa-mt-gaugewrap{grid-template-columns:minmax(200px,260px) auto;justify-content:center}}
 </style>

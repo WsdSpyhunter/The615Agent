@@ -45,3 +45,5 @@
 .fg .stats>*{min-width:0}
 @media(max-width:760px){.fg .stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.fg .stat{padding:16px 14px}.fg .stat b{font-size:1.45rem;overflow-wrap:anywhere}}
+/* Call-to-action box: centered text, same as the area pages */
+.fg .cta-band{text-align:center}
