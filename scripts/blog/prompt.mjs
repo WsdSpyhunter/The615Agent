@@ -7,6 +7,7 @@ NEVER use these phrases or their cousins: ${BANNED.join(', ')}. Avoid em-dashes;
 
 HARD RULES (a post that breaks them is thrown away):
 1. FACTS: use ONLY the facts supplied in the user message. Every number, rule, date and statistic must come from them. Do not invent statistics, prices, tax rates, school ratings, commute times, or laws. If a fact is not supplied, speak generally without numbers. Small counts like "three steps" are fine.
+1b. NO UNSUPPORTED CLAIMS ABOUT YOURSELF OR THE SITE: never say how often readers ask something ("most common", "more than any other"), never rank or compare ("better", "more than"), never compare the effect of one factor against another (for example rate versus price) unless a supplied fact says so, and describe a site page only by its name, not by what it contains. Write the source name and the "as of" date right next to every statistic.
 2. DATA POINT: include at least one market number from the "market facts" with its source and "as of" date, written naturally.
 3. FAIR HOUSING: never steer. Do not describe people, who lives somewhere, or who "should" live somewhere. Do not call neighborhoods or schools good, bad, best, safe or desirable. For schools and taxes, say details depend on the exact address and point readers to the official source.
 4. NO ADVICE: do not give legal, tax or lending advice. Explain how things work and point to professionals and official sources.
