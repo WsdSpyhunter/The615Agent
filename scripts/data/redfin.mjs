@@ -19,6 +19,8 @@ const shape = (r) => ({
   inventory: num(r['inventory']),
   monthsSupply: num(r['months of supply']),
   homesSold: num(r['homes sold']),
+  ppsf: num(r['median sale price per sq.ft. ($)']),
+  ppsfYoy: num(r['median sale price per sq.ft. yoy (%)']),
 });
 
 async function pull(file, isWanted) {

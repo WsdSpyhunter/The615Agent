@@ -1,0 +1,19 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+import { guidePages } from '../../data/franklin-guide';
+import { M, usd, dateLong, signed } from '../../lib-guide';
+const f = M.cities.franklin;
+const live = guidePages.filter((p) => p.live);
+const blurbs: Record<string, string> = { 'housing-market': 'Prices, days on market, supply, price per square foot and market temperature, with sources and dates.' };
+---
+<GuideLayout title="Franklin TN Real Estate Guide: Market, Prices and Moving" description={`A local guide to Franklin, Tennessee real estate by Scott Davis, REALTOR®: current market data (median price ${usd(f.medianPrice)}), prices and more, with sources and dates.`} h1={`Franklin, TN <em>real estate guide</em>`} lead="A local, data-backed guide to buying or selling a home in Franklin, Tennessee. Every number is sourced and dated, and it is updated automatically." updated={M.asOf}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Start here</span><h2>Franklin at a glance</h2></div></div>
+    <p class="answer">As of {dateLong(f.asOf)}, the median sale price in Franklin, Tennessee was {usd(f.medianPrice)} ({signed(f.yoy)} from a year earlier), with homes selling in a median of {f.dom} days (source: Redfin Data Center). Franklin is the Williamson County seat.</p>
+    <div class="linkgrid">
+      {live.map((p) => <a href={`/franklin/${p.slug}`}><b>{p.label}</b><small>{blurbs[p.slug]}</small></a>)}
+    </div>
+  </div></section>
+  <section class="s band"><div class="wrap"><AuthorCard /></div></section>
+</GuideLayout>

@@ -1,0 +1,20 @@
+import market from '../public/data/market.json';
+import history from '../public/data/market-history.json';
+export const M: any = market;
+export const H: any = history;
+export const usd = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+export const dateLong = (iso: string) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+export const monthYear = (iso: string) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+export const monthShort = (iso: string) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', timeZone: 'UTC' });
+export const signed = (n: number) => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n).toFixed(1) + '%';
+export const word = (n: number) => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+// SVG line chart built at build time: fast, no JavaScript, readable by crawlers via the table beside it.
+export function chart(points: (number | null)[], color: string) {
+  const v = points.map((p, i) => [i, p] as const).filter(([, p]) => p != null) as [number, number][];
+  if (v.length < 2) return null;
+  const lo = Math.min(...v.map((x) => x[1])), hi = Math.max(...v.map((x) => x[1])), span = hi - lo || 1;
+  const X = (i: number) => 10 + (540 * i) / (points.length - 1), Y = (p: number) => 130 - ((p - lo) / span) * 120;
+  const d = v.map(([i, p], k) => `${k ? 'L' : 'M'}${X(i).toFixed(1)},${Y(p).toFixed(1)}`).join(' ');
+  const last = v.at(-1)!;
+  return { line: d, area: `${d} L${X(last[0]).toFixed(1)},140 L${X(v[0][0]).toFixed(1)},140 Z`, cx: X(last[0]).toFixed(1), cy: Y(last[1]).toFixed(1), color };
+}

@@ -1,0 +1,128 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import MarketTemperature from '../../components/MarketTemperature.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+import { site } from '../../site.config';
+import { M, H, usd, dateLong, monthYear, monthShort, signed, word, chart } from '../../lib-guide';
+
+const f = M.cities.franklin, hist = H.cities.franklin.months;
+const asOf = f.asOf, when = dateLong(asOf), mon = monthYear(asOf), monS = monthShort(asOf);
+const t = f.temperature;
+const tiltTxt = t.tilt === 'sellers' ? ', leaning toward sellers' : t.tilt === 'buyers' ? ', leaning toward buyers' : '';
+const yearAgo = hist.find((m: any) => m.m === `${+asOf.slice(0, 4) - 1}${asOf.slice(4, 7)}`);
+const series = (k: string) => hist.map((m: any) => m[k]);
+const charts = [
+  { id: 'price', title: 'Median sale price', now: usd(f.medianPrice), c: chart(series('price'), '#1473E6'), label: 'median sale price' },
+  { id: 'dom', title: 'Days on market', now: `${f.dom} days`, c: chart(series('dom'), '#E58A12'), label: 'median days on market' },
+  { id: 'ppsf', title: 'Price per square foot', now: `$${Math.round(f.ppsf)}`, c: chart(series('ppsf'), '#14A88F'), label: 'median sale price per square foot' },
+];
+const rows = hist.slice(-12).reverse();
+const peers = [['brentwood', 'Brentwood'], ['spring-hill', 'Spring Hill'], ['thompsons-station', "Thompson's Station"]].map(([s, n]) => ({ s, n, d: M.cities[s] }));
+const title = `Franklin TN Housing Market and Prices, ${monS}`;
+const description = `Franklin, TN median sale price ${usd(f.medianPrice)} (${signed(f.yoy)} vs. a year earlier), ${f.dom} days on market, ${f.monthsSupply} months of supply. Redfin data through ${monS}, updated monthly.`;
+const answer = `As of ${when}, the median sale price in Franklin, Tennessee was ${usd(f.medianPrice)}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier. Homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price. With ${f.monthsSupply} months of supply and ${f.inventory} homes for sale, our blended rating is a ${t.label.toLowerCase()}${tiltTxt}.`;
+const faq = [
+  { q: 'Is Franklin, TN a buyer’s or seller’s market?', a: `As of ${when}, we rate Franklin a ${t.label.toLowerCase()}${tiltTxt}, with the trend ${t.trend?.direction ?? 'steady'}. The rating blends Zillow’s Market Temperature Index, Redfin’s months of supply and Realtor.com county data, and the sources do not always agree. It is a snapshot of recent sales, not a forecast.` },
+  { q: 'What is the median home price in Franklin, TN?', a: `The median sale price was ${usd(f.medianPrice)} for the three months ending ${when}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). The median is the middle sale price, so half of homes sold for more and half for less.` },
+  { q: 'How long do homes take to sell in Franklin, TN?', a: `The median was ${f.dom} days on market for the three months ending ${when}, and homes sold for an average of ${f.saleToList.toFixed(1)}% of list price (source: Redfin Data Center). Individual homes vary widely by price range and condition.` },
+  { q: 'What is the price per square foot in Franklin, TN?', a: `The median sale price per square foot was about $${Math.round(f.ppsf)} for the three months ending ${when}, ${word(f.ppsfYoy)} ${Math.abs(f.ppsfYoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). It varies a lot by home size, age and location.` },
+  { q: 'How much inventory is there in Franklin, TN?', a: `Redfin counted ${f.inventory} homes for sale at the end of the period ending ${when}, which is ${f.monthsSupply} months of supply at the recent pace of sales. Months of supply is how long it would take to sell every active listing at the current pace of sales.` },
+  { q: 'Where can I see homes for sale in Franklin?', a: `This site does not display live listings. To see homes that fit your budget and timeline, tell me what you are looking for through the Get Matched form and I will send you options.` },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+  { '@context': 'https://schema.org', '@type': 'Dataset', name: 'Franklin, Tennessee housing market statistics', description: 'Median sale price, price per square foot, days on market, sale-to-list ratio, inventory and months of supply for Franklin, TN, as rolling 3-month figures.',
+    url: `${site.url}/franklin/housing-market`, creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@id': `${site.url}/#agent` }, isAccessibleForFree: true,
+    temporalCoverage: `${hist[0].m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'City', name: 'Franklin, Tennessee' }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot', 'Median days on market', 'Average sale-to-list ratio', 'Inventory', 'Months of supply'] },
+];
+---
+<GuideLayout title={title} description={description} h1={`Franklin, TN <em>housing market</em>`} lead={`Prices, days on market, supply and market temperature for Franklin, Tennessee, with the source and date next to every number.`} slug="housing-market" label="Housing market" updated={asOf} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Right now · data through {when}</span><h2>Franklin housing market at a glance</h2></div></div>
+    <p class="answer">{answer}</p>
+    <div class="stats">
+      <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>{signed(f.yoy)} vs. a year earlier</small></div>
+      <div class="stat"><span>Days on market</span><b>{f.dom}</b><small>median</small></div>
+      <div class="stat"><span>Sale-to-list</span><b>{f.saleToList.toFixed(1)}%</b><small>average</small></div>
+      <div class="stat"><span>Months of supply</span><b>{f.monthsSupply}</b><small>{t.label}</small></div>
+      <div class="stat"><span>Homes for sale</span><b>{f.inventory}</b><small>at period end</small></div>
+      <div class="stat"><span>Price per sq ft</span><b>${Math.round(f.ppsf)}</b><small>{signed(f.ppsfYoy)} vs. a year earlier</small></div>
+    </div>
+    <p class="sources" style="margin-top:12px">Source: <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a>. Figures are rolling 3-month values ending {when}.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Market temperature</span><h2>Is Franklin a buyer’s or seller’s market?</h2></div></div>
+    <MarketTemperature city="franklin" selector={false} title={false} />
+    <p class="sources">Months of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers. The rating shown here also blends Zillow’s Market Temperature Index and Realtor.com county data. It describes recent sales and is not a forecast. <a href="/market-data">See all cities</a>.</p>
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Trends</span><h2>Franklin home prices, days on market and price per square foot</h2><p>Three years of Redfin rolling 3-month figures, from {monthShort(hist[0].m + '-01')} to {monS}.</p></div></div>
+    <div class="grid3">
+      {charts.map((c) => c.c && (
+        <figure class="chartcard" style="margin:0">
+          <h3>{c.title}</h3><div class="note">Now: {c.now}</div>
+          <svg viewBox="0 0 560 150" role="img" aria-label={`Franklin ${c.label}, ${monthShort(hist[0].m + '-01')} to ${monS}. Now ${c.now}.`}>
+            <path d={c.c.area} fill={c.c.color} opacity=".12" /><path d={c.c.line} fill="none" stroke={c.c.color} stroke-width="3" stroke-linejoin="round" /><circle cx={c.c.cx} cy={c.c.cy} r="5" fill={c.c.color} />
+          </svg>
+        </figure>
+      ))}
+    </div>
+    <div class="tablewrap" style="margin-top:22px"><table class="data">
+      <caption>Franklin, TN, last 12 months (Redfin, rolling 3-month figures)</caption>
+      <thead><tr><th>Period ending</th><th>Median price</th><th>Days on market</th><th>Price / sq ft</th><th>Sale-to-list</th><th>Months of supply</th></tr></thead>
+      <tbody>{rows.map((r: any) => <tr><td>{monthShort(r.m + '-01')}</td><td>{r.price != null ? usd(r.price) : '—'}</td><td>{r.dom ?? '—'}</td><td>{r.ppsf != null ? '$' + Math.round(r.ppsf) : '—'}</td><td>{r.s2l != null ? r.s2l.toFixed(1) + '%' : '—'}</td><td>{r.ms ?? '—'}</td></tr>)}</tbody>
+    </table></div>
+    {yearAgo && <p class="sources" style="margin-top:12px">A year earlier (the period ending {monthShort(yearAgo.m + '-01')}), the median sale price was {usd(yearAgo.price)} and homes took a median of {yearAgo.dom} days to sell.</p>}
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Side by side</span><h2>How Franklin compares with nearby cities</h2><p>Numbers only. These are different places with different home types, so a lower or higher number is not a ranking. Same source and period for each.</p></div></div>
+    <div class="grid3">
+      {peers.map((p) => (
+        <div class="cmp"><b>Franklin and {p.n}</b>
+          <div class="rows">
+            <div><span>Median price</span><i>{usd(f.medianPrice)}</i><i>{usd(p.d.medianPrice)}</i></div>
+            <div><span>Days on market</span><i>{f.dom}</i><i>{p.d.dom}</i></div>
+            <div><span>Price / sq ft</span><i>${Math.round(f.ppsf)}</i><i>${Math.round(p.d.ppsf)}</i></div>
+            <div><span>Months of supply</span><i>{f.monthsSupply}</i><i>{p.d.monthsSupply}</i></div>
+          </div>
+          <small class="legend">Franklin · {p.n}</small>
+          <a href={`/areas/${p.s}`} style="font-weight:800;display:block;margin-top:8px">{p.n} area guide →</a>
+        </div>
+      ))}
+    </div>
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap two" style="display:block">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>Franklin housing market FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+  </div></section>
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Sources and method</span><h2>Where these numbers come from</h2></div></div>
+    <ul class="sources">
+      <li><b>Redfin Data Center</b> (<a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">redfin.com/news/data-center</a>): median sale price, price per square foot, days on market, sale-to-list ratio, inventory and months of supply for Franklin, rolling 3-month figures ending {when}.</li>
+      <li><b>Zillow Research</b> (<a href="https://www.zillow.com/research/data/" rel="noopener" target="_blank">zillow.com/research/data</a>): Market Temperature Index, one input to the rating.</li>
+      <li><b>Realtor.com Research</b> (<a href="https://www.realtor.com/research/data/" rel="noopener" target="_blank">realtor.com/research/data</a>): Williamson County hotness and listing activity, one input to the rating.</li>
+    </ul>
+    <p class="sources">These figures are general market statistics for the whole city and may not reflect any one home, price range or neighborhood. Redfin updates its files monthly and this page refreshes automatically. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href="/market-data"><b>Market data for all cities</b><small>Live charts and temperature for every area we serve.</small></a>
+      <a href="/blog/monthly-market-report-2026-08"><b>Monthly market report</b><small>The latest report covering Franklin, Brentwood, Spring Hill and more.</small></a>
+      <a href="/blog/is-now-a-good-time-to-buy-middle-tennessee"><b>Is now a good time to buy?</b><small>The questions that matter more than market timing.</small></a>
+      <a href="/areas/franklin"><b>Franklin area page</b><small>Helpful local links and answers.</small></a>
+      <a href="/mortgage-calculator"><b>Mortgage calculator</b><small>Estimate a monthly payment at today’s rates.</small></a>
+      <a href="/sell#form"><b>What’s my Franklin home worth?</b><small>Request a free home value review.</small></a>
+    </div>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <AuthorCard />
+    <div class="cta-band" style="display:grid;margin-top:18px">
+      <div><h2 style="font-size:1.3rem">Thinking about Franklin?</h2><p>Tell me your budget, area and timeline, and we’ll be talking within the next 48 hours.</p></div>
+      <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
+      <a class="btn ghost" href="/sell#form" style="color:#fff">What’s My Home Worth?</a>
+    </div>
+  </div></section>
+</GuideLayout>

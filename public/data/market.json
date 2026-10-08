@@ -7,7 +7,7 @@
     {
       "name": "Redfin Data Center",
       "url": "https://www.redfin.com/news/data-center/",
-      "note": "median sale price, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures"
+      "note": "median sale price, median price per square foot, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures"
     },
     {
       "name": "Freddie Mac via FRED, Federal Reserve Bank of St. Louis",
@@ -87,7 +87,9 @@
           "threeMonthsAgo": 52
         }
       },
-      "commentary": "As of August 31, 2026, Franklin is rated a balanced market tilting slightly toward sellers, with the trend cooling. The sources disagree: Zillow's index reads Neutral at 46, Redfin's 3.4 months of supply reads Seller's, and Realtor.com's Williamson County hotness of 41.7 out of 100 reads Cool. The median sale price was $863,000, up 12.8% from a year earlier."
+      "commentary": "As of August 31, 2026, Franklin is rated a balanced market tilting slightly toward sellers, with the trend cooling. The sources disagree: Zillow's index reads Neutral at 46, Redfin's 3.4 months of supply reads Seller's, and Realtor.com's Williamson County hotness of 41.7 out of 100 reads Cool. The median sale price was $863,000, up 12.8% from a year earlier.",
+      "ppsf": 330.99,
+      "ppsfYoy": 1.03
     },
     "brentwood": {
       "name": "Brentwood",
@@ -148,7 +150,9 @@
           "threeMonthsAgo": 51
         }
       },
-      "commentary": "Brentwood is a balanced market as of August 31, 2026, though the sources disagree. Zillow's Market Temperature Index of 43 reads buyer's and Realtor.com's Williamson County hotness score of 41.7 reads cool, while Redfin's 3.9 months of supply reads seller's. The trend is cooling, with Zillow's index down 8 points over three months, and the median sale price of $1,427,500 is up 5.3% from a year earlier."
+      "commentary": "Brentwood is a balanced market as of August 31, 2026, though the sources disagree. Zillow's Market Temperature Index of 43 reads buyer's and Realtor.com's Williamson County hotness score of 41.7 reads cool, while Redfin's 3.9 months of supply reads seller's. The trend is cooling, with Zillow's index down 8 points over three months, and the median sale price of $1,427,500 is up 5.3% from a year earlier.",
+      "ppsf": 357.33,
+      "ppsfYoy": 7.58
     },
     "spring-hill": {
       "name": "Spring Hill",
@@ -209,7 +213,9 @@
           "threeMonthsAgo": 48
         }
       },
-      "commentary": "Spring Hill is rated a balanced market tilting slightly toward buyers as of August 31, 2026, with conditions cooling. The sources disagree: Zillow's index of 41 reads buyer's, and Realtor.com's Maury County hotness score of 32.6 of 100 reads cool, while Redfin's 3.9 months of supply reads seller's. The median sale price was $509,000, down 4.0% from a year earlier, with a median of 61 days on market."
+      "commentary": "Spring Hill is rated a balanced market tilting slightly toward buyers as of August 31, 2026, with conditions cooling. The sources disagree: Zillow's index of 41 reads buyer's, and Realtor.com's Maury County hotness score of 32.6 of 100 reads cool, while Redfin's 3.9 months of supply reads seller's. The median sale price was $509,000, down 4.0% from a year earlier, with a median of 61 days on market.",
+      "ppsf": 236.49,
+      "ppsfYoy": -1.4
     },
     "thompsons-station": {
       "name": "Thompson's Station",
@@ -270,7 +276,9 @@
           "threeMonthsAgo": 61
         }
       },
-      "commentary": "As of August 31, 2026, Thompson's Station is a balanced market tilting slightly toward buyers, based on rolling 3-month figures. Zillow's index is 46 (neutral) and Redfin shows 5.3 months of supply (balanced), while Realtor.com rates Williamson County 41.7 of 100 (cool). The median sale price is $835,000, down 1.8% from a year earlier, and with relatively few listings, numbers can swing month to month."
+      "commentary": "As of August 31, 2026, Thompson's Station is a balanced market tilting slightly toward buyers, based on rolling 3-month figures. Zillow's index is 46 (neutral) and Redfin shows 5.3 months of supply (balanced), while Realtor.com rates Williamson County 41.7 of 100 (cool). The median sale price is $835,000, down 1.8% from a year earlier, and with relatively few listings, numbers can swing month to month.",
+      "ppsf": 297.23,
+      "ppsfYoy": -1.44
     },
     "nolensville": {
       "name": "Nolensville",
@@ -331,7 +339,9 @@
           "threeMonthsAgo": 47
         }
       },
-      "commentary": "Nolensville is rated a balanced market tilting slightly toward buyers as of August 31, 2026, and conditions are cooling. Zillow's Market Temperature Index of 35 reads buyer's and Realtor.com's Williamson County hotness score of 41.7 reads cool, while Redfin's 3.3 months of supply reads seller's, so the sources disagree. The median sale price is $925,000, down 7.5% from a year earlier, and because the market is small, figures can swing."
+      "commentary": "Nolensville is rated a balanced market tilting slightly toward buyers as of August 31, 2026, and conditions are cooling. Zillow's Market Temperature Index of 35 reads buyer's and Realtor.com's Williamson County hotness score of 41.7 reads cool, while Redfin's 3.3 months of supply reads seller's, so the sources disagree. The median sale price is $925,000, down 7.5% from a year earlier, and because the market is small, figures can swing.",
+      "ppsf": 299.63,
+      "ppsfYoy": 0.71
     },
     "nashville": {
       "name": "Nashville",
@@ -392,7 +402,9 @@
           "threeMonthsAgo": 50
         }
       },
-      "commentary": "Nashville's market leans toward buyers as of August 31, 2026, based on rolling 3-month figures. Zillow's Market Temperature Index is 44 (neutral) and has moved down 6 points over three months, Redfin's months of supply is 5.3 (balanced), and Realtor.com rates Davidson County's hotness 16.6 of 100 (cool). The median sale price is $477,500, down 0.1% from a year earlier."
+      "commentary": "Nashville's market leans toward buyers as of August 31, 2026, based on rolling 3-month figures. Zillow's Market Temperature Index is 44 (neutral) and has moved down 6 points over three months, Redfin's months of supply is 5.3 (balanced), and Realtor.com rates Davidson County's hotness 16.6 of 100 (cool). The median sale price is $477,500, down 0.1% from a year earlier.",
+      "ppsf": 272.21,
+      "ppsfYoy": 0.09
     },
     "columbia": {
       "name": "Columbia",
@@ -453,7 +465,9 @@
           "threeMonthsAgo": 44
         }
       },
-      "commentary": "As of August 31, 2026, Columbia is a balanced market tilting slightly toward buyers, with signs of cooling. Zillow's Market Temperature Index is 39 (Buyer's), Redfin's months of supply is 4.3 (Balanced), and Realtor.com's Maury County hotness score is 32.6 of 100 (Cool). The median sale price is $367,250, down 1.3% from a year earlier, and median days on market is 78 versus 61 a year ago."
+      "commentary": "As of August 31, 2026, Columbia is a balanced market tilting slightly toward buyers, with signs of cooling. Zillow's Market Temperature Index is 39 (Buyer's), Redfin's months of supply is 4.3 (Balanced), and Realtor.com's Maury County hotness score is 32.6 of 100 (Cool). The median sale price is $367,250, down 1.3% from a year earlier, and median days on market is 78 versus 61 a year ago.",
+      "ppsf": 195.42,
+      "ppsfYoy": -4.38
     },
     "murfreesboro": {
       "name": "Murfreesboro",
@@ -514,7 +528,9 @@
           "threeMonthsAgo": 55
         }
       },
-      "commentary": "Murfreesboro is rated a balanced market as of August 31, 2026, though the sources do not fully agree. Zillow's Market Temperature Index is 48 (neutral) and Realtor.com's Rutherford County score is 33.3 of 100 (cool), while Redfin's 3.7 months of supply reads as a seller's market. The median sale price is $432,700, down 0.5% from a year earlier, and median days on market is 63."
+      "commentary": "Murfreesboro is rated a balanced market as of August 31, 2026, though the sources do not fully agree. Zillow's Market Temperature Index is 48 (neutral) and Realtor.com's Rutherford County score is 33.3 of 100 (cool), while Redfin's 3.7 months of supply reads as a seller's market. The median sale price is $432,700, down 0.5% from a year earlier, and median days on market is 63.",
+      "ppsf": 210.78,
+      "ppsfYoy": -0.15
     }
   },
   "temperatureMethod": "Blended from up to three sources: Zillow's Market Temperature Index (55%), Redfin months of supply (30%) and Realtor.com county hotness (15%).",

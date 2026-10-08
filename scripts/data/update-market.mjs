@@ -39,14 +39,15 @@ for (const p of PLACES) {
   cities[p.slug] = {
     name: p.name, monthsSupply: +l.monthsSupply.toFixed(1),
     medianPrice: l.medianPrice, yoy: l.yoy, dom: l.dom, saleToList: l.saleToList, inventory: l.inventory,
+    ppsf: l.ppsf, ppsfYoy: l.ppsfYoy,
     asOf: l.periodEnd, geography: r.geography,
   };
-  history[p.slug] = { name: p.name, geography: r.geography, months: r.history.map((h) => ({ m: h.month, price: h.medianPrice, dom: h.dom, inv: h.inventory, ms: h.monthsSupply, s2l: h.saleToList })) };
+  history[p.slug] = { name: p.name, geography: r.geography, months: r.history.map((h) => ({ m: h.month, price: h.medianPrice, dom: h.dom, inv: h.inventory, ms: h.monthsSupply, s2l: h.saleToList, ppsf: h.ppsf })) };
 }
 
 const sources = [{
   name: 'Redfin Data Center', url: 'https://www.redfin.com/news/data-center/',
-  note: 'median sale price, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures',
+  note: 'median sale price, median price per square foot, days on market, sale-to-list ratio, inventory and months of supply, as rolling 3-month figures',
 }];
 if (rate) sources.push({
   name: 'Freddie Mac via FRED, Federal Reserve Bank of St. Louis', url: 'https://fred.stlouisfed.org/series/MORTGAGE30US',
