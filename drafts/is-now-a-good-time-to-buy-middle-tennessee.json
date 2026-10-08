@@ -4,34 +4,38 @@
   "topicId": "c03",
   "created": "2026-10-08",
   "status": "draft",
-  "title": "Is Now a Good Time to Buy? Middle Tennessee Numbers",
-  "description": "Is now a good time to buy a home in Middle Tennessee? A plain look at current Nashville-area market data, mortgage rates and the questions that matter.",
+  "title": "Is Now a Good Time to Buy a Home in Middle Tennessee?",
+  "description": "Is now a good time to buy? A plain look at Nashville-area market numbers, mortgage rates and personal readiness, without predictions about prices or rates.",
   "category": "Buyers",
   "keyword": "is now a good time to buy",
-  "body": "People ask me this question more than any other, and I understand why. A home is a big purchase, and the headlines rarely agree with each other.\n\nI can't tell you where prices or rates will go, and nobody else can either. What I can do is show you what the current local numbers say, what they mean in plain terms, and how to weigh them against your own situation.\n\n## What the local numbers show\n\n{{img:0}}\n\nStart with the Nashville metro area. According to the Redfin Data Center, for the four weeks ending 2026-09-27, the median sale price was $462,304. The median home spent 68 days on the market, and homes sold for 97.8% of their list price on average. There were 2,489 homes sold in that period.\n\nA slightly longer view tells a similar story. For Nashville as of 2026-08-31 (Redfin, rolling 3 months), the median sale price was $477,500, down 0.1% from a year earlier. Median days on market was 64, the average sale-to-list ratio was 97.6%, and there were 4,850 active listings.\n\nIn plain terms: prices are roughly flat compared with last year, homes are taking a couple of months to sell, and the typical buyer is paying a little under the asking price. That is a description of the recent past, not a forecast.\n\nYou can see more local figures on our [market data page for the I-65 corridor](/market-data), and you can browse the source yourself at the [Redfin Data Center](https://www.redfin.com/news/data-center/).\n\n## Months of supply, explained\n\nMonths of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months generally favors sellers. Between 4 and 6 months is considered balanced. Over 6 months generally favors buyers.\n\nRedfin shows Nashville at 5.3 months of supply (as of 2026-08-31), and 5.4 months for the four weeks ending 2026-09-27. That sits in the balanced range, toward the upper end.\n\nOther sources point the same direction. The overall rating in the data we pulled for this post is \"leans toward buyers.\" The Zillow Market Temperature Index for Nashville reads 44, and it has moved down 6 points over 3 months, which Zillow describes as cooling. Realtor.com's hotness score for Davidson County is 16.6 out of 100. You can read how each is built at Zillow Research and [Realtor.com Research](https://www.realtor.com/research/data/).\n\nTwo cautions. These are metro-wide or county-wide figures, and a single street or price range can behave very differently. And a cooling reading describes what already happened. It doesn't promise what comes next.\n\n## What the mortgage rate does to the picture\n\n{{img:1}}\n\nPrice is only part of the cost. The 30-year fixed mortgage rate was 7.28% for the week of 2026-10-01, according to Freddie Mac via FRED. You can check the latest weekly reading at the Freddie Mac 30-year rate series on FRED.\n\nA higher rate raises the monthly payment on any given loan amount, so it can change what price range fits your budget more than the sale price itself does. Rates can also change from week to week, and the rate you are offered depends on your credit, down payment, loan type and lender.\n\nThe easiest way to see this for yourself is to run a few scenarios in our [mortgage calculator](/mortgage-calculator). Try different prices, down payments and rates, and see which monthly numbers you are comfortable with.\n\n## Questions that matter more than the headline\n\nA market reading can tell you about conditions. It can't tell you whether buying fits your life. These are the questions I would work through instead:\n\n- **How long do you expect to stay?** Buying and selling both carry costs. Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs.\n- **What monthly payment is comfortable?** Include property taxes, insurance and, on a conventional loan with under 20 percent down, private mortgage insurance.\n- **How much cushion will you have after closing?** Repairs, moving and furnishing add up quickly.\n- **Is your job and income stable right now?** Lenders look at this, and changing jobs or opening new credit between application and closing can cause problems.\n- **Is there a reason tied to a date?** A lease ending or a relocation can matter more than any market chart.\n\nIf your answers point toward buying, the market data can help you set expectations on negotiation and timing. If they don't, the data is not a reason to go ahead.\n\n## Getting your financing in order first\n\nWhatever you decide, it helps to know your real numbers. A pre-qualification is a quick estimate based on what you tell a lender. A pre-approval goes further: the lender reviews your documents and credit before issuing a letter. A pre-approval letter is still not a final loan commitment, since final approval depends on the appraisal, underwriting and your finances staying the same until closing.\n\nThe CFPB encourages borrowers to get Loan Estimates from more than one lender and compare them, because rates and fees can differ. The Loan Estimate is a standard three-page form, so side-by-side comparison is straightforward. Credit-scoring models generally treat several mortgage inquiries made within a short period as a single inquiry, but ask each lender how it works for your situation. The [CFPB Owning a Home guides](https://www.consumerfinance.gov/owning-a-home/) walk through this in detail.\n\nYou choose your own lender. Banks, credit unions, mortgage brokers and online lenders all make home loans. Also ask whether a lender takes part in programs from the [Tennessee Housing Development Agency](https://www.thda.org), which offers home loan programs through participating lenders.\n\n## Where this leaves you\n\nHere is what I can say honestly. Recent local data shows flat year-over-year prices, homes selling a bit under asking, supply in the balanced range, and a mortgage rate of 7.28%. Those facts may give buyers a little more room to negotiate than they had in tighter markets. They also come with a higher financing cost. Whether that adds up to the right move depends on your budget, your timeline and the specific home.\n\nIf you want to talk it through, you can [get matched with homes and a call with me](/buy#form). When you fill out the form, I schedule a call and we will be talking within the next 48 hours. If you would rather ask a question first, you can [contact me directly](/contact). There is no pressure either way.",
+  "body": "Almost every buyer I talk with asks some version of the same question: is now a good time to buy? I can't answer that for you, and nobody can answer it for the whole market. What I can do is show you what the local numbers say today, what they don't say, and how to think about the decision for your own situation.\n\nThis post doesn't predict where prices or rates are headed. Nobody can do that reliably.\n\n## What the local numbers show\n\n{{img:0}}\n\nStart with the most recent data. For the Nashville metro area, the four weeks ending 2026-09-27, [Redfin's data](https://www.redfin.com/news/data-center/) shows a median sale price of $462,304, a median of 68 days on market, and homes selling for 97.8% of list price on average. There were 2,489 homes sold in that window.\n\nThe broader Nashville numbers, a rolling three months as of 2026-08-31, point the same way. Redfin reported a median sale price of $477,500, down 0.1% from a year earlier. Median days on market was 64, the average sale-to-list ratio was 97.6%, and there were 4,850 active listings.\n\nIn plain terms, homes are taking a couple of months to sell, and buyers are, on average, paying a little under asking price. Prices look roughly flat compared with last year.\n\n## What months of supply says\n\nMonths of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers.\n\nRedfin shows 5.3 months for Nashville as of 2026-08-31, and 5.4 months for the metro area in the four weeks ending 2026-09-27. Both sit inside the balanced range, in the upper half of it.\n\nOther sources lean the same direction. [Zillow Research](https://www.zillow.com/research/data/) had its Market Temperature Index for Nashville at 44, which it describes as leaning toward buyers, and the index was down 6 points over three months. That signals a cooling trend. Realtor.com Research put Davidson County's hotness score at 16.6 out of 100.\n\nThese are snapshots of the past. They tell you how conditions feel now, not what they will do next.\n\n## Mortgage rates and your monthly payment\n\n{{img:1}}\n\nFor many buyers, the rate matters more than the price. Freddie Mac's 30-year fixed average was 7.28% for the week of 2026-10-01, according to Freddie Mac data on FRED.\n\nA rate that high raises the monthly payment on any loan amount. You can see the effect with your own numbers in the [mortgage calculator](/mortgage-calculator). Try a few prices and down payments, and add taxes and insurance, because the principal and interest payment is only part of the monthly cost.\n\nMany buyers wait for rates to fall. That is a bet, and it can go either direction. Waiting also has costs that are easy to overlook: rent you keep paying, price changes, and losing a home you wanted.\n\n## If rates worry you, know the options\n\nThere are a few ways buyers work with a higher rate. None is a guarantee, and a lender has to confirm what applies to your loan.\n\n- **Refinance later.** Some buyers buy now and refinance if rates fall. That depends on rates, credit, home value and income at that time, and a refinance has its own closing costs. Treat it as a possibility, not a plan.\n- **Ask about seller concessions.** You can ask the seller to pay some closing costs or to fund a temporary or permanent rate buydown. Whether that works depends on the seller, the home and the market.\n- **Look at an adjustable-rate mortgage.** An ARM has a rate that is fixed for an initial period and can then change. It may lower the early payment but carries the risk of higher payments later. The CFPB has plain-language guides at [Owning a Home](https://www.consumerfinance.gov/owning-a-home/).\n- **Ask about assumable loans.** Some existing FHA and VA loans can be taken over by a qualified buyer with lender approval. They are uncommon, so ask but don't count on finding one.\n\nThe Tennessee Housing Development Agency also offers home loan programs through participating lenders. You can read about them at [THDA](https://www.thda.org) and ask any lender whether they take part.\n\n## Your readiness matters more than the calendar\n\nSome buyers try to time the seasons. Listings and buyer activity do vary through the year, but the right moment for one household usually depends more on its own finances, timeline and the specific home than on the calendar.\n\nA more useful set of questions looks at you:\n\n- Is your income stable?\n- Will you still have an emergency fund after closing?\n- Does the payment fit comfortably in your monthly budget?\n- How long do you expect to stay in the home?\n\nBudget for the cash needed up front, too. Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. On a conventional loan with less than 20 percent down, private mortgage insurance is typically required. Many buyers put down less than 20 percent, and several loan programs allow smaller down payments. FHA loans allow as little as 3.5 percent down, and VA loans typically require no down payment.\n\nAnother way to frame it is to compare the full monthly cost of buying (payment, taxes, insurance, maintenance) with the monthly cost of renting a comparable home. Then weigh that against how long you plan to stay.\n\n## Look at your own city and price range\n\nMetro numbers are an average. Conditions can differ a lot between cities, price ranges and neighborhoods. Months of supply, days on market and sale-to-list ratio for the place you want to buy tell you more than a national headline.\n\nGeography matters too. Spring Hill includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address. Murfreesboro is in Rutherford County and Columbia is in Maury County, and neither is in Williamson County. Property taxes and school assignment depend on the exact address, so check them with the county and the school district for any home you get serious about. For Williamson County, the [property search](https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search) is a place to start.\n\nI keep local figures for the I-65 corridor on the [market data page](/market-data).\n\n## A reasonable next step\n\nSo, is now a good time to buy? The data shows a market in the balanced range that has been cooling, with a mortgage rate that makes the monthly payment a real factor. Whether that works for you comes down to your budget, your timeline and the home itself.\n\nIf you want to talk it through, fill out the [Get Matched form](/buy#form). I'll schedule a call, and you'll be talking with me within 48 hours. You can also reach me through the [contact page](/contact) with questions first. Either way, there's no obligation to make a move.",
   "faq": [
     {
       "q": "Is now a good time to buy a home in Nashville?",
-      "a": "It depends on your budget, timeline and plans. As of 2026-08-31, Redfin shows Nashville at 5.3 months of supply, which is in the balanced range, with a median sale price down 0.1% from a year earlier. Those figures describe recent conditions and are not a prediction."
+      "a": "It depends on your finances, timeline and the specific home. Redfin showed 5.3 months of supply for Nashville as of 2026-08-31, which falls in the balanced range of 4 to 6 months."
     },
     {
-      "q": "What is the current 30-year mortgage rate?",
-      "a": "Freddie Mac, via FRED, reported a 30-year fixed rate of 7.28% for the week of 2026-10-01. The rate you are offered depends on your credit, down payment, loan type and lender."
+      "q": "What are mortgage rates right now?",
+      "a": "Freddie Mac reported a 30-year fixed average of 7.28% for the week of 2026-10-01, via FRED. Rates change weekly, and your own rate depends on your lender and your finances."
     },
     {
-      "q": "Are Nashville home prices going up or down?",
-      "a": "Redfin reported a Nashville median sale price of $477,500 as of 2026-08-31, down 0.1% from a year earlier. That is a look back at the past year and does not predict where prices go next."
+      "q": "Are Nashville home prices going down?",
+      "a": "Redfin reported a Nashville median sale price of $477,500 as of 2026-08-31, down 0.1% from a year earlier. That describes the past, and nobody can reliably predict where prices go next."
     },
     {
-      "q": "What does months of supply mean?",
-      "a": "It is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers."
+      "q": "Should I wait for mortgage rates to fall before buying?",
+      "a": "Waiting is a bet in either direction, since nobody can reliably predict rates. The costs of waiting, such as rent paid, price changes or losing a home you wanted, are real even if easy to overlook."
+    },
+    {
+      "q": "How much should I budget for closing costs?",
+      "a": "Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. Your Loan Estimate and Closing Disclosure show the actual figures for your loan."
     }
   ],
   "hero": {
     "provider": "Pixabay",
     "id": 2181968,
-    "url": "https://pixabay.com/get/gc82b719af4a7898f486f9a8ff148d051b83745f92c205227392df5678dda241b125f607b2fe25880f256717daa0d45033f170a35e6bd338c17f1a5f49c0ece3b_1280.jpg",
-    "preview": "https://pixabay.com/get/gbef8f7f570d23f0b90e4c0ae549b70f33edbbaf267083d7afe22007c8be5ccd73b00cfbbc6b0cf18c393130811ac8a87cdbc3b38c0147b462a6db8fb903e8009_640.jpg",
+    "url": "https://pixabay.com/get/g71044391392dc83186855c1b6d5127bc54e9755d99c317a82ae054060b6e32e4a64810997900db78c9f80fc9afe0ac521f17853c58c8acee46d24c2245cdbda8_1280.jpg",
+    "preview": "https://pixabay.com/get/g3ba035dbf59b584350ddb38937717162dd9a098c072758fe021a9f76c3692b678fe9450d0ad7f790b5ad1ff8513e9a5c223cf81e442074b011a1a675c126de67_640.jpg",
     "width": 5633,
     "height": 3716,
     "alt": "Photo: Chairs, living room, table, contemporary, furniture",
@@ -43,22 +47,22 @@
   "inline": [
     {
       "provider": "Pixabay",
-      "id": 1682316,
-      "url": "https://pixabay.com/get/gd53556a7de92970dcc5b4f4acfd5b29bca4331fb1c76b735175b8f207fdace8c83909b722e285ba7936e583bf052d4ef467f2c93ef08dd7ca752bab29b4e22bd_1280.jpg",
-      "preview": "https://pixabay.com/get/g93920025f3ee04bfb4fca73a0c82b08f3e7b1db60fbeb950e814dcb9612ab38bc1bb820b06e5c5ea38d343565bd88fd2430dbeeabdd49508ed7d2bd6cd1d1a48_640.jpg",
-      "width": 3831,
-      "height": 2565,
-      "alt": "Photo: Home, for sale, buy, sell, mortgage",
-      "credit": "paulbr75",
-      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
-      "page": "https://pixabay.com/photos/home-for-sale-buy-sell-mortgage-1682316/",
+      "id": 1836070,
+      "url": "https://pixabay.com/get/g93b64f1f26c9b33117a138414fd43a0cacc1e4398f25d103160963dccd32a11640d0dfe5fed2a38b76a992d4432ea62b11055ea54f68c7d3ab3e4ddba3a5e175_1280.jpg",
+      "preview": "https://pixabay.com/get/g8de3010972e4ab075617b80d2ffa645d3b25b95f56e3e2f025c064df7852e3ec840e4e42ffc3fe941812c5d7c4142b68f66a89167c8380d63332f29673271cff_640.jpg",
+      "width": 5408,
+      "height": 3605,
+      "alt": "Photo: House, architecture, front yard, garage, home",
+      "credit": "Pexels",
+      "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+      "page": "https://pixabay.com/photos/house-architecture-front-yard-1836070/",
       "home": "https://pixabay.com"
     },
     {
       "provider": "Pixabay",
       "id": 6688945,
-      "url": "https://pixabay.com/get/g0d1e3951694cebdb88fdcb476c5864ee425c3544f6a44d616c716511f9b042bd136e14e13c14599d7b3b53a5868c95236c31fbab002dcc6fab080f4915a84c8f_1280.jpg",
-      "preview": "https://pixabay.com/get/gce0fe45ecd3259ef95d2ae8a94bf04a1755a725fd1040b4d8ce3fff1cb2cdc4a78d2fb39c91d7b232eab6ea011b238b08b18864de1452918c11230d1e0d4dad9_640.jpg",
+      "url": "https://pixabay.com/get/g18841fc80585c69d7c3fdcf91da6c3e023acbbd4b43bf3d18f509fdc6500633ff0673fc2cc855da58acf334f8cbdc1c3b4014eee9f3789bdc039e33343ffdc66_1280.jpg",
+      "preview": "https://pixabay.com/get/gf84aa394b27e91da6210b30fda15e2e678e93511ae53af8e13315509144a16234e76b18a4326fcacfab2a35e9aeb609b0d3570b43c25a66719630528b2e1935e_640.jpg",
       "width": 6000,
       "height": 4000,
       "alt": "Photo: Real estate, homeownership, homebuying, home, house",
@@ -72,8 +76,8 @@
     {
       "provider": "Pixabay",
       "id": 2181968,
-      "url": "https://pixabay.com/get/gc82b719af4a7898f486f9a8ff148d051b83745f92c205227392df5678dda241b125f607b2fe25880f256717daa0d45033f170a35e6bd338c17f1a5f49c0ece3b_1280.jpg",
-      "preview": "https://pixabay.com/get/gbef8f7f570d23f0b90e4c0ae549b70f33edbbaf267083d7afe22007c8be5ccd73b00cfbbc6b0cf18c393130811ac8a87cdbc3b38c0147b462a6db8fb903e8009_640.jpg",
+      "url": "https://pixabay.com/get/g71044391392dc83186855c1b6d5127bc54e9755d99c317a82ae054060b6e32e4a64810997900db78c9f80fc9afe0ac521f17853c58c8acee46d24c2245cdbda8_1280.jpg",
+      "preview": "https://pixabay.com/get/g3ba035dbf59b584350ddb38937717162dd9a098c072758fe021a9f76c3692b678fe9450d0ad7f790b5ad1ff8513e9a5c223cf81e442074b011a1a675c126de67_640.jpg",
       "width": 5633,
       "height": 3716,
       "alt": "Photo: Chairs, living room, table, contemporary, furniture",
@@ -84,22 +88,22 @@
     },
     {
       "provider": "Pixabay",
-      "id": 1682316,
-      "url": "https://pixabay.com/get/gd53556a7de92970dcc5b4f4acfd5b29bca4331fb1c76b735175b8f207fdace8c83909b722e285ba7936e583bf052d4ef467f2c93ef08dd7ca752bab29b4e22bd_1280.jpg",
-      "preview": "https://pixabay.com/get/g93920025f3ee04bfb4fca73a0c82b08f3e7b1db60fbeb950e814dcb9612ab38bc1bb820b06e5c5ea38d343565bd88fd2430dbeeabdd49508ed7d2bd6cd1d1a48_640.jpg",
-      "width": 3831,
-      "height": 2565,
-      "alt": "Photo: Home, for sale, buy, sell, mortgage",
-      "credit": "paulbr75",
-      "creditUrl": "https://pixabay.com/users/paulbr75-2938186/",
-      "page": "https://pixabay.com/photos/home-for-sale-buy-sell-mortgage-1682316/",
+      "id": 1836070,
+      "url": "https://pixabay.com/get/g93b64f1f26c9b33117a138414fd43a0cacc1e4398f25d103160963dccd32a11640d0dfe5fed2a38b76a992d4432ea62b11055ea54f68c7d3ab3e4ddba3a5e175_1280.jpg",
+      "preview": "https://pixabay.com/get/g8de3010972e4ab075617b80d2ffa645d3b25b95f56e3e2f025c064df7852e3ec840e4e42ffc3fe941812c5d7c4142b68f66a89167c8380d63332f29673271cff_640.jpg",
+      "width": 5408,
+      "height": 3605,
+      "alt": "Photo: House, architecture, front yard, garage, home",
+      "credit": "Pexels",
+      "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+      "page": "https://pixabay.com/photos/house-architecture-front-yard-1836070/",
       "home": "https://pixabay.com"
     },
     {
       "provider": "Pixabay",
       "id": 6688945,
-      "url": "https://pixabay.com/get/g0d1e3951694cebdb88fdcb476c5864ee425c3544f6a44d616c716511f9b042bd136e14e13c14599d7b3b53a5868c95236c31fbab002dcc6fab080f4915a84c8f_1280.jpg",
-      "preview": "https://pixabay.com/get/gce0fe45ecd3259ef95d2ae8a94bf04a1755a725fd1040b4d8ce3fff1cb2cdc4a78d2fb39c91d7b232eab6ea011b238b08b18864de1452918c11230d1e0d4dad9_640.jpg",
+      "url": "https://pixabay.com/get/g18841fc80585c69d7c3fdcf91da6c3e023acbbd4b43bf3d18f509fdc6500633ff0673fc2cc855da58acf334f8cbdc1c3b4014eee9f3789bdc039e33343ffdc66_1280.jpg",
+      "preview": "https://pixabay.com/get/gf84aa394b27e91da6210b30fda15e2e678e93511ae53af8e13315509144a16234e76b18a4326fcacfab2a35e9aeb609b0d3570b43c25a66719630528b2e1935e_640.jpg",
       "width": 6000,
       "height": 4000,
       "alt": "Photo: Real estate, homeownership, homebuying, home, house",
@@ -110,7 +114,7 @@
     }
   ],
   "checks": {
-    "words": 1126,
+    "words": 1204,
     "linksChecked": [
       {
         "id": "redfin-data",
@@ -120,11 +124,6 @@
       {
         "id": "zillow-research",
         "url": "https://www.zillow.com/research/data/",
-        "status": 403
-      },
-      {
-        "id": "realtor-research",
-        "url": "https://www.realtor.com/research/data/",
         "status": 200
       },
       {
@@ -141,14 +140,14 @@
         "id": "thda",
         "url": "https://www.thda.org",
         "status": 200
+      },
+      {
+        "id": "county-property-search",
+        "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search",
+        "status": 200
       }
     ],
     "dropped": [
-      {
-        "id": "zillow-research",
-        "url": "https://www.zillow.com/research/data/",
-        "status": 403
-      },
       {
         "id": "fred-mortgage-rate",
         "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
@@ -156,20 +155,24 @@
       }
     ],
     "review": {
-      "ok": true,
-      "issues": []
+      "ok": false,
+      "issues": [
+        "Guarantee or no-risk claim. Real estate outcomes cannot be guaranteed. (found: \"guarantee\")"
+      ]
     },
     "compliance": {
-      "hard": [],
+      "hard": [
+        "Guarantee or no-risk claim. Real estate outcomes cannot be guaranteed. (found: \"guarantee\")"
+      ],
       "soft": []
     },
     "dataPointsUsed": [
       "30-year fixed mortgage rate 7.28% (Freddie Mac via FRED, week of 2026-10-01)",
-      "Nashville metro, 4 weeks ending 2026-09-27: median sale price $462,304, 68 days on market, sale-to-list 97.8%, 5.4 months of supply, 2,489 homes sold (Redfin)",
-      "Nashville as of 2026-08-31: median $477,500, down 0.1% year over year, 64 days on market, 97.6% sale-to-list, 4,850 active listings, 5.3 months of supply (Redfin)",
-      "Zillow Market Temperature Index 44, down 6 over 3 months; Realtor.com Davidson County hotness 16.6 of 100; overall rating leans toward buyers"
+      "Nashville metro, 4 weeks ending 2026-09-27: median sale price $462,304, 68 days on market, 97.8% sale-to-list, 5.4 months of supply, 2,489 homes sold (Redfin)",
+      "Nashville as of 2026-08-31: median sale price $477,500, down 0.1% year over year, 64 days on market, 97.6% sale-to-list, 4,850 active listings, 5.3 months of supply (Redfin)",
+      "Zillow Market Temperature Index 44, leans toward buyers, down 6 over 3 months; Realtor.com Davidson County hotness 16.6 of 100"
     ],
     "model": "claude-sonnet-5-5",
-    "failedChecks": false
+    "failedChecks": true
   }
 }
