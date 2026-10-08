@@ -1,0 +1,48 @@
+---
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import ColorBar from "../../components/ColorBar.astro";
+import GuideClose from "../../components/GuideClose.astro";
+import { site } from "../../site.config";
+import { M, C, usd, num, dateLong, monthShort, signed, censusRows, CITY_TAX_RATE } from "../../lib-guide";
+const f = M.cities.franklin, cf = C.cities.franklin, when = dateLong(f.asOf);
+const UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const faqSchema = (faq: any[]) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const title = "Franklin TN Schools: Districts and Finding Your Zoned School";
+const description = "Which school districts serve Franklin, Tennessee, and how to find the zoned school for any address using the districts' own lookup tools. No ratings or rankings.";
+const faq = [
+  { q: "Which school district serves Franklin, TN?", a: "Two districts serve Franklin addresses: the Franklin Special School District, which runs eight schools for pre-kindergarten through eighth grade, and Williamson County Schools. Which one applies depends on the exact address." },
+  { q: "How do I find the zoned school for a Franklin address?", a: "Use each district's own zoning tool: the Franklin Special School District's district map and Williamson County Schools' school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
+  { q: "Are Franklin schools good?", a: "I do not rate or rank schools, because quality and fit are personal and ratings can steer people unfairly. The districts themselves and the Tennessee Department of Education publish official information, and visiting a school is the best way to judge fit for your family." },
+  { q: "Can school zones change?", a: "Yes. Districts can change zones, so confirm the current zone with the district before you buy and again before you enroll." },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout title={title} description={description} h1={`Franklin, TN <em>schools</em>`} lead="Which districts serve Franklin addresses and how to find the zoned school for a specific home, from the districts' own websites." slug="schools" label="Schools" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Official sources</span><h2>Franklin school districts at a glance</h2></div></div>
+    <p class="answer">Franklin addresses are served by two public school districts, and which one applies depends on the exact address. The Franklin Special School District runs eight schools for pre-kindergarten through eighth grade. Williamson County Schools is the county district. The most reliable way to find the zoned school for a home is each district's own lookup tool.</p>
+    <div class="grid2">
+      <div class="card"><h3>Franklin Special School District</h3><p>Eight schools for pre-kindergarten through eighth grade: Franklin Elementary, Freedom Intermediate, Freedom Middle, Johnson Elementary, Liberty Elementary, Moore Elementary, Poplar Grove Elementary and Poplar Grove Middle.</p><a class="btn primary sm" href="https://www.fssd.org/about-us/district-map" rel="noopener" target="_blank">District map and zoning ↗</a></div>
+      <div class="card"><h3>Williamson County Schools</h3><p>The county school district. Use its school zones page to determine the zoned school for an address.</p><a class="btn primary sm" href="https://www.wcs.edu/about-us/school-zones" rel="noopener" target="_blank">Determine my zoned school ↗</a></div>
+    </div>
+    <p class="sources" style="margin-top:12px">Sources: <a href="https://www.fssd.org" rel="noopener" target="_blank">fssd.org</a> and <a href="https://www.wcs.edu" rel="noopener" target="_blank">wcs.edu</a>, checked {dateLong(UPDATED)}. District information can change, so confirm with the district.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">Before you buy</span><h2>Check the zone for the exact address</h2></div></div>
+    <p>School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. Zones can change, so confirm the current zone with the district before you buy and again before you enroll.</p>
+    <p>I do not rate or rank schools, and I do not steer buyers toward or away from any school or neighborhood. Fair housing law protects your right to choose where to live, and the districts' own information is the right place to start.</p>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>Franklin schools FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity. Read more on the <a href="/fair-housing">fair housing</a> page.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href="/franklin/property-taxes"><b>Franklin property taxes</b><small>The city rate and how a bill is figured.</small></a>
+      <a href="/franklin/commute"><b>Franklin commute</b><small>Census average commute time.</small></a>
+      <a href="/franklin/buying-in-franklin"><b>Buying in Franklin</b><small>The steps from pre-approval to closing.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>
