@@ -1,7 +1,7 @@
 // Re-picks the photos of an already published post (hero + two inline), with the same Claude photo check used for new drafts.
 //   node scripts/blog/rephoto.mjs <slug>
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import sharp from 'sharp';
+import { savePhoto } from './imgsizes.mjs';
 import { ask, parseJson } from './claude.mjs';
 import { choosePhotos } from './images.mjs';
 
@@ -23,9 +23,7 @@ if (!photos.hero) { console.log('No suitable photo found; nothing changed.'); pr
 const dir = `public/img/blog/${slug}`; mkdirSync(dir, { recursive: true });
 async function save(img, name, w, h) {
   const buf = Buffer.from(await (await fetch(img.url)).arrayBuffer());
-  const pipe = sharp(buf).resize(w, h, { fit: 'cover' });
-  await pipe.clone().jpeg({ quality: 78, mozjpeg: true }).toFile(`${dir}/${name}.jpg`);
-  await pipe.clone().webp({ quality: 76 }).toFile(`${dir}/${name}.webp`);
+  await savePhoto(buf, dir, name, w, h);
 }
 const Q = (s) => JSON.stringify(String(s ?? ''));
 await save(photos.hero, 'hero', 1200, 600);

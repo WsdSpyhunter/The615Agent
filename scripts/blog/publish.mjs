@@ -1,7 +1,7 @@
 // Runs when you press Approve: turns drafts/<slug>.json into a live post (photos downloaded and resized), then confirms by email.
 //   node scripts/blog/publish.mjs publish <slug>   |   node scripts/blog/publish.mjs reject <slug>
 import { mkdirSync, writeFileSync, unlinkSync, appendFileSync } from 'node:fs';
-import sharp from 'sharp';
+import { savePhoto } from './imgsizes.mjs';
 import { readJson, writeJson, today, SITE } from './lib.mjs';
 import { confirmEmail } from './render-email.mjs';
 import { sendEmail, emailConfigured } from './email.mjs';
@@ -39,9 +39,7 @@ async function download(img, name, width, height) {
   if (!res.ok) throw new Error(`Photo download failed (${res.status}) for ${img.id}`);
   const buf = Buffer.from(await res.arrayBuffer());
   const dir = `public/img/blog/${slug}`; mkdirSync(dir, { recursive: true });
-  const pipe = sharp(buf).resize(width, height, { fit: 'cover' });
-  await pipe.clone().jpeg({ quality: 78, mozjpeg: true }).toFile(`${dir}/${name}.jpg`);
-  await pipe.clone().webp({ quality: 76 }).toFile(`${dir}/${name}.webp`);
+  await savePhoto(buf, dir, name, width, height);
   return `/img/blog/${slug}/${name}.jpg`;
 }
 

@@ -20,6 +20,9 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 const webpPath = d.heroImage ? d.heroImage.replace(/\.(jpe?g|png)$/i, '.webp') : '';
 const heroWebp = webpPath && webpPath !== d.heroImage && existsSync(join(process.cwd(), 'public', webpPath)) ? webpPath : '';
+// Phone-size copies (480 and 800 wide) are saved next to the full photo; use them when they exist.
+const sized = (w: number) => webpPath.replace(/\.webp$/, `-${w}.webp`);
+const heroSrcset = heroWebp ? [480, 800].filter((w) => existsSync(join(process.cwd(), 'public', sized(w)))).map((w) => `${sized(w)} ${w}w`).concat(`${heroWebp} 1200w`).join(', ') : '';
 const schema: object[] = [
   {
     '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.title, description: d.description,
@@ -45,7 +48,7 @@ if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQP
     {d.heroImage && (
       <figure class="herofig">
         <picture>
-          {heroWebp && <source type="image/webp" srcset={heroWebp} />}
+          {heroWebp && <source type="image/webp" srcset={heroSrcset} sizes="(max-width: 800px) 100vw, 760px" />}
           <img src={d.heroImage} alt={d.heroAlt ?? ''} width="1200" height="600" fetchpriority="high" decoding="async" />
         </picture>
         {d.heroCredit && <figcaption>Photo: {d.heroCreditUrl ? <a href={d.heroCreditUrl} rel="noopener" target="_blank">{d.heroCredit}</a> : d.heroCredit}</figcaption>}
