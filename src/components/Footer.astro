@@ -1,6 +1,7 @@
 ---
 import { site, areas, nav } from '../site.config';
 import ColorBar from './ColorBar.astro';
+import { enabledCities } from '../data/guide-cities';
 const year = new Date().getFullYear();
 ---
 <ColorBar rev />
@@ -31,7 +32,7 @@ const year = new Date().getFullYear();
       <div>
         <h4>Areas</h4>
         <div class="flinks">
-          <a href="/franklin">Franklin Real Estate Guide</a>
+          {enabledCities.map((c) => <a href={`/${c.slug}`}>{c.name} Real Estate Guide</a>)}
           {areas.map((a) => <a href={`/areas/${a.slug}`}>{a.name}</a>)}
         </div>
       </div>
