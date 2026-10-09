@@ -15,6 +15,11 @@ const d = post.data;
 const { Content } = await render(post);
 const date = d.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 const url = `${site.url}/blog/${post.id}`;
+// The top image is the biggest thing on the page: load it first, and use the smaller WebP file when one exists (every new post gets this automatically).
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+const webpPath = d.heroImage ? d.heroImage.replace(/\.(jpe?g|png)$/i, '.webp') : '';
+const heroWebp = webpPath && webpPath !== d.heroImage && existsSync(join(process.cwd(), 'public', webpPath)) ? webpPath : '';
 const schema: object[] = [
   {
     '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.title, description: d.description,
@@ -39,7 +44,10 @@ if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQP
   <article class="s"><div class="wrap narrow">
     {d.heroImage && (
       <figure class="herofig">
-        <img src={d.heroImage} alt={d.heroAlt ?? ''} width="1200" height="600" />
+        <picture>
+          {heroWebp && <source type="image/webp" srcset={heroWebp} />}
+          <img src={d.heroImage} alt={d.heroAlt ?? ''} width="1200" height="600" fetchpriority="high" decoding="async" />
+        </picture>
         {d.heroCredit && <figcaption>Photo: {d.heroCreditUrl ? <a href={d.heroCreditUrl} rel="noopener" target="_blank">{d.heroCredit}</a> : d.heroCredit}</figcaption>}
       </figure>
     )}
