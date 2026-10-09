@@ -1,10 +1,11 @@
 ---
 import AuthorCard from './AuthorCard.astro';
+const { name = 'Franklin' } = Astro.props;
 ---
 <section class="s"><div class="wrap">
   <AuthorCard />
   <div class="cta-band" style="display:grid;margin-top:18px">
-    <div><h2 style="font-size:1.3rem">Thinking about Franklin?</h2><p>Tell me your budget, area and timeline, and we’ll be talking within the next 48 hours.</p></div>
+    <div><h2 style="font-size:1.3rem">Thinking about {name}?</h2><p>Tell me your budget, area and timeline, and we’ll be talking within the next 48 hours.</p></div>
     <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
     <a class="btn ghost" href="/sell#form" style="color:#fff">What’s My Home Worth?</a>
   </div>

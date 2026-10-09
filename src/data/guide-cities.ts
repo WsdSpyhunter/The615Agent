@@ -41,7 +41,7 @@ export const guideCities: Record<string, GuideCity> = {
     },
   },
   brentwood: {
-    slug: 'brentwood', name: 'Brentwood', enabled: false,
+    slug: 'brentwood', name: 'Brentwood', enabled: true,
     zips: ['37027'],
     peers: ['nolensville', 'spring-hill', 'thompsons-station'],
     countyNote: 'Brentwood is in Williamson County.', hubFact: 'Brentwood is in Williamson County.',

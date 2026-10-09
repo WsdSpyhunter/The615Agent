@@ -25,9 +25,9 @@ const faq = [
 ];
 const schema = [faqSchema(faq)];
 ---
-<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>ZIP codes and areas</em>`} lead={nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>${nz > 1 ? 'ZIP codes and areas' : 'ZIP code and area'}</em>`} lead={nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
-    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} ZIP codes at a glance</h2></div></div>
+    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} {zipWord} at a glance</h2></div></div>
     <p class="answer">{CN} street addresses mainly use {zipWord} {zipList}. The table below shows Census Bureau estimates for {nz > 1 ? 'each' : 'it'}. ZIP codes follow postal routes and do not match city limits exactly, so these numbers describe the ZIP code area, not a neighborhood or a school zone. I do not rank or recommend areas.</p>
     <div class="tablewrap"><table class="data"><caption>ZIP Code Tabulation Areas ({acs})</caption>
       <thead><tr><th>Measure</th>{order.map((z) => <th>{z}</th>)}</tr></thead>
@@ -53,5 +53,5 @@ const schema = [faqSchema(faq)];
     <p class="sources" style="margin-top:14px">Source: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a>, 5-year estimates for 2020-2024. Estimates have margins of error. This page is general information, not legal, tax, lending or financial advice. I do not rank neighborhoods or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
     <div class="linkgrid" style="margin-top:18px"><a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Prices, days on market and supply.</small></a><a href={`/${CS}/cost-of-living`}><b>Cost of living</b><small>Income, rent and home value.</small></a><a href={`/${CS}/commute`}><b>Commute</b><small>Census average commute time.</small></a></div>
   </div></section>
-  <GuideClose />
+  <GuideClose name={CN} />
 </GuideLayout>

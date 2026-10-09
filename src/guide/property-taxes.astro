@@ -60,7 +60,7 @@ const schema = [faqSchema(faq)];
     <ol>
       <li><b>Appraised value.</b> The Williamson County Property Assessor estimates the value of each property.</li>
       <li><b>Assessed value.</b> Residential property is assessed at 25 percent of its appraised value.</li>
-      <li><b>Rate.</b> Rates are stated per $100 of assessed value and are set each year by the county, the city{two ? <> and, where it applies, the {CN} Special School District</> : ''}.</li>
+      <li><b>Rate.</b> Rates are stated per $100 of assessed value and are set each year by the county{two ? <>, the city and, where it applies, the {CN} Special School District</> : <> and the city</>}.</li>
       <li><b>Bill.</b> Tax equals assessed value divided by 100, multiplied by the rate. The County Trustee sends the bills.</li>
     </ol>
     <h3>A worked example</h3>
@@ -82,5 +82,5 @@ const schema = [faqSchema(faq)];
       <a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a>
     </div>
   </div></section>
-  <GuideClose />
+  <GuideClose name={CN} />
 </GuideLayout>

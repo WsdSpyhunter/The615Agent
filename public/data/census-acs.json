@@ -207,6 +207,105 @@
    "housingUnits": 7376,
    "builtSince2020Pct": 1.2,
    "valuePct1mPlus": 31.7
+  },
+  "37027": {
+   "population": 61630,
+   "meanCommuteMinutes": 24.5,
+   "medianHouseholdIncome": 154578,
+   "medianHomeValue": 931700,
+   "medianGrossRent": 2202,
+   "ownerOccupiedPct": 82.1,
+   "housingUnits": 23601,
+   "builtSince2020Pct": 2.1,
+   "valuePct1mPlus": 43.1
+  },
+  "37127": {
+   "population": 21499,
+   "meanCommuteMinutes": 27.8,
+   "medianHouseholdIncome": 91401,
+   "medianHomeValue": 375400,
+   "medianGrossRent": 1376,
+   "ownerOccupiedPct": 76.6,
+   "housingUnits": 7589,
+   "builtSince2020Pct": 3.4,
+   "valuePct1mPlus": 1.7
+  },
+  "37128": {
+   "population": 79268,
+   "meanCommuteMinutes": 28.6,
+   "medianHouseholdIncome": 93665,
+   "medianHomeValue": 397900,
+   "medianGrossRent": 1658,
+   "ownerOccupiedPct": 63.7,
+   "housingUnits": 30651,
+   "builtSince2020Pct": 8.5,
+   "valuePct1mPlus": 0.8
+  },
+  "37129": {
+   "population": 63652,
+   "meanCommuteMinutes": 26.9,
+   "medianHouseholdIncome": 91259,
+   "medianHomeValue": 422200,
+   "medianGrossRent": 1717,
+   "ownerOccupiedPct": 65.1,
+   "housingUnits": 25557,
+   "builtSince2020Pct": 6.0,
+   "valuePct1mPlus": 2.0
+  },
+  "37130": {
+   "population": 58064,
+   "meanCommuteMinutes": 25.0,
+   "medianHouseholdIncome": 62706,
+   "medianHomeValue": 371800,
+   "medianGrossRent": 1204,
+   "ownerOccupiedPct": 49.8,
+   "housingUnits": 26334,
+   "builtSince2020Pct": 2.3,
+   "valuePct1mPlus": 2.3
+  },
+  "37135": {
+   "population": 24409,
+   "meanCommuteMinutes": 36.0,
+   "medianHouseholdIncome": 148819,
+   "medianHomeValue": 672600,
+   "medianGrossRent": 2341,
+   "ownerOccupiedPct": 92.6,
+   "housingUnits": 8106,
+   "builtSince2020Pct": 11.7,
+   "valuePct1mPlus": 13.5
+  },
+  "37174": {
+   "population": 53900,
+   "meanCommuteMinutes": 30.8,
+   "medianHouseholdIncome": 105181,
+   "medianHomeValue": 491300,
+   "medianGrossRent": 1828,
+   "ownerOccupiedPct": 74.1,
+   "housingUnits": 20269,
+   "builtSince2020Pct": 10.1,
+   "valuePct1mPlus": 2.6
+  },
+  "37179": {
+   "population": 18043,
+   "meanCommuteMinutes": 25.9,
+   "medianHouseholdIncome": 136188,
+   "medianHomeValue": 570200,
+   "medianGrossRent": 2107,
+   "ownerOccupiedPct": 86.7,
+   "housingUnits": 6061,
+   "builtSince2020Pct": 4.7,
+   "valuePct1mPlus": 14.5
+  },
+  "38401": {
+   "population": 67482,
+   "meanCommuteMinutes": 28.6,
+   "medianHouseholdIncome": 68475,
+   "medianHomeValue": 339400,
+   "medianGrossRent": 1187,
+   "ownerOccupiedPct": 70.1,
+   "housingUnits": 29161,
+   "builtSince2020Pct": 5.5,
+   "valuePct1mPlus": 2.3
   }
  }
 }
