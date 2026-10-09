@@ -1,0 +1,57 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { M, C, usd, num, dateLong, monthShort, signed, pct, censusRows, builtSince2010, builtBefore1980, builtBefore1970 } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const rows = censusRows(CS);
+const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const zips = C.zips;
+const order: string[] = city.zips;
+const nz = order.length;
+const zipList = nz > 1 ? order.slice(0, -1).join(', ') + ' and ' + order[nz - 1] : order[0];
+const zipWord = nz > 1 ? 'ZIP codes' : 'ZIP code';
+const nzWord = ['', 'one', 'two', 'three', 'four', 'five'][nz] || String(nz);
+const title = `${CN} TN ZIP Codes: Census Numbers by Area`;
+const description = `${CN}, TN ${zipWord} ${zipList} by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.`;
+const faq = [
+  { q: `What ZIP codes are in ${CN}, TN?`, a: `${CN} street addresses mainly use ${zipWord} ${zipList}. ZIP codes follow postal routes and do not match city limits exactly, so a ZIP can include areas outside the city, and school zones and taxes depend on the exact address.` },
+  { q: `Which ${CN} neighborhood is best?`, a: "I do not rank neighborhoods. Fair housing law protects your right to choose where to live, and the right area depends on your budget, timeline and priorities. Compare the numbers, visit the areas and look at specific homes." },
+  { q: "How do I check schools and taxes for a specific address?", a: `School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. See the ${CN} schools and property taxes pages.` },
+  { q: "Where do these ZIP code numbers come from?", a: "They come from the U.S. Census Bureau's American Community Survey 5-year estimates (2020-2024) for ZIP Code Tabulation Areas, which approximate postal ZIP codes. Estimates have margins of error." },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>ZIP codes and areas</em>`} lead={nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} ZIP codes at a glance</h2></div></div>
+    <p class="answer">{CN} street addresses mainly use {zipWord} {zipList}. The table below shows Census Bureau estimates for {nz > 1 ? 'each' : 'it'}. ZIP codes follow postal routes and do not match city limits exactly, so these numbers describe the ZIP code area, not a neighborhood or a school zone. I do not rank or recommend areas.</p>
+    <div class="tablewrap"><table class="data"><caption>ZIP Code Tabulation Areas ({acs})</caption>
+      <thead><tr><th>Measure</th>{order.map((z) => <th>{z}</th>)}</tr></thead>
+      <tbody>
+        <tr><td>Population</td>{order.map((z) => <td>{num(zips[z].population)}</td>)}</tr>
+        <tr><td>Median rent</td>{order.map((z) => <td>{usd(zips[z].medianGrossRent)}</td>)}</tr>
+        <tr><td>Median home value (owner estimate)</td>{order.map((z) => <td>{usd(zips[z].medianHomeValue)}</td>)}</tr>
+        <tr><td>Owner-occupied homes</td>{order.map((z) => <td>{zips[z].ownerOccupiedPct}%</td>)}</tr>
+        <tr><td>Homes valued at $1M or more</td>{order.map((z) => <td>{zips[z].valuePct1mPlus}%</td>)}</tr>
+        <tr><td>Average commute (minutes)</td>{order.map((z) => <td>{zips[z].meanCommuteMinutes}</td>)}</tr>
+        <tr><td>Homes built 2020 or later</td>{order.map((z) => <td>{zips[z].builtSince2020Pct}%</td>)}</tr>
+      </tbody></table></div>
+    <p class="sources" style="margin-top:12px">Home value is the owner's own estimate, so it differs from Redfin's sale prices. Redfin's citywide median sale price for {CN} was {usd(f.medianPrice)} as of {when}.</p>
+  </div></section>
+  <section class="s band"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">Choosing where to live</span><h2>Check the exact address</h2></div></div>
+    <p>School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. See <a href={`/${CS}/schools`}>{CN} schools</a> and <a href={`/${CS}/property-taxes`}>{CN} property taxes</a>.</p>
+    <p>Fair housing law protects your right to choose where to live. I do not steer buyers toward or away from any area, and I keep this page to housing facts. Read more on the <a href="/fair-housing">fair housing</a> page.</p>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} ZIP codes FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Source: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a>, 5-year estimates for 2020-2024. Estimates have margins of error. This page is general information, not legal, tax, lending or financial advice. I do not rank neighborhoods or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px"><a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Prices, days on market and supply.</small></a><a href={`/${CS}/cost-of-living`}><b>Cost of living</b><small>Income, rent and home value.</small></a><a href={`/${CS}/commute`}><b>Commute</b><small>Census average commute time.</small></a></div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

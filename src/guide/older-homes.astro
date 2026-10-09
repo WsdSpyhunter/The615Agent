@@ -1,0 +1,51 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { M, C, usd, num, dateLong, monthShort, signed, pct, censusRows, builtSince2010, builtBefore1980, builtBefore1970 } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const rows = censusRows(CS);
+const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const title = `${CN} TN Older Homes: Housing Age and What to Check`;
+const description = `${pct(builtBefore1980(cf))} of ${CN}, TN housing units were built before 1980 (Census). Housing age by city, the pre-1978 lead paint rule and common inspection add-ons.`;
+const faq = [
+  { q: `How many ${CN} homes are older?`, a: `According to the Census Bureau's American Community Survey (2020-2024), about ${pct(builtBefore1980(cf))} of ${CN} city's ${num(cf.housingUnits)} housing units were built before 1980, and about ${pct(builtBefore1970(cf))} before 1970. These are survey estimates.` },
+  { q: "What is the lead-based paint rule for older homes?", a: "The lead-based paint disclosure applies to homes built before 1978. Tennessee sellers also complete the residential property condition disclosure (or exemption)." },
+  { q: "What should I inspect in an older home?", a: "Radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection, and termite and wood-destroying organism (WDO) inspections are commonly requested by buyers and lenders in Tennessee. Ask your inspector what applies to the home's age." },
+  { q: `Do older homes cost less per square foot in ${CN}?`, a: `This page does not make that claim, because prices depend on size, condition, lot and location. For context, the median sale price per square foot for all ${CN} homes was about $${Math.round(f.ppsf)} as of ${when} (Redfin).` },
+  { q: `Where can I see older homes for sale in ${CN}?`, a: "This site does not display live listings. Tell me your budget, area and timeline through the Get Matched form and I will send options." },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>older homes</em>`} lead={`How much of ${CN}'s housing is older, next to nearby cities, and what buyers commonly check, from the U.S. Census Bureau and Tennessee disclosure rules.`} slug="older-homes" label="Older homes" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} housing by year built</h2></div></div>
+    <p class="answer">The Census Bureau estimates that about {pct(builtBefore1980(cf))} of the {num(cf.housingUnits)} housing units in {CN} were built before 1980, and about {pct(builtBefore1970(cf))} before 1970. These are estimates from a survey, not a count of homes for sale.</p>
+    <div class="stats"><div class="stat"><span>Built before 1980</span><b>{pct(builtBefore1980(cf))}</b><small>of {CN} housing units</small></div><div class="stat"><span>Built before 1970</span><b>{pct(builtBefore1970(cf))}</b><small>of housing units</small></div><div class="stat"><span>Built 1939 or earlier</span><b>{pct(cf.builtPct.b1939)}</b><small>of housing units</small></div></div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">City by city</span><h2>Share of homes built before 1980: {CN} and nearby cities</h2><p>Numbers only, listed alphabetically after {CN}. These are different places at different stages of growth, so a higher or lower share is not a ranking.</p></div></div>
+    <div class="tablewrap"><table class="data"><caption>Share of housing units by year built ({acs})</caption>
+      <thead><tr><th>City</th><th>Before 1970</th><th>1970 to 1979</th><th>Built before 1980</th><th>Housing units</th></tr></thead>
+      <tbody>{rows.map(([k, c]) => <tr><td>{c.name}</td><td>{pct(builtBefore1970(c))}</td><td>{pct(c.builtPct.b1970)}</td><td>{pct(builtBefore1980(c))}</td><td>{num(c.housingUnits)}</td></tr>)}</tbody></table></div>
+  </div></section>
+  <section class="s"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">If you are considering an older home</span><h2>Disclosures and inspections</h2></div></div>
+    <ul>
+      <li>The lead-based paint disclosure applies to homes built before 1978.</li>
+      <li>Tennessee sellers complete the residential property condition disclosure (or exemption).</li>
+      <li>Radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection. Termite and wood-destroying organism (WDO) inspections are commonly requested by buyers and lenders in Tennessee.</li>
+    </ul>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} older homes FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Source: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a>, 5-year estimates for 2020-2024. Estimates have margins of error. This page is general information, not legal, tax, lending or financial advice. I do not rank neighborhoods or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px"><a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a><a href={`/${CS}/new-construction`}><b>New construction</b><small>How much housing is newer.</small></a><a href={`/${CS}/home-prices`}><b>{CN} home prices</b><small>Three years of prices.</small></a></div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

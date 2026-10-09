@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { isIndexable } from './src/data/franklin-guide.ts';
+import { isIndexable, guideCitySlugs } from './src/data/franklin-guide.ts';
 
 export default defineConfig({
   site: 'https://the615agent.com',
-  integrations: [sitemap({ filter: (u) => (() => { const p = new URL(u).pathname.replace(/\/$/, ''); if (!p.startsWith('/franklin')) return true; return isIndexable(p.slice('/franklin'.length).replace(/^\//, '')); })() })],
+  integrations: [sitemap({ filter: (u) => { const parts = new URL(u).pathname.split('/').filter(Boolean); if (!guideCitySlugs.includes(parts[0])) return true; return isIndexable(parts[0], parts.slice(1).join('/')); } })],
   trailingSlash: 'ignore',
   build: { inlineStylesheets: 'auto' },
 });

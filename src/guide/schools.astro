@@ -1,0 +1,51 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { site } from "../site.config";
+import { M, C, usd, num, dateLong, monthShort, signed, censusRows } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf);
+const UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const faqSchema = (faq: any[]) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const title = `${CN} TN Schools: Districts and Finding Your Zoned School`;
+const description = `Which school districts serve ${CN}, Tennessee, and how to find the zoned school for any address using the districts' own lookup tools. No ratings or rankings.`;
+const SC = city.schools;
+const host = (u: string) => new URL(u).hostname;
+const faq = [
+  SC.faqDistrict,
+  SC.faqFind,
+  { q: `Are ${CN} schools good?`, a: "I do not rate or rank schools, because quality and fit are personal and ratings can steer people unfairly. The districts themselves and the Tennessee Department of Education publish official information, and visiting a school is the best way to judge fit for your family." },
+  { q: "Can school zones change?", a: "Yes. Districts can change zones, so confirm the current zone with the district before you buy and again before you enroll." },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>schools</em>`} lead={`Which districts serve ${CN} addresses and how to find the zoned school for a specific home, from the districts' own websites.`} slug="schools" label="Schools" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Official sources</span><h2>{CN} school districts at a glance</h2></div></div>
+    <p class="answer">{SC.intro}</p>
+    <div class={SC.districts.length > 1 ? 'grid2' : ''}>
+      {SC.districts.map((d: any) => <div class="card"><h3>{d.name}</h3><p>{d.text}</p><a class="btn primary sm" href={d.link.url} rel="noopener" target="_blank">{d.link.label}</a></div>)}
+    </div>
+    <p class="sources" style="margin-top:12px">Sources: {SC.districts.map((d: any, i: number) => <>{i > 0 && (i === SC.districts.length - 1 ? ' and ' : ', ')}<a href={`https://${host(d.link.url)}`} rel="noopener" target="_blank">{host(d.link.url).replace('www.', '')}</a></>)}, checked {dateLong(UPDATED)}. District information can change, so confirm with the district.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">Before you buy</span><h2>Check the zone for the exact address</h2></div></div>
+    <p>School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. Zones can change, so confirm the current zone with the district before you buy and again before you enroll.</p>
+    <p>I do not rate or rank schools, and I do not steer buyers toward or away from any school or neighborhood. Fair housing law protects your right to choose where to live, and the districts' own information is the right place to start.</p>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} schools FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity. Read more on the <a href="/fair-housing">fair housing</a> page.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href={`/${CS}/property-taxes`}><b>{CN} property taxes</b><small>The city rate and how a bill is figured.</small></a>
+      <a href={`/${CS}/commute`}><b>{CN} commute</b><small>Census average commute time.</small></a>
+      <a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

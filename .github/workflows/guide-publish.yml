@@ -27,7 +27,7 @@ jobs:
           node-version: 24
       - name: Check the slug
         run: |
-          case "$SLUG" in (''|*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+          case "$SLUG" in (''|*[!a-z0-9_-]*) echo "Bad slug"; exit 1;; esac
       - name: Approve for Google
         run: node scripts/guide/set-approved.mjs "$SLUG"
       - name: Commit and redeploy
@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add src/data/franklin-approved
+          git add src/data/guide-approved
           if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
           git commit -m "Guide: approved $SLUG for Google"
           # Several approvals can arrive at once: retry the push until it goes through.

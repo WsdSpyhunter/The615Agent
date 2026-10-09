@@ -1,0 +1,51 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { M, C, usd, num, dateLong, monthShort, signed, pct, censusRows, builtSince2010, builtBefore1980, builtBefore1970 } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const rows = censusRows(CS);
+const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const title = `${CN} TN New Construction: How Much of ${CN} Is Newer`;
+const description = `${pct(builtSince2010(cf))} of ${CN}, TN homes were built in 2010 or later, and ${pct(cf.builtPct.b2020)} in 2020 or later (Census). City comparison, plus what buyers can ask and inspect.`;
+const faq = [
+  { q: `How much of ${CN}'s housing is newer?`, a: `According to the Census Bureau's American Community Survey (2020-2024), ${pct(cf.builtPct.b2020)} of ${CN} city's ${num(cf.housingUnits)} housing units were built in 2020 or later and ${pct(cf.builtPct.b2010)} between 2010 and 2019, so ${pct(builtSince2010(cf))} were built in 2010 or later.` },
+  { q: `Are there new construction homes for sale in ${CN}?`, a: "This site does not display live listings. Tell me your budget, area and timeline through the Get Matched form and I will send options, including newly built homes if you want them." },
+  { q: "Should I get an inspection on a new construction home?", a: "A home inspection is optional but common, and radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection. Ask your lender and agent what applies to your purchase." },
+  { q: "Can buyers negotiate on new construction?", a: "Buyers can ask about negotiating, including asking for help with closing costs or an interest rate buydown. Whether that is available depends on the seller, the home and the market, and a lender must confirm what is allowed for the loan." },
+  { q: "How do I check taxes and schools for a newly built home?", a: `School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. See the ${CN} schools and property taxes pages.` },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>new construction</em>`} lead={`How much of ${CN}'s housing was built recently, next to nearby cities, from the U.S. Census Bureau.`} slug="new-construction" label="New construction" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} housing by year built</h2></div></div>
+    <p class="answer">The Census Bureau estimates that {pct(builtSince2010(cf))} of the {num(cf.housingUnits)} housing units in {CN} were built in 2010 or later ({pct(cf.builtPct.b2020)} in 2020 or later and {pct(cf.builtPct.b2010)} from 2010 to 2019). Another {pct(cf.builtPct.b2000)} were built from 2000 to 2009. These are estimates from a survey, not a count of homes for sale.</p>
+    <div class="stats"><div class="stat"><span>Built 2020 or later</span><b>{pct(cf.builtPct.b2020)}</b><small>of {CN} housing units</small></div><div class="stat"><span>Built 2010 to 2019</span><b>{pct(cf.builtPct.b2010)}</b><small>of housing units</small></div><div class="stat"><span>Built 2000 to 2009</span><b>{pct(cf.builtPct.b2000)}</b><small>of housing units</small></div></div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">City by city</span><h2>Share of homes built since 2010: {CN} and nearby cities</h2><p>Numbers only, listed alphabetically after {CN}. These are different places at different stages of growth, so a higher or lower share is not a ranking.</p></div></div>
+    <div class="tablewrap"><table class="data"><caption>Share of housing units by year built ({acs})</caption>
+      <thead><tr><th>City</th><th>2020 or later</th><th>2010 to 2019</th><th>Built since 2010</th><th>Housing units</th></tr></thead>
+      <tbody>{rows.map(([k, c]) => <tr><td>{c.name}</td><td>{pct(c.builtPct.b2020)}</td><td>{pct(c.builtPct.b2010)}</td><td>{pct(builtSince2010(c))}</td><td>{num(c.housingUnits)}</td></tr>)}</tbody></table></div>
+  </div></section>
+  <section class="s"><div class="wrap prose">
+    <div class="sh"><div><span class="kicker navy">If you are considering a new build</span><h2>What buyers can ask and check</h2></div></div>
+    <ul>
+      <li>Radon testing, a sewer scope and a termite inspection are common add-ons to a standard home inspection.</li>
+      <li>Buyers can ask about negotiating, including help with closing costs or an interest rate buydown. Whether that is available depends on the seller, the home and the market, and a lender must confirm what is allowed for the loan.</li>
+      <li>School assignment and property taxes depend on the exact address. Verify them with the district and the county. See <a href={`/${CS}/schools`}>{CN} schools</a> and <a href={`/${CS}/property-taxes`}>property taxes</a>.</li>
+    </ul>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} new construction FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Source: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a>, 5-year estimates for 2020-2024. Estimates have margins of error. This page is general information, not legal, tax, lending or financial advice. I do not rank neighborhoods or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px"><a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a><a href={`/${CS}/older-homes`}><b>Older homes</b><small>Housing age and what to check.</small></a><a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Prices, days on market and supply.</small></a></div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

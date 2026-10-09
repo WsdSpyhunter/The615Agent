@@ -1,0 +1,9 @@
+---
+import Hub from '../../guide/index.astro';
+import { enabledCities } from '../../data/guide-cities';
+export function getStaticPaths() {
+  return enabledCities.map((city) => ({ params: { city: city.slug }, props: { city } }));
+}
+const { city } = Astro.props;
+---
+<Hub city={city} />

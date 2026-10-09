@@ -1,19 +1,17 @@
 ---
-import GuideLayout from '../../layouts/GuideLayout.astro';
-import ColorBar from '../../components/ColorBar.astro';
-import GuideClose from '../../components/GuideClose.astro';
-import { M, H, C, usd, num, dateLong, monthShort, signed, chart2 } from '../../lib-guide';
-import { site } from '../../site.config';
-export function getStaticPaths() {
-  return ['brentwood', 'spring-hill', 'thompsons-station'].map((peer) => ({ params: { peer } }));
-}
-const { peer } = Astro.params as { peer: string };
-const f = M.cities.franklin, p = M.cities[peer], cf = C.cities.franklin, cp = C.cities[peer];
-const FN = 'Franklin', PN = p.name, when = dateLong(f.asOf), monS = monthShort(f.asOf), UPDATED = C.retrieved;
-const hf = H.cities.franklin.months, hp = H.cities[peer].months;
+const { city, peer } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from '../layouts/GuideLayout.astro';
+import ColorBar from '../components/ColorBar.astro';
+import GuideClose from '../components/GuideClose.astro';
+import { M, H, C, usd, num, dateLong, monthShort, signed, chart2 } from '../lib-guide';
+import { site } from '../site.config';
+const f = M.cities[CS], p = M.cities[peer], cf = C.cities[CS], cp = C.cities[peer];
+const FN = `${CN}`, PN = p.name, when = dateLong(f.asOf), monS = monthShort(f.asOf), UPDATED = C.retrieved;
+const hf = H.cities[CS].months, hp = H.cities[peer].months;
 const ch = chart2(hf.map((m: any) => m.price), hp.map((m: any) => m.price));
-const slug = `franklin-vs-${peer}`;
-const sharedCounty = peer === 'spring-hill' ? 'Franklin is in Williamson County. Spring Hill includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address.' : 'Franklin and ' + PN + ' are both in Williamson County.';
+const slug = `${CS}-vs-${peer}`;
+const sharedCounty = (peer === 'spring-hill' || CS === 'spring-hill') ? `${city.countyNote} ${peer === 'spring-hill' ? 'Spring Hill' : CN} includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address.` : `${CN} and ${PN} are both in Williamson County.`;
 const title = `${FN} vs ${PN} TN: Home Prices and Market Data (${monS})`;
 const description = `${FN} vs ${PN}, TN by the numbers: median sale price ${usd(f.medianPrice)} vs ${usd(p.medianPrice)}, days on market ${f.dom} vs ${p.dom}, price per sq ft and Census income. Redfin and Census data.`;
 const rows: [string, string, string][] = [
@@ -44,7 +42,7 @@ const faq = [
 ];
 const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) }];
 ---
-<GuideLayout title={title} description={description} h1={`${FN} <em>vs ${PN}</em>`} lead={`${FN} and ${PN}, Tennessee side by side: prices, days on market, supply, income, rent and commute, with the source and date next to every number.`} slug={slug} label={`${FN} vs ${PN}`} updated={UPDATED} schema={schema}>
+<GuideLayout city={city} title={title} description={description} h1={`${FN} <em>vs ${PN}</em>`} lead={`${FN} and ${PN}, Tennessee side by side: prices, days on market, supply, income, rent and commute, with the source and date next to every number.`} slug={slug} label={`${FN} vs ${PN}`} updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">Right now · data through {when}</span><h2>{FN} vs {PN} at a glance</h2></div></div>
     <p class="answer">{answer}</p>
@@ -73,9 +71,9 @@ const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEnti
     <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
     <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or neighborhoods and do not steer buyers toward or away from any place. Equal Housing Opportunity.</p>
     <div class="linkgrid" style="margin-top:18px">
-      <a href="/franklin/housing-market"><b>Franklin housing market</b><small>Prices, days on market and supply.</small></a>
+      <a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Prices, days on market and supply.</small></a>
       <a href={`/areas/${peer}`}><b>{PN} area page</b><small>Helpful local links and answers.</small></a>
-      <a href="/franklin/cost-of-living"><b>Franklin cost of living</b><small>Income, rent and home value.</small></a>
+      <a href={`/${CS}/cost-of-living`}><b>{CN} cost of living</b><small>Income, rent and home value.</small></a>
     </div>
   </div></section>
   <GuideClose />

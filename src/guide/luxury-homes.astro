@@ -1,0 +1,42 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { M, C, usd, num, dateLong, monthShort, signed, pct, censusRows, builtSince2010, builtBefore1980, builtBefore1970 } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const rows = censusRows(CS);
+const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const title = `${CN} TN Homes $1 Million and Up: Census and Redfin Data`;
+const description = `${pct(cf.valuePct1mPlus)} of ${CN}, TN owner-occupied homes are valued at $1 million or more (Census). Redfin median sale price ${usd(f.medianPrice)}. City comparison.`;
+const faq = [
+  { q: `What share of ${CN} homes are worth $1 million or more?`, a: `According to the Census Bureau's American Community Survey (2020-2024), ${pct(cf.valuePct1mPlus)} of ${CN} city's owner-occupied homes are valued at $1 million or more, and ${pct(cf.valuePct500to999k)} between $500,000 and $999,999. Values are the owners' own estimates.` },
+  { q: `What is the median sale price in ${CN}?`, a: `${usd(f.medianPrice)} for the three months ending ${when}, ${f.yoy >= 0 ? 'up' : 'down'} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier (source: Redfin Data Center).` },
+  { q: "Why does the Census share differ from the Redfin median?", a: "The Census figure is the share of owner-occupied homes by the owner's own value estimate, averaged over five years of survey responses. Redfin's median is the middle price of homes that actually sold in the most recent three months. They measure different things." },
+  { q: `Where can I see homes over $1 million in ${CN}?`, a: "This site does not display live listings. Tell me your budget, area and timeline through the Get Matched form and I will send options." },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>homes $1 million and up</em>`} lead={`How many ${CN} homes are valued at $1 million or more, next to nearby cities, from the U.S. Census Bureau and Redfin.`} slug="luxury-homes" label="Homes $1M and up" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} homes by value</h2></div></div>
+    <p class="answer">The Census Bureau estimates that {pct(cf.valuePct1mPlus)} of owner-occupied homes in {CN} are valued at $1 million or more, and {pct(cf.valuePct500to999k)} between $500,000 and $999,999. Redfin's median sale price was {usd(f.medianPrice)} as of {when}. Census values are the owners' own estimates, so they are not the same as sale prices.</p>
+    <div class="stats"><div class="stat"><span>Valued $1M or more</span><b>{pct(cf.valuePct1mPlus)}</b><small>of owner-occupied homes</small></div><div class="stat"><span>Valued $500K to $999K</span><b>{pct(cf.valuePct500to999k)}</b><small>of owner-occupied homes</small></div><div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>Redfin, {monthShort(f.asOf)}</small></div></div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">City by city</span><h2>Share of homes valued at $1 million or more</h2><p>Numbers only, listed alphabetically after {CN}. These are different places with different home types, so a higher or lower share is not a ranking.</p></div></div>
+    <div class="tablewrap"><table class="data"><caption>Owner-occupied homes by value ({acs})</caption>
+      <thead><tr><th>City</th><th>$500K to $999K</th><th>$1M or more</th><th>Median home value</th></tr></thead>
+      <tbody>{rows.map(([k, c]) => <tr><td>{c.name}</td><td>{pct(c.valuePct500to999k)}</td><td>{pct(c.valuePct1mPlus)}</td><td>{usd(c.medianHomeValue)}</td></tr>)}</tbody></table></div>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} $1 million homes FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Source: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a>, 5-year estimates for 2020-2024. Estimates have margins of error. This page is general information, not legal, tax, lending or financial advice. I do not rank neighborhoods or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px"><a href={`/${CS}/home-prices`}><b>{CN} home prices</b><small>Three years of prices and a sample payment.</small></a><a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Days on market, supply and market temperature.</small></a><a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a></div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

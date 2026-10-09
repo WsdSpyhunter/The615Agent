@@ -1,0 +1,58 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from "../layouts/GuideLayout.astro";
+import ColorBar from "../components/ColorBar.astro";
+import GuideClose from "../components/GuideClose.astro";
+import { site } from "../site.config";
+import { M, C, usd, num, dateLong, monthShort, signed, censusRows } from "../lib-guide";
+const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf);
+const UPDATED = C.retrieved;
+const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
+const faqSchema = (faq: any[]) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
+const rows = censusRows(CS);
+const title = `${CN} TN Cost of Living: Income, Rent and Home Values`;
+const description = `${CN}, TN median household income ${usd(cf.medianHouseholdIncome)}, median rent ${usd(cf.medianGrossRent)} a month, median home value ${usd(cf.medianHomeValue)} (Census) and median sale price ${usd(f.medianPrice)} (Redfin).`;
+const faq = [
+  { q: `What is the cost of living in ${CN}, TN?`, a: `There is no single official number. The Census Bureau's American Community Survey (2020-2024) shows a median household income of ${usd(cf.medianHouseholdIncome)}, median rent of ${usd(cf.medianGrossRent)} a month and a median owner-estimated home value of ${usd(cf.medianHomeValue)} for ${CN} city. Redfin's median sale price was ${usd(f.medianPrice)} as of ${when}.` },
+  { q: `What is the median rent in ${CN}, TN?`, a: `The Census Bureau's median gross rent for ${CN} city was ${usd(cf.medianGrossRent)} a month (American Community Survey, 2020-2024). It covers units that pay rent and varies by size, age and location.` },
+  { q: `What is the median household income in ${CN}, TN?`, a: `${usd(cf.medianHouseholdIncome)}, in 2024 inflation-adjusted dollars (American Community Survey, 2020-2024).` },
+  { q: "Why are the Census home value and the Redfin sale price different?", a: "The Census figure is the owner's own estimate of what their home would sell for, averaged over five years of survey responses. Redfin's figure is the median price of homes that actually sold in the most recent three months. The two measure different things." },
+  { q: `What is the property tax rate in ${CN}?`, a: `The City of ${CN}'s rate is $${city.tax.cityRate.toFixed(3)} per $100 of assessed value${city.tax.costNote}. County property tax is separate. See the ${CN} property taxes page.` },
+];
+const schema = [faqSchema(faq)];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>cost of living</em>`} lead={`Income, rent, home values and the city tax rate for ${CN}, Tennessee, from the Census Bureau, Redfin and the City of ${CN}, with the source next to every number.`} slug="cost-of-living" label="Cost of living" updated={UPDATED} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Census data {C.vintage}</span><h2>{CN} cost of living at a glance</h2></div></div>
+    <p class="answer">For {CN} city, the Census Bureau's American Community Survey (2020-2024) reports a median household income of {usd(cf.medianHouseholdIncome)}, median rent of {usd(cf.medianGrossRent)} a month and a median owner-estimated home value of {usd(cf.medianHomeValue)}. Redfin's median sale price was {usd(f.medianPrice)} as of {when}, and the City of {CN}'s property tax rate is ${city.tax.cityRate.toFixed(3)} per $100 of assessed value.</p>
+    <div class="stats">
+      <div class="stat"><span>Median household income</span><b>{usd(cf.medianHouseholdIncome)}</b><small>2024 dollars</small></div>
+      <div class="stat"><span>Median rent</span><b>{usd(cf.medianGrossRent)}</b><small>per month</small></div>
+      <div class="stat"><span>Median home value</span><b>{usd(cf.medianHomeValue)}</b><small>owner estimate</small></div>
+      <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>Redfin, {monthShort(f.asOf)}</small></div>
+      <div class="stat"><span>Owner-occupied homes</span><b>{cf.ownerOccupiedPct}%</b><small>of occupied homes</small></div>
+      <div class="stat"><span>City tax rate</span><b>${city.tax.cityRate.toFixed(3)}</b><small>per $100 assessed</small></div>
+    </div>
+    <p class="sources" style="margin-top:12px">Sources: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a> (5-year estimates, 2020-2024); <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a> (rolling 3 months ending {when}); <a href={city.tax.cityRateSource.url} rel="noopener" target="_blank">{city.tax.cityRateSource.short}</a>.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">City by city</span><h2>Income, rent and home value: {CN} and nearby cities</h2><p>Numbers only, listed alphabetically after {CN}. These are different places with different home types, so a lower or higher number is not a ranking.</p></div></div>
+    <div class="tablewrap"><table class="data"><caption>{acs}</caption>
+      <thead><tr><th>City</th><th>Median household income</th><th>Median rent</th><th>Median home value</th><th>Owner-occupied</th></tr></thead>
+      <tbody>{rows.map(([k, c]) => <tr><td>{c.name}</td><td>{usd(c.medianHouseholdIncome)}</td><td>{usd(c.medianGrossRent)}</td><td>{usd(c.medianHomeValue)}</td><td>{c.ownerOccupiedPct}%</td></tr>)}</tbody></table></div>
+    <p class="sources" style="margin-top:12px">Income is in 2024 inflation-adjusted dollars. Home value is the owner's own estimate. Rent is for units that pay rent. Estimates have margins of error. Redfin's sale prices measure actual recent sales, so the two home-value figures differ.</p>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} cost of living FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">Another way buyers frame the question is to compare the full monthly cost of buying (payment, taxes, insurance, maintenance) with the monthly cost of renting a comparable home, and to weigh how long they expect to stay. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href={`/${CS}/home-prices`}><b>{CN} home prices</b><small>Three years of prices and a sample payment.</small></a>
+      <a href={`/${CS}/property-taxes`}><b>{CN} property taxes</b><small>The city rate and how a bill is figured.</small></a>
+      <a href="/mortgage-calculator"><b>Mortgage calculator</b><small>Estimate a monthly payment.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

@@ -1,0 +1,93 @@
+---
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+import GuideLayout from '../layouts/GuideLayout.astro';
+import ColorBar from '../components/ColorBar.astro';
+import GuideClose from '../components/GuideClose.astro';
+import { site } from '../site.config';
+import { M, H, usd, dateLong, monthShort, signed, word, chart } from '../lib-guide';
+
+const f = M.cities[CS], hist = H.cities[CS].months;
+const asOf = f.asOf, when = dateLong(asOf), monS = monthShort(asOf);
+const at = (back: number) => hist.find((m: any) => m.m === `${+asOf.slice(0, 4) - back}${asOf.slice(4, 7)}`);
+const pts = [{ l: monS, d: at(0) }, { l: monthShort(`${+asOf.slice(0, 4) - 1}${asOf.slice(4)}`), d: at(1) }, { l: monthShort(`${+asOf.slice(0, 4) - 2}${asOf.slice(4)}`), d: at(2) }, { l: monthShort(`${+asOf.slice(0, 4) - 3}${asOf.slice(4)}`), d: at(3) }].filter((x) => x.d);
+const first = hist[0];
+const priced = hist.filter((m: any) => m.price != null);
+const hi = priced.reduce((a: any, b: any) => (b.price > a.price ? b : a)), lo = priced.reduce((a: any, b: any) => (b.price < a.price ? b : a));
+const chg3 = ((f.medianPrice - first.price) / first.price) * 100;
+const rate = M.mortgageRate30, rateDate = dateLong(M.mortgageRateAsOf);
+const pay = (price: number, downPct: number) => { const L = price * (1 - downPct), r = rate / 1200, n = 360; return Math.round((L * r) / (1 - Math.pow(1 + r, -n))); };
+const cityRows = Object.entries(M.cities).filter(([k]) => k !== 'nashville').sort((a: any, b: any) => (a[0] === CS ? -1 : b[0] === CS ? 1 : a[1].name.localeCompare(b[1].name)));
+const cp = chart(hist.map((m: any) => m.price), '#1473E6'), cs = chart(hist.map((m: any) => m.ppsf), '#14A88F');
+const title = `${CN} TN Home Prices, ${monS}: Median and Per Sq Ft`;
+const description = `${CN}, TN median sale price is ${usd(f.medianPrice)} (${signed(f.yoy)} year over year) and about $${Math.round(f.ppsf)} per square foot. Three years of Redfin data, city comparison and a sample payment.`;
+const answer = `As of ${when}, the median sale price in ${CN}, Tennessee was ${usd(f.medianPrice)}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier and ${word(chg3)} ${Math.abs(chg3).toFixed(1)}% from ${monthShort(first.m + '-01')}, the start of the three-year window. The median price per square foot was about $${Math.round(f.ppsf)}. Over those three years the median ranged from ${usd(lo.price)} (${monthShort(lo.m + '-01')}) to ${usd(hi.price)} (${monthShort(hi.m + '-01')}).`;
+const faq = [
+  { q: `What is the median home price in ${CN}, TN?`, a: `The median sale price was ${usd(f.medianPrice)} for the three months ending ${when}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). The median is the middle sale price, so half of homes sold for more and half for less.` },
+  { q: 'Is the median price the same as the average price?', a: `No. The median is the middle value, while an average adds every price and divides by the count, so a few very expensive sales can pull an average up. This page uses the median.` },
+  { q: `How much per square foot are homes in ${CN}, TN?`, a: `The median sale price per square foot was about $${Math.round(f.ppsf)} for the three months ending ${when}, ${word(f.ppsfYoy)} ${Math.abs(f.ppsfYoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). It varies a lot with home size, age and location.` },
+  { q: `Have ${CN} home prices gone up?`, a: `Over the three years from ${monthShort(first.m + '-01')} to ${monS}, the median sale price moved from ${usd(first.price)} to ${usd(f.medianPrice)}, a change of ${signed(chg3)}. Over the last year it changed ${signed(f.yoy)}. Past changes do not predict future ones.` },
+  { q: `What would the monthly payment be on a median-priced ${CN} home?`, a: `As a sample only: with 20% down on ${usd(f.medianPrice)} and a 30-year fixed rate of ${rate}% (Freddie Mac, week of ${rateDate}), principal and interest would be about ${usd(pay(f.medianPrice, 0.2))} a month. That excludes property taxes, insurance and any mortgage insurance, and it is not a loan quote.` },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+  { '@context': 'https://schema.org', '@type': 'Dataset', name: `${CN}, Tennessee median home prices`, description: `Median sale price and median sale price per square foot for ${CN}, TN, as rolling 3-month figures.`, url: `${site.url}/${CS}/home-prices`,
+    creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@id': `${site.url}/#agent` }, isAccessibleForFree: true, temporalCoverage: `${first.m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'City', name: `${CN}, Tennessee` }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot'] },
+];
+---
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>home prices</em>`} lead={`Median sale price, price per square foot and three years of change for ${CN}, Tennessee, with the source and date next to every number.`} slug="home-prices" label="Home prices" updated={asOf} schema={schema}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Right now · data through {when}</span><h2>{CN} home prices at a glance</h2></div></div>
+    <p class="answer">{answer}</p>
+    <div class="stats">
+      <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>{signed(f.yoy)} vs. a year earlier</small></div>
+      <div class="stat"><span>Price per sq ft</span><b>${Math.round(f.ppsf)}</b><small>{signed(f.ppsfYoy)} vs. a year earlier</small></div>
+      <div class="stat"><span>Change in 3 years</span><b>{signed(chg3)}</b><small>since {monthShort(first.m + '-01')}</small></div>
+      <div class="stat"><span>3-year low</span><b>{usd(lo.price)}</b><small>{monthShort(lo.m + '-01')}</small></div>
+      <div class="stat"><span>3-year high</span><b>{usd(hi.price)}</b><small>{monthShort(hi.m + '-01')}</small></div>
+      <div class="stat"><span>Sale-to-list</span><b>{f.saleToList.toFixed(1)}%</b><small>average</small></div>
+    </div>
+    <p class="sources" style="margin-top:12px">Source: <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a>. Figures are rolling 3-month values ending {when}.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Three years</span><h2>{CN} median price and price per square foot over time</h2></div></div>
+    <div class="grid2">
+      {cp && <figure class="chartcard" style="margin:0"><h3>Median sale price</h3><div class="note">Now: {usd(f.medianPrice)}</div>
+        <svg viewBox="0 0 560 150" role="img" aria-label={`${CN} median sale price, ${monthShort(first.m + '-01')} to ${monS}. Now ${usd(f.medianPrice)}.`}><path d={cp.area} fill={cp.color} opacity=".12" /><path d={cp.line} fill="none" stroke={cp.color} stroke-width="3" stroke-linejoin="round" /><circle cx={cp.cx} cy={cp.cy} r="5" fill={cp.color} /></svg></figure>}
+      {cs && <figure class="chartcard" style="margin:0"><h3>Price per square foot</h3><div class="note">Now: ${Math.round(f.ppsf)}</div>
+        <svg viewBox="0 0 560 150" role="img" aria-label={`${CN} median price per square foot, ${monthShort(first.m + '-01')} to ${monS}. Now $${Math.round(f.ppsf)}.`}><path d={cs.area} fill={cs.color} opacity=".12" /><path d={cs.line} fill="none" stroke={cs.color} stroke-width="3" stroke-linejoin="round" /><circle cx={cs.cx} cy={cs.cy} r="5" fill={cs.color} /></svg></figure>}
+    </div>
+    <div class="tablewrap" style="margin-top:22px"><table class="data">
+      <caption>{CN}, TN, same period each year (Redfin, rolling 3-month figures)</caption>
+      <thead><tr><th>Period ending</th><th>Median price</th><th>Price / sq ft</th><th>Days on market</th></tr></thead>
+      <tbody>{pts.map((p) => <tr><td>{p.l}</td><td>{usd(p.d.price)}</td><td>{p.d.ppsf != null ? '$' + Math.round(p.d.ppsf) : '—'}</td><td>{p.d.dom ?? '—'}</td></tr>)}</tbody>
+    </table></div>
+  </div></section>
+  <ColorBar />
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">City by city</span><h2>{CN} home prices compared with nearby cities</h2><p>Numbers only, listed alphabetically after {CN}. These are different places with different home types, so a lower or higher number is not a ranking.</p></div></div>
+    <div class="tablewrap"><table class="data">
+      <caption>Median sale price and price per square foot, period ending {when} (Redfin)</caption>
+      <thead><tr><th>City</th><th>Median price</th><th>Change vs. year earlier</th><th>Price / sq ft</th></tr></thead>
+      <tbody>{cityRows.map(([k, c]: any) => <tr><td>{c.name}</td><td>{usd(c.medianPrice)}</td><td>{signed(c.yoy)}</td><td>{c.ppsf != null ? '$' + Math.round(c.ppsf) : '—'}</td></tr>)}</tbody>
+    </table></div>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Sample payment</span><h2>What a median-priced {CN} home could cost per month</h2></div></div>
+    <p class="answer">With 20% down on {usd(f.medianPrice)} and a 30-year fixed rate of {rate}%, principal and interest would be about <b>{usd(pay(f.medianPrice, 0.2))} a month</b>. With 10% down it would be about {usd(pay(f.medianPrice, 0.1))} a month, before mortgage insurance.</p>
+    <p class="sources">This is an illustration, not a loan quote. It uses the Freddie Mac average 30-year fixed rate for the week of {rateDate} ({rate}%, source: <a href="https://fred.stlouisfed.org/series/MORTGAGE30US" rel="noopener" target="_blank">FRED</a>), and your rate will depend on your credit, loan type and lender. It excludes property taxes, homeowner’s insurance and mortgage insurance. Try your own numbers in the <a href="/mortgage-calculator">mortgage calculator</a>.</p>
+  </div></section>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} home prices FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="sources" style="margin-top:14px">These figures are general market statistics for the whole city and may not reflect any one home, price range or neighborhood. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <div class="linkgrid" style="margin-top:18px">
+      <a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Days on market, supply and market temperature.</small></a>
+      <a href={`/${CS}/buying-in-${CS}`}><b>Buying in {CN}</b><small>The steps from pre-approval to closing.</small></a>
+      <a href="/mortgage-calculator"><b>Mortgage calculator</b><small>Estimate a payment with your own numbers.</small></a>
+    </div>
+  </div></section>
+  <GuideClose />
+</GuideLayout>

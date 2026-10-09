@@ -1,0 +1,36 @@
+---
+import GuideLayout from "../layouts/GuideLayout.astro";
+import AuthorCard from "../components/AuthorCard.astro";
+import { pagesFor } from "../data/guide-pages";
+import { M, usd, dateLong, signed } from "../lib-guide";
+const { city } = Astro.props;
+const CN = city.name, CS = city.slug;
+const f = M.cities[CS];
+const live = pagesFor(CS);
+const PN = (peer: string) => M.cities[peer].name;
+const blurb = (p: any): string => ({
+  'housing-market': 'Prices, days on market, supply, price per square foot and market temperature, with sources and dates.',
+  'home-prices': `Three years of ${CN} prices, price per square foot, a city-by-city table and a sample monthly payment.`,
+  'property-taxes': `The City of ${CN} tax rate, how a Tennessee property tax bill is figured and a worked example.`,
+  'schools': `Which school districts serve ${CN} and how to find the zoned school for an address.`,
+  'commute': `Census average commute time for ${CN} and nearby cities.`,
+  'cost-of-living': `Census income, rent and home value for ${CN} next to Redfin prices and the city tax rate.`,
+  'selling': `The steps to sell a home in ${CN}, with today's local numbers.`,
+  'compare': `${CN} and ${p.peer ? PN(p.peer) : ''} side by side: prices, days on market, supply, income and commute.`,
+  'new-construction': `How much of ${CN}'s housing was built recently, next to nearby cities.`,
+  'older-homes': `How much of ${CN}'s housing is older, and what buyers commonly check.`,
+  'luxury-homes': `How many ${CN} homes are valued at $1 million or more, from Census and Redfin.`,
+  'neighborhoods': city.zips.length > 1 ? `The ${['', 'one', 'two', 'three', 'four', 'five'][city.zips.length]} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`,
+  'buying': `The steps to buy a home in ${CN}, from pre-approval to closing, with today's local numbers.`,
+} as Record<string, string>)[p.key] ?? '';
+---
+<GuideLayout city={city} title={`${CN} TN Real Estate Guide: Market, Prices and Moving`} description={`A local guide to ${CN}, Tennessee real estate by Scott Davis, REALTOR®: current market data (median price ${usd(f.medianPrice)}), prices and more, with sources and dates.`} h1={`${CN}, TN <em>real estate guide</em>`} lead={`A local, data-backed guide to buying or selling a home in ${CN}, Tennessee. Every number is sourced and dated, and it is updated automatically.`} updated={M.asOf}>
+  <section class="s"><div class="wrap">
+    <div class="sh"><div><span class="kicker navy">Start here</span><h2>{CN} at a glance</h2></div></div>
+    <p class="answer">As of {dateLong(f.asOf)}, the median sale price in {CN}, Tennessee was {usd(f.medianPrice)} ({signed(f.yoy)} from a year earlier), with homes selling in a median of {f.dom} days (source: Redfin Data Center). {city.hubFact}</p>
+    <div class="linkgrid">
+      {live.map((p) => <a href={`/${CS}/${p.slug}`}><b>{p.label}</b><small>{blurb(p)}</small></a>)}
+    </div>
+  </div></section>
+  <section class="s band"><div class="wrap"><AuthorCard /></div></section>
+</GuideLayout>

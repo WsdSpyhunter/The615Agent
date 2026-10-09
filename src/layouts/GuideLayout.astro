@@ -3,28 +3,30 @@ import Layout from './Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import '../styles/guide.css';
 import { site } from '../site.config';
-import { isIndexable, livePages } from '../data/franklin-guide';
-interface Props { title: string; description: string; h1: string; lead: string; slug?: string; label?: string; updated: string; schema?: object[]; }
-const { title, description, h1, lead, slug = '', label = 'Franklin Real Estate Guide', updated, schema = [] } = Astro.props;
-const url = `${site.url}/franklin${slug ? '/' + slug : ''}`;
-const crumbs = [{ name: 'Home', url: site.url + '/' }, { name: 'Franklin Real Estate Guide', url: `${site.url}/franklin` }, ...(slug ? [{ name: label, url }] : [])];
+import { isIndexable, livePagesFor } from '../data/franklin-guide';
+interface Props { city: { slug: string; name: string }; title: string; description: string; h1: string; lead: string; slug?: string; label?: string; updated: string; schema?: object[]; }
+const { city, title, description, h1, lead, slug = '', label = '', updated, schema = [] } = Astro.props;
+const guideName = `${city.name} Real Estate Guide`;
+const pages = livePagesFor(city.slug);
+const url = `${site.url}/${city.slug}${slug ? '/' + slug : ''}`;
+const crumbs = [{ name: 'Home', url: site.url + '/' }, { name: guideName, url: `${site.url}/${city.slug}` }, ...(slug ? [{ name: label, url }] : [])];
 const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) };
 const page = { '@context': 'https://schema.org', '@type': slug ? 'Article' : 'CollectionPage', '@id': url + '#page', headline: h1.replace(/<[^>]+>/g, ''), description, url, inLanguage: 'en-US', dateModified: updated, datePublished: updated,
   author: { '@type': 'Person', name: site.agent, jobTitle: 'REALTOR®', url: `${site.url}/about`, worksFor: { '@type': 'Organization', name: site.brokerage }, identifier: site.license },
-  publisher: { '@id': `${site.url}/#agent` }, about: { '@type': 'City', name: 'Franklin', containedInPlace: { '@type': 'AdministrativeArea', name: 'Williamson County, Tennessee' } },
+  publisher: { '@id': `${site.url}/#agent` }, about: { '@type': 'City', name: city.name, containedInPlace: { '@type': 'AdministrativeArea', name: 'Williamson County, Tennessee' } },
   isPartOf: { '@type': 'WebSite', name: site.name, url: site.url }, image: `${site.url}/img/skyline-night-1600.jpg` };
 ---
-<Layout title={title} description={description} noindex={!isIndexable(slug)} schema={[page, breadcrumb, ...schema]}>
+<Layout title={title} description={description} noindex={!isIndexable(city.slug, slug)} schema={[page, breadcrumb, ...schema]}>
   <div class="fg">
-    <PageHeader eyebrow="Franklin real estate guide" title={h1} lead={lead}>
+    <PageHeader eyebrow={`${city.name} real estate guide`} title={h1} lead={lead}>
       <nav class="crumbs" aria-label="Breadcrumb" style="margin-top:14px">
-        <a href="/">Home</a> › {slug ? <a href="/franklin">Franklin Real Estate Guide</a> : <span>Franklin Real Estate Guide</span>}{slug && <> › <span>{label}</span></>}
+        <a href="/">Home</a> › {slug ? <a href={`/${city.slug}`}>{guideName}</a> : <span>{guideName}</span>}{slug && <> › <span>{label}</span></>}
       </nav>
       <p class="byline">By <b>{site.agent}</b>, REALTOR® · {site.brokerage} · {site.license} · Data updated monthly</p>
     </PageHeader>
-    <nav class="fg-ring" aria-label="Franklin guide pages"><div class="wrap">
-      <a href="/franklin" aria-current={!slug ? 'page' : undefined}>Guide home</a>
-      {livePages.map((p) => <a href={`/franklin/${p.slug}`} aria-current={slug === p.slug ? 'page' : undefined}>{p.label}</a>)}
+    <nav class="fg-ring" aria-label={`${city.name} guide pages`}><div class="wrap">
+      <a href={`/${city.slug}`} aria-current={!slug ? 'page' : undefined}>Guide home</a>
+      {pages.map((p) => <a href={`/${city.slug}/${p.slug}`} aria-current={slug === p.slug ? 'page' : undefined}>{p.label}</a>)}
     </div></nav>
     <slot />
   </div>

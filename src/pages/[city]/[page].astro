@@ -1,0 +1,25 @@
+---
+// One route renders every guide page for every enabled city: /<city>/<page>. Templates live in src/guide/.
+import HousingMarket from '../../guide/housing-market.astro';
+import HomePrices from '../../guide/home-prices.astro';
+import Neighborhoods from '../../guide/neighborhoods.astro';
+import PropertyTaxes from '../../guide/property-taxes.astro';
+import Schools from '../../guide/schools.astro';
+import Commute from '../../guide/commute.astro';
+import CostOfLiving from '../../guide/cost-of-living.astro';
+import NewConstruction from '../../guide/new-construction.astro';
+import Buying from '../../guide/buying.astro';
+import Selling from '../../guide/selling.astro';
+import Compare from '../../guide/compare.astro';
+import OlderHomes from '../../guide/older-homes.astro';
+import LuxuryHomes from '../../guide/luxury-homes.astro';
+import { enabledCities } from '../../data/guide-cities';
+import { pagesFor } from '../../data/guide-pages';
+const map: Record<string, any> = { 'housing-market': HousingMarket, 'home-prices': HomePrices, neighborhoods: Neighborhoods, 'property-taxes': PropertyTaxes, schools: Schools, commute: Commute, 'cost-of-living': CostOfLiving, 'new-construction': NewConstruction, buying: Buying, selling: Selling, compare: Compare, 'older-homes': OlderHomes, 'luxury-homes': LuxuryHomes };
+export function getStaticPaths() {
+  return enabledCities.flatMap((city) => pagesFor(city.slug).map((p) => ({ params: { city: city.slug, page: p.slug }, props: { city, key: p.key, peer: p.peer } })));
+}
+const { city, key, peer } = Astro.props;
+const Page = map[key];
+---
+<Page city={city} peer={peer} />

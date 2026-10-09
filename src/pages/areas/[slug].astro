@@ -4,7 +4,8 @@ import PageHeader from '../../components/PageHeader.astro';
 import ColorBar from '../../components/ColorBar.astro';
 import MarketTemperature from '../../components/MarketTemperature.astro';
 import { site, areas } from '../../site.config';
-import { livePages } from '../../data/franklin-guide';
+import { guideCities } from '../../data/guide-cities';
+import { pagesFor } from '../../data/guide-pages';
 import content from '../../data/areas.json';
 export function getStaticPaths() {
   return areas.map((a) => ({ params: { slug: a.slug }, props: { area: a } }));
@@ -29,13 +30,13 @@ const schema = [
       <div class="faq">{c.faq.map((f: any) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
     </div>
     <aside>
-      {a.slug === 'franklin' && (
+      {guideCities[a.slug]?.enabled && (
         <div class="card t1" style="margin-bottom:18px">
-          <h3>Franklin Real Estate Guide</h3>
+          <h3>{a.name} Real Estate Guide</h3>
           <p style="margin:0 0 8px;color:var(--muted)">Local data and plain answers, with the source and date next to every number.</p>
           <ul class="reslist">
-            {livePages.filter((g) => ['housing-market', 'home-prices', 'buying-in-franklin', 'selling-in-franklin', 'schools', 'property-taxes'].includes(g.slug)).map((g) => <li><a href={`/franklin/${g.slug}`}><b>{g.label} →</b></a></li>)}
-            <li><a href="/franklin"><b>See all guide pages →</b></a></li>
+            {pagesFor(a.slug).filter((g) => ['housing-market', 'home-prices', 'buying', 'selling', 'schools', 'property-taxes'].includes(g.key)).map((g) => <li><a href={`/${a.slug}/${g.slug}`}><b>{g.label} →</b></a></li>)}
+            <li><a href={`/${a.slug}`}><b>See all guide pages →</b></a></li>
           </ul>
         </div>
       )}

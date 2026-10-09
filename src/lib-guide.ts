@@ -21,7 +21,7 @@ export function chart(points: (number | null)[], color: string) {
   return { line: d, area: `${d} L${X(last[0]).toFixed(1)},140 L${X(v[0][0]).toFixed(1)},140 Z`, cx: X(last[0]).toFixed(1), cy: Y(last[1]).toFixed(1), color };
 }
 export const num = (n: number) => Math.round(n).toLocaleString('en-US');
-export const censusRows = () => Object.entries(C.cities).sort((a: any, b: any) => (a[0] === 'franklin' ? -1 : b[0] === 'franklin' ? 1 : a[1].name.localeCompare(b[1].name))) as [string, any][];
+export const censusRows = (first = 'franklin') => Object.entries(C.cities).sort((a: any, b: any) => (a[0] === first ? -1 : b[0] === first ? 1 : a[1].name.localeCompare(b[1].name))) as [string, any][];
 export const CITY_TAX_RATE = 0.296; // City of Franklin, per $100 of assessed value (FY2026 approved; FY2027 proposed unchanged), franklintn.gov
 // Two lines on one shared scale (for city-vs-city charts).
 export function chart2(a: (number | null)[], b: (number | null)[]) {
