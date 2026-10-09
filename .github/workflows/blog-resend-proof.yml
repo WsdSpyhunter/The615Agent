@@ -8,6 +8,8 @@ on:
         description: "Slug of the saved draft (the file name in drafts/ without .json)"
         required: true
         type: string
+  repository_dispatch:
+    types: [blog-resend-proof]
 
 permissions:
   contents: read
@@ -17,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      SLUG: ${{ github.event.inputs.slug }}
+      SLUG: ${{ github.event.client_payload.slug || github.event.inputs.slug }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
