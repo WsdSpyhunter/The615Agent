@@ -704,9 +704,9 @@
         "financing",
         "buyers"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-10-09",
+      "slug": "builder-incentives-vs-lender-incentives-compare"
     },
     {
       "id": "t38",
