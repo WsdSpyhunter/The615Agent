@@ -7,8 +7,8 @@ import GuideClose from '../components/GuideClose.astro';
 import { M, usd, dateLong, monthShort, signed } from '../lib-guide';
 
 const f = M.cities[CS], when = dateLong(f.asOf), monS = monthShort(f.asOf);
-const title = `Buying a Home in ${CN} TN: Step-by-Step Guide (${monS})`;
-const description = `How to buy a home in ${CN}, Tennessee, from pre-approval to closing, with today's local numbers: median price ${usd(f.medianPrice)}, ${f.dom} days on market. By Scott Davis, REALTOR®.`;
+const title = `Buying a Home in ${CN} TN: Step-by-Step Guide`;
+const description = `How to buy a home in ${CN}, TN, from pre-approval to closing, with local data: median price ${usd(f.medianPrice)}, ${f.dom} days on market.`;
 const steps = [
   { h: 'Get pre-approved', p: ['A pre-qualification is a quick estimate of what you might be able to borrow, based on information you tell a lender. A pre-approval goes further: the lender reviews your documents and credit before issuing a letter.', 'A pre-approval letter is not a final loan commitment. Final approval depends on the appraisal, underwriting and your finances staying the same until closing.'] },
   { h: 'Compare lenders and loan types', p: ['The CFPB encourages borrowers to get Loan Estimates from more than one lender and compare them, because interest rates and fees can differ from lender to lender. After you apply, a lender must give you a Loan Estimate within three business days, and it is a standard form, so estimates can be compared side by side.', 'You choose your own lender and are free to use any lender you like. Lenders include banks, credit unions, mortgage brokers and online lenders. The Tennessee Housing Development Agency (THDA) offers home loan programs through participating lenders, so ask any lender you are considering whether they take part.', 'FHA loans allow a down payment as low as 3.5 percent. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. Private mortgage insurance is typically required on conventional loans when the down payment is under 20 percent.'] },

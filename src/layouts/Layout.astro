@@ -16,7 +16,17 @@ interface Props {
 const { title, description, image = '/img/skyline-night-1600.jpg', type = 'website', noindex: pageNoindex = false, schema } = Astro.props;
 const noindex = pageNoindex || import.meta.env.PUBLIC_NOINDEX === 'true';
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', site.url).toString();
-const fullTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
+// Keep search titles near 60 characters: add the brand only when it fits, and shorten very long titles at a natural break.
+const shortenTitle = (t: string, max = 62) => {
+  if (t.length <= max) return t;
+  const cuts = [...t.matchAll(/[,:]| and | \|/g)].map((m) => m.index!).filter((i) => i > 25 && i <= max);
+  return cuts.length ? t.slice(0, cuts[cuts.length - 1]).trim() : t.slice(0, max - 1).replace(/\s+\S*$/, '').trim();
+};
+const withBrand = `${title} | ${site.name}`;
+const fullTitle = title.includes(site.name) ? shortenTitle(title) : withBrand.length <= 62 ? withBrand : shortenTitle(title);
+// Meta descriptions over about 160 characters get cut off in search results.
+const shortenDesc = (d: string, max = 160) => (d.length <= max ? d : d.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[,;:\s]+$/, '') + '…');
+const metaDescription = shortenDesc(description);
 const ogImage = new URL(image, site.url).toString();
 
 const agentSchema = {
@@ -43,7 +53,7 @@ const schemas = [agentSchema, ...(Array.isArray(schema) ? schema : schema ? [sch
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#0A0A0A" />
@@ -53,7 +63,7 @@ const schemas = [agentSchema, ...(Array.isArray(schema) ? schema : schema ? [sch
     <meta property="og:site_name" content={site.name} />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />

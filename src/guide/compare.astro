@@ -12,8 +12,8 @@ const hf = H.cities[CS].months, hp = H.cities[peer].months;
 const ch = chart2(hf.map((m: any) => m.price), hp.map((m: any) => m.price));
 const slug = `${CS}-vs-${peer}`;
 const sharedCounty = (peer === 'spring-hill' || CS === 'spring-hill') ? `${city.countyNote} ${peer === 'spring-hill' ? 'Spring Hill' : CN} includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address.` : `${CN} and ${PN} are both in Williamson County.`;
-const title = `${FN} vs ${PN} TN: Home Prices and Market Data (${monS})`;
-const description = `${FN} vs ${PN}, TN by the numbers: median sale price ${usd(f.medianPrice)} vs ${usd(p.medianPrice)}, days on market ${f.dom} vs ${p.dom}, price per sq ft and Census income. Redfin and Census data.`;
+const title = `${FN} vs ${PN} TN: Home Prices and Market Data`;
+const description = `${FN} vs ${PN}, TN median sale price ${usd(f.medianPrice)} vs ${usd(p.medianPrice)}, days on market ${f.dom} vs ${p.dom}, price per sq ft and Census data.`;
 const rows: [string, string, string][] = [
   ['Median sale price', usd(f.medianPrice), usd(p.medianPrice)],
   ['Change vs. a year earlier', signed(f.yoy), signed(p.yoy)],

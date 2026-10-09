@@ -25,6 +25,7 @@ const schema: object[] = [
     publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: `${site.url}/img/logo-615-agent.png` } },
   },
 ];
+schema.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://the615agent.com/' }, { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://the615agent.com/blog' }, { '@type': 'ListItem', position: 3, name: d.title, item: `https://the615agent.com/blog/${post.id}` }] });
 if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
 ---
 <Layout title={d.title} description={d.description} type="article" image={d.heroImage} schema={schema}>

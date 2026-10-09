@@ -15,6 +15,7 @@ const c = (content as any)[a.slug];
 const others = areas.filter((x) => x.slug !== a.slug);
 const schema = [
   { '@context': 'https://schema.org', '@type': 'WebPage', name: `${c.title} real estate`, url: `${site.url}/areas/${a.slug}`, about: { '@type': 'Place', name: c.title }, publisher: { '@id': `${site.url}/#agent` } },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` }, { '@type': 'ListItem', position: 2, name: `${a.name} area guide`, item: `${site.url}/areas/${a.slug}` }] },
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: c.faq.map((f: any) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
@@ -22,7 +23,7 @@ const schema = [
   <PageHeader eyebrow="Area guide" title={`Moving to <em>${a.name}</em>`} lead={a.blurb} />
   <section class="s"><div class="wrap two area">
     <div class="prose">
-      <figure class="herofig"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt={`${a.name}, Tennessee area photo (placeholder)`} width="800" height="600" /></picture></figure>
+      <figure class="herofig"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt={`${a.name}, Tennessee`} width="800" height="600" /></picture></figure>
       {c.intro.map((p: string) => <p>{p}</p>)}
       <h2>Good to know</h2>
       <ul>{c.goodToKnow.map((g: string) => <li>{g}</li>)}</ul>

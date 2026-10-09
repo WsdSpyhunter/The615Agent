@@ -20,7 +20,7 @@ const pay = (price: number, downPct: number) => { const L = price * (1 - downPct
 const cityRows = Object.entries(M.cities).filter(([k]) => k !== 'nashville').sort((a: any, b: any) => (a[0] === CS ? -1 : b[0] === CS ? 1 : a[1].name.localeCompare(b[1].name)));
 const cp = chart(hist.map((m: any) => m.price), '#1473E6'), cs = chart(hist.map((m: any) => m.ppsf), '#14A88F');
 const title = `${CN} TN Home Prices, ${monS}: Median and Per Sq Ft`;
-const description = `${CN}, TN median sale price is ${usd(f.medianPrice)} (${signed(f.yoy)} year over year) and about $${Math.round(f.ppsf)} per square foot. Three years of Redfin data, city comparison and a sample payment.`;
+const description = `${CN}, TN median sale price is ${usd(f.medianPrice)} (${signed(f.yoy)} year over year) and about $${Math.round(f.ppsf)} per square foot. Redfin data, city comparison, sample payment.`;
 const answer = `As of ${when}, the median sale price in ${CN}, Tennessee was ${usd(f.medianPrice)}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier and ${word(chg3)} ${Math.abs(chg3).toFixed(1)}% from ${monthShort(first.m + '-01')}, the start of the three-year window. The median price per square foot was about $${Math.round(f.ppsf)}. Over those three years the median ranged from ${usd(lo.price)} (${monthShort(lo.m + '-01')}) to ${usd(hi.price)} (${monthShort(hi.m + '-01')}).`;
 const faq = [
   { q: `What is the median home price in ${CN}, TN?`, a: `The median sale price was ${usd(f.medianPrice)} for the three months ending ${when}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier (source: Redfin Data Center). The median is the middle sale price, so half of homes sold for more and half for less.` },

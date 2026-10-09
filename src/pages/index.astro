@@ -20,8 +20,8 @@ const dateStr = latest?.data.pubDate.toLocaleDateString('en-US', { year: 'numeri
 const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<string, string>;
 ---
 <Layout
-  title="The 615 Agent | Scott Davis, Realtor in Williamson County and Middle TN"
-  description="Scott Davis is a Realtor with Hive Nashville serving Franklin, Brentwood, Spring Hill, Thompson's Station, Nolensville and Middle Tennessee. Get matched with homes or find your home's value."
+  title="The 615 Agent | Scott Davis, Realtor in Williamson County TN"
+  description="Scott Davis, REALTOR® with Hive Nashville, serves Franklin, Brentwood, Spring Hill, Thompson's Station and Nolensville. Get matched with homes or find your home's value."
   image="/img/skyline-night-1600.jpg"
 >
   <section class="hero">
@@ -107,7 +107,7 @@ const tint = { blue: '', gold: 'gold', teal: 'teal', coral: 'coral' } as Record<
     <div class="cities">
       {areas.map((a) => (
         <a class={`city ${tint[a.tint]}`} href={`/areas/${a.slug}`}>
-          <div class="art"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt="" width="800" height="600" loading="lazy" decoding="async" /></picture></div>
+          <div class="art"><picture><source type="image/webp" srcset={`/img/areas/${a.slug}.webp`} /><img src={`/img/areas/${a.slug}.jpg`} alt={`${a.name}, Tennessee`} width="800" height="600" loading="lazy" decoding="async" /></picture></div>
           <div class="t"><b>{a.name}</b><small>{a.blurb}</small></div>
         </a>
       ))}

@@ -23,7 +23,7 @@ const rate = (n: number) => { const dec = (String(n).split('.')[1] || '').length
 const partsText = (sc: any) => sc.parts.map((x: any) => `${x.name} ${rate(x.rate)}`).join(', ');
 const cityRate3 = T.cityRate.toFixed(3);
 const title = `${CN} TN Property Taxes: 2025 Rates and How Bills Work`;
-const description = `${CN}, TN property tax rates (2025): city $${cityRate3} per $100 of assessed value, plus county${two ? ' and school district' : ''} rates, with a worked example. From the Williamson County Trustee.`;
+const description = `${CN}, TN property tax rates (2025): city $${cityRate3} per $100 of assessed value plus county${two ? ' and school' : ''} rates, with a worked example.`;
 const faq = [
   two
     ? { q: `What is the property tax rate in ${CN}, TN?`, a: `For the 2025 tax year, Williamson County's rate sheet lists the City of ${CN} at $${cityRate3} per $100 of assessed value, plus a county rate of ${rate(T.scenarios[0].parts[0].rate)} for addresses in the ${CN} Special School District (which adds ${rate(T.scenarios[0].parts[1].rate)} for the district) or ${rate(T.scenarios[1].parts[0].rate)} for ${CN} addresses outside it. That is a combined ${r4(totFssd)} or ${r4(totNo)} per $100 of assessed value. Rates change each year, and the right figure depends on the exact address.` }

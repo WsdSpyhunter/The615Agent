@@ -11,7 +11,7 @@ const UPDATED = C.retrieved;
 const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
 const faqSchema = (faq: any[]) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
 const title = `${CN} TN Schools: Districts and Finding Your Zoned School`;
-const description = `Which school districts serve ${CN}, Tennessee, and how to find the zoned school for any address using the districts' own lookup tools. No ratings or rankings.`;
+const description = `Which school districts serve ${CN}, TN, and how to find the zoned school for any address with the districts' own tools. No ratings or rankings.`;
 const SC = city.schools;
 const host = (u: string) => new URL(u).hostname;
 const faq = [
