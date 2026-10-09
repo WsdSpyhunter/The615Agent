@@ -13,7 +13,8 @@ const faqSchema = (faq: any[]) => ({ "@context": "https://schema.org", "@type": 
 const assessed = f.medianPrice * 0.25;
 // County/school/city rates for the city, from Williamson County 2025 Property Tax Rates (Trustee), per $100 of assessed value (see src/data/guide-cities.ts)
 const T = city.tax;
-const two = T.scenarios.length === 2; // two-scenario layout is written for a city with a special school district (Franklin)
+const split = T.kind === 'split'; // a city that sits in two counties (Spring Hill): one rate set per county
+const two = T.scenarios.length === 2 && !split; // two-scenario layout is written for a city with a special school district (Franklin)
 const sum = (sc: any) => sc.parts.reduce((t: number, x: any) => t + x.rate, 0);
 const tot = T.scenarios.map(sum);
 const totFssd = tot[0], totNo = two ? tot[1] : tot[0];
@@ -23,14 +24,19 @@ const rate = (n: number) => { const dec = (String(n).split('.')[1] || '').length
 const partsText = (sc: any) => sc.parts.map((x: any) => `${x.name} ${rate(x.rate)}`).join(', ');
 const cityRate3 = T.cityRate.toFixed(3);
 const title = `${CN} TN Property Taxes: 2025 Rates and How Bills Work`;
-const description = `${CN}, TN property tax rates (2025): city $${cityRate3} per $100 of assessed value plus county${two ? ' and school' : ''} rates, with a worked example.`;
+const description0 = `${CN}, TN property tax rates (2025): city $${cityRate3} per $100 of assessed value plus county${two ? ' and school' : ''} rates, with a worked example.`;
+const descSplit = `${CN}, TN property tax rates: city $${cityRate3} per $100 of assessed value, plus Williamson or Maury County rates, with a worked example.`;
+const description = split ? descSplit : description0;
 const faq = [
-  two
+  split
+    ? { q: `What is the property tax rate in ${CN}, TN?`, a: `${CN} includes parts of both Williamson and Maury counties, so the rate depends on the county. The City of ${CN} rate is $${cityRate3} per $100 of assessed value in both. A Williamson County address pays a combined ${r4(tot[0])} (county ${rate(T.scenarios[0].parts[0].rate)} plus city ${rate(T.scenarios[0].parts[1].rate)}, per the Williamson County rate sheet for 2025). A Maury County address pays a combined ${r4(tot[1])} (county ${rate(T.scenarios[1].parts[0].rate)} plus city ${rate(T.scenarios[1].parts[1].rate)}, using the Tennessee Comptroller's 2025 county rate). Rates change each year, and the right figure depends on the exact address.` }
+    : two
     ? { q: `What is the property tax rate in ${CN}, TN?`, a: `For the 2025 tax year, Williamson County's rate sheet lists the City of ${CN} at $${cityRate3} per $100 of assessed value, plus a county rate of ${rate(T.scenarios[0].parts[0].rate)} for addresses in the ${CN} Special School District (which adds ${rate(T.scenarios[0].parts[1].rate)} for the district) or ${rate(T.scenarios[1].parts[0].rate)} for ${CN} addresses outside it. That is a combined ${r4(totFssd)} or ${r4(totNo)} per $100 of assessed value. Rates change each year, and the right figure depends on the exact address.` }
     : { q: `What is the property tax rate in ${CN}, TN?`, a: `For the 2025 tax year, Williamson County's rate sheet lists the City of ${CN} at $${cityRate3} per $100 of assessed value, plus a county rate of ${rate(T.scenarios[0].parts[0].rate)} for addresses inside ${CN} city limits. That is a combined ${r4(totFssd)} per $100 of assessed value. Rates change each year, and the right figure depends on the exact address.` },
   { q: "How is a Tennessee property tax bill figured?", a: "The county assessor estimates the appraised value. Residential property is assessed at 25 percent of appraised value. The tax rate, set by local governments, is stated per $100 of assessed value. Tax equals assessed value divided by 100, multiplied by the rate." },
+  ...(split ? [{ q: `Why does ${CN} have two rates?`, a: `${CN} includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address. The county rate is set by the county the address is in, and the City of ${CN} adds its own rate. Check the exact address with the county.` }] : []),
   ...(two ? [{ q: `Why are there two combined rates for ${CN}?`, a: `Some ${CN} addresses are in the ${CN} Special School District, which levies its own school tax, and others are not. The county's rate sheet lists the two cases separately, so check which applies to the address with the county.` }] : []),
-  { q: "Who sends the property tax bill?", a: "The County Trustee uses the tax rate and the assessor's tax roll to create and send tax bills and to collect county property taxes. The Property Assessor does not set the rate, send bills or collect taxes." },
+  { q: "Who sends the property tax bill?", a: split ? `The county trustee (Williamson or Maury, depending on the address) uses the county tax rate and the assessor's tax roll to create and send the county bill. The Williamson County rate sheet lists the City of ${CN} tax as collected by the city. The property assessor does not set the rate, send bills or collect taxes.` : "The County Trustee uses the tax rate and the assessor's tax roll to create and send tax bills and to collect county property taxes. The Property Assessor does not set the rate, send bills or collect taxes." },
   { q: `Will my property taxes change when I buy a home in ${CN}?`, a: "A bill is based on the property's appraised value, the assessment ratio and the current rates, not on the previous owner's bill. Taxes depend on the exact address, so verify them with the county for any home you are serious about." },
 ];
 const schema = [faqSchema(faq)];
@@ -38,33 +44,42 @@ const schema = [faqSchema(faq)];
 <GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>property taxes</em>`} lead={`The City of ${CN} tax rate, how a Tennessee property tax bill is figured, and a worked example, with the official source next to every number.`} slug="property-taxes" label="Property taxes" updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">Official sources</span><h2>{CN} property taxes at a glance</h2></div></div>
-    {two ? (
+    {split ? (
+      <p class="answer">{CN} includes parts of both Williamson and Maury counties, so the rate depends on the county. The City of {CN} rate is ${cityRate3} per $100 of assessed value in both. A Williamson County address pays a combined {r4(tot[0])} per $100 (county {rate(T.scenarios[0].parts[0].rate)} plus city {rate(T.scenarios[0].parts[1].rate)}, per the Williamson County rate sheet for 2025). A Maury County address pays a combined {r4(tot[1])} (county {rate(T.scenarios[1].parts[0].rate)} plus city {rate(T.scenarios[1].parts[1].rate)}, using the Tennessee Comptroller's 2025 county rate). Rates change each year and the right one depends on the exact address.</p>
+    ) : two ? (
       <p class="answer">For the 2025 tax year, the Williamson County Trustee's rate sheet lists the City of {CN} at ${cityRate3} per $100 of assessed value. A {CN} address in the {CN} Special School District pays a combined {r4(totFssd)} per $100 ({partsText(T.scenarios[0]).replace(/ (\$)/g, ' $1')}). A {CN} address outside that district pays a combined {r4(totNo)} (county {rate(T.scenarios[1].parts[0].rate)} plus city {rate(T.scenarios[1].parts[1].rate)}). Rates change each year and the right one depends on the exact address.</p>
     ) : (
       <p class="answer">For the 2025 tax year, the Williamson County Trustee's rate sheet lists the City of {CN} at ${cityRate3} per $100 of assessed value. A {CN} address inside city limits pays a combined {r4(totFssd)} per $100 (county {rate(T.scenarios[0].parts[0].rate)} plus city {rate(T.scenarios[0].parts[1].rate)}). Rates change each year and the right one depends on the exact address.</p>
     )}
     <div class="stats">
       <div class="stat"><span>City of {CN} rate</span><b>${cityRate3}</b><small>per $100 assessed value</small></div>
-      {two ? (<>
+      {split ? (<>
+        <div class="stat"><span>Combined, Williamson side</span><b>{r4(tot[0])}</b><small>city + Williamson County</small></div>
+        <div class="stat"><span>Combined, Maury side</span><b>{r4(tot[1])}</b><small>city + Maury County</small></div>
+      </>) : two ? (<>
         <div class="stat"><span>Combined, in FSSD area</span><b>{r4(totFssd)}</b><small>city + county + school district</small></div>
         <div class="stat"><span>Combined, outside FSSD</span><b>{r4(totNo)}</b><small>city + county</small></div>
       </>) : (
         <div class="stat"><span>Combined, inside city limits</span><b>{r4(totFssd)}</b><small>city + county</small></div>
       )}
     </div>
-    <p class="sources" style="margin-top:12px">Sources: <a href="https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" rel="noopener" target="_blank">Williamson County 2025 Property Tax Rates</a> (county{two ? ', school district' : ''} and city rates); {two && <><a href={T.cityRateSource.url} rel="noopener" target="_blank">{T.cityRateSource.label}</a> (the proposed rate is unchanged at ${cityRate3}); </>}<a href="https://comptroller.tn.gov/office-functions/pa/property-taxes/how-to-figure-your-tax-bill.html" rel="noopener" target="_blank">Tennessee Comptroller, how to figure your tax bill</a>. The combined figures are my addition of the rates on the county sheet. {T.sourceNote}</p>
+    {split ? (
+      <p class="sources" style="margin-top:12px">Sources: <a href="https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" rel="noopener" target="_blank">Williamson County 2025 Property Tax Rates</a> (Williamson County and Spring Hill city rates); {T.extraSources.map((x: any) => <><a href={x.url} rel="noopener" target="_blank">{x.label}</a> (Maury County rate); </>)}<a href={T.cityRateSource.url} rel="noopener" target="_blank">{T.cityRateSource.label}</a> (city rate, the same in both counties); <a href="https://comptroller.tn.gov/office-functions/pa/property-taxes/how-to-figure-your-tax-bill.html" rel="noopener" target="_blank">Tennessee Comptroller, how to figure your tax bill</a>. The combined figures are my addition of the rates shown. {T.sourceNote}</p>
+    ) : (
+      <p class="sources" style="margin-top:12px">Sources: <a href="https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" rel="noopener" target="_blank">Williamson County 2025 Property Tax Rates</a> (county{two ? ', school district' : ''} and city rates); {two && <><a href={T.cityRateSource.url} rel="noopener" target="_blank">{T.cityRateSource.label}</a> (the proposed rate is unchanged at ${cityRate3}); </>}<a href="https://comptroller.tn.gov/office-functions/pa/property-taxes/how-to-figure-your-tax-bill.html" rel="noopener" target="_blank">Tennessee Comptroller, how to figure your tax bill</a>. The combined figures are my addition of the rates on the county sheet. {T.sourceNote}</p>
+    )}
   </div></section>
   <ColorBar rev />
   <section class="s band"><div class="wrap prose">
     <div class="sh"><div><span class="kicker navy">How it works</span><h2>How a {CN} property tax bill is figured</h2></div></div>
     <ol>
-      <li><b>Appraised value.</b> The Williamson County Property Assessor estimates the value of each property.</li>
+      <li><b>Appraised value.</b> {split ? 'The county property assessor (Williamson or Maury, depending on where the address is) estimates' : 'The Williamson County Property Assessor estimates'} the value of each property.</li>
       <li><b>Assessed value.</b> Residential property is assessed at 25 percent of its appraised value.</li>
       <li><b>Rate.</b> Rates are stated per $100 of assessed value and are set each year by the county{two ? <>, the city and, where it applies, the {CN} Special School District</> : <> and the city</>}.</li>
-      <li><b>Bill.</b> Tax equals assessed value divided by 100, multiplied by the rate. The County Trustee sends the bills.</li>
+      <li><b>Bill.</b> Tax equals assessed value divided by 100, multiplied by the rate. {split ? 'The county trustee sends the county bill, and the City of ' + CN + ' collects its own city tax.' : 'The County Trustee sends the bills.'}</li>
     </ol>
     <h3>A worked example</h3>
-    <p>This is an illustration, not a prediction for any home. If a {CN} home were appraised at {usd(f.medianPrice)} (Redfin's median sale price as of {when}), its assessed value would be {usd(assessed)}. At the 2025 rates on the county's sheet, the yearly bill would be about:</p>
+    <p>This is an illustration, not a prediction for any home. If a {CN} home were appraised at {usd(f.medianPrice)} (Redfin's median sale price as of {when}), its assessed value would be {usd(assessed)}. {split ? 'At the rates above' : "At the 2025 rates on the county's sheet"}, the yearly bill would be about:</p>
     <div class="tablewrap"><table class="data"><caption>Illustration only, 2025 rates per $100 of assessed value</caption>
       <thead><tr><th>{CN} address</th><th>Combined rate</th><th>About per year</th></tr></thead>
       <tbody>

@@ -7,7 +7,7 @@ export interface GuideCity {
   zips: string[];                       // Franklin: all three ZIPs; others: their main ZIPs
   peers: string[];                      // slugs shown in comparison cards/pages (must exist in market.json and census-acs.json)
   countyNote: string; hubFact: string;                   // one factual sentence about the county / county overlap
-  tax: { cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string }; costNote: string };
+  tax: { kind?: 'split'; extraSources?: { label: string; url: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string }; costNote: string };
   schools: { intro: string; districts: { name: string; text: string; link: { label: string; url: string } }[]; sourcesNote: string; faqDistrict: { q: string; a: string }; faqFind: { q: string; a: string } };
 }
 
@@ -60,6 +60,33 @@ export const guideCities: Record<string, GuideCity> = {
       sourcesNote: 'wcs.edu',
       faqDistrict: { q: 'Which school district serves Brentwood, TN?', a: 'Brentwood addresses are zoned through Williamson County Schools. Use the district\'s school zones page to determine the zoned school for an address.' },
       faqFind: { q: 'How do I find the zoned school for a Brentwood address?', a: 'Use the district\'s own zoning tool, the Williamson County Schools school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about.' },
+    },
+  },
+  'spring-hill': {
+    slug: 'spring-hill', name: 'Spring Hill', enabled: true,
+    zips: ['37174'],
+    peers: ['thompsons-station', 'columbia', 'nolensville'],
+    countyNote: 'Spring Hill includes parts of both Williamson and Maury counties.', hubFact: 'Spring Hill includes parts of both Williamson and Maury counties.',
+    tax: {
+      kind: 'split', cityRate: 0.739, cityLabel: 'City of Spring Hill',
+      scenarios: [
+        { label: 'Williamson County side of Spring Hill', parts: [{ name: 'county', rate: 1.27 }, { name: 'city', rate: 0.739 }] },
+        { label: 'Maury County side of Spring Hill', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.739 }] },
+      ],
+      sourceNote: 'The Williamson County sheet is for the 2025 tax year, the Maury County figure is the Tennessee Comptroller\'s 2025 county tax rate, and 2026 rates may differ.',
+      cityRateSource: { label: 'City of Spring Hill tax rates', url: 'https://springhilltn.org/999/Tax-Rates', short: 'City of Spring Hill' },
+      extraSources: [{ label: 'Maury County community profile (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Spring_Hill_Maury_County_2026.pdf' }],
+      costNote: ' (2025 and 2026-27, the same in both counties)',
+    },
+    schools: {
+      intro: 'Spring Hill is in both Williamson and Maury counties, so a Spring Hill address is zoned through Williamson County Schools or Maury County Public Schools, depending on which county the address is in. The most reliable way to find the zoned school for a home is each district\'s own lookup tool.',
+      districts: [
+        { name: 'Williamson County Schools', text: 'The district for the Williamson County side of Spring Hill. Use its school zones page to determine the zoned school for an address.', link: { label: 'Determine my zoned school ↗', url: 'https://www.wcs.edu/about-us/school-zones' } },
+        { name: 'Maury County Public Schools', text: 'The district for the Maury County side of Spring Hill. Use its "Find my zoned school" tool to check an address.', link: { label: 'Find my zoned school ↗', url: 'https://www.mauryk12.org/67925_2' } },
+      ],
+      sourcesNote: 'wcs.edu and mauryk12.org',
+      faqDistrict: { q: 'Which school district serves Spring Hill, TN?', a: 'Spring Hill includes parts of both Williamson and Maury counties, so an address is zoned through Williamson County Schools or Maury County Public Schools depending on the county it is in. Verify the exact address with the district.' },
+      faqFind: { q: 'How do I find the zoned school for a Spring Hill address?', a: 'Use each district\'s own zoning tool: the Williamson County Schools school zones page or the Maury County Public Schools "Find my zoned school" tool. School assignment depends on the exact address, so verify it with the district for any home you are serious about.' },
     },
   },
 };
