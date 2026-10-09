@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
         </div>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h3>Explore</h3>
         <div class="flinks">
           <a href="/buy">Buy</a>
           <a href="/sell">Sell</a>
@@ -30,14 +30,14 @@ const year = new Date().getFullYear();
         </div>
       </div>
       <div>
-        <h4>Areas</h4>
+        <h3>Areas</h3>
         <div class="flinks">
           {enabledCities.map((c) => <a href={`/${c.slug}`}>{c.name} Real Estate Guide</a>)}
           {areas.map((a) => <a href={`/areas/${a.slug}`}>{a.name}</a>)}
         </div>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h3>Legal</h3>
         <div class="flinks">
           <a href="/reviews">Reviews</a>
           <a href="/privacy">Privacy</a>
