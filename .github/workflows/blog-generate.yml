@@ -26,7 +26,7 @@ on:
         required: false
         type: string
   repository_dispatch:
-    types: [blog-regenerate]
+    types: [blog-regenerate, blog-idea]
 
 permissions:
   contents: write
@@ -43,8 +43,8 @@ jobs:
     env:
       REGEN: ${{ github.event.client_payload.slug || github.event.inputs.regenerate }}
       TOPIC: ${{ github.event.inputs.topic }}
-      IDEA: ${{ github.event.inputs.idea }}
-      PUBDATE: ${{ github.event.inputs.pubdate }}
+      IDEA: ${{ github.event.client_payload.idea || github.event.inputs.idea }}
+      PUBDATE: ${{ github.event.client_payload.pubdate || github.event.inputs.pubdate }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
