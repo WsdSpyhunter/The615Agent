@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "asOf": "2026-08-31",
+  "asOf": "2026-09-30",
   "stale": false,
   "note": "Redfin figures are rolling 3-month values ending on the \"as of\" date.",
   "sources": [
@@ -30,22 +30,22 @@
   "cities": {
     "franklin": {
       "name": "Franklin",
-      "monthsSupply": 3.4,
-      "medianPrice": 863000,
-      "yoy": 12.81,
-      "dom": 49,
-      "saleToList": 98.28,
-      "inventory": 531,
-      "ppsf": 330.99,
-      "ppsfYoy": 1.03,
-      "asOf": "2026-08-31",
+      "monthsSupply": 4,
+      "medianPrice": 863089,
+      "yoy": 12.82,
+      "dom": 55,
+      "saleToList": 98.06,
+      "inventory": 569,
+      "ppsf": 325.89,
+      "ppsfYoy": 1.69,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": 0.13,
+        "score": 0.01,
         "level": "balanced",
         "label": "Balanced market",
-        "tilt": "sellers",
-        "mixed": true,
+        "tilt": null,
+        "mixed": false,
         "confidence": "high",
         "trend": {
           "points": -6,
@@ -62,10 +62,10 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 3.4",
-            "detail": "City (30%), 531 listings, rolling 3 months to August 31, 2026",
-            "reading": "Seller's",
-            "level": "sellers"
+            "title": "Redfin months of supply: 4.0",
+            "detail": "City (30%), 569 listings, rolling 3 months to September 30, 2026",
+            "reading": "Balanced",
+            "level": "seller-leaning"
           },
           {
             "key": "realtor",
@@ -89,25 +89,25 @@
           "threeMonthsAgo": 52
         }
       },
-      "commentary": "As of August 31, 2026, Franklin is rated a balanced market tilting slightly toward sellers, though the sources disagree noticeably. Zillow's Market Temperature Index is 46 (neutral) and has moved down 6 points over three months, Redfin shows 3.4 months of supply (seller's), and Realtor.com rates Williamson County 41.7 of 100 (cool). The median sale price is $863,000, up 12.8% from a year earlier."
+      "commentary": "Franklin is rated a balanced market as of September 30, 2026, based on rolling 3-month figures. Zillow's index is 46 (neutral) and Redfin shows 4.0 months of supply (balanced), while Realtor.com rates Williamson County 41.7 of 100 on hotness (cool), so the sources differ slightly. The median sale price is $863,089, up 12.8% from a year earlier, and Zillow's index is down 6 points over three months."
     },
     "brentwood": {
       "name": "Brentwood",
-      "monthsSupply": 3.9,
-      "medianPrice": 1427500,
-      "yoy": 5.35,
-      "dom": 63,
-      "saleToList": 97.4,
-      "inventory": 298,
-      "ppsf": 357.33,
-      "ppsfYoy": 7.58,
-      "asOf": "2026-08-31",
+      "monthsSupply": 4.9,
+      "medianPrice": 1349357,
+      "yoy": -3.62,
+      "dom": 61,
+      "saleToList": 97.03,
+      "inventory": 333,
+      "ppsf": 348.86,
+      "ppsfYoy": 0.49,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.08,
+        "score": -0.28,
         "level": "balanced",
         "label": "Balanced market",
-        "tilt": null,
+        "tilt": "buyers",
         "mixed": false,
         "confidence": "high",
         "trend": {
@@ -125,10 +125,10 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 3.9",
-            "detail": "City (30%), 298 listings, rolling 3 months to August 31, 2026",
-            "reading": "Seller's",
-            "level": "seller-leaning"
+            "title": "Redfin months of supply: 4.9",
+            "detail": "City (30%), 333 listings, rolling 3 months to September 30, 2026",
+            "reading": "Balanced",
+            "level": "balanced"
           },
           {
             "key": "realtor",
@@ -152,26 +152,26 @@
           "threeMonthsAgo": 51
         }
       },
-      "commentary": "Brentwood is rated a balanced market as of August 31, 2026, though the sources disagree. Zillow's index of 43 reads buyer's and Realtor.com's Williamson County hotness score of 41.7 reads cool, while Redfin's 3.9 months of supply reads seller's. The median sale price was $1,427,500, up 5.3% from a year earlier, and Zillow's index fell 8 points over three months."
+      "commentary": "As of September 30, 2026, Brentwood is rated a balanced market tilting slightly toward buyers, though the sources differ: Zillow's index of 43 reads Buyer's, Redfin's 4.9 months of supply reads Balanced, and Realtor.com's Williamson County hotness of 41.7 reads Cool. Zillow's index has moved down 8 points over three months. The median sale price of $1,349,357 is down 3.6% from a year earlier, with a 97.0% sale-to-list ratio."
     },
     "spring-hill": {
       "name": "Spring Hill",
-      "monthsSupply": 3.9,
-      "medianPrice": 509000,
-      "yoy": -4.01,
-      "dom": 61,
-      "saleToList": 98.83,
-      "inventory": 431,
-      "ppsf": 236.49,
-      "ppsfYoy": -1.4,
-      "asOf": "2026-08-31",
+      "monthsSupply": 4.1,
+      "medianPrice": 499752,
+      "yoy": -5.71,
+      "dom": 66,
+      "saleToList": 98.04,
+      "inventory": 409,
+      "ppsf": 234.05,
+      "ppsfYoy": -1.81,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.22,
+        "score": -0.26,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": "buyers",
-        "mixed": true,
+        "mixed": false,
         "confidence": "high",
         "trend": {
           "points": -7,
@@ -188,9 +188,9 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 3.9",
-            "detail": "City (30%), 431 listings, rolling 3 months to August 31, 2026",
-            "reading": "Seller's",
+            "title": "Redfin months of supply: 4.1",
+            "detail": "City (30%), 409 listings, rolling 3 months to September 30, 2026",
+            "reading": "Balanced",
             "level": "seller-leaning"
           },
           {
@@ -215,22 +215,22 @@
           "threeMonthsAgo": 48
         }
       },
-      "commentary": "As of August 31, 2026, Spring Hill is rated a balanced market tilting slightly toward buyers, and conditions are cooling. The sources disagree: Zillow's index of 41 reads Buyer's and Realtor.com's Maury County hotness score of 32.6 reads Cool, while Redfin's 3.9 months of supply reads Seller's. The median sale price was $509,000, down 4.0% from a year earlier, with a median of 61 days on market."
+      "commentary": "As of September 30, 2026, Spring Hill is a balanced market tilting slightly toward buyers. Zillow's index of 41 reads Buyer's, Redfin's 4.1 months of supply reads Balanced, and Realtor.com's Maury County score of 32.6 reads Cool, so the sources differ slightly in their labels. The median sale price was $499,752, down 5.7% from a year earlier, with a median of 66 days on market."
     },
     "thompsons-station": {
       "name": "Thompson's Station",
-      "monthsSupply": 5.3,
-      "medianPrice": 835000,
-      "yoy": -1.76,
-      "dom": 66,
-      "saleToList": 99.19,
-      "inventory": 146,
-      "ppsf": 297.23,
-      "ppsfYoy": -1.44,
-      "asOf": "2026-08-31",
+      "monthsSupply": 5.8,
+      "medianPrice": 833246,
+      "yoy": 1.74,
+      "dom": 65,
+      "saleToList": 99.05,
+      "inventory": 151,
+      "ppsf": 304.06,
+      "ppsfYoy": 1.2,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.25,
+        "score": -0.35,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": "buyers",
@@ -240,7 +240,7 @@
           "points": -15,
           "direction": "cooling"
         },
-        "small": true,
+        "small": false,
         "readings": [
           {
             "key": "zillow",
@@ -251,10 +251,10 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 5.3",
-            "detail": "City (30%), 146 listings, rolling 3 months to August 31, 2026",
+            "title": "Redfin months of supply: 5.8",
+            "detail": "City (30%), 151 listings, rolling 3 months to September 30, 2026",
             "reading": "Balanced",
-            "level": "balanced"
+            "level": "buyer-leaning"
           },
           {
             "key": "realtor",
@@ -278,22 +278,22 @@
           "threeMonthsAgo": 61
         }
       },
-      "commentary": "Thompson's Station is a balanced market tilting slightly toward buyers as of August 31, 2026. Zillow's Market Temperature Index is 46 (neutral) and Redfin shows 5.3 months of supply (balanced), while Realtor.com rates Williamson County 41.7 of 100 (cool). The median sale price is $835,000, down 1.8% from a year earlier, and with few listings, figures can swing month to month."
+      "commentary": "As of September 30, 2026, Thompson's Station is a balanced market tilting slightly toward buyers. Zillow's index of 46 reads neutral, Redfin's 5.8 months of supply reads balanced, and Realtor.com's Williamson County hotness score of 41.7 of 100 reads cool. Zillow's index fell 15 points over three months, and active listings are up 35% from a year earlier."
     },
     "nolensville": {
       "name": "Nolensville",
-      "monthsSupply": 3.3,
-      "medianPrice": 925000,
-      "yoy": -7.5,
+      "monthsSupply": 2.7,
+      "medianPrice": 949048,
+      "yoy": -10.89,
       "dom": 63,
-      "saleToList": 97.75,
-      "inventory": 77,
-      "ppsf": 299.63,
-      "ppsfYoy": 0.71,
-      "asOf": "2026-08-31",
+      "saleToList": 97.72,
+      "inventory": 69,
+      "ppsf": 301.4,
+      "ppsfYoy": -0.3,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.25,
+        "score": -0.13,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": "buyers",
@@ -314,8 +314,8 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 3.3",
-            "detail": "City (30%), 77 listings, rolling 3 months to August 31, 2026",
+            "title": "Redfin months of supply: 2.7",
+            "detail": "City (30%), 69 listings, rolling 3 months to September 30, 2026",
             "reading": "Seller's",
             "level": "sellers"
           },
@@ -341,22 +341,22 @@
           "threeMonthsAgo": 47
         }
       },
-      "commentary": "As of August 31, 2026, Nolensville is rated a balanced market tilting slightly toward buyers, and conditions are cooling. The sources disagree: Zillow's index of 35 reads Buyer's and Realtor.com's Williamson County hotness of 41.7 reads Cool, while Redfin's 3.3 months of supply reads Seller's. The median sale price was $925,000, down 7.5% from a year earlier, and with few listings the figures can swing month to month."
+      "commentary": "As of September 30, 2026, Nolensville is rated a balanced market tilting slightly toward buyers, though the sources disagree. Zillow's Market Temperature Index of 35 reads Buyer's, Redfin's 2.7 months of supply reads Seller's, and Realtor.com's Williamson County hotness score of 41.7 out of 100 reads Cool. Zillow's index has moved down 12 points over three months, and with only 69 active listings, the figures can swing month to month."
     },
     "nashville": {
       "name": "Nashville",
-      "monthsSupply": 5.3,
-      "medianPrice": 477500,
-      "yoy": -0.1,
-      "dom": 64,
-      "saleToList": 97.59,
-      "inventory": 4850,
-      "ppsf": 272.21,
-      "ppsfYoy": 0.09,
-      "asOf": "2026-08-31",
+      "monthsSupply": 6,
+      "medianPrice": 464779,
+      "yoy": -1.11,
+      "dom": 66,
+      "saleToList": 97.41,
+      "inventory": 5205,
+      "ppsf": 266.88,
+      "ppsfYoy": -1.17,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.51,
+        "score": -0.65,
         "level": "buyer-leaning",
         "label": "Leans toward buyers",
         "tilt": null,
@@ -377,10 +377,10 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 5.3",
-            "detail": "City (30%), 4,850 listings, rolling 3 months to August 31, 2026",
+            "title": "Redfin months of supply: 6.0",
+            "detail": "City (30%), 5,205 listings, rolling 3 months to September 30, 2026",
             "reading": "Balanced",
-            "level": "balanced"
+            "level": "buyer-leaning"
           },
           {
             "key": "realtor",
@@ -404,22 +404,22 @@
           "threeMonthsAgo": 50
         }
       },
-      "commentary": "Nashville's market leans toward buyers as of August 31, 2026, based on rolling 3-month figures. Zillow's Market Temperature Index is 44 (neutral), down 6 points over three months, Redfin shows 5.3 months of supply (balanced), and Realtor.com rates Davidson County's hotness at 16.6 of 100 (cool). The median sale price is $477,500, down 0.1% from a year earlier, with homes taking a median of 64 days to sell."
+      "commentary": "Nashville's market leans toward buyers as of September 30, 2026, using rolling 3-month figures. Zillow's index is 44 (neutral), down 6 points over three months, and Redfin shows 6.0 months of supply (balanced), while Realtor.com rates Davidson County cool at 16.6 of 100. The median sale price was $464,779, down 1.1% from a year earlier."
     },
     "columbia": {
       "name": "Columbia",
-      "monthsSupply": 4.3,
-      "medianPrice": 367250,
-      "yoy": -1.28,
+      "monthsSupply": 4.4,
+      "medianPrice": 368824,
+      "yoy": -0.32,
       "dom": 78,
-      "saleToList": 97.46,
-      "inventory": 448,
-      "ppsf": 195.42,
-      "ppsfYoy": -4.38,
-      "asOf": "2026-08-31",
+      "saleToList": 97.11,
+      "inventory": 451,
+      "ppsf": 196.18,
+      "ppsfYoy": -5.52,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.38,
+        "score": -0.4,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": "buyers",
@@ -440,8 +440,8 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 4.3",
-            "detail": "City (30%), 448 listings, rolling 3 months to August 31, 2026",
+            "title": "Redfin months of supply: 4.4",
+            "detail": "City (30%), 451 listings, rolling 3 months to September 30, 2026",
             "reading": "Balanced",
             "level": "seller-leaning"
           },
@@ -467,22 +467,22 @@
           "threeMonthsAgo": 44
         }
       },
-      "commentary": "As of August 31, 2026, Columbia is rated a balanced market tilting slightly toward buyers. Zillow's index of 39 reads Buyer's, Redfin's 4.3 months of supply reads Balanced, and Realtor.com's Maury County hotness score of 32.6 reads Cool, so the sources differ somewhat. Median days on market was 78, up from 61 a year earlier, and the median sale price of $367,250 was down 1.3% year over year."
+      "commentary": "As of September 30, 2026, Columbia is a balanced market tilting slightly toward buyers. The sources differ in wording: Zillow's index of 39 reads Buyer's, Redfin's 4.4 months of supply reads Balanced, and Realtor.com's Maury County hotness of 32.6 out of 100 reads Cool. Median sale price was $368,824, down 0.3% from a year earlier, with median days on market at 78."
     },
     "murfreesboro": {
       "name": "Murfreesboro",
-      "monthsSupply": 3.7,
-      "medianPrice": 432700,
-      "yoy": -0.53,
-      "dom": 63,
-      "saleToList": 99.01,
-      "inventory": 820,
-      "ppsf": 210.78,
-      "ppsfYoy": -0.15,
-      "asOf": "2026-08-31",
+      "monthsSupply": 4.3,
+      "medianPrice": 428022,
+      "yoy": -1.97,
+      "dom": 65,
+      "saleToList": 98.91,
+      "inventory": 897,
+      "ppsf": 211.97,
+      "ppsfYoy": 0.88,
+      "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": 0.08,
+        "score": -0.04,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": null,
@@ -503,9 +503,9 @@
           },
           {
             "key": "redfin",
-            "title": "Redfin months of supply: 3.7",
-            "detail": "City (30%), 820 listings, rolling 3 months to August 31, 2026",
-            "reading": "Seller's",
+            "title": "Redfin months of supply: 4.3",
+            "detail": "City (30%), 897 listings, rolling 3 months to September 30, 2026",
+            "reading": "Balanced",
             "level": "seller-leaning"
           },
           {
@@ -530,10 +530,10 @@
           "threeMonthsAgo": 55
         }
       },
-      "commentary": "As of August 31, 2026, Murfreesboro is rated a balanced market, though the sources differ: Zillow reads Neutral (index 48), Redfin's 3.7 months of supply reads Seller's, and Realtor.com's Rutherford County score of 33.3 of 100 reads Cool. Conditions are cooling, with Zillow's index down 7 points over three months. The median sale price is $432,700, down 0.5% from a year earlier, with median days on market at 63."
+      "commentary": "Murfreesboro is rated a balanced market as of September 30, 2026. Zillow's Market Temperature Index is 48 (neutral) and Redfin shows 4.3 months of supply (balanced), while Realtor.com's Rutherford County reading of 33.3 out of 100 is cool, so the sources differ slightly. Zillow's index is down 7 points over three months, the median sale price is $428,022 (down 2.0% from a year earlier), and median days on market is 65."
     }
   },
   "temperatureMethod": "Blended from up to three sources: Zillow's Market Temperature Index (55%), Redfin months of supply (30%) and Realtor.com county hotness (15%).",
-  "commentaryGenerated": "2026-10-11",
+  "commentaryGenerated": "2026-10-12",
   "commentaryModel": "claude-sonnet-5-5"
 }
