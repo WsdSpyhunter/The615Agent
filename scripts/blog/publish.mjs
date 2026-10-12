@@ -48,7 +48,7 @@ let heroPath = '';
 if (draft.hero) heroPath = await download(draft.hero, 'hero', 1200, 600);
 else if (draft.heroLocal) heroPath = draft.heroLocal.path; // a photo already on the site (used by the monthly report)
 const inlinePaths = [];
-for (let i = 0; i < (draft.inline || []).length; i++) inlinePaths.push(await download(draft.inline[i], `inline-${i + 1}`, 1000, 625));
+for (let i = 0; i < (draft.inline || []).length; i++) inlinePaths.push(await download(draft.inline[i], `inline-${i + 1}`, 1000, draft.kind === 'report' ? 500 : 625));
 
 let body = draft.body.replace(/\{\{img:(\d)\}\}/g, (all, n) => {
   const im = (draft.inline || [])[+n]; if (!im) return '';

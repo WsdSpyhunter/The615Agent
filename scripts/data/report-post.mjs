@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } from 'node:fs';
 import { complianceIssues } from '../blog/compliance.mjs';
 import { words } from '../blog/lib.mjs';
+import { addReportPhotos, stripMarkers } from '../blog/report-photos.mjs';
 const TEST = process.argv.includes('--test');
 
 const log = (...a) => console.log(...a);
@@ -56,13 +57,14 @@ const issues = complianceIssues({ title, description, body });
 if (issues.hard.length) { log('NOT published. Realtor-rules checks failed:\n - ' + issues.hard.join('\n - ')); process.exit(1); }
 
 const prior = existsSync(draftFile) ? JSON.parse(readFileSync(draftFile, 'utf8')) : null;
-if (prior && prior.body === body && prior.title === title) { log(`The ${monthYear} report draft is already waiting for approval. Nothing new to send.`); out('slug', ''); process.exit(0); }
+if (prior && stripMarkers(prior.body) === body && prior.title === title) { log(`The ${monthYear} report draft is already waiting for approval. Nothing new to send.`); out('slug', ''); process.exit(0); }
 const draft = {
   version: 1, kind: 'report', slug, topicId: null, created: new Date().toISOString().slice(0, 10), status: 'draft',
   title, description: description.slice(0, 200), category: 'Market Update', keyword: `${monthYear.toLowerCase()} housing market report`,
   body, faq: [], hero: null, heroLocal: { path: '/img/skyline-night-1600.jpg', alt: 'Downtown Nashville skyline and the pedestrian bridge at night' }, inline: [], choices: [],
   checks: { words: words(body), linksChecked: [], dropped: [], review: { ok: true, issues: [] }, compliance: { soft: issues.soft }, dataPointsUsed: [`Market data through ${longDate(m.asOf)}`, m.mortgageRate30 != null ? `30-year fixed rate ${m.mortgageRate30.toFixed(2)}%` : ''].filter(Boolean), model: 'none (built from the data files)', failedChecks: false },
 };
+try { await addReportPhotos(draft, log); } catch (e) { log('Report photos skipped:', e.message); }
 mkdirSync('drafts', { recursive: true });
 writeFileSync(draftFile, JSON.stringify(draft, null, 2) + '\n');
 log(`Saved ${draftFile} for your approval.`);

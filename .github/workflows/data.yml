@@ -85,6 +85,8 @@ jobs:
         if: steps.check.outputs.monthly == 'true' || github.event.inputs.create_report_draft == 'true' || github.event.inputs.report_test == 'true'
         env:
           TEST_MODE: ${{ github.event.inputs.report_test == 'true' && '--test' || '' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: node scripts/data/report-post.mjs $TEST_MODE
 
       - name: Commit changes

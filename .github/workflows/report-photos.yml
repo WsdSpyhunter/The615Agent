@@ -1,0 +1,52 @@
+name: Report photos
+
+# Adds two photos to a saved monthly report draft and emails a fresh approval proof.
+on:
+  repository_dispatch:
+    types: [report-add-photos]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog
+  cancel-in-progress: false
+
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SLUG: ${{ github.event.client_payload.slug }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check the slug
+        run: |
+          case "$SLUG" in (''|*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+      - name: Add the photos
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+        run: node scripts/blog/add-report-photos.mjs "$SLUG"
+      - name: Save the draft
+        run: |
+          git config user.name "the615agent-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add drafts
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "Report draft: add photos to $SLUG"
+          git pull --rebase -q
+          git push
+      - name: Email the proof
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          APPROVAL_SECRET: ${{ secrets.APPROVAL_SECRET }}
+          WORKER_URL: ${{ vars.WORKER_URL }}
+          APPROVAL_EMAIL: ${{ vars.APPROVAL_EMAIL }}
+          BLOG_FROM_ADDRESS: ${{ vars.BLOG_FROM_ADDRESS }}
+        run: node scripts/blog/send-proof.mjs "$SLUG"
