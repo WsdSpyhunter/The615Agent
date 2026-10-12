@@ -461,3 +461,6 @@ article.s{padding-top:48px}
   .hero .body{align-items:start}
   .hero .body > div:last-child{padding-bottom:0}
 }
+
+/* Monthly market reports: city headings and the title are centered on phones */
+@media(max-width:700px){.mu-post h2,.mu-post h3{text-align:center}}

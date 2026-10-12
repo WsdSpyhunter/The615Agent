@@ -41,7 +41,7 @@ export function approvalEmail(draft, links) {
   const blocked = !!c.failedChecks || live.hard.length > 0 || (c.review && c.review.ok === false);
   const soft = [...new Set([...(c.compliance?.soft || []), ...live.soft])];
   const buttons = (blocked ? '' : btn(links.approve, report ? 'APPROVE & PUBLISH TO BLOG' : 'APPROVE & PUBLISH', '#0E9F8E')) + btn(links.edit, 'EDIT', '#1473E6') + (report ? '' : btn(links.regenerate, 'REGENERATE', '#4F5966')) + btn(links.reject, 'REJECT', '#F2593A');
-  return `<!doctype html><html><body style="margin:0;background:#EEF0F2;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A">
+  return `<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">${report ? '<style>@media only screen and (max-width:620px){.rt,.pb h2,.pb h3{text-align:center !important}}</style>' : ''}</head><body style="margin:0;background:#EEF0F2;font-family:Arial,Helvetica,sans-serif;color:#0A0A0A">
 <div style="max-width:680px;margin:0 auto;padding:18px">
  <div style="background:#0A0A0A;border-top:4px solid #1473E6;border-radius:14px 14px 0 0;padding:22px 18px;text-align:center"><img src="${SITE}/img/email/logo-615-agent.png" alt="The 615 Agent" width="170" style="display:block;margin:0 auto 12px;width:170px;max-width:100%;height:auto"><div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#FFC20E;font-weight:bold">${report ? 'Monthly market report' : 'Blog draft'} for your approval</div></div>
  <div style="background:#fff;padding:22px;border-radius:0 0 14px 14px">
@@ -53,9 +53,9 @@ export function approvalEmail(draft, links) {
   ${report ? `<div style="background:#E3EEFC;color:#173F8A;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:16px"><b>About this report:</b> Approving publishes it on your blog (blue Market Update tag). It does <b>not</b> email your subscribers. The newsletter version is a draft in your Buttondown account. Open it there, look it over, and press Send when you are ready.</div>` : ''}
   ${!draft.hero && draft.heroLocal ? `<img src="${esc(SITE + draft.heroLocal.path)}" alt="${esc(draft.heroLocal.alt)}" style="width:100%;border-radius:12px;display:block;margin-bottom:14px">` : ''}
   ${draft.hero ? `<img src="${esc(draft.hero.url)}" alt="${esc(draft.hero.alt)}" style="width:100%;border-radius:12px;display:block"><div style="font-size:12px;color:#6b7480;margin:6px 0 14px">Photo by ${esc(draft.hero.credit)} on ${esc(draft.hero.provider || 'stock')}</div>` : ''}
-  <h1 style="font-size:26px;line-height:1.2;margin:8px 0 6px">${esc(draft.title)}</h1>
+  <h1 class="rt" style="font-size:26px;line-height:1.2;margin:8px 0 6px">${esc(draft.title)}</h1>
   <p style="color:#4F5966;font-size:14px;margin:0 0 14px"><i>Meta description:</i> ${esc(draft.description)}</p>
-  <div style="font-size:16px;line-height:1.65">${bodyHtml(draft)}</div>
+  <div class="pb" style="font-size:16px;line-height:1.65">${bodyHtml(draft)}</div>
   ${(draft.faq || []).length ? '<h2 style="font-size:20px;margin-top:26px">Frequently asked questions</h2>' : ''}
   ${(draft.faq || []).map((f) => `<p style="margin:0 0 4px"><b>${esc(f.q)}</b></p><p style="margin:0 0 12px;color:#4F5966">${esc(f.a)}</p>`).join('')}
   ${authorCardPreview()}

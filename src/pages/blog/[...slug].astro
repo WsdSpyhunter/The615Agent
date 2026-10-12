@@ -54,7 +54,7 @@ if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQP
         {d.heroCredit && <figcaption>Photo: {d.heroCreditUrl ? <a href={d.heroCreditUrl} rel="noopener" target="_blank">{d.heroCredit}</a> : d.heroCredit}</figcaption>}
       </figure>
     )}
-    <div class="prose"><Content /></div>
+    <div class={d.category === 'Market Update' ? 'prose mu-post' : 'prose'}><Content /></div>
     {d.faq.length > 0 && (
       <section class="faq" style="margin-top:40px">
         <h2 class="h2" style="margin-bottom:16px">Frequently asked questions</h2>
