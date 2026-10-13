@@ -39,5 +39,9 @@ jobs:
           st,n=get('/newsletters')
           print('newsletters status',st)
           for x in n.get('results',[]):
-              print('  newsletter:',x.get('username'),'| status:',x.get('status'),'| double opt-in:',x.get('should_prompt_double_optin') if 'should_prompt_double_optin' in x else x.get('is_double_optin'),'| keys:',[k for k in x.keys() if 'optin' in k or 'confirm' in k or 'activation' in k or 'verif' in k or 'sending' in k or 'domain' in k][:8])
+              print('  newsletter:',x.get('username'))
+              for k,v in sorted(x.items()):
+                  if any(w in k for w in ['confirm','optin','double','activation','verif','sending','domain','paused','status','from','reply','email_address','review','spam','tracking','welcome','transactional']):
+                      vv=str(v)
+                      print('    ',k,'=',vv[:90].replace('\n',' '))
           PY
