@@ -1,0 +1,35 @@
+name: Cloudflare check
+
+# Read-only. Reports what the stored Cloudflare key is allowed to do and lists DNS record names and types for the615agent.com.
+on:
+  repository_dispatch:
+    types: [cloudflare-check]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      T: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      ACC: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Look
+        run: |
+          python3 - <<'PY'
+          import os,json,urllib.request
+          T=os.environ['T']
+          def get(path):
+              r=urllib.request.Request('https://api.cloudflare.com/client/v4'+path,headers={'Authorization':'Bearer '+T})
+              try:
+                  with urllib.request.urlopen(r,timeout=30) as x: return x.status,json.loads(x.read())
+              except urllib.error.HTTPError as e: return e.code,json.loads(e.read() or b'{}')
+          st,d=get('/user/tokens/verify'); print('token verify',st,d.get('result',{}).get('status'),d.get('errors'))
+          st,d=get('/zones?name=the615agent.com'); print('zones status',st,'found',len(d.get('result',[])),[ (z['name'],z['status'],z['account']['name'][:12]) for z in d.get('result',[])],d.get('errors'))
+          for z in d.get('result',[]):
+              st,r=get(f"/zones/{z['id']}/dns_records?per_page=100"); print('dns read status',st)
+              for x in r.get('result',[]): print('   ',x['type'],x['name'],'->',x['content'][:60],'| proxied',x.get('proxied'))
+          st,d=get('/accounts?per_page=20'); print('accounts status',st,[a['name'] for a in d.get('result',[])])
+          PY
