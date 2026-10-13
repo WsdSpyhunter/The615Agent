@@ -1,0 +1,36 @@
+name: Buttondown settings
+
+# Sets where a new subscriber lands after confirming their email (instead of staying on Buttondown's site).
+on:
+  repository_dispatch:
+    types: [buttondown-redirect]
+
+permissions:
+  contents: read
+
+jobs:
+  set:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      K: ${{ secrets.BUTTONDOWN_API_KEY }}
+      URL: ${{ github.event.client_payload.url }}
+    steps:
+      - name: Update the redirect
+        run: |
+          python3 - <<'PY'
+          import os,json,urllib.request
+          K=os.environ['K']; URL=os.environ['URL']
+          assert URL.startswith('https://the615agent.com'), 'only the 615 Agent site is allowed'
+          def call(method,path,body=None):
+              r=urllib.request.Request('https://api.buttondown.com/v1'+path,method=method,data=json.dumps(body).encode() if body else None,headers={'Authorization':'Token '+K,'Content-Type':'application/json'})
+              try:
+                  with urllib.request.urlopen(r,timeout=30) as x: return x.status,json.loads(x.read() or b'{}')
+              except urllib.error.HTTPError as e: return e.code,{'error':e.read().decode()[:400]}
+          st,n=call('GET','/newsletters'); nl=n['results'][0]
+          print('before:',{k:v for k,v in nl.items() if 'redirect' in k})
+          st,res=call('PATCH','/newsletters/'+nl['id'],{'subscription_confirmation_redirect_url':URL})
+          print('PATCH status',st,'',res if st!=200 else '')
+          st,n=call('GET','/newsletters'); nl=n['results'][0]
+          print('after:',{k:v for k,v in nl.items() if 'redirect' in k})
+          PY
