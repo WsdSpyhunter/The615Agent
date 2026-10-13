@@ -31,6 +31,11 @@ jobs:
           for s in d.get('results',[]):
               print(' ',s.get('creation_date','')[:19],'|',s.get('type'),'|',mask(s.get('email_address') or s.get('email')),'| source:',s.get('source'),'| notes:',(s.get('notes') or '')[:40])
           print('total shown:',len(d.get('results',[])),'of',d.get('count'))
+          for t in ['regular','unactivated','unsubscribed','undeliverable','spam','removed','blocked','complained','churning','trialed','gifted','paused']:
+              st2,d2=get('/subscribers?type='+t+'&page_size=5')
+              if st2==200 and d2.get('count'):
+                  print('  type',t,'count',d2.get('count'),[ (s.get('creation_date','')[:10], mask(s.get('email_address') or s.get('email'))) for s in d2.get('results',[])][:5])
+              elif st2!=200: print('  type',t,'status',st2)
           st,n=get('/newsletters')
           print('newsletters status',st)
           for x in n.get('results',[]):
