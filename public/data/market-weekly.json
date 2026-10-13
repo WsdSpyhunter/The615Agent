@@ -1,39 +1,26 @@
 {
  "region": "Nashville metro area",
  "frequency": "Rolling 4 weeks, updated weekly",
- "asOf": "2026-09-27",
- "periodBegin": "2026-08-31",
+ "asOf": "2026-10-04",
+ "periodBegin": "2026-09-07",
  "source": {
   "name": "Redfin Data Center",
   "url": "https://www.redfin.com/news/data-center/"
  },
  "latest": {
-  "periodBegin": "2026-08-31",
-  "periodEnd": "2026-09-27",
-  "homesSold": 2489,
-  "medianPrice": 462304,
-  "yoy": 2.73,
+  "periodBegin": "2026-09-07",
+  "periodEnd": "2026-10-04",
+  "homesSold": 2570,
+  "medianPrice": 460588,
+  "yoy": 0.13,
   "dom": 68,
-  "saleToList": 97.85,
-  "monthsSupply": 5.4,
-  "newListings": 3602,
-  "activeListings": 17409,
-  "pending": 2415
+  "saleToList": 97.76,
+  "monthsSupply": 5.2,
+  "newListings": 3751,
+  "activeListings": 17555,
+  "pending": 2317
  },
  "history": [
-  {
-   "periodBegin": "2026-03-09",
-   "periodEnd": "2026-04-05",
-   "homesSold": 2497,
-   "medianPrice": 460000,
-   "yoy": -1.71,
-   "dom": 82,
-   "saleToList": 98.03,
-   "monthsSupply": 4.7,
-   "newListings": 3957,
-   "activeListings": 15474,
-   "pending": 3094
-  },
   {
    "periodBegin": "2026-03-16",
    "periodEnd": "2026-04-12",
@@ -358,6 +345,19 @@
    "newListings": 3602,
    "activeListings": 17409,
    "pending": 2415
+  },
+  {
+   "periodBegin": "2026-09-07",
+   "periodEnd": "2026-10-04",
+   "homesSold": 2570,
+   "medianPrice": 460588,
+   "yoy": 0.13,
+   "dom": 68,
+   "saleToList": 97.76,
+   "monthsSupply": 5.2,
+   "newListings": 3751,
+   "activeListings": 17555,
+   "pending": 2317
   }
  ]
 }
