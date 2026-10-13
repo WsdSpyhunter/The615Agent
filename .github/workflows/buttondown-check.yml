@@ -1,0 +1,38 @@
+name: Buttondown check
+
+# Read-only. Lists the newest subscribers and their status, with the email addresses mostly hidden (this repository is public, so logs are public).
+on:
+  repository_dispatch:
+    types: [buttondown-check]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ask Buttondown
+        env:
+          K: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import os,json,urllib.request
+          K=os.environ['K']
+          def get(path):
+              r=urllib.request.Request('https://api.buttondown.com/v1'+path,headers={'Authorization':'Token '+K})
+              try:
+                  with urllib.request.urlopen(r,timeout=30) as x: return x.status,json.loads(x.read())
+              except urllib.error.HTTPError as e: return e.code,{'error':e.read().decode()[:300]}
+          mask=lambda e:(e[0]+'***@'+e.split('@')[-1]) if e and '@' in e else '?'
+          st,d=get('/subscribers?ordering=-creation_date&page_size=15')
+          print('subscribers status',st)
+          for s in d.get('results',[]):
+              print(' ',s.get('creation_date','')[:19],'|',s.get('type'),'|',mask(s.get('email_address') or s.get('email')),'| source:',s.get('source'),'| notes:',(s.get('notes') or '')[:40])
+          print('total shown:',len(d.get('results',[])),'of',d.get('count'))
+          st,n=get('/newsletters')
+          print('newsletters status',st)
+          for x in n.get('results',[]):
+              print('  newsletter:',x.get('username'),'| status:',x.get('status'),'| double opt-in:',x.get('should_prompt_double_optin') if 'should_prompt_double_optin' in x else x.get('is_double_optin'),'| keys:',[k for k in x.keys() if 'optin' in k or 'confirm' in k or 'activation' in k or 'verif' in k or 'sending' in k or 'domain' in k][:8])
+          PY
