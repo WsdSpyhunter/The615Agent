@@ -31,6 +31,8 @@ jobs:
           for s in d.get('results',[]):
               print(' ',s.get('creation_date','')[:19],'|',s.get('type'),'|',mask(s.get('email_address') or s.get('email')),'| source:',s.get('source'),'| confirmed/other dates:',{k:str(v)[:19] for k,v in s.items() if 'date' in k and v and k!='creation_date'},'| secondary_id' if False else '')
           print('total shown:',len(d.get('results',[])),'of',d.get('count'))
+          for s0 in d.get('results',[])[:3]:
+              print('  RECORD:',{k:(str(v)[:60] if v not in (None,'',[],{}) else v) for k,v in s0.items() if k not in ('email_address','email','ip_address','notes')})
           for t in ['regular','unactivated','unsubscribed','undeliverable','spam','removed','blocked','complained','churning','trialed','gifted','paused']:
               st2,d2=get('/subscribers?type='+t+'&page_size=5')
               if st2==200 and d2.get('count'):
