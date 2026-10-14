@@ -24,7 +24,7 @@ const pctChange = (a, b) => (a != null && b != null && b !== 0 ? ((a - b) / b) *
 
 function factsFor(slug, c) {
   const f = [];
-  const place = c.geography ? `${c.name} (county-level data for ${c.geography})` : c.name;
+  const place = c.area ? `${c.name}, a Nashville area (not a city). Market figures are Redfin neighborhood data for the ${c.geography}; the Zillow index is for the ZIP code(s) in that area, as stated in the readings below` : c.geography ? `${c.name} (county-level data for ${c.geography})` : c.name;
   f.push(`Place: ${place}. Data as of ${longDate(c.asOf || market.asOf)}. Figures are rolling 3-month values ending on that date.`);
   const T = c.temperature;
   if (T) {

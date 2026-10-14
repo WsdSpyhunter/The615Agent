@@ -5,6 +5,8 @@ name: Update market data
 on:
   schedule:
     - cron: '0 12 * * *'
+  repository_dispatch:
+    types: [data-force]
   workflow_dispatch:
     inputs:
       mode:
@@ -38,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      MODE: ${{ github.event.inputs.mode || 'check' }}
+      MODE: ${{ github.event.inputs.mode || (github.event_name == 'repository_dispatch' && 'force') || 'check' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

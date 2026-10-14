@@ -41,6 +41,7 @@ for (const p of PLACES) {
     medianPrice: l.medianPrice, yoy: l.yoy, dom: l.dom, saleToList: l.saleToList, inventory: l.inventory,
     ppsf: l.ppsf, ppsfYoy: l.ppsfYoy,
     asOf: l.periodEnd, geography: r.geography,
+    ...(r.area ? { area: true } : {}),
   };
   history[p.slug] = { name: p.name, geography: r.geography, months: r.history.map((h) => ({ m: h.month, price: h.medianPrice, dom: h.dom, inv: h.inventory, ms: h.monthsSupply, s2l: h.saleToList, ppsf: h.ppsf })) };
 }

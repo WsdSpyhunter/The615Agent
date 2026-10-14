@@ -30,7 +30,7 @@ const draftFile = `drafts/${slug}.json`;
 const out = (k, v) => { if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `${k}=${v}\n`); };
 if (existsSync(postFile)) { log(`The ${monthYear} report is already published (${postFile}). Nothing to do.`); out('slug', ''); process.exit(0); }
 
-const sections = Object.values(m.cities).map((c) => [
+const sections = Object.values(m.cities).filter((c) => !c.area).map((c) => [
   `## ${c.name}: ${rating(c)}`,
   c.temperature ? `*${c.temperature.readings.map((r) => `${r.title.split(':')[0]}: ${r.reading}`).join(' | ')}${c.temperature.trend ? ` | Trend: ${c.temperature.trend.direction}` : ''}${c.temperature.mixed ? ' | The sources disagree' : ''}*` : '',
   c.commentary || '',

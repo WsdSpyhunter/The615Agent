@@ -9,6 +9,11 @@ export const PLACES = [
   { slug: 'nashville', zillow: 'Nashville', name: 'Nashville', redfin: 'Nashville, TN', county: 'Davidson County, TN' },
   { slug: 'columbia', zillow: 'Columbia', name: 'Columbia', redfin: 'Columbia, TN', county: 'Maury County, TN' },
   { slug: 'murfreesboro', zillow: 'Murfreesboro', name: 'Murfreesboro', redfin: 'Murfreesboro, TN', county: 'Rutherford County, TN' },
+  // Nashville areas below are neighborhoods, not cities: Redfin neighborhood data, Zillow's index for their ZIP code(s), and Davidson County for Realtor.com.
+  // They appear only in the Market Temperature tool and Market Data charts (not in the monthly report or newsletter) and have no pages of their own.
+  { slug: 'east-nashville', area: true, name: 'East Nashville', redfinNeighborhood: 'East Nashville', zillowZips: ['37206'], county: 'Davidson County, TN', geography: 'East Nashville neighborhood' },
+  { slug: 'donelson-hermitage', area: true, name: 'Donelson–Hermitage', redfinNeighborhood: 'Donelson-Hermitage-Old Hickory', zillowZips: ['37214', '37076'], county: 'Davidson County, TN', geography: 'Donelson-Hermitage-Old Hickory neighborhood' },
+  { slug: 'bellevue', area: true, name: 'Bellevue', redfinNeighborhood: 'Bellevue', zillowZips: ['37221'], county: 'Davidson County, TN', geography: 'Bellevue neighborhood' },
 ];
 
 // Redfin's current Data Center files (the older redfin_market_tracker files stopped updating in June 2026).

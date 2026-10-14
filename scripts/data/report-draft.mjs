@@ -54,7 +54,7 @@ const subject = `${TEST ? 'TEST (delete me): ' : ''}${monthYear} housing market 
 
 const SPACER = '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="8" style="height:8px;line-height:8px;font-size:1px;padding:0">&nbsp;</td></tr></table>';
 
-const sections = Object.values(m.cities).map((c) => {
+const sections = Object.values(m.cities).filter((c) => !c.area).map((c) => {
   const lines = [
     SPACER,
     '',

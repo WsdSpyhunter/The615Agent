@@ -3,7 +3,7 @@
 import { PLACES, REDFIN_BASE, HISTORY_MONTHS } from './config.mjs';
 import { streamCsv, norm, num } from './lib.mjs';
 
-const wantCity = new Map(PLACES.map((p) => [norm(p.redfin), p]));
+const wantCity = new Map(PLACES.filter((p) => p.redfin).map((p) => [norm(p.redfin), p]));
 const wantCounty = new Set(PLACES.map((p) => norm(p.county)));
 const filled = (r) => Object.values(r).filter((v) => v != null).length;
 
@@ -23,12 +23,11 @@ const shape = (r) => ({
   ppsfYoy: num(r['median sale price per sq.ft. yoy (%)']),
 });
 
-async function pull(file, isWanted) {
+async function pull(file, isWanted, quick = (line) => line.includes(', TN"')) {
   const out = new Map(); // normalized region -> Map(month -> record)
-  const quick = (line) => line.includes(', TN"');
   const info = await streamCsv(`${REDFIN_BASE}/${file}`, quick, (r) => {
     const k = norm(r['region name'] || '');
-    if (!isWanted(k)) return;
+    if (!isWanted(k, r)) return;
     const rec = shape(r);
     if (!rec.month) return;
     if (!out.has(k)) out.set(k, new Map());
@@ -46,8 +45,27 @@ export async function fetchRedfin(log = console.log) {
   const county = await pull('all_counties.csv', (k) => wantCounty.has(k));
   log(`Redfin county file: ${county.info.total.toLocaleString()} rows scanned`);
 
+  // Neighborhood areas (Redfin's neighborhood file; only Nashville-metro rows are read).
+  const areas = PLACES.filter((p) => p.redfinNeighborhood);
+  let neigh = null;
+  if (areas.length) {
+    log('Redfin: reading the neighborhood file (large, streamed)...');
+    const want = new Map(areas.map((p) => [norm(p.redfinNeighborhood), p]));
+    neigh = await pull('all_neighborhoods.csv', (k, r) => want.has(k) && /nashville/i.test(r['metro'] || ''), (line) => line.includes('Nashville'));
+    log(`Redfin neighborhood file: ${neigh.info.total.toLocaleString()} rows scanned`);
+  }
+
   const result = {};
   for (const p of PLACES) {
+    if (p.redfinNeighborhood) {
+      const nm = neigh?.out.get(norm(p.redfinNeighborhood));
+      if (!nm) { log(`  ${p.name}: no Redfin neighborhood data found`); continue; }
+      const list = [...nm.values()].sort((a, b) => a.month.localeCompare(b.month));
+      const latest = [...list].reverse().find((x) => x.monthsSupply != null) ?? list.at(-1);
+      result[p.slug] = { name: p.name, geography: p.geography, area: true, latest, history: list.slice(-HISTORY_MONTHS) };
+      log(`  ${p.name}: neighborhood data through ${latest.periodEnd}, ${latest.monthsSupply ?? 'n/a'} months of supply`);
+      continue;
+    }
     let months = city.out.get(norm(p.redfin)), geography = null;
     const good = (m) => m && [...m.values()].some((r) => r.monthsSupply != null);
     if (!good(months)) { months = county.out.get(norm(p.county)); geography = p.county.replace(', TN', ' (county)'); }

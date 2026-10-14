@@ -51,8 +51,8 @@ export async function applyTemperature(log = console.log) {
     const wPct = (k) => pct(WEIGHTS[k] / totalW);
     const lv = (key) => (W[key] ? levelFor(W[key].score).key : 'balanced');
     const readings = [];
-    if (input.zillow) readings.push({ key: 'zillow', title: `Zillow Market Temperature Index: ${input.zillow.value}`, detail: `City, main driver (${wPct('zillow')}), as of ${long(input.zillow.asOf)}`, reading: zillowLabel(input.zillow.value).replace(' market', ''), level: lv('zillow') });
-    if (input.redfin) readings.push({ key: 'redfin', title: `Redfin months of supply: ${city.monthsSupply.toFixed(1)}`, detail: `City (${wPct('redfin')}), ${city.inventory?.toLocaleString() ?? 'n/a'} listings, rolling 3 months to ${long(city.asOf)}`, reading: redfinLabel(city.monthsSupply).replace(' market', ''), level: lv('redfin') });
+    if (input.zillow) readings.push({ key: 'zillow', title: `Zillow Market Temperature Index: ${input.zillow.value}`, detail: `${p.area ? (p.zillowZips.length > 1 ? `ZIP codes ${p.zillowZips.join(' and ')}, averaged` : `ZIP code ${p.zillowZips[0]}`) : 'City'}, main driver (${wPct('zillow')}), as of ${long(input.zillow.asOf)}`, reading: zillowLabel(input.zillow.value).replace(' market', ''), level: lv('zillow') });
+    if (input.redfin) readings.push({ key: 'redfin', title: `Redfin months of supply: ${city.monthsSupply.toFixed(1)}`, detail: `${p.area ? 'Neighborhood' : 'City'} (${wPct('redfin')}), ${city.inventory?.toLocaleString() ?? 'n/a'} listings, rolling 3 months to ${long(city.asOf)}`, reading: redfinLabel(city.monthsSupply).replace(' market', ''), level: lv('redfin') });
     if (input.realtor) {
       const c = rc.core; const rd = W.realtor.score < -0.4 ? 'Cool' : W.realtor.score > 0.4 ? 'Hot' : 'Middling';
       readings.push({ key: 'realtor', title: `Realtor.com ${countyName}: hotness ${rc.hot.hotness.toFixed(1)} of 100`, detail: `County (${wPct('realtor')})${c ? `, median ${Math.round(c.dom)} days listed, ${(c.priceReducedShare * 100).toFixed(1)}% price cuts (${rc.coreMonth.slice(0, 4)}-${rc.coreMonth.slice(4)})` : ''}`, reading: rd, level: lv('realtor') });

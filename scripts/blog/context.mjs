@@ -23,7 +23,7 @@ export function buildContext(topic, existingPosts) {
   const cities = market.cities || {};
   const focus = Object.entries(cities).find(([slug]) => topic.linkTags.includes(slug));
   const chosen = focus ? [focus] : Object.entries(cities).filter(([s]) => ['franklin', 'spring-hill', 'nashville'].includes(s));
-  for (const [slug, c] of topic.type === 'data' && !focus ? Object.entries(cities) : chosen) marketFacts.push(...cityFact(slug, c));
+  for (const [slug, c] of topic.type === 'data' && !focus ? Object.entries(cities).filter(([, c]) => !c.area) : chosen) marketFacts.push(...cityFact(slug, c));
   if (market.sources?.length) marketFacts.push(`Sources for the market numbers: ${market.sources.map((s) => (typeof s === 'string' ? s : s.name)).join('; ')}.`);
 
   const tagSet = new Set([...topic.linkTags, topic.category.toLowerCase()]);
