@@ -28,9 +28,9 @@ import { site } from '../site.config';
       btn.disabled = true; say('Subscribing...');
       try {
         const res = await fetch(form.action, { method: 'POST', body: new URLSearchParams(new FormData(form) as any), redirect: 'manual' });
-        // A good signup is answered with a redirect (to Buttondown's public page, which we do not use); a bad address gets a 400.
-        if (res.ok || res.type === 'opaqueredirect' || (res.status >= 300 && res.status < 400)) { say('Almost done. Check your email and click the confirmation link to finish subscribing.'); form.reset(); }
-        else say('That email address did not look right. Please check it and try again.');
+        // A good signup is answered with a redirect (to Buttondown's public page, which we do not use). A 400 does not always mean a bad address: it also comes back for addresses already waiting to confirm or that Buttondown blocks, so the message does not blame the address.
+        if (res.ok || res.type === 'opaqueredirect' || (res.status >= 300 && res.status < 400)) { say('Almost done. If this address is not already on the list, a confirmation email is on its way. Check your spam or promotions folder. Already subscribed? You are all set.'); form.reset(); }
+        else say('We could not add that address just now. If you already signed up, check your inbox (and spam) for the confirmation email. Otherwise, try again or email scott@hivenashville.com and I will add you.');
       } catch { say('Sorry, that did not go through. Please try again in a moment.'); }
       btn.disabled = false;
     });
