@@ -415,6 +415,9 @@ footer a:hover{opacity:1;text-decoration:underline}
   #blog .wrap.two > div:first-child{display:flex;flex-direction:column}
   #blog .wrap.two > div:first-child .post:last-of-type{margin-top:auto}
   #blog .wrap.two > div:first-child .post:first-of-type{margin-bottom:26px}
+  /* When the Market Temperature panel grows (more area buttons), the two blog cards grow with it (the photo takes the extra height) instead of leaving a big gap between them. Any space beyond the cap still goes between the cards. */
+  #blog .wrap.two > div:first-child .post{flex:1 1 auto;max-height:660px}
+  #blog .wrap.two > div:first-child .post .img{flex:1 1 auto;min-height:0}
 }
 
 #blog .post + .post{margin-top:26px}
