@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "slug": "spring-hill-tn-housing-market-update",
+  "topicId": "t42",
+  "created": "2026-10-16",
+  "status": "draft",
+  "title": "Spring Hill TN Housing Market: Zillow, Redfin, Realtor.com",
+  "description": "A plain look at the Spring Hill TN housing market using Redfin, Zillow and Realtor.com data, with dates, months of supply and days on market explained.",
+  "category": "Market Update",
+  "keyword": "Spring Hill TN housing market",
+  "body": "Look up the Spring Hill TN housing market and you will find more than one answer. One source gives a rating, another gives a score, and a third gives a months-of-supply figure. They do not always read the same way.\n\nHere is what the latest numbers show, where they sit side by side, and how I would use them. I am reporting the figures and their dates. I am not predicting where they go next.\n\n## Spring Hill numbers from Redfin\n\n{{img:0}}\n\nThe [Redfin Data Center](https://www.redfin.com/news/data-center/) reports these figures for Spring Hill, on a rolling 3-month basis, with data as of 2026-09-30:\n\n- Median sale price: $499,752, down 5.7% from a year earlier\n- Median days on market: 66\n- Average sale-to-list ratio: 98.0%\n- Active listings: 409\n- Months of supply: 4.1\n\nMonths of supply is how long it would take to sell every active listing at the current pace of sales. A common guide says under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers. By that guide, 4.1 falls just inside the balanced range.\n\nThe sale-to-list ratio of 98.0% is an average across sales in that period. Any single home can sell above, at, or below its list price.\n\n## What Zillow and Realtor.com add\n\nTwo other sources give a different kind of reading.\n\nZillow Research publishes a Market Temperature Index. For Spring Hill the index is 17 in the data as of 2026-09-30, and it is down 11 over 3 months. That change is where the \"cooling\" trend in my data comes from.\n\n[Realtor.com Research](https://www.realtor.com/research/data/) publishes a hotness score out of 100. The figure I have is for Maury County, not Spring Hill alone, and it is 32.6 of 100. Spring Hill includes parts of both Williamson and Maury counties, so a county-level score covers an area that is bigger than the city and different from it.\n\nI am giving you the numbers as published. I do not want to read more into a single index value than the source itself says.\n\n## Where the figures do not line up neatly\n\n{{img:1}}\n\nThe overall market rating in my data for Spring Hill is \"Buyer's market.\" The Redfin months of supply, 4.1, sits in the balanced range under the guide above.\n\nThose two readings are different, and I am not going to pretend otherwise. Rather than pick the one I like, I would treat both as inputs. Look at the price change, days on market, sale-to-list ratio and months of supply together, then look at the specific homes you care about.\n\nThis is also why I lean on local data over national headlines. Conditions can differ a lot between cities, price ranges and neighborhoods.\n\n## How Spring Hill compares with the Nashville metro\n\nFor context, Redfin's numbers for the Nashville metro area, for the 4 weeks ending 2026-10-11, are:\n\n- Median sale price: $466,593\n- Median days on market: 66\n- Sale-to-list: 97.7%\n- Months of supply: 5.2\n- Homes sold: 2,593\n\nThe two sets cover different time windows. Spring Hill is a rolling 3 months, and the metro is 4 weeks. So I would compare them loosely and not line them up number for number. Both months-of-supply figures, 4.1 and 5.2, fall in the 4 to 6 month balanced range.\n\nIf you are also looking at nearby areas, the [Market data for the I-65 corridor](/market-data) page and the [Franklin housing market data](/franklin/housing-market) page are the places on this site to compare.\n\n## Mortgage rates and the monthly payment\n\nThe 30-year fixed mortgage rate was 7.40% for the week of 2026-10-08, according to Freddie Mac via Freddie Mac 30-year mortgage rate (FRED).\n\nMany buyers wait for rates to fall. Nobody can reliably predict where rates will go, so waiting is a bet in either direction. The cost of waiting, such as rent paid, price changes or a lost home you wanted, is real even though it is easy to overlook.\n\nA more useful question is often whether the payment fits your budget. That means stable income, an emergency fund after closing, and a monthly cost that feels comfortable once taxes, insurance and maintenance are included. You can test your own numbers with the [Mortgage calculator](/mortgage-calculator).\n\nSome buyers buy and plan to refinance later if rates fall. Refinancing is not guaranteed. It depends on rates, credit, home value and income at that time, and it has its own closing costs. Treat it as a possibility, not a plan.\n\n## Using the data as a buyer or seller\n\nA city-wide number is a starting point. It does not describe any one home. A few practical points:\n\n- **Check the address.** Spring Hill spans two counties, so county services, schools and property taxes can differ by address. Verify them with the school district and the county for any home you are serious about.\n- **Ask what is negotiable.** Buyers can ask about the seller paying some closing costs or funding a temporary or permanent rate buydown. Whether that is available depends on the seller, the home and the market, and a lender must confirm what is allowed for your loan. Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs.\n- **Price to the specific home.** If you are selling, the city median and the sale-to-list average are context. Your home's condition, location and timing matter to how it is received.\n\nNone of this is legal, tax or lending advice. A lender can speak to your financing, and official sources can speak to taxes and schools.\n\n## Next steps\n\nIf you are thinking about buying in Spring Hill, the [Get matched with homes](/buy#form) form is the easiest place to start. Scott schedules a call, and you will be talking within the next 48 hours. If you own and want to know what the data means for your house, use [Find out what your home is worth](/sell#form). You can also reach out through [Contact Scott](/contact) with questions.",
+  "faq": [
+    {
+      "q": "Is Spring Hill a buyer's market right now?",
+      "a": "The overall rating in my data, as of 2026-09-30, is Buyer's market. Redfin's months of supply for Spring Hill is 4.1 (rolling 3 months, as of 2026-09-30), which falls in the 4 to 6 month balanced range, so the two readings differ."
+    },
+    {
+      "q": "What is the median sale price in Spring Hill?",
+      "a": "Redfin reports a median sale price of $499,752 for Spring Hill, down 5.7% from a year earlier (rolling 3 months, data as of 2026-09-30)."
+    },
+    {
+      "q": "How long do homes take to sell in Spring Hill?",
+      "a": "Redfin's median days on market for Spring Hill is 66 (rolling 3 months, data as of 2026-09-30). The Nashville metro figure for the 4 weeks ending 2026-10-11 is also 66."
+    },
+    {
+      "q": "What does months of supply mean?",
+      "a": "Months of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers."
+    },
+    {
+      "q": "Is Spring Hill in Williamson County?",
+      "a": "Spring Hill includes parts of both Williamson and Maury counties. County services, schools and taxes can differ by address, so verify them for any home you are serious about."
+    }
+  ],
+  "hero": {
+    "provider": "Pixabay",
+    "id": 1867187,
+    "url": "https://pixabay.com/get/g88413d67410d09f1a3c593d96216bb05ffef282e80710dcf38d1eeb73f7a6f8f0254112bdb0f37ffdcc3963c62673d7deb4228bbd1f0259642dda561382ed849_1280.jpg",
+    "preview": "https://pixabay.com/get/gb680fd6a71f76d12a4dad6bf186d63a35d44637618c745526e0065a4edbc7882bfbb9ba0b4658e8ce0f6f1437729945787d1883d9db31205958b7622f0b0dcd4_640.jpg",
+    "width": 3352,
+    "height": 2286,
+    "alt": "Photo: House, garage, driveway, architecture, building",
+    "credit": "Pexels",
+    "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+    "page": "https://pixabay.com/photos/house-garage-driveway-architecture-1867187/",
+    "home": "https://pixabay.com"
+  },
+  "inline": [
+    {
+      "provider": "Pixabay",
+      "id": 6688945,
+      "url": "https://pixabay.com/get/g062d8568996f979503b7edb0c3e2541eaa0fe83f54e22e5b71225854fb602247393ad8bab6424be7d12d1f37b32f594838be6d120263d2d29e8fd7bec6bdab66_1280.jpg",
+      "preview": "https://pixabay.com/get/gbf323f5d58b03500cb7d4726987b32db768b1863c576c48e747aa2d58ff19be187a18438230c14be7ded415673cf35defe89cceee8b1550893ec55a9804a6c73_640.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+      "credit": "OleksandrPidvalnyi",
+      "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+      "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1836070,
+      "url": "https://pixabay.com/get/g012f8b89257f0e9ab8223e8b5653aef07bd156dbb5acd310ffd703ca71cbf5a3849018eddf6c398ec1f65463f577c3f14cab4a66324fe581c7a13962407f8a2a_1280.jpg",
+      "preview": "https://pixabay.com/get/g6700fa96d7c87427999e35397b0fc646cb572e4b61a8991ead25c4e777929810a1d83e8fa68b309bf80863eb3736408471fba09610c4678ac14c7b2c3ac79306_640.jpg",
+      "width": 5408,
+      "height": 3605,
+      "alt": "Photo: House, architecture, front yard, garage, home",
+      "credit": "Pexels",
+      "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+      "page": "https://pixabay.com/photos/house-architecture-front-yard-1836070/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "choices": [
+    {
+      "provider": "Pixabay",
+      "id": 1867187,
+      "url": "https://pixabay.com/get/g88413d67410d09f1a3c593d96216bb05ffef282e80710dcf38d1eeb73f7a6f8f0254112bdb0f37ffdcc3963c62673d7deb4228bbd1f0259642dda561382ed849_1280.jpg",
+      "preview": "https://pixabay.com/get/gb680fd6a71f76d12a4dad6bf186d63a35d44637618c745526e0065a4edbc7882bfbb9ba0b4658e8ce0f6f1437729945787d1883d9db31205958b7622f0b0dcd4_640.jpg",
+      "width": 3352,
+      "height": 2286,
+      "alt": "Photo: House, garage, driveway, architecture, building",
+      "credit": "Pexels",
+      "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+      "page": "https://pixabay.com/photos/house-garage-driveway-architecture-1867187/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 6688945,
+      "url": "https://pixabay.com/get/g062d8568996f979503b7edb0c3e2541eaa0fe83f54e22e5b71225854fb602247393ad8bab6424be7d12d1f37b32f594838be6d120263d2d29e8fd7bec6bdab66_1280.jpg",
+      "preview": "https://pixabay.com/get/gbf323f5d58b03500cb7d4726987b32db768b1863c576c48e747aa2d58ff19be187a18438230c14be7ded415673cf35defe89cceee8b1550893ec55a9804a6c73_640.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+      "credit": "OleksandrPidvalnyi",
+      "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+      "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1836070,
+      "url": "https://pixabay.com/get/g012f8b89257f0e9ab8223e8b5653aef07bd156dbb5acd310ffd703ca71cbf5a3849018eddf6c398ec1f65463f577c3f14cab4a66324fe581c7a13962407f8a2a_1280.jpg",
+      "preview": "https://pixabay.com/get/g6700fa96d7c87427999e35397b0fc646cb572e4b61a8991ead25c4e777929810a1d83e8fa68b309bf80863eb3736408471fba09610c4678ac14c7b2c3ac79306_640.jpg",
+      "width": 5408,
+      "height": 3605,
+      "alt": "Photo: House, architecture, front yard, garage, home",
+      "credit": "Pexels",
+      "creditUrl": "https://pixabay.com/users/Pexels-2286921/",
+      "page": "https://pixabay.com/photos/house-architecture-front-yard-1836070/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "checks": {
+    "words": 1053,
+    "linksChecked": [
+      {
+        "id": "redfin-data",
+        "url": "https://www.redfin.com/news/data-center/",
+        "status": 200
+      },
+      {
+        "id": "zillow-research",
+        "url": "https://www.zillow.com/research/data/",
+        "status": 403
+      },
+      {
+        "id": "realtor-research",
+        "url": "https://www.realtor.com/research/data/",
+        "status": 200
+      },
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      }
+    ],
+    "dropped": [
+      {
+        "id": "zillow-research",
+        "url": "https://www.zillow.com/research/data/",
+        "status": 403
+      },
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      }
+    ],
+    "review": {
+      "ok": true,
+      "issues": []
+    },
+    "compliance": {
+      "hard": [],
+      "soft": []
+    },
+    "dataPointsUsed": [
+      "Spring Hill median sale price $499,752, down 5.7% year over year (Redfin, rolling 3 months, as of 2026-09-30)",
+      "Spring Hill median days on market 66, sale-to-list 98.0%, 409 active listings, 4.1 months of supply (Redfin, as of 2026-09-30)",
+      "Zillow Market Temperature Index 17, down 11 over 3 months (Zillow Research)",
+      "Realtor.com Maury County hotness 32.6 of 100",
+      "Overall rating: Buyer's market",
+      "Nashville metro, 4 weeks ending 2026-10-11: median sale price $466,593, 66 days on market, 97.7% sale-to-list, 5.2 months of supply, 2,593 homes sold (Redfin)",
+      "30-year fixed rate 7.40% (Freddie Mac via FRED, week of 2026-10-08)"
+    ],
+    "model": "claude-sonnet-5-5",
+    "failedChecks": false
+  }
+}
