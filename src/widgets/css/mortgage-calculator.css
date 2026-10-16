@@ -14,7 +14,7 @@ tpa-mortgage-calculator input[type=range]{padding:0;border:0;background:transpar
 .tpa-mc-seg{display:flex;flex-wrap:wrap;gap:6px}
 .tpa-mc-seg button{font:inherit;font-weight:700;font-size:13.5px;border:1.5px solid var(--tpa-card-border,#D4D9DF);background:var(--tpa-input-bg,#fff);color:inherit;border-radius:999px;padding:7px 15px;cursor:pointer}
 .tpa-mc-seg button[aria-pressed="true"]{background:var(--tpa-primary,#1473E6);border-color:var(--tpa-primary,#1473E6);color:#fff}
-.tpa-mc-res{background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-radius:var(--tpa-radius,24px);padding:26px;display:grid;gap:18px;border-top:4px solid var(--tpa-primary,#1473E6);position:sticky;top:var(--tpa-sticky-top,104px);min-width:0}
+.tpa-mc-res{background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-radius:var(--tpa-radius,24px);padding:26px;display:grid;gap:18px;border-top:4px solid var(--tpa-primary,#1473E6);min-width:0}
 @media(max-width:920px){.tpa-mc-res{position:static}}
 .tpa-mc-big{font-size:clamp(2.4rem,6vw,3.4rem);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
 .tpa-mc-res small,.tpa-mc-note{color:var(--tpa-muted,#9AA4B1)}
