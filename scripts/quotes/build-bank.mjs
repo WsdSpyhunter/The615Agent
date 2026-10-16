@@ -2,7 +2,8 @@
 // Every quote is a sentence copied exactly from a page fetched here; nothing is written by an AI and nothing is recalled from memory.
 //   node scripts/quotes/build-bank.mjs [--force]
 import { writeFileSync, existsSync } from 'node:fs';
-import { SOURCES, BANK, get, pageText, squash, quotable, idFor, loadBank, decode } from './lib.mjs';
+import { SOURCES, BANK, FOMC_CALENDAR, RE_RATES, get, pageText, squash, quotable, idFor, loadBank, decode } from './lib.mjs';
+import { createRequire } from 'node:module';
 
 const log = (...a) => console.log(...a);
 const FORCE = process.argv.includes('--force');
@@ -73,6 +74,38 @@ for (const src of SOURCES) {
   } catch (e) { status[src.id] = `failed: ${e.message}`; }
   log(`${src.org}: ${status[src.id]}`);
 }
+// The Federal Reserve Chair's press conferences after the last two FOMC meetings (transcripts are PDFs). Only the Chair's own turns are used.
+// Off by default: transcript sentences were conversational and rarely stand alone (tested Oct 2026). Needs `npm i pdf-parse` to try again.
+if (process.env.FOMC_PRESSER === '1') try {
+  const require = createRequire(import.meta.url);
+  const pdf = require('pdf-parse/lib/pdf-parse.js');
+  const cal = await get(FOMC_CALENDAR);
+  const dates = [...new Set([...cal.matchAll(/fomcpresconf(\d{8})\.htm/g)].map((m) => m[1]))].sort().slice(-2);
+  let chair = 'Chairman';
+  try { const board = pageText(await get('https://www.federalreserve.gov/aboutthefed/bios/board/default.htm')); const cm = squash(board).match(/([A-Z][a-z]+(?: [A-Z]\.)? [A-Z][a-z]+), Chairman\b/); if (cm) chair = cm[1]; } catch {}
+  let kept = 0;
+  for (const d of dates) {
+    const iso = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}`;
+    if ((Date.now() - new Date(iso + 'T00:00:00Z').getTime()) / 86400000 > 75) continue;
+    const buf = Buffer.from(await (await fetch(`https://www.federalreserve.gov/mediacenter/files/FOMCpresconf${d}.pdf`, { headers: { 'user-agent': 'Mozilla/5.0 (compatible; the615agent-quotes/1.0)' } })).arrayBuffer());
+    let text = squash((await pdf(buf)).text).replace(/(?:[A-Z][a-z]+ \d{1,2}, 20\d\d )?Chair(?:man|woman)? [A-Z][a-z]+[’']s Press Conference FINAL Page \d+ of \d+/g, ' ').replace(/\s+/g, ' ');
+    const turns = text.split(/(?<=^|[.!?”"]\s)(?=[A-Z]{3,}(?: [A-Z][A-Z.]*){0,3}\.\s)/);
+    const cands = [];
+    for (const t of turns) {
+      const m = t.match(/^\s*(CHAIR(?:MAN|WOMAN)?(?: [A-Z.]+){0,3})\.\s([\s\S]*)$/); if (!m) continue;
+      for (const s of m[2].split(/(?<=[.!?])\s+(?=[A-Z"“])/)) { const q = s.trim(); if (quotable(q, RE_RATES)) cands.push(q); }
+    }
+    const rank = (s) => (/mortgage|housing/i.test(s) ? 3 : 0) + (/\b(interest rates?|policy rate|inflation|federal funds)\b/i.test(s) ? 1 : 0);
+    for (const q of cands.sort((x, y) => rank(y) - rank(x)).slice(0, 4)) {
+      if (!text.includes(q)) continue;
+      quotes.push({ id: idFor(q, `fomc${d}`), text: q, speaker: chair, role: 'Federal Reserve Chairman', org: 'Federal Reserve', kind: 'presser', title: `Chairman's press conference, ${iso}`, url: `https://www.federalreserve.gov/monetarypolicy/fomcpresconf${d}.htm`, date: iso });
+      kept++;
+    }
+  }
+  status.fomc = `ok: ${dates.length} press conferences found, ${kept} quotes kept (chair: ${chair})`;
+} catch (e) { status.fomc = `failed: ${e.message}`; }
+if (status.fomc) log(`Fed Chair press conferences: ${status.fomc}`);
+
 // Dedupe, newest first, keep a manageable number. If a refresh found nothing at all (for example a network problem), keep the old bank.
 const seen = new Set(); const out = [];
 for (const q of quotes.sort((a, b) => b.date.localeCompare(a.date))) { if (seen.has(q.text)) continue; seen.add(q.text); out.push(q); }

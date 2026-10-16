@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, existsSync } from 'node:fs';
 
 export const BANK = 'scripts/data/quote-bank.json';
+export const FOMC_CALENDAR = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm';
 const UA = 'Mozilla/5.0 (compatible; the615agent-quotes/1.0; +https://the615agent.com)';
 
 export const SOURCES = [
@@ -33,10 +34,11 @@ export const idFor = (text, url) => 'q' + createHash('sha1').update(text + '|' +
 const wordsOf = (s) => s.split(/\s+/).filter(Boolean);
 
 /** Is this sentence a good, safe quote? Returns false when it should be skipped. */
-export function quotable(text) {
+export const RE_RATES = /\b(inflation|interest rates?|federal funds|policy rate|monetary policy|labor market|unemployment|economy|economic activity|mortgage|housing)\b/i;
+export function quotable(text, topicRe = RE_TOPIC) {
   const n = wordsOf(text).length;
   if (n < 12 || n > 45 || text.length > 320) return false;
-  if (!RE_TOPIC.test(text) || PARTISAN.test(text) || PREDICTION.test(text)) return false;
+  if (!topicRe.test(text) || PARTISAN.test(text) || PREDICTION.test(text)) return false;
   if (/[\[\]…]|\.\.\.|https?:|@/.test(text)) return false;
   if (!/^[A-Z"“]/.test(text) || !/[.!?"”]$/.test(text) || /\?["”]?$/.test(text)) return false;
   // Skip lead-ins, footnotes, headers and editor's notes, and sentences that depend on the sentence before them.
@@ -66,7 +68,7 @@ const longDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US
 /** The finished markdown block: the exact words, who said them, and a link to the source. */
 export function formatQuote(q) {
   const who = [q.speaker, q.role].filter(Boolean).join(', ');
-  const how = q.kind === 'speech' ? 'in a speech' : 'in a news release';
+  const how = q.kind === 'speech' ? 'in a speech' : q.kind === 'presser' ? 'at a press conference' : 'in a news release';
   return `> “${q.text.replace(/^["“]|["”]$/g, '')}”\n>\n> — ${who ? who + ', ' : ''}${how} on ${longDate(q.date)} ([${q.org}](${q.url}))`;
 }
 export const quoteNumbers = (q) => q.text.match(/\d[\d,]*\.?\d*/g) || [];
