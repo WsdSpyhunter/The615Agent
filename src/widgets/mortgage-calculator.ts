@@ -33,14 +33,15 @@ export const payment = (loan: number, annualRatePct: number, months: number) => 
   return r === 0 ? loan / months : (loan * r) / (1 - Math.pow(1 + r, -months));
 };
 
-export interface CalcInput { price: number; downPct: number; rate: number; years: number; type: 'conv' | 'fha' | 'va'; taxPct: number; insYear: number; hoa: number; extra: number }
+export interface CalcInput { price: number; downPct: number; rate: number; years: number; type: 'conv' | 'fha' | 'va'; taxPct: number; insYear: number; hoa: number; extra: number; noMi?: boolean }
 
 export function calculate(i: CalcInput) {
   let dp = i.downPct;
   const dAmt = (i.price * dp) / 100;
   if (i.type === 'fha' && dp < 3.5) dp = 3.5;
   let L = i.price - (i.price * dp) / 100, mi = 0;
-  if (i.type === 'fha') { L *= 1.0175; mi = (L * 0.0055) / 12; }
+  if (i.noMi) mi = 0;
+  else if (i.type === 'fha') { L *= 1.0175; mi = (L * 0.0055) / 12; }
   else if (i.type === 'conv' && dp < 20) mi = (L * 0.005) / 12;
   const n = i.years * 12, pi = payment(L, i.rate, n);
   const tx = (i.price * i.taxPct) / 100 / 12, is = i.insYear / 12;
@@ -96,6 +97,8 @@ export class TpaMortgageCalculator extends HTMLElement {
       </div>
       <details class="tpa-mc-more"><summary>More options</summary>
         <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-extra">Extra principal ($ / month)</label></div><input id="tpa-extra" data-f="extra" type="number" step="25" min="0" value="0"><small>Paying extra toward the loan each month shortens the loan and saves interest.</small></div>
+        <label class="tpa-mc-check"><input type="checkbox" data-f="nomi"><span>Remove mortgage insurance from the estimate</span></label>
+        <small class="tpa-mc-checknote">For example, an FHA loan with 20% down, or a lender quote that shows no mortgage insurance. For FHA this also removes the upfront premium.</small>
       </details>
       <p class="tpa-mc-hint">Property tax is estimated from the area's ${this.taxYear || ''} rates applied to the purchase price. The county's appraisal, the exact address and later rate changes will differ. Insurance is an example value. Look up the specific property and get a quote for real numbers.</p>
     </div>
@@ -137,6 +140,7 @@ export class TpaMortgageCalculator extends HTMLElement {
       f(k).addEventListener('focus', () => f(k).select());
       f(k).addEventListener('blur', () => this.render());
     });
+    f('nomi').addEventListener('change', () => this.render());
     f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(50, Math.max(0, (v / this.priceVal()) * 100))); this.render(); });
     f('downpct').addEventListener('input', () => { const v = parseFloat(f('downpct').value.replace(/[^0-9.]/g, '')); if (!isNaN(v)) { f('down').value = String(Math.min(50, Math.max(0, v))); this.render(); } });
     this.querySelectorAll<HTMLElement>('[data-seg]').forEach((g) => g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
@@ -175,7 +179,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
     const o = (k: string) => this.querySelector<HTMLElement>(`[data-o=${k}]`)!;
     const price = this.priceVal();
-    const c = calculate({ price, downPct: +f('down').value, rate: this.rateVal(), years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0 });
+    const c = calculate({ price, downPct: +f('down').value, rate: this.rateVal(), years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0, noMi: f('nomi').checked });
     o('price').textContent = money0(c.price);
     if (document.activeElement !== f('pricenum')) f('pricenum').value = c.price.toLocaleString('en-US');
     o('rate').textContent = this.rateVal().toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0') + '%';
@@ -199,7 +203,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     if (an && this.areas.length) an.textContent = area ? `${this.taxYear} combined rate of $${area.rate} per $100 of assessed value. ${area.note}` : 'Type your own property tax percentage below, or look up the rate for the home you are considering.';
     this.chart(o('chart') as unknown as SVGElement, c);
     o('chartnote').textContent = c.mi > 0 && this.ltype === 'conv' ? 'Mortgage insurance typically ends once you reach 20% equity. The chart shows principal and interest only.' : 'The chart shows principal and interest only.';
-    o('ltype').textContent = NOTES[this.ltype];
+    o('ltype').textContent = f('nomi').checked && this.ltype !== 'va' ? 'Mortgage insurance is removed from this estimate (see More options).' : NOTES[this.ltype];
     const cta = this.querySelector<HTMLAnchorElement>('[data-o=cta]');
     if (cta) {
       const base = this.getAttribute('contact-url') || '/contact';
