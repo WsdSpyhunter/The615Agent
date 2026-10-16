@@ -1040,6 +1040,30 @@
       "custom": true,
       "slug": "selling-home-franklin-tn-fall-mistakes",
       "usedOn": "2026-10-11"
+    },
+    {
+      "id": "c05",
+      "category": "Buyers",
+      "type": "evergreen",
+      "idea": "What the Federal Reserve does and does not control about mortgage rates, and what that means for Middle Tennessee homebuyers. Explain that mortgage rates follow many factors, without predicting where rates will go.",
+      "keyword": "Federal Reserve mortgage rates explained",
+      "related": [
+        "what controls mortgage rates",
+        "Fed rate cut mortgage impact",
+        "Middle Tennessee mortgage rates"
+      ],
+      "linkTags": [
+        "mortgage rates",
+        "buyers",
+        "financing",
+        "mortgage",
+        "pre-approval",
+        "first-time buyers"
+      ],
+      "status": "draft",
+      "custom": true,
+      "slug": "federal-reserve-mortgage-rates-explained",
+      "usedOn": "2026-10-16"
     }
   ]
 }
