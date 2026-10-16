@@ -149,12 +149,10 @@ export class TpaMortgageCalculator extends HTMLElement {
     const jump = () => res.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
     bar.addEventListener('click', jump);
     bar.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(); } });
-    const headEl = this.querySelector<HTMLElement>('.tpa-mc-head')!;
     // Shown from the start of the calculator until the bottom of the black results box has scrolled into view.
     const place = () => {
       const vh = window.innerHeight;
       bar.hidden = !(this.getBoundingClientRect().top < vh * 0.85 && res.getBoundingClientRect().bottom > vh);
-      bar.classList.toggle('tpa-in', headEl.getBoundingClientRect().top < vh - 40); // results already on screen: hide the "Details" cue
     };
     window.addEventListener('scroll', place, { passive: true }); window.addEventListener('resize', place); place();
     this.render();
