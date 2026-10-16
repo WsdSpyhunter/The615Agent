@@ -188,7 +188,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     }).join('');
     o('legend').innerHTML = parts.filter((p) => p.v > 0).map((p) => `<div><i style="background:${COLORS[p.k]}"></i>${p.n}<b>${money2(p.v)}</b></div>`).join('');
     const yrs = Math.floor(c.months / 12), mo = c.months % 12;
-    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b></div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b>${c.extra > 0 && this.term * 12 > c.months ? `<small class="tpa-mc-sub">${Math.floor((this.term * 12 - c.months) / 12)} yr ${(this.term * 12 - c.months) % 12} mo sooner</small>` : ''}</div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b></div>`;
+    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b></div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Loan paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b>${c.extra > 0 && this.term * 12 > c.months ? `<small class="tpa-mc-sub">${Math.floor((this.term * 12 - c.months) / 12)} yr ${(this.term * 12 - c.months) % 12} mo sooner</small>` : ''}</div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b>${c.extra > 0 ? '<small class="tpa-mc-sub">compared with no extra payments</small>' : ''}</div>`;
     o('cash').textContent = `${money0(c.dAmt + c.price * 0.02)} to ${money0(c.dAmt + c.price * 0.04)}`;
     o('barv').textContent = money0(c.total) + '/mo';
     const area = this.areas.find((x) => x.key === this.querySelector<HTMLSelectElement>('[data-f=area]')?.value);
