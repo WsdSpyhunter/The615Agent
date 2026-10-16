@@ -70,6 +70,10 @@ jobs:
         if: steps.check.outputs.monthly != 'true' && (steps.check.outputs.zillow == 'true' || steps.check.outputs.realtor == 'true')
         run: node scripts/data/update-temperature.mjs
 
+      - name: Quote bank (official sources, exact words only)
+        continue-on-error: true
+        run: node scripts/quotes/build-bank.mjs
+
       - name: Zillow reviews (Bridge)
         if: env.MODE != 'commentary'
         env:
@@ -96,7 +100,7 @@ jobs:
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add public/data scripts/data/state.json drafts
+          git add public/data scripts/data/state.json scripts/data/quote-bank.json drafts
           if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; else
             git commit -m "Data update"
             git push

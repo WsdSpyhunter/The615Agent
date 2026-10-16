@@ -2,6 +2,9 @@
 // Built only from public/data/market.json (numbers and commentary), so every figure is sourced and dated.
 // Needs BUTTONDOWN_API_KEY.
 import { readFileSync } from 'node:fs';
+import { complianceIssues } from '../blog/compliance.mjs';
+import { checkUrl } from '../blog/links.mjs';
+import { inTheNews } from '../quotes/lib.mjs';
 
 const key = process.env.BUTTONDOWN_API_KEY;
 const PREVIEW = process.argv.includes('--preview');
@@ -78,6 +81,7 @@ const body = [
   m.mortgageRate30 != null ? `The average 30-year fixed mortgage rate was **${m.mortgageRate30.toFixed(2)}%** (week of ${longDate(m.mortgageRateAsOf)}).` : '',
   `**How to read it:** each rating blends Zillow's Market Temperature Index, Redfin's months of supply and Realtor.com's county data. ${m.temperatureMethod ?? ''}`,
   ...sections,
+  await (async () => { const b = await inTheNews(checkUrl, complianceIssues, '### In the news'); return b ? [SPACER, '', b].join('\n') : ''; })(),
   `Want to know what this means for your plans? [Get matched with homes](${SITE}/buy) or [find out what your home is worth](${SITE}/sell). Or just reply to this email.`,
   websiteCta,
   signature,

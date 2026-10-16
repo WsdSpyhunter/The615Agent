@@ -8,6 +8,8 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } fr
 import { complianceIssues } from '../blog/compliance.mjs';
 import { words } from '../blog/lib.mjs';
 import { addReportPhotos, stripMarkers } from '../blog/report-photos.mjs';
+import { inTheNews } from '../quotes/lib.mjs';
+import { checkUrl } from '../blog/links.mjs';
 const TEST = process.argv.includes('--test');
 
 const log = (...a) => console.log(...a);
@@ -48,6 +50,7 @@ const body = [
   m.mortgageRate30 != null ? `The average 30-year fixed mortgage rate was **${m.mortgageRate30.toFixed(2)}%** (week of ${longDate(m.mortgageRateAsOf)}).` : '',
   `**How to read it:** each rating blends Zillow's Market Temperature Index, Redfin's months of supply and Realtor.com's county data. ${m.temperatureMethod ?? ''}`,
   ...sections,
+  await inTheNews(checkUrl, complianceIssues),
   `## What this means for your plans`,
   `Every home and neighborhood is different. If you would like to talk through what these numbers mean for you, [get matched with homes](/buy#form), [find out what your home is worth](/sell#form) or [contact me](/contact). You can also see live numbers for every city on the [market data page](/market-data), or try your own numbers in the [mortgage calculator](/mortgage-calculator).`,
   `*Sources: ${m.sources.map((s) => (typeof s === 'string' ? s : `[${s.name}](${s.url})${s.note ? ` (${s.note})` : ''}`)).join('; ')}. Conditions vary by neighborhood, price range and home type. This is general information, not legal, tax, lending or financial advice.*`,

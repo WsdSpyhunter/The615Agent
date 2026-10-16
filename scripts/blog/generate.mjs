@@ -12,6 +12,8 @@ import { ask, parseJson, MODEL } from './claude.mjs';
 import { validatePost } from './validate.mjs';
 import { resolveLinks } from './links.mjs';
 import { choosePhotos } from './images.mjs';
+import { applyQuote, formatQuote } from '../quotes/lib.mjs';
+import { checkUrl } from './links.mjs';
 
 const log = (...a) => console.log(...a);
 const arg = (n) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : null; };
@@ -65,7 +67,8 @@ async function writePost() {
     const issues = validatePost(post, ctx);
     let review = { ok: true, issues: [] };
     if (!issues.length && !process.env.BLOG_FIXTURE) {
-      const reviewInput = `FACTS SUPPLIED:\n${ctx.factsText}\n\nPOST (markdown):\n# ${post.title}\n${post.body}\n\nFAQ:\n${post.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n')}`;
+      const qm = (post.body || '').match(/\{\{quote:(q[0-9a-f]{8})\}\}/); const qUsed = qm && ctx.quotes.find((x) => x.id === qm[1]);
+      const reviewInput = `FACTS SUPPLIED:\n${ctx.factsText}\n\nPOST (markdown):\n# ${post.title}\n${post.body}${qUsed ? `\n\nTHE MARKER {{quote:${qUsed.id}}} WILL BE REPLACED BY THIS EXACT QUOTE (copied from the speaker's own published page, shown with attribution and a link):\n${formatQuote(qUsed)}` : ''}\n\nFAQ:\n${post.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n')}`;
       let lastError = null;
       for (let t = 1; t <= 3; t++) {
         try { review = parseJson(await ask({ system: reviewSystem(), user: reviewInput, maxTokens: 3000 })); lastError = null; break; }
@@ -88,7 +91,9 @@ log(`Links: ${links.outboundKept} outbound kept, ${links.dropped.length} dropped
 const photos = await choosePhotos(post.imageQueries || [topic.keyword, topic.category, 'home'], process.env, log, { title: post.title, keyword: topic.keyword, category: topic.category });
 
 // place inline photo markers after the 1st and 3rd section headings' first paragraph
-let body = links.markdown;
+const qres = await applyQuote(links.markdown, ctx.quotes, checkUrl, complianceIssues);
+log(qres.used ? `Quote used: ${qres.used.speaker} (${qres.used.org}, ${qres.used.date})` : (qres.note || 'No quote used.'));
+let body = qres.body;
 const parts = body.split(/\n(?=##\s)/);
 photos.inline.slice(0, 2).forEach((_, i) => {
   const idx = i === 0 ? 1 : Math.min(3, parts.length - 1);
@@ -102,7 +107,7 @@ const draft = {
   version: 1, slug, topicId: topic.id, created: today(), ...(pubDate ? { pubDate } : {}), status: 'draft',
   title: post.title.trim(), description: post.description.trim(), category: topic.category, keyword: topic.keyword,
   body, faq: post.faq, hero: photos.hero, inline: photos.inline.slice(0, 2), choices: photos.choices,
-  checks: { words: words(body), linksChecked: links.checked, dropped: links.dropped, review, compliance: complianceIssues({ ...post, body: links.markdown }), dataPointsUsed: post.dataPointsUsed || [], model: MODEL, failedChecks: !!failed },
+  checks: { words: words(body), linksChecked: links.checked, dropped: links.dropped, review, compliance: complianceIssues({ ...post, body: qres.body }), quote: qres.used || null, quoteNote: qres.note || null, dataPointsUsed: post.dataPointsUsed || [], model: MODEL, failedChecks: !!failed },
 };
 if (existsSync(`drafts/${slug}.json`)) draft.slug = `${slug}-${today()}`;
 writeJson(`drafts/${draft.slug}.json`, draft);

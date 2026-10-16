@@ -1,4 +1,5 @@
 import { readJson, numbersIn } from './lib.mjs';
+import { pickQuotes, quoteNumbers } from '../quotes/lib.mjs';
 
 const money = (v) => '$' + Math.round(v).toLocaleString('en-US');
 
@@ -32,6 +33,9 @@ export function buildContext(topic, existingPosts) {
   const always = ['buy', 'sell', 'contact', 'market-data', 'calculator', 'checklists', 'resources'];
   const inbound = internal.map((l) => ({ ...l, s: score(l) + (always.includes(l.id) ? 1 : 0) })).filter((l) => l.s > 0).sort((a, b) => b.s - a.s).slice(0, 12);
 
-  const factsText = [...evergreen, ...marketFacts].join(' ');
-  return { evergreen, marketFacts, outbound, inbound, existing: existingPosts, asOf, factsText, allowedNumbers: new Set(numbersIn(factsText)) };
+  // Optional exact quotes from official sources (never typed by the writer). Their words count as supplied facts.
+  const quotes = pickQuotes(`${topic.idea} ${topic.keyword} ${(topic.related || []).join(' ')}`, 4);
+  const quoteFacts = quotes.map((q) => `Quote from ${q.speaker}${q.role ? ', ' + q.role : ''}, ${q.date}: "${q.text}"`);
+  const factsText = [...evergreen, ...marketFacts, ...quoteFacts, ...quotes.map((q) => new Date(q.date + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }))].join(' ');
+  return { evergreen, marketFacts, quotes, outbound, inbound, existing: existingPosts, asOf, factsText, allowedNumbers: new Set(numbersIn(factsText)) };
 }

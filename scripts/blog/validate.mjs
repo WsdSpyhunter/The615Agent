@@ -25,6 +25,10 @@ export function validatePost(post, ctx) {
 
   if (/\b(?:i|we) (?:also )?(?:wrote|published|posted)\b|\b(?:another|a separate|my other|our other|a related) (?:post|article|blog)\b/i.test(body)) issues.push('Refers to another post by description. Do not mention other posts in the text.');
 
+  const qTokens = [...body.matchAll(/\{\{quote:([^}]*)\}\}/g)];
+  if (qTokens.length > 1) issues.push('Uses more than one quote; use at most one.');
+  if (qTokens.length && !(ctx.quotes || []).some((q) => q.id === qTokens[0][1])) issues.push('The {{quote:ID}} marker does not match one of the supplied quote IDs.');
+  if (qTokens.length && !/^[ \t]*\{\{quote:q[0-9a-f]{8}\}\}[ \t]*$/m.test(body)) issues.push('Put the {{quote:ID}} marker alone on its own line.');
   const tokens = [...body.matchAll(/\{\{link:([a-z0-9-]+)\|([^}]+)\}\}/g)];
   const outIds = new Set(ctx.outbound.map((l) => l.id)), inIds = new Set(ctx.inbound.map((l) => l.id));
   const unknown = tokens.filter((t) => !outIds.has(t[1]) && !inIds.has(t[1])).map((t) => t[1]);

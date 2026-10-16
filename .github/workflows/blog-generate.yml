@@ -53,6 +53,10 @@ jobs:
           cache: npm
       - run: npm ci
 
+      - name: Refresh the quote bank (official sources)
+        continue-on-error: true
+        run: node scripts/quotes/build-bank.mjs
+
       - name: Is it the right time to post?
         id: guard
         run: node scripts/blog/should-run.mjs
@@ -76,7 +80,7 @@ jobs:
         run: |
           git config user.name "the615agent-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add drafts topics.json
+          git add drafts topics.json scripts/data/quote-bank.json
           git commit -m "Blog draft: ${{ steps.gen.outputs.slug }}"
           git pull --rebase -q
           git push
