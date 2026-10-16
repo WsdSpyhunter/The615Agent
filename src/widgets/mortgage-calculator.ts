@@ -8,7 +8,9 @@ import { getJSON, money0, money2, flag, emit } from './lib/data';
  *   rate-src        JSON URL with a "mortgageRate30" number (e.g. /data/market.json) used as the default rate
  *   default-rate    fallback rate if rate-src is missing/empty (default 6.5)
  *   default-price   (default 600000)   default-down (percent, default 20)
- *   default-tax     property tax % of price per year (default 0.65, an example value)
+ *   default-tax     property tax % of price per year (default 0.65, an example value; used when the area list cannot load)
+ *   tax-src         JSON URL with the area tax rates (e.g. /data/property-tax-rates.json); shows an optional area list that fills in the tax box
+ *   default-area    which area in that list is selected first (default: the first one)
  *   default-ins     home insurance $ per year (default 1800, an example value)
  *   contact-url     where the "talk to me" button goes; the numbers are added as ?note=... (default /contact)
  *   cta-label       button text; set cta="false" to hide the button
@@ -20,7 +22,7 @@ import { getJSON, money0, money2, flag, emit } from './lib/data';
 
 const COLORS = { pi: '#1473E6', tax: '#FFC20E', ins: '#F2593A', mi: '#A5D8FF', hoa: '#8B95A3' } as const;
 const NOTES: Record<string, string> = {
-  conv: 'Mortgage insurance (PMI) is estimated when your down payment is under 20%.',
+  conv: 'Mortgage insurance (PMI) is estimated at 0.5% of the loan per year when your down payment is under 20%. Your actual cost depends on your credit and down payment.',
   fha: 'Estimates a 1.75% upfront premium added to the loan and a 0.55% annual premium. FHA allows as little as 3.5% down.',
   va: 'No monthly mortgage insurance. A VA funding fee may apply and is not included.',
 };
@@ -62,39 +64,68 @@ export class TpaMortgageCalculator extends HTMLElement {
   async connectedCallback() {
     this.classList.add('tpa-mc');
     let rate = +(this.getAttribute('default-rate') || 6.5);
-    const rs = this.getAttribute('rate-src');
-    if (rs) { try { const d = await getJSON(rs); if (typeof d.mortgageRate30 === 'number') rate = d.mortgageRate30; } catch {} }
+    const rs = this.getAttribute('rate-src'), taxSrc = this.getAttribute('tax-src');
+    // Load the rate and the area tax list at the same time so the calculator appears as soon as possible.
+    const [rateData, taxData] = await Promise.all([rs ? getJSON(rs).catch(() => null) : null, taxSrc ? getJSON(taxSrc).catch(() => null) : null]);
+    if (rateData && typeof rateData.mortgageRate30 === 'number') rate = rateData.mortgageRate30;
     const price = +(this.getAttribute('default-price') || 600000), down = +(this.getAttribute('default-down') || 20);
     const tax = this.getAttribute('default-tax') || '0.65', ins = this.getAttribute('default-ins') || '1800';
     const cta = flag(this, 'cta', true);
+    // Optional area list: picking an area fills in the property tax box. The box stays editable, and "Other area" is always there.
+    if (taxData && Array.isArray(taxData.areas) && taxData.areas.length) { this.areas = taxData.areas; this.ratio = +taxData.assessmentRatio || 0.25; this.taxYear = String(taxData.taxYear || ''); }
+    const wantArea = this.getAttribute('default-area') || this.areas[0]?.key;
+    const startArea = this.areas.find((a) => a.key === wantArea) ?? this.areas[0];
+    const pct = (a: any) => +(a.rate * this.ratio).toFixed(3);
+    const taxStart = startArea ? String(pct(startArea)) : tax;
+    const areaField = this.areas.length ? `<div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-area">Property tax area</label></div><select id="tpa-area" data-f="area">${this.areas.map((a) => `<option value="${a.key}"${a === startArea ? ' selected' : ''}>${a.label}</option>`).join('')}<option value="other">Other area (enter your own %)</option></select><small data-o="areanote"></small></div>` : '';
     this.innerHTML = `
     <div class="tpa-mc-panel">
-      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-price">Home price</label><output data-o="price"></output></div><input id="tpa-price" data-f="price" type="range" min="100000" max="2000000" step="5000" value="${price}"></div>
+      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-price">Home price</label><output data-o="price"></output></div><input id="tpa-price" data-f="price" type="range" min="100000" max="2000000" step="5000" value="${price}">
+        <div class="tpa-mc-num"><input data-f="pricenum" inputmode="numeric" aria-label="Home price in dollars" placeholder="Type a price"></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-down">Down payment</label><output data-o="down"></output></div><input id="tpa-down" data-f="down" type="range" min="0" max="50" step="0.5" value="${down}">
         <div class="tpa-mc-num"><input data-f="downamt" inputmode="numeric" aria-label="Down payment in dollars"><input data-f="downpct" inputmode="decimal" aria-label="Down payment percent"></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-rate">Interest rate</label><output data-o="rate"></output></div><input id="tpa-rate" data-f="rate" type="range" min="2" max="10" step="0.125" value="${rate}">
         <div class="tpa-mc-ratebox"><small>Example rate. Use the rate from your lender's quote, or type your own.</small><input data-f="ratenum" inputmode="decimal" aria-label="Interest rate percent"></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><span>Loan term</span></div><div class="tpa-mc-seg" data-seg="term" role="group" aria-label="Loan term"><button type="button" data-v="30" aria-pressed="true">30 years</button><button type="button" data-v="20" aria-pressed="false">20 years</button><button type="button" data-v="15" aria-pressed="false">15 years</button></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><span>Loan type</span></div><div class="tpa-mc-seg" data-seg="ltype" role="group" aria-label="Loan type"><button type="button" data-v="conv" aria-pressed="true">Conventional</button><button type="button" data-v="fha" aria-pressed="false">FHA</button><button type="button" data-v="va" aria-pressed="false">VA</button></div><small data-o="ltype"></small></div>
+      ${areaField}
       <div class="tpa-mc-grid">
-        <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-tax">Property tax (% of price / yr)</label></div><input id="tpa-tax" data-f="tax" type="number" step="0.01" min="0" value="${tax}"></div>
+        <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-tax">Property tax (% of price / yr)</label></div><input id="tpa-tax" data-f="tax" type="number" step="0.001" min="0" value="${taxStart}"></div>
         <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-ins">Home insurance ($ / yr)</label></div><input id="tpa-ins" data-f="ins" type="number" step="50" min="0" value="${ins}"></div>
-        <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-hoa">HOA ($ / month)</label></div><input id="tpa-hoa" data-f="hoa" type="number" step="10" min="0" value="0"></div>
-        <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-extra">Extra principal ($ / month)</label></div><input id="tpa-extra" data-f="extra" type="number" step="25" min="0" value="0"></div>
+        <div class="tpa-mc-field tpa-mc-wide"><div class="tpa-mc-top"><label for="tpa-hoa">HOA ($ / month)</label></div><input id="tpa-hoa" data-f="hoa" type="number" step="10" min="0" value="0"></div>
       </div>
-      <p class="tpa-mc-hint">Property tax and insurance are example values. Tax depends on the home's assessment and its location, and insurance depends on the home and carrier. Look up the specific property and get a quote for real numbers.</p>
+      <details class="tpa-mc-more"><summary>More options</summary>
+        <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-extra">Extra principal ($ / month)</label></div><input id="tpa-extra" data-f="extra" type="number" step="25" min="0" value="0"><small>Paying extra toward the loan each month shortens the loan and saves interest.</small></div>
+      </details>
+      <p class="tpa-mc-hint">Property tax is estimated from the area's ${this.taxYear || ''} rates applied to the purchase price. The county's appraisal, the exact address and later rate changes will differ. Insurance is an example value. Look up the specific property and get a quote for real numbers.</p>
     </div>
     <div class="tpa-mc-res" aria-live="polite">
       <div class="tpa-mc-head"><div><small>Estimated monthly payment</small><div class="tpa-mc-big" data-o="total"></div></div>${this.getAttribute('logo-src') ? `<img class="tpa-mc-logo" src="${this.getAttribute('logo-src')}" alt="${this.getAttribute('logo-alt') || this.getAttribute('brand') || ''}" loading="lazy">` : ''}</div>
       <div class="tpa-mc-donutwrap"><svg data-o="donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Payment breakdown"></svg><div class="tpa-mc-legend" data-o="legend"></div></div>
       <div class="tpa-mc-totals" data-o="totals"></div>
+      <div class="tpa-mc-cash"><span>Estimated cash to close</span><b data-o="cash"></b><small>Your down payment plus about 2 to 4 percent of the price in closing costs. Earnest money and moving costs are extra.</small></div>
       <div class="tpa-mc-chart"><svg data-o="chart" viewBox="0 0 520 240" role="img" aria-label="Loan balance and cumulative interest over time"></svg></div>
       <p class="tpa-mc-note" data-o="chartnote"></p>
       ${cta ? `<a class="tpa-mc-cta" data-o="cta" href="${this.getAttribute('contact-url') || '/contact'}">${this.getAttribute('cta-label') || 'Talk to me about these numbers'}</a>` : ''}
       <p class="tpa-mc-note">Estimates only, not a loan offer or commitment to lend. Actual rates, taxes, insurance, mortgage insurance and fees vary. ${this.getAttribute('brand') || 'This site'} is not a lender. Equal Housing Opportunity.</p>
-    </div>`;
+    </div>
+    <div class="tpa-mc-bar" data-o="bar" role="button" tabindex="0" aria-label="Show the payment breakdown" hidden><span>Estimated payment</span><b data-o="barv"></b><i>Details ↓</i></div>`;
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
-    ['price', 'down', 'tax', 'ins', 'hoa', 'extra'].forEach((k) => f(k).addEventListener('input', () => this.render()));
+    ['down', 'ins', 'hoa', 'extra'].forEach((k) => f(k).addEventListener('input', () => this.render()));
+    // The price slider and the typed price box control each other (the box can go beyond the slider's range).
+    f('price').addEventListener('input', () => { f('pricenum').value = ''; this.render(); });
+    f('pricenum').addEventListener('input', () => {
+      const v = +f('pricenum').value.replace(/[^0-9]/g, '');
+      if (v >= 10000 && v <= 50000000) f('price').value = String(Math.min(2000000, Math.max(100000, v)));
+      this.render();
+    });
+    // The tax box and the area list: picking an area fills the box; typing your own switches the list to "Other area".
+    f('tax').addEventListener('input', () => { const a = this.querySelector<HTMLSelectElement>('[data-f=area]'); if (a) a.value = 'other'; this.render(); });
+    this.querySelector<HTMLSelectElement>('[data-f=area]')?.addEventListener('change', (e) => {
+      const key = (e.target as HTMLSelectElement).value, a = this.areas.find((x) => x.key === key);
+      if (a) f('tax').value = String(+(a.rate * this.ratio).toFixed(3));
+      this.render();
+    });
     // The rate slider and the typed rate box control each other.
     f('rate').addEventListener('input', () => { f('ratenum').value = ''; this.render(); });
     f('ratenum').addEventListener('input', () => {
@@ -102,18 +133,35 @@ export class TpaMortgageCalculator extends HTMLElement {
       if (isFinite(v) && v > 0 && v <= 25) f('rate').value = String(Math.min(10, Math.max(2, v)));
       this.render();
     });
-    ['ratenum', 'downpct', 'downamt'].forEach((k) => {
+    ['ratenum', 'downpct', 'downamt', 'pricenum'].forEach((k) => {
       f(k).addEventListener('focus', () => f(k).select());
       f(k).addEventListener('blur', () => this.render());
     });
-    f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(50, Math.max(0, (v / +f('price').value) * 100))); this.render(); });
+    f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(50, Math.max(0, (v / this.priceVal()) * 100))); this.render(); });
     f('downpct').addEventListener('input', () => { const v = parseFloat(f('downpct').value.replace(/[^0-9.]/g, '')); if (!isNaN(v)) { f('down').value = String(Math.min(50, Math.max(0, v))); this.render(); } });
     this.querySelectorAll<HTMLElement>('[data-seg]').forEach((g) => g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
       if (g.dataset.seg === 'term') this.term = +b.dataset.v!; else this.ltype = b.dataset.v as any;
       g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
       this.render();
     })));
+    // Slim payment bar on phones: shows while the results panel is below the screen, tap to jump to it.
+    const bar = this.querySelector<HTMLElement>('[data-o=bar]')!, res = this.querySelector<HTMLElement>('.tpa-mc-res')!;
+    const jump = () => res.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    bar.addEventListener('click', jump);
+    bar.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(); } });
+    const headEl = this.querySelector<HTMLElement>('.tpa-mc-head')!;
+    const place = () => { bar.hidden = !(this.getBoundingClientRect().top < window.innerHeight * 0.6 && headEl.getBoundingClientRect().top > window.innerHeight - 40); };
+    window.addEventListener('scroll', place, { passive: true }); window.addEventListener('resize', place); place();
     this.render();
+    this.classList.add('tpa-mc-ready');
+  }
+  private areas: any[] = [];
+  private ratio = 0.25;
+  private taxYear = '';
+  /** The home price in use: the typed number if it is valid, otherwise the slider. */
+  private priceVal() {
+    const typed = +this.querySelector<HTMLInputElement>('[data-f=pricenum]')!.value.replace(/[^0-9]/g, '');
+    return typed >= 10000 && typed <= 50000000 ? typed : +this.querySelector<HTMLInputElement>('[data-f=price]')!.value;
   }
   /** The interest rate in use: the typed number if it is valid, otherwise the slider. */
   private rateVal() {
@@ -123,8 +171,10 @@ export class TpaMortgageCalculator extends HTMLElement {
   private render() {
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
     const o = (k: string) => this.querySelector<HTMLElement>(`[data-o=${k}]`)!;
-    const c = calculate({ price: +f('price').value, downPct: +f('down').value, rate: this.rateVal(), years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0 });
+    const price = this.priceVal();
+    const c = calculate({ price, downPct: +f('down').value, rate: this.rateVal(), years: this.term, type: this.ltype, taxPct: +f('tax').value || 0, insYear: +f('ins').value || 0, hoa: +f('hoa').value || 0, extra: +f('extra').value || 0 });
     o('price').textContent = money0(c.price);
+    if (document.activeElement !== f('pricenum')) f('pricenum').value = c.price.toLocaleString('en-US');
     o('rate').textContent = this.rateVal().toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0') + '%';
     if (document.activeElement !== f('ratenum')) f('ratenum').value = this.rateVal().toFixed(3).replace(/0+$/, '').replace(/\.$/, '.0') + '%';
     o('down').textContent = `${money0(c.dAmt)} (${(+f('down').value).toFixed(1)}%)`;
@@ -138,7 +188,12 @@ export class TpaMortgageCalculator extends HTMLElement {
     }).join('');
     o('legend').innerHTML = parts.filter((p) => p.v > 0).map((p) => `<div><i style="background:${COLORS[p.k]}"></i>${p.n}<b>${money2(p.v)}</b></div>`).join('');
     const yrs = Math.floor(c.months / 12), mo = c.months % 12;
-    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b></div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b></div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b></div>`;
+    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b></div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b>${c.extra > 0 && this.term * 12 > c.months ? `<small class="tpa-mc-sub">${Math.floor((this.term * 12 - c.months) / 12)} yr ${(this.term * 12 - c.months) % 12} mo sooner</small>` : ''}</div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b></div>`;
+    o('cash').textContent = `${money0(c.dAmt + c.price * 0.02)} to ${money0(c.dAmt + c.price * 0.04)}`;
+    o('barv').textContent = money0(c.total) + '/mo';
+    const area = this.areas.find((x) => x.key === this.querySelector<HTMLSelectElement>('[data-f=area]')?.value);
+    const an = this.querySelector<HTMLElement>('[data-o=areanote]');
+    if (an && this.areas.length) an.textContent = area ? `${this.taxYear} combined rate of $${area.rate} per $100 of assessed value. ${area.note}` : 'Type your own property tax percentage below, or look up the rate for the home you are considering.';
     this.chart(o('chart') as unknown as SVGElement, c);
     o('chartnote').textContent = c.mi > 0 && this.ltype === 'conv' ? 'Mortgage insurance typically ends once you reach 20% equity. The chart shows principal and interest only.' : 'The chart shows principal and interest only.';
     o('ltype').textContent = NOTES[this.ltype];

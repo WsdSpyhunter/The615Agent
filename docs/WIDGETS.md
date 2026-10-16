@@ -61,6 +61,7 @@ Each widget documents its attributes at the top of its `.ts` file. In short:
 
 - `<tpa-market-temperature>`: `src`, `city`, `show-title`, `show-selector`. Method `select(slug)`. Events `tpa-market:ready`, `tpa-market:city`.
 - `<tpa-mortgage-calculator>`: `rate-src`, `default-rate`, `default-price`, `default-down`, `default-tax`, `default-ins`, `contact-url`, `cta-label`, `cta`, `brand`. Event `tpa-mortgage:change`.
+  Area property tax list: `tax-src` (e.g. `/data/property-tax-rates.json`) and `default-area`. Rates live in that JSON file (combined rate per $100 of assessed value, 25% assessment ratio). Update it each year when new rates are published. The tax box always stays editable, and an "Other area" choice is always offered.
 - `<tpa-checklist>`: `src`, `list`, `storage-key`, `tabs`, `labels`. Method `select(key)`. Event `tpa-checklist:progress`.
 - `<tpa-testimonials>`: `src`, `show-placeholders`, `speed`.
 - `lead-form`: add `data-tpa-lead` and `data-endpoint` to a form; include `[data-ok]` and `[data-err]` message elements.

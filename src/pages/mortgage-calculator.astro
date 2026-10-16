@@ -1,12 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import ColorBar from '../components/ColorBar.astro';
 import { site } from '../site.config';
-const schema = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Mortgage Calculator', url: `${site.url}/mortgage-calculator`, applicationCategory: 'FinanceApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } };
+const faq = [
+  { q: 'How is the monthly payment calculated?', a: 'The calculator adds up to five parts: principal and interest on the loan, property tax, home insurance, mortgage insurance when it applies, and any HOA dues. Principal and interest come from the loan amount, the interest rate and the loan term. The other parts are estimates that you can change.' },
+  { q: 'How does property tax work in Tennessee?', a: 'Residential property in Tennessee is assessed at 25 percent of its appraised value. The yearly tax is the assessed value divided by 100, multiplied by the combined rate per $100 set by the county, the city and, in some places, a school district. Rates differ by area, so the area list fills in an estimate that you can overwrite. The calculator applies the area\'s 2025 rate to the purchase price, but the county\'s appraisal and later rate changes can make a real bill different.' },
+  { q: 'How much are closing costs?', a: 'Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. The calculator shows a range for your estimated cash to close: your down payment plus 2 to 4 percent of the price.' },
+  { q: 'Do I need mortgage insurance if I put less than 20 percent down?', a: 'Private mortgage insurance is typically required on conventional loans when the down payment is under 20 percent. FHA loans allow a down payment as low as 3.5 percent. VA loans typically require no down payment and no monthly mortgage insurance, though a funding fee may apply. The calculator uses simple estimates for each, and your lender can give you exact figures.' },
+  { q: 'Where does the default interest rate come from?', a: "It is Freddie Mac's most recent weekly average 30-year fixed mortgage rate, published by the Federal Reserve Bank of St. Louis. It is an average, not a quote, so use the rate in your lender's quote when you have one." },
+  { q: 'What does extra principal do?', a: 'Extra principal is money you pay toward the loan balance on top of the required payment each month. It shortens the loan and reduces the total interest. Open "More options" in the calculator to try it.' },
+  { q: 'Is this a loan offer?', a: 'No. The calculator gives estimates only and is not a loan offer or a commitment to lend. Actual rates, taxes, insurance, mortgage insurance and fees vary. The 615 Agent is not a lender.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Mortgage Calculator', url: `${site.url}/mortgage-calculator`, applicationCategory: 'FinanceApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+];
 ---
-<Layout title="Mortgage Calculator: Monthly Payment With Taxes and Insurance" description="Free mortgage calculator for Tennessee homebuyers. Estimate your monthly payment with property tax, insurance, mortgage insurance and extra payments, plus an amortization chart." schema={schema}>
-  <PageHeader eyebrow="Mortgage calculator" title="What will your payment <em>really</em> be?" lead="Adjust the numbers and watch your monthly payment, interest and payoff date update instantly. Everything runs in your browser. Nothing you type is sent anywhere." />
+<Layout title="Mortgage Calculator: Monthly Payment With Taxes and Insurance" description="Free mortgage calculator for Franklin, Nashville and Middle Tennessee homebuyers. Estimate your payment with property tax by area, insurance and extra payments." schema={schema}>
+  <PageHeader eyebrow="Mortgage calculator" title="What will your payment <em>really</em> be?" lead="A free mortgage calculator for Franklin, Nashville and Middle Tennessee homebuyers. Adjust the numbers and watch your monthly payment, interest and payoff time update instantly. Everything runs in your browser. Nothing you type is sent anywhere." />
   <section class="s"><div class="wrap">
-    <tpa-mortgage-calculator rate-src="/data/market.json" default-rate="6.5" contact-url="/contact" cta-label="Talk to Scott about these numbers" brand={site.name} logo-src="/img/logo-615-agent.webp" logo-alt="The 615 Agent"></tpa-mortgage-calculator>
+    <tpa-mortgage-calculator rate-src="/data/market.json" tax-src="/data/property-tax-rates.json" default-area="nashville" default-rate="6.5" contact-url="/contact" cta-label="Talk to Scott about these numbers" brand={site.name} logo-src="/img/logo-615-agent.webp" logo-alt="The 615 Agent"></tpa-mortgage-calculator>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh"><div><span class="kicker navy">Good to know</span><h2>Mortgage calculator questions</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="hint" style="margin-top:16px">Property tax rates by area come from the <a href="https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" rel="noopener" target="_blank">Williamson County 2025 rate sheet</a>, the <a href="https://www.padctn.org/resources/tax-rates-and-calculator/" rel="noopener" target="_blank">Nashville Property Assessor</a>, the <a href="https://springhilltn.org/999/Tax-Rates" rel="noopener" target="_blank">City of Spring Hill</a> and Tennessee Comptroller data for Maury County. For the details behind each local rate, see the property tax pages for <a href="/franklin/property-taxes">Franklin</a>, <a href="/brentwood/property-taxes">Brentwood</a> and <a href="/spring-hill/property-taxes">Spring Hill</a>. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
   </div></section>
 </Layout>

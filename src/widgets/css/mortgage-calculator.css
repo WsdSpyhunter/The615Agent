@@ -43,3 +43,26 @@ tpa-mortgage-calculator input[type=range]{padding:0;border:0;background:transpar
 .tpa-mc-ratebox{display:flex;justify-content:space-between;align-items:center;gap:14px}
 .tpa-mc-ratebox input{width:120px;flex:none;text-align:right}
 @media(max-width:420px){.tpa-mc-ratebox{flex-wrap:wrap}}
+
+/* Area list, wide HOA field, More options, estimated cash to close, sooner note, and the phone payment bar */
+tpa-mortgage-calculator select{font:inherit;color:inherit;background:var(--tpa-input-bg,#fff);border:1.5px solid var(--tpa-card-border,#D4D9DF);border-radius:14px;padding:13px 16px;width:100%}
+.tpa-mc-wide{grid-column:1/-1}
+.tpa-mc-more summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--tpa-link,#173F8A);padding:2px 0}
+.tpa-mc-more[open] summary{margin-bottom:12px}
+.tpa-mc-cash{background:var(--tpa-stat-bg,#12171D);border:1px solid var(--tpa-stat-border,#232A32);border-radius:14px;padding:10px 14px}
+.tpa-mc-cash span{display:block;font-size:11.5px;color:var(--tpa-muted,#8B95A3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.tpa-mc-cash b{display:block;font-variant-numeric:tabular-nums}
+.tpa-mc-cash small{display:block;margin-top:4px;font-size:12px}
+.tpa-mc-sub{display:block;margin-top:2px;font-size:12px;color:var(--tpa-muted,#9AA4B1)}
+.tpa-mc-bar{display:none}
+@media(max-width:920px){
+  .tpa-mc-bar:not([hidden]){display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:var(--tpa-panel-bg,#0A0A0A);color:var(--tpa-panel-fg,#fff);border-top:3px solid var(--tpa-primary,#1473E6);box-shadow:0 -6px 20px rgba(10,10,10,.25);cursor:pointer}
+  .tpa-mc-bar span{font-size:12.5px;color:var(--tpa-muted,#9AA4B1);font-weight:600}
+  .tpa-mc-bar b{font-size:1.25rem;font-variant-numeric:tabular-nums}
+  .tpa-mc-bar i{font-style:normal;font-size:13px;font-weight:700;color:var(--tpa-cta-bg,#FFC20E)}
+}
+
+/* Hold the calculator's space while it loads so the page below it does not jump (the heights match the finished calculator) */
+tpa-mortgage-calculator:not(.tpa-mc-ready){display:block;min-height:1200px}
+@media(max-width:920px){tpa-mortgage-calculator:not(.tpa-mc-ready){min-height:2260px}}
+@media(max-width:560px){tpa-mortgage-calculator:not(.tpa-mc-ready){min-height:2650px}}
