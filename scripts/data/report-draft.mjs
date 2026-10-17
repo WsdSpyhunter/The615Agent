@@ -17,7 +17,10 @@ if (m.sample) { log('Market data is still sample data, skipping the report draft
 
 const SITE = 'https://the615agent.com';
 const longDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
-const monthYear = new Date(m.asOf + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+const fmtMonth = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });
+const dataMonth = fmtMonth(m.asOf); // the month the data ends in
+// Optional REPORT_MONTH=YYYY-MM names the issue by the month it is sent (data dates in the body stay as they are).
+const monthYear = /^\d{4}-\d{2}$/.test(process.env.REPORT_MONTH || '') ? fmtMonth(process.env.REPORT_MONTH + '-01') : dataMonth;
 const money = (v) => (v == null ? 'n/a' : '$' + Math.round(v).toLocaleString('en-US'));
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const label = (x) => (x < 4 ? "Seller's market" : x <= 6 ? 'Balanced market' : "Buyer's market");
@@ -106,9 +109,10 @@ const headers = { Authorization: `Token ${key}`, 'Content-Type': 'application/js
 const existing = await fetch(`${api}?status=draft`, { headers });
 if (existing.ok) {
   const j = await existing.json();
-  const found = (j.results || []).find((e) => e.subject === subject);
+  const oldSubject = `${dataMonth} housing market report: Franklin, Brentwood, Spring Hill and more`;
+  const found = (j.results || []).find((e) => e.subject === subject || (monthYear !== dataMonth && e.subject === oldSubject));
   if (found) {
-    const up = await fetch(`${api}/${found.id}`, { method: 'PATCH', headers, body: JSON.stringify({ body }) });
+    const up = await fetch(`${api}/${found.id}`, { method: 'PATCH', headers, body: JSON.stringify({ subject, body }) });
     const t = (await up.text()).slice(0, 300).replace(/[A-Za-z0-9-]{30,}/g, '[hidden]');
     if (!up.ok) { log(`Could not update the existing draft (HTTP ${up.status}): ${t}`); process.exit(1); }
     log(`Updated the existing draft "${subject}".`); process.exit(0);

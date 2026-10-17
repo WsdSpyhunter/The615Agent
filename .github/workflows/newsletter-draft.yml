@@ -1,0 +1,23 @@
+name: Newsletter draft
+# Rebuilds the monthly report draft in Buttondown (nothing is sent). Started by a repository_dispatch of type newsletter-draft;
+# optional client_payload {"month": "2026-10"} names the issue by the month it goes out.
+on:
+  repository_dispatch:
+    types: [newsletter-draft]
+permissions:
+  contents: read
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Create or update the draft
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          REPORT_MONTH: ${{ github.event.client_payload.month }}
+        run: node scripts/data/report-draft.mjs
