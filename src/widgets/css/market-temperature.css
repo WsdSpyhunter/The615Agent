@@ -21,7 +21,7 @@ tpa-market-temperature{display:block;font-family:var(--tpa-font,inherit);min-wid
 @media(max-width:560px){.tpa-mt-gaugewrap{grid-template-columns:1fr}}
 .tpa-arc-seller{stroke:var(--tpa-gauge-seller,#F2593A)}.tpa-arc-seller-leaning{stroke:var(--tpa-gauge-seller-leaning,#F58C3B)}.tpa-arc-balanced{stroke:var(--tpa-gauge-balanced,#FFC20E)}.tpa-arc-buyer-leaning{stroke:var(--tpa-gauge-buyer-leaning,#5BB8A8)}.tpa-arc-buyer{stroke:var(--tpa-gauge-buyer,#0E9F8E)}
 .tpa-needle{stroke:var(--tpa-needle,#fff)}.tpa-hub{fill:var(--tpa-needle,#fff)}
-.tpa-glabel{fill:var(--tpa-muted,#8B95A3);font-family:sans-serif}.tpa-gmid{fill:var(--tpa-chip-fg,#C3CBD6)}
+.tpa-glabel{fill:var(--tpa-muted,#8B95A3);font-family:sans-serif}.tpa-gmid{fill:var(--tpa-muted,#8B95A3);font-size:9px;font-weight:400;opacity:.75}
 .tpa-mt-verdict{font-size:1.7rem;font-weight:800;letter-spacing:-.02em}
 .tpa-mt-verdict small{display:block;font-size:13px;font-weight:600;color:var(--tpa-muted,#9AA4B1);letter-spacing:0}
 .tpa-mt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
