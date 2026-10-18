@@ -1,0 +1,48 @@
+---
+// "Local guides" block for blog posts and market updates: links to the city guide pages a post is about.
+// Picked automatically from the post's own words, so every existing and future post gets it. Only approved (indexable) guide pages are linked.
+import { guideCities } from '../data/guide-cities.ts';
+import { pagesFor } from '../data/guide-pages.ts';
+import { isIndexable, guideCitySlugs } from '../data/franklin-guide.ts';
+const { title = '', description = '', body = '' } = Astro.props;
+const head = `${title} ${description}`.toLowerCase();
+const text = `${head} ${body}`.toLowerCase().replace(/[’]/g, "'");
+const count = (s: string, w: string) => s.split(w.toLowerCase()).length - 1;
+// Words in the post that point to a guide page, in the order the links are shown.
+const TOPICS: { key: string; re: RegExp }[] = [
+  { key: 'housing-market', re: /\b(market|inventory|months of supply|days on market)\b/ },
+  { key: 'home-prices', re: /\b(prices?|median)\b/ },
+  { key: 'property-taxes', re: /\b(tax|taxes)\b/ },
+  { key: 'schools', re: /\bschools?\b/ },
+  { key: 'buying', re: /\b(buy|buying|buyers?|pre-?approval|pre-?qualif\w*)\b/ },
+  { key: 'selling', re: /\b(sell|selling|sellers?|listing)\b/ },
+  { key: 'commute', re: /\bcommut\w*\b/ },
+  { key: 'new-construction', re: /\b(new construction|builder)\b/ },
+  { key: 'cost-of-living', re: /\bcost of living\b/ },
+];
+const cities = guideCitySlugs
+  .map((slug) => ({ slug, n: count(head, guideCities[slug].name) * 3 + count(text, guideCities[slug].name) }))
+  .filter((c) => c.n >= 3 && isIndexable(c.slug, 'index'))
+  .sort((a, b) => b.n - a.n).slice(0, 3);
+// Most-mentioned topics first; a topic needs at least two mentions (or one in the title) to count.
+const wanted = TOPICS
+  .map((t) => ({ key: t.key, n: (text.match(new RegExp(t.re.source, 'g')) || []).length + (t.re.test(head) ? 3 : 0) }))
+  .filter((t) => t.n >= 2).sort((x, y) => y.n - x.n).slice(0, 3).map((t) => t.key);
+const rows = cities.map((c) => {
+  const pages = pagesFor(c.slug).filter((p) => isIndexable(c.slug, p.slug));
+  const picked = (wanted.length ? wanted : ['housing-market']).map((k) => pages.find((p) => p.key === k)).filter(Boolean).slice(0, 3);
+  if (!picked.length) { const hm = pages.find((p) => p.key === 'housing-market'); if (hm) picked.push(hm); }
+  return { slug: c.slug, name: guideCities[c.slug].name, picked };
+});
+---
+{rows.length > 0 && (
+  <section class="bp-guides" aria-labelledby="bp-guides-h">
+    <h2 id="bp-guides-h">Local guides</h2>
+    {rows.map((r) => (
+      <p>
+        <a class="gl-hub" href={`/${r.slug}`}>{r.name} real estate guide</a>
+        {r.picked.map((p: any) => <><span aria-hidden="true"> · </span><a href={`/${r.slug}/${p.slug}`}>{p.label}</a></>)}
+      </p>
+    ))}
+  </section>
+)}

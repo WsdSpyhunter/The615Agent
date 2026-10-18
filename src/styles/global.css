@@ -471,3 +471,10 @@ article.s{padding-top:48px}
 
 /* Blog posts and market updates on phones: section titles and the closing call to action are centered */
 @media(max-width:700px){.prose.bp h2,.prose.bp h3,.bp-faq>h2{text-align:center}.bp-cta{text-align:center;justify-content:center}.bp-cta .btn{margin-inline:auto}}
+
+/* Local guides block at the end of a blog post */
+.bp-guides{margin-top:40px;background:var(--card,#fff);border:1px solid var(--line);border-radius:16px;padding:22px 24px;text-align:center}
+.bp-guides h2{font-size:1.25rem;font-weight:800;margin:0 0 10px}
+.bp-guides p{margin:8px 0;line-height:1.7}
+.bp-guides a{color:var(--blue-ink);text-underline-offset:3px}
+.bp-guides .gl-hub{font-weight:700}
