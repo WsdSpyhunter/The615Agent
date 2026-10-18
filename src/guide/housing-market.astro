@@ -22,7 +22,7 @@ const charts = [
 ];
 const rows = hist.slice(-12).reverse();
 const peers = city.peers.map((s: string) => ({ s, n: M.cities[s].name, d: M.cities[s] }));
-const title = `${CN} TN Housing Market and Prices, ${monS}`;
+const title = `${CN} TN Housing Market ${asOf.slice(0, 4)}: Median Home Price, Days on Market`;
 const description = `${CN}, TN median sale price ${usd(f.medianPrice)} (${signed(f.yoy)} vs. a year earlier), ${f.dom} days on market, ${f.monthsSupply} months of supply. Redfin data through ${monS}, updated monthly.`;
 const answer = `As of ${when}, the median sale price in ${CN}, Tennessee was ${usd(f.medianPrice)}, ${word(f.yoy)} ${Math.abs(f.yoy).toFixed(1)}% from a year earlier. Homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price. With ${f.monthsSupply} months of supply and ${f.inventory} homes for sale, our blended rating is a ${t.label.toLowerCase()}${tiltTxt}.`;
 const faq = [
