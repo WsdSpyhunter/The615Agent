@@ -54,3 +54,6 @@ tpa-market-temperature{display:block;font-family:var(--tpa-font,inherit);min-wid
 .tpa-pillr.tpa-lv-sellers{color:#FF8566}
 .tpa-mt-verdict{font-size:1.65rem;line-height:1.15}
 @media(max-width:520px){.tpa-mt-row{grid-template-columns:auto 1fr}.tpa-mt-row .tpa-pillr{grid-column:2;justify-self:start}}
+
+/* Phones: the rating, confidence line and trend chip sit centered under the gauge, as on the home page */
+@media(max-width:560px){.tpa-mt-verdict{text-align:center}.tpa-mt-chips{justify-content:center}}
