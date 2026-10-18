@@ -468,3 +468,6 @@ article.s{padding-top:48px}
 
 /* Monthly market reports: city headings and the title are centered on phones */
 @media(max-width:700px){.mu-post h2,.mu-post h3{text-align:center}}
+
+/* Blog posts and market updates on phones: section titles and the closing call to action are centered */
+@media(max-width:700px){.prose.bp h2,.prose.bp h3,.bp-faq>h2{text-align:center}.bp-cta{text-align:center;justify-content:center}.bp-cta .btn{margin-inline:auto}}

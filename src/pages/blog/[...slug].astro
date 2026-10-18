@@ -54,15 +54,15 @@ if (d.faq.length) schema.push({ '@context': 'https://schema.org', '@type': 'FAQP
         {d.heroCredit && <figcaption>Photo: {d.heroCreditUrl ? <a href={d.heroCreditUrl} rel="noopener" target="_blank">{d.heroCredit}</a> : d.heroCredit}</figcaption>}
       </figure>
     )}
-    <div class={d.category === 'Market Update' ? 'prose mu-post' : 'prose'}><Content /></div>
+    <div class={d.category === 'Market Update' ? 'prose mu-post bp' : 'prose bp'}><Content /></div>
     {d.faq.length > 0 && (
-      <section class="faq" style="margin-top:40px">
+      <section class="faq bp-faq" style="margin-top:40px">
         <h2 class="h2" style="margin-bottom:16px">Frequently asked questions</h2>
         {d.faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
       </section>
     )}
     <AuthorCard />
-    <div class="cta-band" style="margin-top:40px">
+    <div class="cta-band bp-cta" style="margin-top:40px">
       <div><h2>Ready to talk it through?</h2><p>Tell me your budget, area and timeline, and we'll be talking within the next 48 hours.</p></div>
       <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
     </div>
