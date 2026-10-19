@@ -111,6 +111,28 @@ export const guideCities: Record<string, GuideCity> = {
       faqFind: { q: "How do I find the zoned school for a Thompson's Station address?", a: "Use the district's own zoning tool, the Williamson County Schools school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
     },
   },
+  nolensville: {
+    slug: 'nolensville', name: 'Nolensville', enabled: true,
+    zips: ['37135'],
+    peers: ['franklin', 'brentwood', 'thompsons-station'],
+    countyNote: 'Nolensville is in Williamson County.', hubFact: 'Nolensville is in Williamson County.',
+    tax: {
+      cityRate: 0.34, cityLabel: 'Town of Nolensville',
+      scenarios: [{ label: 'Inside Nolensville town limits', parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.34 }] }],
+      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
+      costNote: ' (2026 tax year)',
+    },
+    schools: {
+      intro: "Nolensville addresses are zoned through Williamson County Schools, the county district. The most reliable way to find the zoned school for a home is the district's own lookup tool.",
+      districts: [
+        { name: 'Williamson County Schools', text: 'The county school district. Use its school zones page to determine the zoned school for an address.', link: { label: 'Determine my zoned school ↗', url: 'https://www.wcs.edu/about-us/school-zones' } },
+      ],
+      sourcesNote: 'wcs.edu',
+      faqDistrict: { q: 'Which school district serves Nolensville, TN?', a: "Nolensville addresses are zoned through Williamson County Schools. Use the district's school zones page to determine the zoned school for an address." },
+      faqFind: { q: 'How do I find the zoned school for a Nolensville address?', a: "Use the district's own zoning tool, the Williamson County Schools school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
+    },
+  },
 };
 export const COUNTY_SHEET_LINK = COUNTY_SHEET;
 export const enabledCities = Object.values(guideCities).filter((c) => c.enabled);
