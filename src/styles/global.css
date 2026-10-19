@@ -481,3 +481,6 @@ article.s{padding-top:48px}
 .bp-guides p{margin:8px 0;line-height:1.7}
 .bp-guides a{color:var(--blue-ink);text-underline-offset:3px}
 .bp-guides .gl-hub{font-weight:700}
+
+/* Blog posts on desktop: a section title sitting directly above a picture is centered (phones already center every title) */
+@media(min-width:701px){.prose.bp :is(h2,h3):has(+ p > img:first-child),.prose.bp :is(h2,h3):has(+ img){text-align:center}}
