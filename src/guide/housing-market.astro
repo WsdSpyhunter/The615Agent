@@ -108,7 +108,7 @@ const schema = [
     <ul class="sources">
       <li><b>Redfin Data Center</b> (<a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">redfin.com/news/data-center</a>): median sale price, price per square foot, days on market, sale-to-list ratio, inventory and months of supply for {CN}, rolling 3-month figures ending {when}.</li>
       <li><b>Zillow Research</b> (<a href="https://www.zillow.com/research/data/" rel="noopener" target="_blank">zillow.com/research/data</a>): Market Temperature Index, one input to the rating.</li>
-      <li><b>Realtor.com Research</b> (<a href="https://www.realtor.com/research/data/" rel="noopener" target="_blank">realtor.com/research/data</a>): Williamson County hotness and listing activity, one input to the rating.</li>
+      <li><b>Realtor.com Research</b> (<a href="https://www.realtor.com/research/data/" rel="noopener" target="_blank">realtor.com/research/data</a>): {f.temperature?.county ?? 'County'} hotness and listing activity, one input to the rating.</li>
     </ul>
     <p class="sources">These figures are general market statistics for the whole city and may not reflect any one home, price range or neighborhood. Redfin updates its files monthly and this page refreshes automatically. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
     <div class="linkgrid" style="margin-top:18px">

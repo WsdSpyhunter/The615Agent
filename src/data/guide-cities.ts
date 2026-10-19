@@ -7,7 +7,7 @@ export interface GuideCity {
   zips: string[];                       // Franklin: all three ZIPs; others: their main ZIPs
   peers: string[];                      // slugs shown in comparison cards/pages (must exist in market.json and census-acs.json)
   countyNote: string; hubFact: string;                   // one factual sentence about the county / county overlap
-  tax: { kind?: 'split'; extraSources?: { label: string; url: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string }; costNote: string };
+  tax: { kind?: 'split' | 'maury'; year?: string; extraSources?: { label: string; url: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string }; costNote: string };
   schools: { intro: string; districts: { name: string; text: string; link: { label: string; url: string } }[]; sourcesNote: string; faqDistrict: { q: string; a: string }; faqFind: { q: string; a: string } };
 }
 
@@ -131,6 +131,28 @@ export const guideCities: Record<string, GuideCity> = {
       sourcesNote: 'wcs.edu',
       faqDistrict: { q: 'Which school district serves Nolensville, TN?', a: "Nolensville addresses are zoned through Williamson County Schools. Use the district's school zones page to determine the zoned school for an address." },
       faqFind: { q: 'How do I find the zoned school for a Nolensville address?', a: "Use the district's own zoning tool, the Williamson County Schools school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
+    },
+  },
+  columbia: {
+    slug: 'columbia', name: 'Columbia', enabled: true,
+    zips: ['38401'],
+    peers: ['spring-hill', 'franklin', 'murfreesboro'],
+    countyNote: 'Columbia is the Maury County seat.', hubFact: 'Columbia is the Maury County seat.',
+    tax: {
+      kind: 'maury', year: '2025', cityRate: 0.8251, cityLabel: 'City of Columbia',
+      scenarios: [{ label: 'Inside Columbia city limits', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.8251 }] }],
+      sourceNote: 'These are the 2025 rates, the latest I found in the Tennessee Comptroller data. Rates are set each year, so 2026 rates may differ.',
+      cityRateSource: { label: 'Maury County community profile: Columbia (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Columbia_Maury_County_2026.pdf', short: 'Columbia community profile' },
+      costNote: ' (2025 tax year)',
+    },
+    schools: {
+      intro: "Columbia addresses are zoned through Maury County Public Schools, the county district. The most reliable way to find the zoned school for a home is the district's own lookup tool.",
+      districts: [
+        { name: 'Maury County Public Schools', text: 'The county school district. Use its "Find my zoned school" tool to check an address.', link: { label: 'Find my zoned school ↗', url: 'https://www.mauryk12.org/67925_2' } },
+      ],
+      sourcesNote: 'mauryk12.org',
+      faqDistrict: { q: 'Which school district serves Columbia, TN?', a: "Columbia addresses are zoned through Maury County Public Schools. Use the district's \"Find my zoned school\" tool to check an address." },
+      faqFind: { q: 'How do I find the zoned school for a Columbia address?', a: "Use the district's own zoning tool, the Maury County Public Schools \"Find my zoned school\" page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
     },
   },
 };

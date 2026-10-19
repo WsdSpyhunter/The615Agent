@@ -12,6 +12,7 @@
     { "key": "spring-hill-williamson", "label": "Spring Hill, Williamson County side", "rate": 2.009, "note": "County $1.27 plus city $0.739. Spring Hill is in two counties, so use the side your address is on." },
     { "key": "spring-hill-maury", "label": "Spring Hill, Maury County side", "rate": 2.649, "note": "County $1.91 plus city $0.739. Spring Hill is in two counties, so use the side your address is on." },
     { "key": "thompsons-station", "label": "Thompson's Station (Williamson County)", "rate": 1.403, "note": "County $1.30 plus town $0.103." },
+    { "key": "columbia", "label": "Columbia (Maury County)", "rate": 2.7351, "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. 2026 rates may differ." },
     { "key": "nolensville", "label": "Nolensville (Williamson County)", "rate": 1.64, "note": "County $1.30 plus town $0.34." }
   ],
   "sources": [
