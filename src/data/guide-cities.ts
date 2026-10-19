@@ -11,7 +11,7 @@ export interface GuideCity {
   schools: { intro: string; districts: { name: string; text: string; link: { label: string; url: string } }[]; sourcesNote: string; faqDistrict: { q: string; a: string }; faqFind: { q: string; a: string } };
 }
 
-const COUNTY_SHEET = { label: 'Williamson County 2025 Property Tax Rates', url: 'https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580' };
+const COUNTY_SHEET = { label: 'Williamson County 2026 Property Tax Rates', url: 'https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580' };
 
 export const guideCities: Record<string, GuideCity> = {
   franklin: {
@@ -22,10 +22,10 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       cityRate: 0.296, cityLabel: 'City of Franklin',
       scenarios: [
-        { label: 'In the Franklin Special School District', parts: [{ name: 'county', rate: 1.18 }, { name: 'school district', rate: 0.5873 }, { name: 'city', rate: 0.296 }] },
+        { label: 'In the Franklin Special School District', parts: [{ name: 'county', rate: 1.18 }, { name: 'school district', rate: 0.7673 }, { name: 'city', rate: 0.296 }] },
         { label: 'Outside the district', parts: [{ name: 'county', rate: 1.27 }, { name: 'city', rate: 0.296 }] },
       ],
-      sourceNote: 'The 2025 sheet is the most recent I found, and 2026 rates may differ.',
+      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: 'City of Franklin 2026-2027 budget', url: 'https://www.franklintn.gov/Home/Components/News/News/11755/83', short: 'City of Franklin' },
       costNote: ' (fiscal 2026, with the proposed fiscal 2027 budget unchanged)',
     },
@@ -48,9 +48,9 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       cityRate: 0.19, cityLabel: 'City of Brentwood',
       scenarios: [{ label: 'Inside Brentwood city limits', parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.19 }] }],
-      sourceNote: 'The 2025 sheet is the most recent I found, and 2026 rates may differ.',
+      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
-      costNote: ' (2025 tax year)',
+      costNote: ' (2026 tax year)',
     },
     schools: {
       intro: 'Brentwood addresses are zoned through Williamson County Schools, the county district. The most reliable way to find the zoned school for a home is the district\'s own lookup tool.',
@@ -73,7 +73,7 @@ export const guideCities: Record<string, GuideCity> = {
         { label: 'Williamson County side of Spring Hill', parts: [{ name: 'county', rate: 1.27 }, { name: 'city', rate: 0.739 }] },
         { label: 'Maury County side of Spring Hill', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.739 }] },
       ],
-      sourceNote: 'The Williamson County sheet is for the 2025 tax year, the Maury County figure is the Tennessee Comptroller\'s 2025 county tax rate, and 2026 rates may differ.',
+      sourceNote: 'The Williamson County sheet and the Spring Hill city rate are for the 2026 tax year. The Maury County figure is the Tennessee Comptroller\'s 2025 county tax rate, the latest I found, and may differ for 2026.',
       cityRateSource: { label: 'City of Spring Hill tax rates', url: 'https://springhilltn.org/999/Tax-Rates', short: 'City of Spring Hill' },
       extraSources: [{ label: 'Maury County community profile (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Spring_Hill_Maury_County_2026.pdf' }],
       costNote: ' (2025 and 2026-27, the same in both counties)',
@@ -87,6 +87,28 @@ export const guideCities: Record<string, GuideCity> = {
       sourcesNote: 'wcs.edu and mauryk12.org',
       faqDistrict: { q: 'Which school district serves Spring Hill, TN?', a: 'Spring Hill includes parts of both Williamson and Maury counties, so an address is zoned through Williamson County Schools or Maury County Public Schools depending on the county it is in. Verify the exact address with the district.' },
       faqFind: { q: 'How do I find the zoned school for a Spring Hill address?', a: 'Use each district\'s own zoning tool: the Williamson County Schools school zones page or the Maury County Public Schools "Find my zoned school" tool. School assignment depends on the exact address, so verify it with the district for any home you are serious about.' },
+    },
+  },
+  'thompsons-station': {
+    slug: 'thompsons-station', name: "Thompson's Station", enabled: true,
+    zips: ['37179'],
+    peers: ['franklin', 'spring-hill', 'nolensville'],
+    countyNote: "Thompson's Station is in Williamson County.", hubFact: "Thompson's Station is in Williamson County.",
+    tax: {
+      cityRate: 0.103, cityLabel: "Town of Thompson's Station",
+      scenarios: [{ label: "Inside Thompson's Station town limits", parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.103 }] }],
+      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
+      costNote: ' (2026 tax year)',
+    },
+    schools: {
+      intro: "Thompson's Station addresses are zoned through Williamson County Schools, the county district. The most reliable way to find the zoned school for a home is the district's own lookup tool.",
+      districts: [
+        { name: 'Williamson County Schools', text: 'The county school district. Use its school zones page to determine the zoned school for an address.', link: { label: 'Determine my zoned school ↗', url: 'https://www.wcs.edu/about-us/school-zones' } },
+      ],
+      sourcesNote: 'wcs.edu',
+      faqDistrict: { q: "Which school district serves Thompson's Station, TN?", a: "Thompson's Station addresses are zoned through Williamson County Schools. Use the district's school zones page to determine the zoned school for an address." },
+      faqFind: { q: "How do I find the zoned school for a Thompson's Station address?", a: "Use the district's own zoning tool, the Williamson County Schools school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
     },
   },
 };
