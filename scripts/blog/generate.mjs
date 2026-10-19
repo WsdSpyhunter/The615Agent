@@ -49,7 +49,7 @@ if (!topic && arg('idea')) {
 if (!topic) {
   const recent = [...posts.map((p) => ({ category: p.category, keyword: p.keyword, type: 'evergreen', date: p.pubDate })), ...drafts.map((d) => ({ category: d.category, keyword: d.keyword, type: topics.find((t) => t.id === d.topicId)?.type, date: d.created }))]
     .sort((a, b) => String(b.date).localeCompare(String(a.date)));
-  topic = pickTopic({ topics, recent: [...topics.filter((t) => t.status === 'published' || t.status === 'draft').sort((a, b) => String(b.usedOn).localeCompare(String(a.usedOn))), ...recent].slice(0, 12), marketOk, date: today() });
+  topic = pickTopic({ topics, history: recent, recent: [...topics.filter((t) => t.status === 'published' || t.status === 'draft').sort((a, b) => String(b.usedOn).localeCompare(String(a.usedOn))), ...recent].slice(0, 12), marketOk, date: today() });
 }
 if (!topic) { log('No unused topic is available. Add more to topics.json.'); process.exit(1); }
 log(`Topic ${topic.id}: ${topic.idea}`);

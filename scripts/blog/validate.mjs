@@ -36,6 +36,7 @@ export function validatePost(post, ctx) {
   const outCount = tokens.filter((t) => outIds.has(t[1])).length, inCount = tokens.filter((t) => inIds.has(t[1])).length;
   if (outCount < 3 || outCount > 6) issues.push(`Needs 3 to 6 outbound links; has ${outCount}.`);
   if (inCount < 2) issues.push(`Needs at least 2 site-page links; has ${inCount}.`);
+  if (ctx.category === 'Relocation' && inCount < 4) issues.push(`A relocation post needs at least 4 site-page links (to the city guide pages); has ${inCount}.`);
 
   // Every number must come from the supplied facts, or be a small count or a recent year.
   const allText = body + ' ' + (post.faq || []).map((f) => f.q + ' ' + f.a).join(' ');

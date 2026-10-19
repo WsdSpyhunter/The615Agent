@@ -366,15 +366,20 @@
       "id": "t20",
       "category": "Relocation",
       "type": "evergreen",
-      "idea": "Moving to Franklin, TN: understanding the area and how to research it",
+      "idea": "Moving to Franklin, TN: what it costs to own a home here and what to know before you move (2026). Use the Franklin property tax, Census and market numbers supplied, and link to the Franklin guide pages for property taxes, schools, commute, cost of living and neighborhoods, plus the Franklin vs Brentwood and Franklin vs Spring Hill comparisons. No neighborhood or school rankings, no 'best' language, and no moving-company or other unsourced costs.",
       "keyword": "moving to Franklin TN",
       "related": [
-        "downtown Franklin",
-        "Williamson County"
+        "moving to Franklin Tennessee",
+        "cost of living Franklin TN",
+        "Franklin TN property taxes"
       ],
       "linkTags": [
         "franklin",
-        "relocation"
+        "relocation",
+        "property taxes",
+        "cost of living",
+        "schools",
+        "commute"
       ],
       "status": "unused",
       "usedOn": null,

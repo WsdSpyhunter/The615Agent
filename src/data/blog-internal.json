@@ -1,264 +1,1296 @@
 [
- {
-  "id": "buy",
-  "url": "/buy#form",
-  "label": "Get matched with homes",
-  "tags": [
-   "buyers",
-   "cta"
-  ]
- },
- {
-  "id": "sell",
-  "url": "/sell#form",
-  "label": "Find out what your home is worth",
-  "tags": [
-   "sellers",
-   "cta"
-  ]
- },
- {
-  "id": "market-data",
-  "url": "/market-data",
-  "label": "Market data for the I-65 corridor",
-  "tags": [
-   "market update",
-   "data"
-  ]
- },
- {
-  "id": "calculator",
-  "url": "/mortgage-calculator",
-  "label": "Mortgage calculator",
-  "tags": [
-   "financing",
-   "buyers",
-   "cost of living",
-   "property taxes"
-  ]
- },
- {
-  "id": "checklists",
-  "url": "/checklists",
-  "label": "Free moving checklists",
-  "tags": [
-   "buyers",
-   "sellers",
-   "relocation",
-   "moving"
-  ]
- },
- {
-  "id": "resources",
-  "url": "/resources",
-  "label": "Local resources",
-  "tags": [
-   "relocation",
-   "schools",
-   "utilities"
-  ]
- },
- {
-  "id": "contact",
-  "url": "/contact",
-  "label": "Contact Scott",
-  "tags": [
-   "cta"
-  ]
- },
- {
-  "id": "about",
-  "url": "/about",
-  "label": "About Scott",
-  "tags": [
-   "cta"
-  ]
- },
- {
-  "id": "franklin",
-  "url": "/areas/franklin",
-  "label": "Franklin area guide",
-  "tags": [
-   "franklin",
-   "relocation"
-  ]
- },
- {
-  "id": "brentwood",
-  "url": "/areas/brentwood",
-  "label": "Brentwood area guide",
-  "tags": [
-   "brentwood",
-   "relocation"
-  ]
- },
- {
-  "id": "spring-hill",
-  "url": "/areas/spring-hill",
-  "label": "Spring Hill area guide",
-  "tags": [
-   "spring hill",
-   "relocation",
-   "new construction"
-  ]
- },
- {
-  "id": "thompsons-station",
-  "url": "/areas/thompsons-station",
-  "label": "Thompson's Station area guide",
-  "tags": [
-   "thompsons station",
-   "relocation",
-   "new construction"
-  ]
- },
- {
-  "id": "nolensville",
-  "url": "/areas/nolensville",
-  "label": "Nolensville area guide",
-  "tags": [
-   "nolensville",
-   "relocation"
-  ]
- },
- {
-  "id": "columbia",
-  "url": "/areas/columbia",
-  "label": "Columbia area guide",
-  "tags": [
-   "columbia",
-   "relocation"
-  ]
- },
- {
-  "id": "murfreesboro",
-  "url": "/areas/murfreesboro",
-  "label": "Murfreesboro area guide",
-  "tags": [
-   "murfreesboro",
-   "relocation"
-  ]
- },
- {
-  "id": "blog",
-  "url": "/blog",
-  "label": "The blog",
-  "tags": []
- },
- {
-  "id": "franklin-guide",
-  "url": "/franklin",
-  "label": "Franklin Real Estate Guide",
-  "tags": [
-   "franklin",
-   "relocation",
-   "buyers",
-   "sellers"
-  ]
- },
- {
-  "id": "franklin-market",
-  "url": "/franklin/housing-market",
-  "label": "Franklin housing market data",
-  "tags": [
-   "franklin",
-   "market update",
-   "data",
-   "days on market",
-   "months of supply"
-  ]
- },
- {
-  "id": "franklin-prices",
-  "url": "/franklin/home-prices",
-  "label": "Franklin home prices",
-  "tags": [
-   "franklin",
-   "home prices",
-   "price per square foot",
-   "financing"
-  ]
- },
- {
-  "id": "franklin-buying",
-  "url": "/franklin/buying-in-franklin",
-  "label": "Buying a home in Franklin",
-  "tags": [
-   "franklin",
-   "buyers",
-   "pre-approval",
-   "closing"
-  ]
- },
- {
-  "id": "franklin-selling",
-  "url": "/franklin/selling-in-franklin",
-  "label": "Selling a home in Franklin",
-  "tags": [
-   "franklin",
-   "sellers",
-   "disclosures",
-   "closing"
-  ]
- },
- {
-  "id": "franklin-taxes",
-  "url": "/franklin/property-taxes",
-  "label": "Franklin property taxes",
-  "tags": [
-   "franklin",
-   "property taxes",
-   "cost of living"
-  ]
- },
- {
-  "id": "franklin-schools",
-  "url": "/franklin/schools",
-  "label": "Franklin schools and zoning",
-  "tags": [
-   "franklin",
-   "schools",
-   "zoning",
-   "relocation"
-  ]
- },
- {
-  "id": "franklin-commute",
-  "url": "/franklin/commute",
-  "label": "Franklin commute times",
-  "tags": [
-   "franklin",
-   "commute",
-   "relocation"
-  ]
- },
- {
-  "id": "franklin-cost",
-  "url": "/franklin/cost-of-living",
-  "label": "Franklin cost of living",
-  "tags": [
-   "franklin",
-   "cost of living",
-   "relocation"
-  ]
- },
- {
-  "id": "franklin-new",
-  "url": "/franklin/new-construction",
-  "label": "Franklin new construction",
-  "tags": [
-   "franklin",
-   "new construction"
-  ]
- },
- {
-  "id": "franklin-older",
-  "url": "/franklin/older-homes",
-  "label": "Franklin older homes",
-  "tags": [
-   "franklin",
-   "inspection",
-   "older homes"
-  ]
- }
+  {
+    "id": "buy",
+    "url": "/buy#form",
+    "label": "Get matched with homes",
+    "tags": [
+      "buyers",
+      "cta"
+    ]
+  },
+  {
+    "id": "sell",
+    "url": "/sell#form",
+    "label": "Find out what your home is worth",
+    "tags": [
+      "sellers",
+      "cta"
+    ]
+  },
+  {
+    "id": "market-data",
+    "url": "/market-data",
+    "label": "Market data for the I-65 corridor",
+    "tags": [
+      "market update",
+      "data"
+    ]
+  },
+  {
+    "id": "calculator",
+    "url": "/mortgage-calculator",
+    "label": "Mortgage calculator",
+    "tags": [
+      "financing",
+      "buyers",
+      "cost of living",
+      "property taxes"
+    ]
+  },
+  {
+    "id": "checklists",
+    "url": "/checklists",
+    "label": "Free moving checklists",
+    "tags": [
+      "buyers",
+      "sellers",
+      "relocation",
+      "moving"
+    ]
+  },
+  {
+    "id": "resources",
+    "url": "/resources",
+    "label": "Local resources",
+    "tags": [
+      "relocation",
+      "schools",
+      "utilities"
+    ]
+  },
+  {
+    "id": "contact",
+    "url": "/contact",
+    "label": "Contact Scott",
+    "tags": [
+      "cta"
+    ]
+  },
+  {
+    "id": "about",
+    "url": "/about",
+    "label": "About Scott",
+    "tags": [
+      "cta"
+    ]
+  },
+  {
+    "id": "franklin",
+    "url": "/areas/franklin",
+    "label": "Franklin area guide",
+    "tags": [
+      "franklin",
+      "relocation"
+    ]
+  },
+  {
+    "id": "brentwood",
+    "url": "/areas/brentwood",
+    "label": "Brentwood area guide",
+    "tags": [
+      "brentwood",
+      "relocation"
+    ]
+  },
+  {
+    "id": "spring-hill",
+    "url": "/areas/spring-hill",
+    "label": "Spring Hill area guide",
+    "tags": [
+      "spring hill",
+      "relocation",
+      "new construction"
+    ]
+  },
+  {
+    "id": "thompsons-station",
+    "url": "/areas/thompsons-station",
+    "label": "Thompson's Station area guide",
+    "tags": [
+      "thompsons station",
+      "relocation",
+      "new construction"
+    ]
+  },
+  {
+    "id": "nolensville",
+    "url": "/areas/nolensville",
+    "label": "Nolensville area guide",
+    "tags": [
+      "nolensville",
+      "relocation"
+    ]
+  },
+  {
+    "id": "columbia",
+    "url": "/areas/columbia",
+    "label": "Columbia area guide",
+    "tags": [
+      "columbia",
+      "relocation"
+    ]
+  },
+  {
+    "id": "murfreesboro",
+    "url": "/areas/murfreesboro",
+    "label": "Murfreesboro area guide",
+    "tags": [
+      "murfreesboro",
+      "relocation"
+    ]
+  },
+  {
+    "id": "blog",
+    "url": "/blog",
+    "label": "The blog",
+    "tags": []
+  },
+  {
+    "id": "franklin-guide",
+    "url": "/franklin",
+    "label": "Franklin Real Estate Guide",
+    "tags": [
+      "franklin",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "franklin-market",
+    "url": "/franklin/housing-market",
+    "label": "Franklin housing market data",
+    "tags": [
+      "franklin",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "franklin-prices",
+    "url": "/franklin/home-prices",
+    "label": "Franklin home prices",
+    "tags": [
+      "franklin",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "franklin-buying",
+    "url": "/franklin/buying-in-franklin",
+    "label": "Buying a home in Franklin",
+    "tags": [
+      "franklin",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "franklin-selling",
+    "url": "/franklin/selling-in-franklin",
+    "label": "Selling a home in Franklin",
+    "tags": [
+      "franklin",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "franklin-taxes",
+    "url": "/franklin/property-taxes",
+    "label": "Franklin property taxes",
+    "tags": [
+      "franklin",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "franklin-schools",
+    "url": "/franklin/schools",
+    "label": "Franklin schools and zoning",
+    "tags": [
+      "franklin",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "franklin-commute",
+    "url": "/franklin/commute",
+    "label": "Franklin commute times",
+    "tags": [
+      "franklin",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "franklin-cost",
+    "url": "/franklin/cost-of-living",
+    "label": "Franklin cost of living",
+    "tags": [
+      "franklin",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "franklin-new",
+    "url": "/franklin/new-construction",
+    "label": "Franklin new construction",
+    "tags": [
+      "franklin",
+      "new construction"
+    ]
+  },
+  {
+    "id": "franklin-older",
+    "url": "/franklin/older-homes",
+    "label": "Franklin older homes",
+    "tags": [
+      "franklin",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "franklin-neighborhoods",
+    "url": "/franklin/neighborhoods",
+    "label": "Franklin ZIP codes and Census numbers",
+    "tags": [
+      "franklin",
+      "relocation"
+    ]
+  },
+  {
+    "id": "franklin-vs-brentwood",
+    "url": "/franklin/franklin-vs-brentwood",
+    "label": "Franklin vs Brentwood",
+    "tags": [
+      "franklin",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "franklin-vs-spring-hill",
+    "url": "/franklin/franklin-vs-spring-hill",
+    "label": "Franklin vs Spring Hill",
+    "tags": [
+      "franklin",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "franklin-vs-thompsons-station",
+    "url": "/franklin/franklin-vs-thompsons-station",
+    "label": "Franklin vs Thompson's Station",
+    "tags": [
+      "franklin",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "franklin-luxury-homes",
+    "url": "/franklin/luxury-homes",
+    "label": "Franklin homes $1M and up",
+    "tags": [
+      "franklin",
+      "home prices"
+    ]
+  },
+  {
+    "id": "brentwood-guide",
+    "url": "/brentwood",
+    "label": "Brentwood real estate guide",
+    "tags": [
+      "brentwood",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "brentwood-housing-market",
+    "url": "/brentwood/housing-market",
+    "label": "Brentwood housing market data",
+    "tags": [
+      "brentwood",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "brentwood-home-prices",
+    "url": "/brentwood/home-prices",
+    "label": "Brentwood home prices",
+    "tags": [
+      "brentwood",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "brentwood-neighborhoods",
+    "url": "/brentwood/neighborhoods",
+    "label": "Brentwood ZIP codes and Census numbers",
+    "tags": [
+      "brentwood",
+      "relocation"
+    ]
+  },
+  {
+    "id": "brentwood-property-taxes",
+    "url": "/brentwood/property-taxes",
+    "label": "Brentwood property taxes",
+    "tags": [
+      "brentwood",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "brentwood-schools",
+    "url": "/brentwood/schools",
+    "label": "Brentwood school districts",
+    "tags": [
+      "brentwood",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "brentwood-commute",
+    "url": "/brentwood/commute",
+    "label": "Brentwood commute times",
+    "tags": [
+      "brentwood",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "brentwood-cost-of-living",
+    "url": "/brentwood/cost-of-living",
+    "label": "Brentwood cost of living",
+    "tags": [
+      "brentwood",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "brentwood-new-construction",
+    "url": "/brentwood/new-construction",
+    "label": "Brentwood new construction",
+    "tags": [
+      "brentwood",
+      "new construction"
+    ]
+  },
+  {
+    "id": "brentwood-buying",
+    "url": "/brentwood/buying-in-brentwood",
+    "label": "Buying a home in Brentwood",
+    "tags": [
+      "brentwood",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "brentwood-selling",
+    "url": "/brentwood/selling-in-brentwood",
+    "label": "Selling a home in Brentwood",
+    "tags": [
+      "brentwood",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "brentwood-vs-nolensville",
+    "url": "/brentwood/brentwood-vs-nolensville",
+    "label": "Brentwood vs Nolensville",
+    "tags": [
+      "brentwood",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "brentwood-vs-spring-hill",
+    "url": "/brentwood/brentwood-vs-spring-hill",
+    "label": "Brentwood vs Spring Hill",
+    "tags": [
+      "brentwood",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "brentwood-vs-thompsons-station",
+    "url": "/brentwood/brentwood-vs-thompsons-station",
+    "label": "Brentwood vs Thompson's Station",
+    "tags": [
+      "brentwood",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "brentwood-older-homes",
+    "url": "/brentwood/older-homes",
+    "label": "Brentwood older homes",
+    "tags": [
+      "brentwood",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "brentwood-luxury-homes",
+    "url": "/brentwood/luxury-homes",
+    "label": "Brentwood homes $1M and up",
+    "tags": [
+      "brentwood",
+      "home prices"
+    ]
+  },
+  {
+    "id": "spring-hill-guide",
+    "url": "/spring-hill",
+    "label": "Spring Hill real estate guide",
+    "tags": [
+      "spring hill",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "spring-hill-housing-market",
+    "url": "/spring-hill/housing-market",
+    "label": "Spring Hill housing market data",
+    "tags": [
+      "spring hill",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "spring-hill-home-prices",
+    "url": "/spring-hill/home-prices",
+    "label": "Spring Hill home prices",
+    "tags": [
+      "spring hill",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "spring-hill-neighborhoods",
+    "url": "/spring-hill/neighborhoods",
+    "label": "Spring Hill ZIP codes and Census numbers",
+    "tags": [
+      "spring hill",
+      "relocation"
+    ]
+  },
+  {
+    "id": "spring-hill-property-taxes",
+    "url": "/spring-hill/property-taxes",
+    "label": "Spring Hill property taxes",
+    "tags": [
+      "spring hill",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "spring-hill-schools",
+    "url": "/spring-hill/schools",
+    "label": "Spring Hill school districts",
+    "tags": [
+      "spring hill",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "spring-hill-commute",
+    "url": "/spring-hill/commute",
+    "label": "Spring Hill commute times",
+    "tags": [
+      "spring hill",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "spring-hill-cost-of-living",
+    "url": "/spring-hill/cost-of-living",
+    "label": "Spring Hill cost of living",
+    "tags": [
+      "spring hill",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "spring-hill-new-construction",
+    "url": "/spring-hill/new-construction",
+    "label": "Spring Hill new construction",
+    "tags": [
+      "spring hill",
+      "new construction"
+    ]
+  },
+  {
+    "id": "spring-hill-buying",
+    "url": "/spring-hill/buying-in-spring-hill",
+    "label": "Buying a home in Spring Hill",
+    "tags": [
+      "spring hill",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "spring-hill-selling",
+    "url": "/spring-hill/selling-in-spring-hill",
+    "label": "Selling a home in Spring Hill",
+    "tags": [
+      "spring hill",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "spring-hill-vs-thompsons-station",
+    "url": "/spring-hill/spring-hill-vs-thompsons-station",
+    "label": "Spring Hill vs Thompson's Station",
+    "tags": [
+      "spring hill",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "spring-hill-vs-columbia",
+    "url": "/spring-hill/spring-hill-vs-columbia",
+    "label": "Spring Hill vs Columbia",
+    "tags": [
+      "spring hill",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "spring-hill-vs-nolensville",
+    "url": "/spring-hill/spring-hill-vs-nolensville",
+    "label": "Spring Hill vs Nolensville",
+    "tags": [
+      "spring hill",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "spring-hill-older-homes",
+    "url": "/spring-hill/older-homes",
+    "label": "Spring Hill older homes",
+    "tags": [
+      "spring hill",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "spring-hill-luxury-homes",
+    "url": "/spring-hill/luxury-homes",
+    "label": "Spring Hill homes $1M and up",
+    "tags": [
+      "spring hill",
+      "home prices"
+    ]
+  },
+  {
+    "id": "thompsons-station-guide",
+    "url": "/thompsons-station",
+    "label": "Thompson's Station real estate guide",
+    "tags": [
+      "thompsons station",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "thompsons-station-housing-market",
+    "url": "/thompsons-station/housing-market",
+    "label": "Thompson's Station housing market data",
+    "tags": [
+      "thompsons station",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "thompsons-station-home-prices",
+    "url": "/thompsons-station/home-prices",
+    "label": "Thompson's Station home prices",
+    "tags": [
+      "thompsons station",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "thompsons-station-neighborhoods",
+    "url": "/thompsons-station/neighborhoods",
+    "label": "Thompson's Station ZIP codes and Census numbers",
+    "tags": [
+      "thompsons station",
+      "relocation"
+    ]
+  },
+  {
+    "id": "thompsons-station-property-taxes",
+    "url": "/thompsons-station/property-taxes",
+    "label": "Thompson's Station property taxes",
+    "tags": [
+      "thompsons station",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "thompsons-station-schools",
+    "url": "/thompsons-station/schools",
+    "label": "Thompson's Station school districts",
+    "tags": [
+      "thompsons station",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "thompsons-station-commute",
+    "url": "/thompsons-station/commute",
+    "label": "Thompson's Station commute times",
+    "tags": [
+      "thompsons station",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "thompsons-station-cost-of-living",
+    "url": "/thompsons-station/cost-of-living",
+    "label": "Thompson's Station cost of living",
+    "tags": [
+      "thompsons station",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "thompsons-station-new-construction",
+    "url": "/thompsons-station/new-construction",
+    "label": "Thompson's Station new construction",
+    "tags": [
+      "thompsons station",
+      "new construction"
+    ]
+  },
+  {
+    "id": "thompsons-station-buying",
+    "url": "/thompsons-station/buying-in-thompsons-station",
+    "label": "Buying a home in Thompson's Station",
+    "tags": [
+      "thompsons station",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "thompsons-station-selling",
+    "url": "/thompsons-station/selling-in-thompsons-station",
+    "label": "Selling a home in Thompson's Station",
+    "tags": [
+      "thompsons station",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "thompsons-station-vs-franklin",
+    "url": "/thompsons-station/thompsons-station-vs-franklin",
+    "label": "Thompson's Station vs Franklin",
+    "tags": [
+      "thompsons station",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "thompsons-station-vs-spring-hill",
+    "url": "/thompsons-station/thompsons-station-vs-spring-hill",
+    "label": "Thompson's Station vs Spring Hill",
+    "tags": [
+      "thompsons station",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "thompsons-station-vs-nolensville",
+    "url": "/thompsons-station/thompsons-station-vs-nolensville",
+    "label": "Thompson's Station vs Nolensville",
+    "tags": [
+      "thompsons station",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "thompsons-station-older-homes",
+    "url": "/thompsons-station/older-homes",
+    "label": "Thompson's Station older homes",
+    "tags": [
+      "thompsons station",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "thompsons-station-luxury-homes",
+    "url": "/thompsons-station/luxury-homes",
+    "label": "Thompson's Station homes $1M and up",
+    "tags": [
+      "thompsons station",
+      "home prices"
+    ]
+  },
+  {
+    "id": "nolensville-guide",
+    "url": "/nolensville",
+    "label": "Nolensville real estate guide",
+    "tags": [
+      "nolensville",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "nolensville-housing-market",
+    "url": "/nolensville/housing-market",
+    "label": "Nolensville housing market data",
+    "tags": [
+      "nolensville",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "nolensville-home-prices",
+    "url": "/nolensville/home-prices",
+    "label": "Nolensville home prices",
+    "tags": [
+      "nolensville",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "nolensville-neighborhoods",
+    "url": "/nolensville/neighborhoods",
+    "label": "Nolensville ZIP codes and Census numbers",
+    "tags": [
+      "nolensville",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nolensville-property-taxes",
+    "url": "/nolensville/property-taxes",
+    "label": "Nolensville property taxes",
+    "tags": [
+      "nolensville",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nolensville-schools",
+    "url": "/nolensville/schools",
+    "label": "Nolensville school districts",
+    "tags": [
+      "nolensville",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nolensville-commute",
+    "url": "/nolensville/commute",
+    "label": "Nolensville commute times",
+    "tags": [
+      "nolensville",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nolensville-cost-of-living",
+    "url": "/nolensville/cost-of-living",
+    "label": "Nolensville cost of living",
+    "tags": [
+      "nolensville",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nolensville-new-construction",
+    "url": "/nolensville/new-construction",
+    "label": "Nolensville new construction",
+    "tags": [
+      "nolensville",
+      "new construction"
+    ]
+  },
+  {
+    "id": "nolensville-buying",
+    "url": "/nolensville/buying-in-nolensville",
+    "label": "Buying a home in Nolensville",
+    "tags": [
+      "nolensville",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "nolensville-selling",
+    "url": "/nolensville/selling-in-nolensville",
+    "label": "Selling a home in Nolensville",
+    "tags": [
+      "nolensville",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "nolensville-vs-franklin",
+    "url": "/nolensville/nolensville-vs-franklin",
+    "label": "Nolensville vs Franklin",
+    "tags": [
+      "nolensville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nolensville-vs-brentwood",
+    "url": "/nolensville/nolensville-vs-brentwood",
+    "label": "Nolensville vs Brentwood",
+    "tags": [
+      "nolensville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nolensville-vs-thompsons-station",
+    "url": "/nolensville/nolensville-vs-thompsons-station",
+    "label": "Nolensville vs Thompson's Station",
+    "tags": [
+      "nolensville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nolensville-older-homes",
+    "url": "/nolensville/older-homes",
+    "label": "Nolensville older homes",
+    "tags": [
+      "nolensville",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "nolensville-luxury-homes",
+    "url": "/nolensville/luxury-homes",
+    "label": "Nolensville homes $1M and up",
+    "tags": [
+      "nolensville",
+      "home prices"
+    ]
+  },
+  {
+    "id": "columbia-guide",
+    "url": "/columbia",
+    "label": "Columbia real estate guide",
+    "tags": [
+      "columbia",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "columbia-housing-market",
+    "url": "/columbia/housing-market",
+    "label": "Columbia housing market data",
+    "tags": [
+      "columbia",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "columbia-home-prices",
+    "url": "/columbia/home-prices",
+    "label": "Columbia home prices",
+    "tags": [
+      "columbia",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "columbia-neighborhoods",
+    "url": "/columbia/neighborhoods",
+    "label": "Columbia ZIP codes and Census numbers",
+    "tags": [
+      "columbia",
+      "relocation"
+    ]
+  },
+  {
+    "id": "columbia-property-taxes",
+    "url": "/columbia/property-taxes",
+    "label": "Columbia property taxes",
+    "tags": [
+      "columbia",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "columbia-schools",
+    "url": "/columbia/schools",
+    "label": "Columbia school districts",
+    "tags": [
+      "columbia",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "columbia-commute",
+    "url": "/columbia/commute",
+    "label": "Columbia commute times",
+    "tags": [
+      "columbia",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "columbia-cost-of-living",
+    "url": "/columbia/cost-of-living",
+    "label": "Columbia cost of living",
+    "tags": [
+      "columbia",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "columbia-new-construction",
+    "url": "/columbia/new-construction",
+    "label": "Columbia new construction",
+    "tags": [
+      "columbia",
+      "new construction"
+    ]
+  },
+  {
+    "id": "columbia-buying",
+    "url": "/columbia/buying-in-columbia",
+    "label": "Buying a home in Columbia",
+    "tags": [
+      "columbia",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "columbia-selling",
+    "url": "/columbia/selling-in-columbia",
+    "label": "Selling a home in Columbia",
+    "tags": [
+      "columbia",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "columbia-vs-spring-hill",
+    "url": "/columbia/columbia-vs-spring-hill",
+    "label": "Columbia vs Spring Hill",
+    "tags": [
+      "columbia",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "columbia-vs-franklin",
+    "url": "/columbia/columbia-vs-franklin",
+    "label": "Columbia vs Franklin",
+    "tags": [
+      "columbia",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "columbia-vs-murfreesboro",
+    "url": "/columbia/columbia-vs-murfreesboro",
+    "label": "Columbia vs Murfreesboro",
+    "tags": [
+      "columbia",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "columbia-older-homes",
+    "url": "/columbia/older-homes",
+    "label": "Columbia older homes",
+    "tags": [
+      "columbia",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "columbia-luxury-homes",
+    "url": "/columbia/luxury-homes",
+    "label": "Columbia homes $1M and up",
+    "tags": [
+      "columbia",
+      "home prices"
+    ]
+  },
+  {
+    "id": "murfreesboro-guide",
+    "url": "/murfreesboro",
+    "label": "Murfreesboro real estate guide",
+    "tags": [
+      "murfreesboro",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "murfreesboro-housing-market",
+    "url": "/murfreesboro/housing-market",
+    "label": "Murfreesboro housing market data",
+    "tags": [
+      "murfreesboro",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "murfreesboro-home-prices",
+    "url": "/murfreesboro/home-prices",
+    "label": "Murfreesboro home prices",
+    "tags": [
+      "murfreesboro",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "murfreesboro-neighborhoods",
+    "url": "/murfreesboro/neighborhoods",
+    "label": "Murfreesboro ZIP codes and Census numbers",
+    "tags": [
+      "murfreesboro",
+      "relocation"
+    ]
+  },
+  {
+    "id": "murfreesboro-property-taxes",
+    "url": "/murfreesboro/property-taxes",
+    "label": "Murfreesboro property taxes",
+    "tags": [
+      "murfreesboro",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "murfreesboro-schools",
+    "url": "/murfreesboro/schools",
+    "label": "Murfreesboro school districts",
+    "tags": [
+      "murfreesboro",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "murfreesboro-commute",
+    "url": "/murfreesboro/commute",
+    "label": "Murfreesboro commute times",
+    "tags": [
+      "murfreesboro",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "murfreesboro-cost-of-living",
+    "url": "/murfreesboro/cost-of-living",
+    "label": "Murfreesboro cost of living",
+    "tags": [
+      "murfreesboro",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "murfreesboro-new-construction",
+    "url": "/murfreesboro/new-construction",
+    "label": "Murfreesboro new construction",
+    "tags": [
+      "murfreesboro",
+      "new construction"
+    ]
+  },
+  {
+    "id": "murfreesboro-buying",
+    "url": "/murfreesboro/buying-in-murfreesboro",
+    "label": "Buying a home in Murfreesboro",
+    "tags": [
+      "murfreesboro",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "murfreesboro-selling",
+    "url": "/murfreesboro/selling-in-murfreesboro",
+    "label": "Selling a home in Murfreesboro",
+    "tags": [
+      "murfreesboro",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "murfreesboro-vs-franklin",
+    "url": "/murfreesboro/murfreesboro-vs-franklin",
+    "label": "Murfreesboro vs Franklin",
+    "tags": [
+      "murfreesboro",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "murfreesboro-vs-columbia",
+    "url": "/murfreesboro/murfreesboro-vs-columbia",
+    "label": "Murfreesboro vs Columbia",
+    "tags": [
+      "murfreesboro",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "murfreesboro-vs-nolensville",
+    "url": "/murfreesboro/murfreesboro-vs-nolensville",
+    "label": "Murfreesboro vs Nolensville",
+    "tags": [
+      "murfreesboro",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "murfreesboro-older-homes",
+    "url": "/murfreesboro/older-homes",
+    "label": "Murfreesboro older homes",
+    "tags": [
+      "murfreesboro",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "murfreesboro-luxury-homes",
+    "url": "/murfreesboro/luxury-homes",
+    "label": "Murfreesboro homes $1M and up",
+    "tags": [
+      "murfreesboro",
+      "home prices"
+    ]
+  }
 ]

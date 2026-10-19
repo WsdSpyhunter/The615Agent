@@ -42,7 +42,7 @@ jobs:
     timeout-minutes: 20
     env:
       REGEN: ${{ github.event.client_payload.slug || github.event.inputs.regenerate }}
-      TOPIC: ${{ github.event.inputs.topic }}
+      TOPIC: ${{ github.event.client_payload.topic || github.event.inputs.topic }}
       IDEA: ${{ github.event.client_payload.idea || github.event.inputs.idea }}
       PUBDATE: ${{ github.event.client_payload.pubdate || github.event.inputs.pubdate }}
     steps:
