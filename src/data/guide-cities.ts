@@ -7,7 +7,7 @@ export interface GuideCity {
   zips: string[];                       // Franklin: all three ZIPs; others: their main ZIPs
   peers: string[];                      // slugs shown in comparison cards/pages (must exist in market.json and census-acs.json)
   countyNote: string; hubFact: string;                   // one factual sentence about the county / county overlap
-  tax: { kind?: 'split' | 'maury'; year?: string; extraSources?: { label: string; url: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string }; costNote: string };
+  tax: { kind?: 'split' | 'county'; year?: string; countyName?: string; rateSheetText?: string; extraSources?: { label: string; url: string; what?: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string; what?: string }; costNote: string };
   schools: { intro: string; districts: { name: string; text: string; link: { label: string; url: string } }[]; sourcesNote: string; faqDistrict: { q: string; a: string }; faqFind: { q: string; a: string } };
 }
 
@@ -139,7 +139,7 @@ export const guideCities: Record<string, GuideCity> = {
     peers: ['spring-hill', 'franklin', 'murfreesboro'],
     countyNote: 'Columbia is the Maury County seat.', hubFact: 'Columbia is the Maury County seat.',
     tax: {
-      kind: 'maury', year: '2025', cityRate: 0.8251, cityLabel: 'City of Columbia',
+      kind: 'county', countyName: 'Maury', rateSheetText: "the Tennessee Comptroller's data (published in the Maury County community profile)", year: '2025', cityRate: 0.8251, cityLabel: 'City of Columbia',
       scenarios: [{ label: 'Inside Columbia city limits', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.8251 }] }],
       sourceNote: 'These are the 2025 rates, the latest I found in the Tennessee Comptroller data. Rates are set each year, so 2026 rates may differ.',
       cityRateSource: { label: 'Maury County community profile: Columbia (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Columbia_Maury_County_2026.pdf', short: 'Columbia community profile' },
@@ -153,6 +153,30 @@ export const guideCities: Record<string, GuideCity> = {
       sourcesNote: 'mauryk12.org',
       faqDistrict: { q: 'Which school district serves Columbia, TN?', a: "Columbia addresses are zoned through Maury County Public Schools. Use the district's \"Find my zoned school\" tool to check an address." },
       faqFind: { q: 'How do I find the zoned school for a Columbia address?', a: "Use the district's own zoning tool, the Maury County Public Schools \"Find my zoned school\" page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
+    },
+  },
+  murfreesboro: {
+    slug: 'murfreesboro', name: 'Murfreesboro', enabled: true,
+    zips: ['37127', '37128', '37129', '37130'],
+    peers: ['franklin', 'columbia', 'nolensville'],
+    countyNote: 'Murfreesboro is the Rutherford County seat.', hubFact: 'Murfreesboro is the Rutherford County seat.',
+    tax: {
+      kind: 'county', countyName: 'Rutherford', rateSheetText: 'the county and city sources below', year: '2026', cityRate: 0.7529, cityLabel: 'City of Murfreesboro',
+      scenarios: [{ label: 'Inside Murfreesboro city limits', parts: [{ name: 'county', rate: 1.4885 }, { name: 'city', rate: 0.7529 }] }],
+      sourceNote: 'These are the 2026 rates after the countywide reappraisal, which lowered both rates (the county from $1.8762 and the city from $0.9526). The city rate is the certified rate presented to the City Council on July 2, 2026, so check the final adopted figure with the city.',
+      cityRateSource: { label: 'Rutherford County: Commission approves budget (06/22/2026)', url: 'https://rutherfordcountytn.gov/index.asp?DE=9E55DABD-BC79-4E81-9034-7AF7D59E85E0&SEC=19F331FD-79E1-48F0-A344-4BE43713B14D', short: 'Rutherford County', what: 'county rate' },
+      extraSources: [{ label: 'City of Murfreesboro City Council meeting minutes, July 2, 2026', url: 'https://www.murfreesborotn.gov/AgendaCenter/ViewFile/Minutes/_07022026-2476', what: 'city rate' }],
+      costNote: ' (2026 tax year)',
+    },
+    schools: {
+      intro: "Depending on the address, Murfreesboro students attend Murfreesboro City Schools, a district for pre-kindergarten through sixth grade, or Rutherford County Schools. The most reliable way to find the zoned school for a home is to ask each district.",
+      districts: [
+        { name: 'Murfreesboro City Schools', text: 'A city district that focuses on pre-kindergarten through sixth grade. Its zone waiver page explains how families can request a school other than the zoned one.', link: { label: 'Zone waivers and registration ↗', url: 'https://www.cityschools.net/student-info/registration/zone-waivers-2026-27' } },
+        { name: 'Rutherford County Schools', text: 'The county district. Its bus routes and school zones page is the place to start for zoning.', link: { label: 'Bus routes and school zones ↗', url: 'https://www.rcschools.net/o/od/page/bus-routes-and-school-zones' } },
+      ],
+      sourcesNote: 'cityschools.net and rcschools.net',
+      faqDistrict: { q: 'Which school district serves Murfreesboro, TN?', a: 'Depending on the address, Murfreesboro students attend Murfreesboro City Schools, a district for pre-kindergarten through sixth grade, or Rutherford County Schools. Confirm the zoned school for an exact address with each district.' },
+      faqFind: { q: 'How do I find the zoned school for a Murfreesboro address?', a: "Start with each district's own pages: Murfreesboro City Schools and the Rutherford County Schools bus routes and school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
     },
   },
 };

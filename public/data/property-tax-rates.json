@@ -13,10 +13,13 @@
     { "key": "spring-hill-maury", "label": "Spring Hill, Maury County side", "rate": 2.649, "note": "County $1.91 plus city $0.739. Spring Hill is in two counties, so use the side your address is on." },
     { "key": "thompsons-station", "label": "Thompson's Station (Williamson County)", "rate": 1.403, "note": "County $1.30 plus town $0.103." },
     { "key": "columbia", "label": "Columbia (Maury County)", "rate": 2.7351, "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. 2026 rates may differ." },
+    { "key": "murfreesboro", "label": "Murfreesboro (Rutherford County)", "rate": 2.2414, "note": "County $1.4885 plus city $0.7529, the 2026 rates after the countywide reappraisal. The city rate is the certified rate presented to the City Council on July 2, 2026." },
     { "key": "nolensville", "label": "Nolensville (Williamson County)", "rate": 1.64, "note": "County $1.30 plus town $0.34." }
   ],
   "sources": [
     { "name": "Williamson County 2026 Property Tax Rates", "url": "https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" },
+    { "name": "Rutherford County: Commission approves budget (06/22/2026)", "url": "https://rutherfordcountytn.gov/index.asp?DE=9E55DABD-BC79-4E81-9034-7AF7D59E85E0&SEC=19F331FD-79E1-48F0-A344-4BE43713B14D" },
+    { "name": "City of Murfreesboro City Council minutes, July 2, 2026", "url": "https://www.murfreesborotn.gov/AgendaCenter/ViewFile/Minutes/_07022026-2476" },
     { "name": "Nashville Property Assessor: tax rates", "url": "https://www.padctn.org/resources/tax-rates-and-calculator/" },
     { "name": "Metro Nashville Trustee: calculate property taxes", "url": "https://www.nashville.gov/departments/trustee/calculate-property-taxes" },
     { "name": "City of Spring Hill tax rates", "url": "https://springhilltn.org/999/Tax-Rates" },
