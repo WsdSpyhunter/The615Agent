@@ -381,9 +381,9 @@
         "schools",
         "commute"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-10-19",
+      "slug": "moving-to-franklin-tn-cost-of-owning-a-home"
     },
     {
       "id": "t21",
