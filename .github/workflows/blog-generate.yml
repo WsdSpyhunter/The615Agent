@@ -1,12 +1,12 @@
 name: Blog draft
 
-# Writes a new blog draft on Monday, Wednesday and Friday at 8 AM Central and emails you the proof.
+# Writes a new blog draft on Monday and Thursday at 8 AM Central and emails you the proof.
 # GitHub cron runs in UTC, so it starts twice (13:00 and 14:00 UTC) and scripts/blog/should-run.mjs picks the one that
 # lands at 8 AM Central in both summer and winter time. Nothing is published until you press Approve in the email.
 on:
   schedule:
-    - cron: '0 13 * * 1,3,5'
-    - cron: '0 14 * * 1,3,5'
+    - cron: '0 13 * * 1,4'
+    - cron: '0 14 * * 1,4'
   workflow_dispatch:
     inputs:
       topic:
