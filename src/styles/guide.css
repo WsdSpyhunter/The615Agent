@@ -47,3 +47,8 @@
 @media(max-width:520px){.fg .stat{padding:16px 14px}.fg .stat b{font-size:1.45rem;overflow-wrap:anywhere}}
 /* Call-to-action box: centered text, same as the area pages */
 .fg .cta-band{text-align:center}
+
+/* Related blog posts at the end of a guide page */
+.fg .relposts{margin:0 0 30px}
+.fg .relposts .sh{text-align:center}
+.fg .relposts .linkgrid a small{display:block;margin-top:6px;color:var(--muted)}

@@ -1,0 +1,29 @@
+---
+// "From the blog" block at the end of a city guide page: the latest posts about that city, picked automatically from each post's own words.
+import { getCollection } from 'astro:content';
+import { cityNames } from '../data/guide-cities.ts';
+const { name } = Astro.props;
+const wanted = String(name || '').toLowerCase().replace(/[’]/g, "'");
+const cityOk = Object.values(cityNames).some((n) => n.toLowerCase() === wanted);
+const count = (s: string, w: string) => s.split(w).length - 1;
+const posts = cityOk ? await getCollection('posts', (p) => !p.data.draft) : [];
+const picked = posts
+  .map((p) => {
+    const head = `${p.data.title} ${p.data.description}`.toLowerCase().replace(/[’]/g, "'");
+    const all = `${head} ${p.body ?? ''}`.toLowerCase().replace(/[’]/g, "'");
+    return { p, n: count(head, wanted) * 3 + count(all, wanted) };
+  })
+  .filter((x) => x.n >= 3)
+  .sort((a, b) => b.n - a.n || b.p.data.pubDate.valueOf() - a.p.data.pubDate.valueOf())
+  .slice(0, 3)
+  .map((x) => x.p);
+const date = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+{picked.length > 0 && (
+  <div class="relposts">
+    <div class="sh"><div><span class="kicker navy">From the blog</span><h2>Recent posts about {name}</h2></div></div>
+    <div class="linkgrid">
+      {picked.map((p) => <a href={`/blog/${p.id}`}><b>{p.data.title}</b><small>{p.data.category} · {date(p.data.pubDate)}</small></a>)}
+    </div>
+  </div>
+)}

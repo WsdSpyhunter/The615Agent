@@ -1,6 +1,7 @@
 ---
 import GuideLayout from "../layouts/GuideLayout.astro";
 import AuthorCard from "../components/AuthorCard.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
 import { pagesFor } from "../data/guide-pages";
 import { M, usd, dateLong, signed } from "../lib-guide";
 const { city } = Astro.props;
@@ -32,5 +33,5 @@ const blurb = (p: any): string => ({
       {live.map((p) => <a href={`/${CS}/${p.slug}`}><b>{p.label}</b><small>{blurb(p)}</small></a>)}
     </div>
   </div></section>
-  <section class="s band"><div class="wrap"><AuthorCard /></div></section>
+  <section class="s band"><div class="wrap"><RelatedPosts name={CN} /><AuthorCard /></div></section>
 </GuideLayout>
