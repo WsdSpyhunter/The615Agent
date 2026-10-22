@@ -25,8 +25,8 @@
       "note": "county hotness and listing activity"
     }
   ],
-  "mortgageRate30": 7.4,
-  "mortgageRateAsOf": "2026-10-15",
+  "mortgageRate30": 7.32,
+  "mortgageRateAsOf": "2026-10-22",
   "cities": {
     "franklin": {
       "name": "Franklin",
@@ -41,7 +41,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.54,
+        "score": -0.55,
         "level": "buyer-leaning",
         "label": "Leans toward buyers",
         "tilt": null,
@@ -69,7 +69,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "title": "Realtor.com Williamson County: hotness 40.5 of 100",
             "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -89,7 +89,7 @@
           "threeMonthsAgo": 32
         }
       },
-      "commentary": "As of September 30, 2026, Franklin's market leans toward buyers, based on rolling 3-month figures. The sources disagree: Zillow's index of 31 reads Buyer's, Redfin's 4.0 months of supply reads Balanced, and Realtor.com's Williamson County hotness score of 41.7 of 100 reads Cool. The median sale price was $863,089, up 12.8% from a year earlier, with a median of 55 days on market."
+      "commentary": "As of September 30, 2026, Franklin's market leans toward buyers, though the sources disagree noticeably. Zillow's Market Temperature Index is 31 (Buyer's), Redfin shows 4.0 months of supply (Balanced), and Realtor.com's Williamson County hotness score is 40.5 of 100 (Cool). The median sale price is $863,089, up 12.8% from a year earlier, with a median of 55 days on market."
     },
     "brentwood": {
       "name": "Brentwood",
@@ -104,7 +104,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -1.12,
+        "score": -1.13,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -132,7 +132,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "title": "Realtor.com Williamson County: hotness 40.5 of 100",
             "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -152,7 +152,7 @@
           "threeMonthsAgo": 41
         }
       },
-      "commentary": "Brentwood is rated a buyer's market as of September 30, 2026, though the sources disagree noticeably. Zillow's Market Temperature Index of 20 reads strong buyer's, Redfin's 4.9 months of supply reads balanced, and Realtor.com's Williamson County hotness score of 41.7 out of 100 reads cool. Zillow's index moved down 21 points over three months, and the median sale price of $1,349,357 is down 3.6% from a year earlier."
+      "commentary": "Brentwood is rated a buyer's market as of September 30, 2026, based on rolling 3-month data. The sources disagree: Zillow's Market Temperature Index of 20 reads strong buyer's, Redfin's 4.9 months of supply reads balanced, and Realtor.com's Williamson County hotness score of 40.5 of 100 reads cool. The median sale price was $1,349,357, down 3.6% from a year earlier, and Zillow's index fell 21 points over three months."
     },
     "spring-hill": {
       "name": "Spring Hill",
@@ -167,7 +167,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -1.05,
+        "score": -1.03,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -195,7 +195,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Maury County: hotness 32.6 of 100",
+            "title": "Realtor.com Maury County: hotness 35.4 of 100",
             "detail": "County (15%), median 58 days listed, 20.5% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -215,7 +215,7 @@
           "threeMonthsAgo": 28
         }
       },
-      "commentary": "Spring Hill is rated a buyer's market as of September 30, 2026, though the sources disagree noticeably. Zillow's index of 17 reads strong buyer's, Redfin's 4.1 months of supply reads balanced, and Realtor.com's Maury County score of 32.6 of 100 reads cool. The median sale price was $499,752, down 5.7% from a year earlier, and the trend is cooling."
+      "commentary": "As of September 30, 2026, Spring Hill is rated a buyer's market, though the sources disagree noticeably. Zillow's Market Temperature Index of 17 reads strong buyer's, Redfin's 4.1 months of supply reads balanced, and Realtor.com's Maury County hotness score of 35.4 of 100 reads cool. The median sale price was $499,752, down 5.7% from a year earlier, and Zillow's index fell 11 points over three months."
     },
     "thompsons-station": {
       "name": "Thompson's Station",
@@ -230,7 +230,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -1.12,
+        "score": -1.13,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -258,7 +258,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "title": "Realtor.com Williamson County: hotness 40.5 of 100",
             "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -278,7 +278,7 @@
           "threeMonthsAgo": 46
         }
       },
-      "commentary": "Thompson's Station is rated a buyer's market as of September 30, 2026, with conditions cooling. The sources differ: Zillow's index of 25 reads strong buyer's, Redfin's 5.8 months of supply reads balanced, and Realtor.com's Williamson County hotness score of 41.7 of 100 reads cool. The median sale price was $833,246, up 1.7% from a year earlier, with 151 active listings, up 35%."
+      "commentary": "Thompson's Station is rated a buyer's market as of September 30, 2026, though the sources differ: Zillow's index of 25 reads strong buyer's, Redfin's 5.8 months of supply reads balanced, and Realtor.com's Williamson County hotness score of 40.5 reads cool. The median sale price was $833,246, up 1.7% from a year earlier, with 65 median days on market and active listings up 35%. Zillow's index moved down 21 points over three months."
     },
     "nolensville": {
       "name": "Nolensville",
@@ -293,7 +293,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": 0.09,
+        "score": 0.08,
         "level": "balanced",
         "label": "Balanced market",
         "tilt": null,
@@ -321,7 +321,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Williamson County: hotness 41.7 of 100",
+            "title": "Realtor.com Williamson County: hotness 40.5 of 100",
             "detail": "County (15%), median 63 days listed, 17.8% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -341,7 +341,7 @@
           "threeMonthsAgo": 43
         }
       },
-      "commentary": "Nolensville is rated a balanced market as of September 30, 2026, though the sources disagree noticeably. Zillow's Market Temperature Index of 41 reads buyer's, Redfin's 2.7 months of supply reads seller's, and Realtor.com's Williamson County hotness score of 41.7 of 100 reads cool. The median sale price was $949,048, down 10.9% from a year earlier, and with only 69 active listings, figures can swing month to month."
+      "commentary": "Nolensville is rated a balanced market as of September 30, 2026, though the sources disagree noticeably. Zillow's index of 41 reads buyer's, Redfin's 2.7 months of supply reads seller's, and Realtor.com's Williamson County hotness score of 40.5 of 100 reads cool. The median sale price was $949,048, down 10.9% from a year earlier, and with only 69 active listings, figures can swing from month to month."
     },
     "nashville": {
       "name": "Nashville",
@@ -356,7 +356,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -1.42,
+        "score": -1.4,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -384,7 +384,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Davidson County: hotness 16.6 of 100",
+            "title": "Realtor.com Davidson County: hotness 19.1 of 100",
             "detail": "County (15%), median 68 days listed, 24.0% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyers"
@@ -404,7 +404,7 @@
           "threeMonthsAgo": 32
         }
       },
-      "commentary": "Nashville is rated a buyer's market as of September 30, 2026, though the sources differ: Zillow reads strong buyer's (index 23), Redfin reads balanced (6.0 months of supply), and Realtor.com's Davidson County reading is cool (16.6 of 100). Zillow's index moved down 9 points over three months, and the median sale price of $464,779 is down 1.1% from a year earlier. Active listings are up 11% from a year earlier."
+      "commentary": "Nashville is rated a buyer's market as of September 30, 2026, based on rolling 3-month figures. The sources do not fully agree: Zillow's index of 23 reads strong buyer's, Redfin's 6.0 months of supply reads balanced, and Realtor.com's Davidson County hotness score of 19.1 of 100 reads cool. The median sale price was $464,779, down 1.1% from a year earlier, and Zillow's index fell 9 points over three months."
     },
     "columbia": {
       "name": "Columbia",
@@ -419,7 +419,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.65,
+        "score": -0.63,
         "level": "buyer-leaning",
         "label": "Leans toward buyers",
         "tilt": null,
@@ -447,7 +447,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Maury County: hotness 32.6 of 100",
+            "title": "Realtor.com Maury County: hotness 35.4 of 100",
             "detail": "County (15%), median 58 days listed, 20.5% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -467,7 +467,7 @@
           "threeMonthsAgo": 21
         }
       },
-      "commentary": "As of September 30, 2026, Columbia's market leans toward buyers, though the sources disagree. Zillow's Market Temperature Index is 32 (Buyer's) and Realtor.com's Maury County hotness score is 32.6 of 100 (Cool), while Redfin's 4.4 months of supply reads Balanced. Zillow's index has moved up 11 points over three months, and the median sale price is $368,824, down 0.3% from a year earlier."
+      "commentary": "As of September 30, 2026, Columbia's market leans toward buyers, based on rolling 3-month figures. The sources disagree: Zillow's index of 32 reads Buyer's, Redfin's 4.4 months of supply reads Balanced, and Realtor.com's Maury County hotness of 35.4 out of 100 reads Cool. Zillow's index has moved up 11 points over three months, and the median sale price is $368,824, down 0.3% from a year earlier."
     },
     "murfreesboro": {
       "name": "Murfreesboro",
@@ -482,7 +482,7 @@
       "asOf": "2026-09-30",
       "geography": null,
       "temperature": {
-        "score": -0.96,
+        "score": -0.93,
         "level": "buyer-leaning",
         "label": "Leans toward buyers",
         "tilt": null,
@@ -510,7 +510,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Rutherford County: hotness 33.3 of 100",
+            "title": "Realtor.com Rutherford County: hotness 36.4 of 100",
             "detail": "County (15%), median 55 days listed, 21.9% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyer-leaning"
@@ -530,7 +530,7 @@
           "threeMonthsAgo": 45
         }
       },
-      "commentary": "As of September 30, 2026, Murfreesboro's market leans toward buyers, though the sources disagree. Zillow's index of 23 reads strong buyer's, Redfin's 4.3 months of supply reads balanced, and Realtor.com's Rutherford County score of 33.3 of 100 reads cool. The median sale price was $428,022, down 2.0% from a year earlier, and Zillow's index moved down 22 points over three months."
+      "commentary": "As of September 30, 2026, Murfreesboro's market leans toward buyers, though the sources disagree noticeably. Zillow's Market Temperature Index is 23 (strong buyer's), Redfin shows 4.3 months of supply (balanced), and Realtor.com rates Rutherford County 36.4 of 100 (cool). The median sale price is $428,022, down 2.0% from a year earlier, and median days on market is 65."
     },
     "east-nashville": {
       "name": "East Nashville",
@@ -546,7 +546,7 @@
       "geography": "East Nashville neighborhood",
       "area": true,
       "temperature": {
-        "score": -0.79,
+        "score": -0.77,
         "level": "buyer-leaning",
         "label": "Leans toward buyers",
         "tilt": null,
@@ -574,7 +574,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Davidson County: hotness 16.6 of 100",
+            "title": "Realtor.com Davidson County: hotness 19.1 of 100",
             "detail": "County (15%), median 68 days listed, 24.0% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyers"
@@ -594,7 +594,7 @@
           "threeMonthsAgo": 48
         }
       },
-      "commentary": "East Nashville leans toward buyers as of September 30, 2026, based on Zillow, Redfin, and Realtor.com. Zillow's Market Temperature Index is 42 (Buyer's), down 6 points over three months, and Redfin shows 6.3 months of supply, up from 4.3 three months earlier. Realtor.com rates Davidson County as Cool, with a hotness score of 16.6 of 100."
+      "commentary": "East Nashville leans toward buyers as of September 30, 2026, and Zillow, Redfin, and Realtor.com (Davidson County) all read buyer-leaning or cool. Zillow's index is 42 and has moved down 6 points over three months, while Redfin shows 6.3 months of supply, up from 4.3 three months earlier. Redfin's median sale price is $592,334, up 2.1% from a year earlier, with a median of 58 days on market."
     },
     "donelson-hermitage": {
       "name": "Donelson–Hermitage",
@@ -610,7 +610,7 @@
       "geography": "Donelson-Hermitage-Old Hickory neighborhood",
       "area": true,
       "temperature": {
-        "score": -1.24,
+        "score": -1.22,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -638,7 +638,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Davidson County: hotness 16.6 of 100",
+            "title": "Realtor.com Davidson County: hotness 19.1 of 100",
             "detail": "County (15%), median 68 days listed, 24.0% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyers"
@@ -658,7 +658,7 @@
           "threeMonthsAgo": 32
         }
       },
-      "commentary": "Donelson–Hermitage is rated a buyer's market as of September 30, 2026, though the sources disagree. Zillow's Market Temperature Index is 22 (strong buyer's), down 10 points over three months, and Realtor.com rates Davidson County 16.6 of 100 (cool), while Redfin's 4.9 months of supply reads balanced. Redfin shows a median sale price of $394,889, down 0.8% from a year earlier."
+      "commentary": "Donelson–Hermitage is rated a buyer's market as of September 30, 2026, though the sources disagree: Zillow's index of 22 reads strong buyer's, Redfin's 4.9 months of supply reads balanced, and Realtor.com's Davidson County hotness of 19.1 of 100 reads cool. Zillow's index moved down 10 points over three months. Redfin shows a median sale price of $394,889, down 0.8% from a year earlier, with 60 median days on market."
     },
     "bellevue": {
       "name": "Bellevue",
@@ -674,7 +674,7 @@
       "geography": "Bellevue neighborhood",
       "area": true,
       "temperature": {
-        "score": -1.27,
+        "score": -1.25,
         "level": "buyers",
         "label": "Buyer's market",
         "tilt": null,
@@ -702,7 +702,7 @@
           },
           {
             "key": "realtor",
-            "title": "Realtor.com Davidson County: hotness 16.6 of 100",
+            "title": "Realtor.com Davidson County: hotness 19.1 of 100",
             "detail": "County (15%), median 68 days listed, 24.0% price cuts (2026-09)",
             "reading": "Cool",
             "level": "buyers"
@@ -722,10 +722,10 @@
           "threeMonthsAgo": 29
         }
       },
-      "commentary": "Bellevue is rated a buyer's market as of September 30, 2026, though the sources disagree. Zillow's index of 15 reads strong buyer's and Realtor.com's Davidson County hotness score of 16.6 of 100 reads cool, while Redfin's 4.6 months of supply reads balanced. Zillow's index moved down 14 points over three months, and Redfin shows a median sale price of $493,862, up 2.1% from a year earlier."
+      "commentary": "Bellevue is rated a buyer's market as of September 30, 2026, though the sources disagree noticeably. Zillow's Market Temperature Index is 15 (strong buyer's), down 14 points over three months, while Redfin's 4.6 months of supply reads balanced and Realtor.com's Davidson County hotness of 19.1 of 100 reads cool. Redfin shows a median sale price of $493,862, up 2.1% from a year earlier, and a median of 63 days on market."
     }
   },
   "temperatureMethod": "Blended from up to three sources: Zillow's Market Temperature Index (55%), Redfin months of supply (30%) and Realtor.com county hotness (15%).",
-  "commentaryGenerated": "2026-10-17",
+  "commentaryGenerated": "2026-10-22",
   "commentaryModel": "claude-sonnet-5-5"
 }
