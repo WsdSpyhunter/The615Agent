@@ -8,8 +8,8 @@ import { M, usd, dateLong, monthShort, signed } from '../lib-guide';
 
 const f = M.cities[CS], when = dateLong(f.asOf), monS = monthShort(f.asOf), t = f.temperature;
 const tilt = t.tilt === 'sellers' ? ', leaning toward sellers' : t.tilt === 'buyers' ? ', leaning toward buyers' : '';
-const title = `Selling a Home in ${CN} TN: Steps and Local Data`;
-const description = `How to sell a home in ${CN}, TN, with local data: median price ${usd(f.medianPrice)}, ${f.dom} days on market, ${f.saleToList.toFixed(1)}% sale-to-list.`;
+const title = `How to Sell Your House in ${CN}, TN: Steps and Local Data`;
+const description = `How to sell your house in ${CN}, TN, with local data: median price ${usd(f.medianPrice)}, ${f.dom} days on market, ${f.saleToList.toFixed(1)}% sale-to-list.`;
 const steps = [
   { h: 'Understand the local numbers', p: [`As of ${when}, the median sale price in ${CN} was ${usd(f.medianPrice)} (${signed(f.yoy)} from a year earlier), homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price, with ${f.monthsSupply} months of supply and ${f.inventory} homes for sale (source: Redfin Data Center). Our blended market rating is a ${t.label.toLowerCase()}${tilt}. See the full <a href="/${CS}/housing-market">${CN} housing market</a> page.`, 'These are citywide figures. Conditions can differ a lot by price range, condition and location, so they describe the market and are not a price for any one home.'] },
   { h: 'Price your home with local data', p: ['A pricing review compares your home with recent sales of similar homes nearby, and with the homes that are competing with yours right now. A free home value review from me starts with the <a href="/sell#form">What’s My Home Worth form</a>.', 'Local data for your own city, such as months of supply, days on market and sale-to-list ratio, is more useful than national headlines, because conditions can differ a lot between cities, price ranges and neighborhoods.'] },
@@ -30,7 +30,7 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'HowTo', name: `How to sell a home in ${CN}, Tennessee`, step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.h, text: s.p.join(' ').replace(/<[^>]+>/g, '') })) },
 ];
 ---
-<GuideLayout city={city} title={title} description={description} h1={`Selling a home in <em>${CN}, TN</em>`} lead={`The steps to sell a home in ${CN}, Tennessee, with today’s local numbers and the source next to each one.`} slug={`selling-in-${CS}`} label={`Selling in ${CN}`} updated={f.asOf} schema={schema}>
+<GuideLayout city={city} title={title} description={description} h1={`How to sell your house in <em>${CN}, TN</em>`} lead={`The steps to sell a home in ${CN}, Tennessee, with today’s local numbers and the source next to each one.`} slug={`selling-in-${CS}`} label={`Selling in ${CN}`} updated={f.asOf} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">The short version</span><h2>How to sell a home in {CN}</h2></div></div>
     <p class="answer">Selling in {CN} follows five steps: understand the local numbers, price your home with local data, complete your Tennessee disclosures, prepare for inspections and offers, and plan for closing and your move. As of {when}, the median sale price was {usd(f.medianPrice)}, homes took a median of {f.dom} days to sell and sold for an average of {f.saleToList.toFixed(1)}% of list price (source: Redfin Data Center).</p>
