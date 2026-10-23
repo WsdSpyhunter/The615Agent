@@ -85,6 +85,8 @@ A lender must send the Closing Disclosure at least 3 business days before closin
 
 From the time you apply through closing, avoid opening new credit, financing furniture, or changing jobs. Any of those can change your loan terms. I am not a lender or a tax professional, so check your specific situation with a licensed lender and your tax advisor.
 
+If you are looking in Franklin, the [Franklin property taxes](/franklin/property-taxes) and [Franklin cost of living](/franklin/cost-of-living) guides show the other costs that sit on top of a mortgage payment.
+
 ## Next step
 
 Run the three examples, then swap in a price you are actually considering. If you want help making sense of the results, fill out the [Get Matched form](/buy#form) and Scott will schedule a call. You will be talking within the next 48 hours. If you have a general question first, you can [contact Scott](/contact) directly.

@@ -99,6 +99,8 @@ A few other points to know:
 
 It also helps to know the market you are shopping in. As of the four weeks ending 2026-09-27, the Nashville metro area had a median sale price of $461,491, a sale-to-list ratio of 97.8% and 5.6 months of supply, according to Redfin. Months of supply is how long it would take to sell every active listing at the current pace of sales. Local numbers vary by town, and you can see more on the [I-65 corridor market data](/market-data) page.
 
+If you are shopping in Franklin, my [buying in Franklin](/franklin/buying-in-franklin) guide walks through the local steps once you have a pre-approval.
+
 ## Next steps
 
 If you want to talk through the process, you can use the [Get Matched form](/buy#form). After you fill it out, I schedule a call and we will be talking within the next 48 hours. If you would rather ask a question first, you can [contact me](/contact) directly.

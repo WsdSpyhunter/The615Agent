@@ -88,6 +88,8 @@ At closing, you sign the documents, the funds move and the deed is recorded. Rec
 
 For questions about licensing or agent conduct in Tennessee, the [Tennessee Real Estate Commission](https://www.tn.gov/commerce/regboards/trec.html) is the official source.
 
+If your home is in Franklin, my guides on [selling in Franklin](/franklin/selling-in-franklin) and the [Franklin housing market](/franklin/housing-market) show the local numbers behind these steps.
+
 ## Planning your own timeline
 
 Every contract is different, and so is every home. If you are thinking about selling and want to see how these steps would apply to you, you can [find out what your home is worth](/sell#form) or [contact Scott](/contact) to talk through the process. There is no pressure to decide anything on the first call.
