@@ -32,7 +32,7 @@ const faq = [
 const schema = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
   { '@context': 'https://schema.org', '@type': 'Dataset', name: `${CN}, Tennessee median home prices`, description: `Median sale price and median sale price per square foot for ${CN}, TN, as rolling 3-month figures.`, url: `${site.url}/${CS}/home-prices`,
-    creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@id': `${site.url}/#agent` }, isAccessibleForFree: true, temporalCoverage: `${first.m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'City', name: `${CN}, Tennessee` }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot'] },
+    creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@type': 'Organization', name: site.name, url: site.url }, isAccessibleForFree: true, temporalCoverage: `${first.m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'Place', name: `${CN}, Tennessee` }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot'] },
 ];
 ---
 <GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>home prices</em>`} lead={`Median sale price, price per square foot and three years of change for ${CN}, Tennessee, with the source and date next to every number.`} slug="home-prices" label="Home prices" updated={asOf} schema={schema}>

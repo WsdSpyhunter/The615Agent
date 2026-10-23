@@ -37,8 +37,8 @@ const faq = [
 const schema = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
   { '@context': 'https://schema.org', '@type': 'Dataset', name: `${CN}, Tennessee housing market statistics`, description: `Median sale price, price per square foot, days on market, sale-to-list ratio, inventory and months of supply for ${CN}, TN, as rolling 3-month figures.`,
-    url: `${site.url}/${CS}/housing-market`, creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@id': `${site.url}/#agent` }, isAccessibleForFree: true,
-    temporalCoverage: `${hist[0].m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'City', name: `${CN}, Tennessee` }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot', 'Median days on market', 'Average sale-to-list ratio', 'Inventory', 'Months of supply'] },
+    url: `${site.url}/${CS}/housing-market`, creator: { '@type': 'Organization', name: 'Redfin', url: 'https://www.redfin.com/news/data-center/' }, publisher: { '@type': 'Organization', name: site.name, url: site.url }, isAccessibleForFree: true,
+    temporalCoverage: `${hist[0].m}/${asOf.slice(0, 7)}`, spatialCoverage: { '@type': 'Place', name: `${CN}, Tennessee` }, dateModified: asOf, license: 'https://www.redfin.com/news/data-center/', variableMeasured: ['Median sale price', 'Median sale price per square foot', 'Median days on market', 'Average sale-to-list ratio', 'Inventory', 'Months of supply'] },
 ];
 ---
 <GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>housing market</em>`} lead={`Prices, days on market, supply and market temperature for ${CN}, Tennessee, with the source and date next to every number.`} slug="housing-market" label="Housing market" updated={asOf} schema={schema}>
