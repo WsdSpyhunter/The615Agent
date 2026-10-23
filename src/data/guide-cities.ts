@@ -25,7 +25,7 @@ export const guideCities: Record<string, GuideCity> = {
         { label: 'In the Franklin Special School District', parts: [{ name: 'county', rate: 1.18 }, { name: 'school district', rate: 0.7673 }, { name: 'city', rate: 0.296 }] },
         { label: 'Outside the district', parts: [{ name: 'county', rate: 1.27 }, { name: 'city', rate: 0.296 }] },
       ],
-      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      sourceNote: 'These are the 2026 rates listed on the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: 'City of Franklin 2026-2027 budget', url: 'https://www.franklintn.gov/Home/Components/News/News/11755/83', short: 'City of Franklin' },
       costNote: ' (fiscal 2026, with the proposed fiscal 2027 budget unchanged)',
     },
@@ -48,7 +48,7 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       cityRate: 0.19, cityLabel: 'City of Brentwood',
       scenarios: [{ label: 'Inside Brentwood city limits', parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.19 }] }],
-      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      sourceNote: 'These are the 2026 rates listed on the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
       costNote: ' (2026 tax year)',
     },
@@ -97,7 +97,7 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       cityRate: 0.103, cityLabel: "Town of Thompson's Station",
       scenarios: [{ label: "Inside Thompson's Station town limits", parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.103 }] }],
-      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      sourceNote: 'These are the 2026 rates listed on the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
       costNote: ' (2026 tax year)',
     },
@@ -119,7 +119,7 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       cityRate: 0.34, cityLabel: 'Town of Nolensville',
       scenarios: [{ label: 'Inside Nolensville town limits', parts: [{ name: 'county', rate: 1.30 }, { name: 'city', rate: 0.34 }] }],
-      sourceNote: 'These are the 2026 rates from the county sheet. Rates are set each year, so check for updates.',
+      sourceNote: 'These are the 2026 rates listed on the county sheet. Rates are set each year, so check for updates.',
       cityRateSource: { label: COUNTY_SHEET.label, url: COUNTY_SHEET.url, short: COUNTY_SHEET.label },
       costNote: ' (2026 tax year)',
     },
