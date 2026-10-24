@@ -112,6 +112,7 @@ export class TpaMortgageCalculator extends HTMLElement {
       ${cta ? `<a class="tpa-mc-cta" data-o="cta" href="${this.getAttribute('contact-url') || '/contact'}">${this.getAttribute('cta-label') || 'Talk to me about these numbers'}</a>` : ''}
       <p class="tpa-mc-note">Estimates only, not a loan offer or commitment to lend. Actual rates, taxes, insurance, mortgage insurance and fees vary. ${this.getAttribute('brand') || 'This site'} is not a lender. Equal Housing Opportunity.</p>
     </div>
+    <div class="tpa-mc-chartwide"><div class="tpa-mc-chart"><svg data-o="chart2" viewBox="0 0 1040 230" role="img" aria-label="Loan balance and cumulative interest over time"></svg></div><p class="tpa-mc-note" data-o="chartnote2"></p></div>
     <div class="tpa-mc-bar" data-o="bar" role="button" tabindex="0" aria-label="Show the payment breakdown" hidden><span>Estimated payment</span><b data-o="barv"></b><i>Details ↓</i></div>`;
     const f = (k: string) => this.querySelector<HTMLInputElement>(`[data-f=${k}]`)!;
     ['down', 'ins', 'hoa', 'extra'].forEach((k) => f(k).addEventListener('input', () => this.render()));
@@ -202,7 +203,9 @@ export class TpaMortgageCalculator extends HTMLElement {
     const an = this.querySelector<HTMLElement>('[data-o=areanote]');
     if (an && this.areas.length) an.textContent = area ? `${this.taxYear} combined rate of $${area.rate} per $100 of assessed value. ${area.note}` : 'Type your own property tax percentage below, or look up the rate for the home you are considering.';
     this.chart(o('chart') as unknown as SVGElement, c);
+    this.chart(o('chart2') as unknown as SVGElement, c, 1040, 230);
     o('chartnote').textContent = c.mi > 0 && this.ltype === 'conv' ? 'Mortgage insurance typically ends once you reach 20% equity. The chart shows principal and interest only.' : 'The chart shows principal and interest only.';
+    o('chartnote2').textContent = o('chartnote').textContent;
     o('ltype').textContent = f('nomi').checked && this.ltype !== 'va' ? 'Mortgage insurance is removed from this estimate (see More options).' : NOTES[this.ltype];
     const cta = this.querySelector<HTMLAnchorElement>('[data-o=cta]');
     if (cta) {
@@ -212,8 +215,8 @@ export class TpaMortgageCalculator extends HTMLElement {
     }
     emit(this, 'tpa-mortgage:change', { total: c.total, loan: c.loan, interest: c.interest, months: c.months, monthly: { pi: c.pi, tax: c.tx, insurance: c.is, mi: c.mi, hoa: c.hoa } });
   }
-  private chart(svg: SVGElement, c: ReturnType<typeof calculate>) {
-    const W = 520, H = 240, pl = 52, pr = 26, pt = 14, pb = 28;
+  private chart(svg: SVGElement, c: ReturnType<typeof calculate>, W = 520, H = 240) {
+    const pl = 52, pr = 26, pt = 14, pb = 28;
     const maxM = c.pts[c.pts.length - 1].m || 1, maxY = Math.max(c.loan, c.interest, 1);
     const X = (m: number) => pl + (m / maxM) * (W - pl - pr), Y = (v: number) => pt + (1 - v / maxY) * (H - pt - pb);
     const path = (k: 'bal' | 'int') => c.pts.filter((_, i) => i % Math.ceil(c.pts.length / 120) === 0 || i === c.pts.length - 1).map((p, i) => `${i ? 'L' : 'M'}${X(p.m).toFixed(1)} ${Y(p[k]).toFixed(1)}`).join('');

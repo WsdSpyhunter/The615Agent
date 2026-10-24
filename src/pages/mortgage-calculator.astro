@@ -19,7 +19,7 @@ const schema = [
 ---
 <Layout title="Mortgage Calculator: Monthly Payment With Taxes and Insurance" description="Free mortgage calculator for Franklin, Nashville and Middle Tennessee homebuyers. Estimate your payment with property tax by area, insurance and extra payments." schema={schema}>
   <PageHeader eyebrow="Mortgage calculator" title="What will your payment <em>really</em> be?" lead="A free mortgage calculator for Franklin, Nashville and Middle Tennessee homebuyers. Adjust the numbers and watch your monthly payment, interest and payoff time update instantly. Everything runs in your browser. Nothing you type is sent anywhere." />
-  <section class="s"><div class="wrap">
+  <section class="s"><div class="wrap" style="max-width:1320px">
     <tpa-mortgage-calculator rate-src="/data/market.json" tax-src="/data/property-tax-rates.json" default-area="nashville" default-rate="6.5" contact-url="/contact" cta-label="Talk to Scott about these numbers" brand={site.name} logo-src="/img/logo-615-agent.webp" logo-alt="The 615 Agent"></tpa-mortgage-calculator>
   </div></section>
   <ColorBar rev />
