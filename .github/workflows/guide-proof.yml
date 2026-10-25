@@ -4,6 +4,7 @@ name: Guide proof email
 on:
   workflow_dispatch:
   push:
+    branches: [main]            # a tag push must not send this email
     paths: ['.github/guide-proof-request']
 
 permissions:
