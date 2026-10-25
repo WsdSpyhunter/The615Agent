@@ -74,7 +74,7 @@ export const guideCities: Record<string, GuideCity> = {
         { label: 'Williamson County side of Spring Hill', parts: [{ name: 'county', rate: 1.27 }, { name: 'city', rate: 0.739 }] },
         { label: 'Maury County side of Spring Hill', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.739 }] },
       ],
-      sourceNote: 'The Williamson County sheet and the Spring Hill city rate are for the 2026 tax year. The Maury County figure is the Tennessee Comptroller\'s 2025 county tax rate, the latest I found, and may differ for 2026.',
+      sourceNote: 'The Williamson County sheet and the Spring Hill city rate are for the 2026 tax year. The Maury County figure is the Tennessee Comptroller\'s 2025 county tax rate, the latest I found. Maury County is in a 2026 reappraisal year, when rates are reset, so the 2026 county rate may be lower.',
       cityRateSource: { label: 'City of Spring Hill tax rates', url: 'https://springhilltn.org/999/Tax-Rates', short: 'City of Spring Hill' },
       extraSources: [{ label: 'Maury County community profile (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Spring_Hill_Maury_County_2026.pdf' }],
       costNote: ' (2025 and 2026-27, the same in both counties)',
@@ -142,7 +142,7 @@ export const guideCities: Record<string, GuideCity> = {
     tax: {
       kind: 'county', countyName: 'Maury', rateSheetText: "the Tennessee Comptroller's data (published in the Maury County community profile)", year: '2025', cityRate: 0.8251, cityLabel: 'City of Columbia',
       scenarios: [{ label: 'Inside Columbia city limits', parts: [{ name: 'county', rate: 1.91 }, { name: 'city', rate: 0.8251 }] }],
-      sourceNote: 'These are the 2025 rates, the latest I found in the Tennessee Comptroller data. Rates are set each year, so 2026 rates may differ.',
+      sourceNote: 'These are the 2025 rates, the latest I found in the Tennessee Comptroller data. Maury County is in a 2026 reappraisal year, when rates are reset, so the 2026 rates may be lower. Check with the Maury County Trustee.',
       cityRateSource: { label: 'Maury County community profile: Columbia (cites the Tennessee Comptroller, Division of Property Assessments)', url: 'https://www.mtida.org/images/uploads/county_files/Columbia_Maury_County_2026.pdf', short: 'Columbia community profile' },
       costNote: ' (2025 tax year)',
     },

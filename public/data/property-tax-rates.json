@@ -5,7 +5,7 @@
   "areas": [
     {
       "key": "nashville",
-      "label": "Nashville (Davidson County)",
+      "label": "Nashville, Urban Services District (Davidson County)",
       "rate": 2.814,
       "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
     },
@@ -28,16 +28,34 @@
       "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
     },
     {
+      "key": "davidson-gsd",
+      "label": "Davidson County outside the Urban Services District",
+      "rate": 2.782,
+      "note": "Metro General Services District rate. Addresses outside the old city limits pay this lower rate (the 2025 tax-year figure; Metro held its rate flat for 2026-27)."
+    },
+    {
       "key": "franklin",
-      "label": "Franklin (Williamson County)",
+      "label": "Franklin, inside the Franklin Special School District (Williamson County)",
       "rate": 2.2433,
-      "note": "County $1.18 plus the Franklin Special School District $0.7673 plus city $0.296. Franklin addresses outside that school district pay less (combined $1.566)."
+      "note": "County $1.18 plus the Franklin Special School District $0.7673 plus city $0.296. Not every Franklin address is in that school district. Pick the next option if yours is not."
+    },
+    {
+      "key": "franklin-outside-fssd",
+      "label": "Franklin, outside that school district (Williamson County)",
+      "rate": 1.566,
+      "note": "County $1.27 plus city $0.296. Use this if the address is not in the Franklin Special School District."
     },
     {
       "key": "brentwood",
       "label": "Brentwood (Williamson County)",
       "rate": 1.49,
       "note": "County $1.30 plus city $0.19."
+    },
+    {
+      "key": "williamson-unincorporated",
+      "label": "Unincorporated Williamson County (outside any city)",
+      "rate": 1.3,
+      "note": "County $1.30. Addresses outside any city and outside the Franklin Special School District pay the county rate only."
     },
     {
       "key": "spring-hill-williamson",
@@ -49,7 +67,7 @@
       "key": "spring-hill-maury",
       "label": "Spring Hill, Maury County side",
       "rate": 2.649,
-      "note": "County $1.91 plus city $0.739. Spring Hill is in two counties, so use the side your address is on."
+      "note": "County $1.91 plus city $0.739. The Maury County figure is the 2025 rate. Maury County is in a 2026 reappraisal year, when rates are reset, so the 2026 county rate may be lower. Spring Hill is in two counties, so use the side your address is on."
     },
     {
       "key": "thompsons-station",
@@ -61,7 +79,7 @@
       "key": "columbia",
       "label": "Columbia (Maury County)",
       "rate": 2.7351,
-      "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. 2026 rates may differ."
+      "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. Maury County is in a 2026 reappraisal year, when rates are reset, so the 2026 rate may be lower. Check with the Maury County Trustee."
     },
     {
       "key": "murfreesboro",

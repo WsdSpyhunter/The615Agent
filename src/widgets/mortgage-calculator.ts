@@ -23,9 +23,19 @@ import { getJSON, money0, money2, flag, emit } from './lib/data';
 const COLORS = { pi: '#1473E6', tax: '#FFC20E', ins: '#F2593A', mi: '#A5D8FF', hoa: '#8B95A3' } as const;
 const NOTES: Record<string, string> = {
   conv: 'Mortgage insurance (PMI) is estimated at 0.5% of the loan per year when your down payment is under 20%. Your actual cost depends on your credit and down payment.',
-  fha: 'Estimates a 1.75% upfront premium added to the loan and a 0.55% annual premium. FHA allows as little as 3.5% down.',
-  va: 'No monthly mortgage insurance. A VA funding fee may apply and is not included.',
+  fha: 'Includes HUD\'s 1.75% upfront premium, added to the loan, and the annual premium for your loan term, size and down payment. FHA allows as little as 3.5% down.',
+  va: 'No monthly mortgage insurance. Includes the VA funding fee for first-time use, added to the loan. Veterans with a service-connected disability are exempt (see More options).',
 };
+
+/** FHA annual mortgage insurance premium (HUD Mortgagee Letter 2023-05): [percent per year, ends after 11 years?]. */
+export function fhaAnnual(base: number, price: number, years: number): [number, boolean] {
+  const ltv = (base / price) * 100, big = base > 726200;
+  if (years > 15) return ltv <= 90 ? [big ? 0.70 : 0.50, true] : ltv <= 95 ? [big ? 0.70 : 0.50, false] : [big ? 0.75 : 0.55, false];
+  if (!big) return ltv <= 90 ? [0.15, true] : [0.40, false];
+  return ltv <= 78 ? [0.15, true] : ltv <= 90 ? [0.40, true] : [0.65, false];
+}
+/** VA funding fee for a first-time purchase loan (VA.gov): percent of the loan, by down payment. */
+export const vaFee = (downPct: number) => (downPct >= 10 ? 1.25 : downPct >= 5 ? 1.5 : 2.15);
 
 /** Standard fixed-rate payment. */
 export const payment = (loan: number, annualRatePct: number, months: number) => {
@@ -39,9 +49,11 @@ export function calculate(i: CalcInput) {
   let dp = i.downPct;
   const dAmt = (i.price * dp) / 100;
   if (i.type === 'fha' && dp < 3.5) dp = 3.5;
-  let L = i.price - (i.price * dp) / 100, mi = 0;
+  const loanBase = i.price - (i.price * dp) / 100;
+  let L = loanBase, mi = 0, upfront = 0, annualPct = 0, miEnds11 = false, feePct = 0;
   if (i.noMi) mi = 0;
-  else if (i.type === 'fha') { L *= 1.0175; mi = (L * 0.0055) / 12; }
+  else if (i.type === 'fha') { upfront = loanBase * 0.0175; L = loanBase + upfront; [annualPct, miEnds11] = fhaAnnual(loanBase, i.price, i.years); mi = (loanBase * annualPct) / 100 / 12; }
+  else if (i.type === 'va') { feePct = vaFee(dp); upfront = (loanBase * feePct) / 100; L = loanBase + upfront; }
   else if (i.type === 'conv' && dp < 20) mi = (L * 0.005) / 12;
   const n = i.years * 12, pi = payment(L, i.rate, n);
   const tx = (i.price * i.taxPct) / 100 / 12, is = i.insYear / 12;
@@ -56,7 +68,7 @@ export function calculate(i: CalcInput) {
     pts.push({ m, bal: Math.max(bal, 0), int: cum });
   }
   let base = 0, bb = L; for (let k = 0; k < n; k++) { const x = bb * r; base += x; bb -= pi - x; }
-  return { price: i.price, dAmt, loan: L, pi, tx, is, mi, hoa: i.hoa, total, pts, months: m, interest: cum, saved: Math.max(base - cum, 0), extra: i.extra };
+  return { upfront, annualPct, miEnds11, feePct, price: i.price, dAmt, loan: L, pi, tx, is, mi, hoa: i.hoa, total, pts, months: m, interest: cum, saved: Math.max(base - cum, 0), extra: i.extra };
 }
 
 export class TpaMortgageCalculator extends HTMLElement {
@@ -196,7 +208,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     }).join('');
     o('legend').innerHTML = parts.filter((p) => p.v > 0).map((p) => `<div><i style="background:${COLORS[p.k]}"></i>${p.n}<b>${money2(p.v)}</b></div>`).join('');
     const yrs = Math.floor(c.months / 12), mo = c.months % 12;
-    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b></div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Loan paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b>${c.extra > 0 && this.term * 12 > c.months ? `<small class="tpa-mc-sub">${Math.floor((this.term * 12 - c.months) / 12)} yr ${(this.term * 12 - c.months) % 12} mo sooner</small>` : ''}</div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b>${c.extra > 0 ? '<small class="tpa-mc-sub">compared with no extra payments</small>' : ''}</div>`;
+    o('totals').innerHTML = `<div><span>Loan amount</span><b>${money0(c.loan)}</b>${c.upfront > 0 ? `<small class="tpa-mc-sub">includes ${money0(c.upfront)} ${this.ltype === 'va' ? 'VA funding fee' : 'FHA upfront premium'}</small>` : ''}</div><div><span>Total interest</span><b>${money0(c.interest)}</b></div><div><span>Loan paid off in</span><b>${yrs} yr${mo ? ' ' + mo + ' mo' : ''}</b>${c.extra > 0 && this.term * 12 > c.months ? `<small class="tpa-mc-sub">${Math.floor((this.term * 12 - c.months) / 12)} yr ${(this.term * 12 - c.months) % 12} mo sooner</small>` : ''}</div><div><span>${c.extra > 0 ? 'Interest saved' : 'Down payment'}</span><b>${c.extra > 0 ? money0(c.saved) : money0(c.dAmt)}</b>${c.extra > 0 ? '<small class="tpa-mc-sub">compared with no extra payments</small>' : ''}</div>`;
     o('cash').textContent = `${money0(c.dAmt + c.price * 0.02)} to ${money0(c.dAmt + c.price * 0.04)}`;
     o('barv').textContent = money0(c.total) + '/mo';
     const area = this.areas.find((x) => x.key === this.querySelector<HTMLSelectElement>('[data-f=area]')?.value);
@@ -206,7 +218,13 @@ export class TpaMortgageCalculator extends HTMLElement {
     this.chart(o('chart2') as unknown as SVGElement, c, 1040, 230);
     o('chartnote').textContent = c.mi > 0 && this.ltype === 'conv' ? 'Mortgage insurance typically ends once you reach 20% equity. The chart shows principal and interest only.' : 'The chart shows principal and interest only.';
     o('chartnote2').textContent = o('chartnote').textContent;
-    o('ltype').textContent = f('nomi').checked && this.ltype !== 'va' ? 'Mortgage insurance is removed from this estimate (see More options).' : NOTES[this.ltype];
+    const va = this.ltype === 'va', removed = f('nomi').checked;
+    const nomiLabel = this.querySelector<HTMLElement>('.tpa-mc-check span'), nomiNote = this.querySelector<HTMLElement>('.tpa-mc-checknote');
+    if (nomiLabel) nomiLabel.textContent = va ? 'I am exempt from the VA funding fee' : 'Remove mortgage insurance from the estimate';
+    if (nomiNote) nomiNote.textContent = va ? 'For example, a veteran who receives VA compensation for a service-connected disability. This removes the funding fee from the estimate.' : 'For example, an FHA loan with 20% down, or a lender quote that shows no mortgage insurance. For FHA this also removes the upfront premium.';
+    o('ltype').textContent = removed ? (va ? 'The VA funding fee is removed from this estimate (see More options).' : 'Mortgage insurance is removed from this estimate (see More options).')
+      : this.ltype === 'fha' ? `Includes HUD's 1.75% upfront premium (${money0(c.upfront)}), added to the loan, and a ${c.annualPct}% annual premium ${c.miEnds11 ? 'for the first 11 years' : 'for the life of the loan'}. FHA allows as little as 3.5% down.`
+      : va ? `No monthly mortgage insurance. Includes the VA funding fee for first-time use (${c.feePct}%, ${money0(c.upfront)}), added to the loan. Veterans with a service-connected disability are exempt (see More options).` : NOTES[this.ltype];
     const cta = this.querySelector<HTMLAnchorElement>('[data-o=cta]');
     if (cta) {
       const base = this.getAttribute('contact-url') || '/contact';
