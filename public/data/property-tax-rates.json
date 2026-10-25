@@ -1,28 +1,109 @@
 {
-  "taxYear": "2026",
+  "taxYear": "latest published",
   "assessmentRatio": 0.25,
-  "note": "Combined city and county rates per $100 of assessed value for the 2026 tax year (Maury County uses the Tennessee Comptroller's 2025 county rate, the latest found). Tennessee assesses residential property at 25% of its appraised value. Rates change each year; update this file when new rates are published.",
+  "note": "Combined city and county rates per $100 of assessed value, using the latest rates found for each area (2026 for Williamson and Rutherford counties; 2025 for Davidson and Maury counties). Tennessee assesses residential property at 25% of its appraised value. Rates change each year; update this file when new rates are published.",
   "areas": [
-    { "key": "nashville", "label": "Nashville (Davidson County)", "rate": 2.814, "note": "Metro Nashville Urban Services District rate. Areas outside that district pay the slightly lower General Services District rate of $2.782." },
-    { "key": "east-nashville", "label": "East Nashville (Davidson County)", "rate": 2.814, "note": "Metro Nashville Urban Services District rate. Areas outside that district pay the slightly lower General Services District rate of $2.782." },
-    { "key": "donelson-hermitage", "label": "Donelson–Hermitage (Davidson County)", "rate": 2.814, "note": "Metro Nashville Urban Services District rate. Areas outside that district pay the slightly lower General Services District rate of $2.782." },
-    { "key": "bellevue", "label": "Bellevue (Davidson County)", "rate": 2.814, "note": "Metro Nashville Urban Services District rate. Areas outside that district pay the slightly lower General Services District rate of $2.782." },
-    { "key": "franklin", "label": "Franklin (Williamson County)", "rate": 2.2433, "note": "County $1.18 plus the Franklin Special School District $0.7673 plus city $0.296. Franklin addresses outside that school district pay less (combined $1.566)." },
-    { "key": "brentwood", "label": "Brentwood (Williamson County)", "rate": 1.49, "note": "County $1.30 plus city $0.19." },
-    { "key": "spring-hill-williamson", "label": "Spring Hill, Williamson County side", "rate": 2.009, "note": "County $1.27 plus city $0.739. Spring Hill is in two counties, so use the side your address is on." },
-    { "key": "spring-hill-maury", "label": "Spring Hill, Maury County side", "rate": 2.649, "note": "County $1.91 plus city $0.739. Spring Hill is in two counties, so use the side your address is on." },
-    { "key": "thompsons-station", "label": "Thompson's Station (Williamson County)", "rate": 1.403, "note": "County $1.30 plus town $0.103." },
-    { "key": "columbia", "label": "Columbia (Maury County)", "rate": 2.7351, "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. 2026 rates may differ." },
-    { "key": "murfreesboro", "label": "Murfreesboro (Rutherford County)", "rate": 2.2414, "note": "County $1.4885 plus city $0.7529, the 2026 rates after the countywide reappraisal. The city rate is the certified rate presented to the City Council on July 2, 2026." },
-    { "key": "nolensville", "label": "Nolensville (Williamson County)", "rate": 1.64, "note": "County $1.30 plus town $0.34." }
+    {
+      "key": "nashville",
+      "label": "Nashville (Davidson County)",
+      "rate": 2.814,
+      "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
+    },
+    {
+      "key": "east-nashville",
+      "label": "East Nashville (Davidson County)",
+      "rate": 2.814,
+      "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
+    },
+    {
+      "key": "donelson-hermitage",
+      "label": "Donelson–Hermitage (Davidson County)",
+      "rate": 2.814,
+      "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
+    },
+    {
+      "key": "bellevue",
+      "label": "Bellevue (Davidson County)",
+      "rate": 2.814,
+      "note": "Metro Nashville Urban Services District rate for the 2025 tax year (set after the 2025 reappraisal; the 2026-27 rate was not confirmed). Areas outside that district pay the slightly lower General Services District rate of $2.782."
+    },
+    {
+      "key": "franklin",
+      "label": "Franklin (Williamson County)",
+      "rate": 2.2433,
+      "note": "County $1.18 plus the Franklin Special School District $0.7673 plus city $0.296. Franklin addresses outside that school district pay less (combined $1.566)."
+    },
+    {
+      "key": "brentwood",
+      "label": "Brentwood (Williamson County)",
+      "rate": 1.49,
+      "note": "County $1.30 plus city $0.19."
+    },
+    {
+      "key": "spring-hill-williamson",
+      "label": "Spring Hill, Williamson County side",
+      "rate": 2.009,
+      "note": "County $1.27 plus city $0.739. Spring Hill is in two counties, so use the side your address is on."
+    },
+    {
+      "key": "spring-hill-maury",
+      "label": "Spring Hill, Maury County side",
+      "rate": 2.649,
+      "note": "County $1.91 plus city $0.739. Spring Hill is in two counties, so use the side your address is on."
+    },
+    {
+      "key": "thompsons-station",
+      "label": "Thompson's Station (Williamson County)",
+      "rate": 1.403,
+      "note": "County $1.30 plus town $0.103."
+    },
+    {
+      "key": "columbia",
+      "label": "Columbia (Maury County)",
+      "rate": 2.7351,
+      "note": "County $1.91 plus city $0.8251, the 2025 rates in the Tennessee Comptroller data. 2026 rates may differ."
+    },
+    {
+      "key": "murfreesboro",
+      "label": "Murfreesboro (Rutherford County)",
+      "rate": 2.2414,
+      "note": "County $1.4885 plus city $0.7529, the 2026 rates after the countywide reappraisal. The city rate is the certified rate presented to the City Council on July 2, 2026."
+    },
+    {
+      "key": "nolensville",
+      "label": "Nolensville (Williamson County)",
+      "rate": 1.64,
+      "note": "County $1.30 plus town $0.34."
+    }
   ],
   "sources": [
-    { "name": "Williamson County 2026 Property Tax Rates", "url": "https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580" },
-    { "name": "Rutherford County: Commission approves budget (06/22/2026)", "url": "https://rutherfordcountytn.gov/index.asp?DE=9E55DABD-BC79-4E81-9034-7AF7D59E85E0&SEC=19F331FD-79E1-48F0-A344-4BE43713B14D" },
-    { "name": "City of Murfreesboro City Council minutes, July 2, 2026", "url": "https://www.murfreesborotn.gov/AgendaCenter/ViewFile/Minutes/_07022026-2476" },
-    { "name": "Nashville Property Assessor: tax rates", "url": "https://www.padctn.org/resources/tax-rates-and-calculator/" },
-    { "name": "Metro Nashville Trustee: calculate property taxes", "url": "https://www.nashville.gov/departments/trustee/calculate-property-taxes" },
-    { "name": "City of Spring Hill tax rates", "url": "https://springhilltn.org/999/Tax-Rates" },
-    { "name": "Maury County community profile (Tennessee Comptroller data)", "url": "https://www.mtida.org/images/uploads/county_files/Spring_Hill_Maury_County_2026.pdf" }
+    {
+      "name": "Williamson County 2026 Property Tax Rates",
+      "url": "https://www.williamsoncounty-tn.gov/DocumentCenter/View/28580"
+    },
+    {
+      "name": "Rutherford County: Commission approves budget (06/22/2026)",
+      "url": "https://rutherfordcountytn.gov/index.asp?DE=9E55DABD-BC79-4E81-9034-7AF7D59E85E0&SEC=19F331FD-79E1-48F0-A344-4BE43713B14D"
+    },
+    {
+      "name": "City of Murfreesboro City Council minutes, July 2, 2026",
+      "url": "https://www.murfreesborotn.gov/AgendaCenter/ViewFile/Minutes/_07022026-2476"
+    },
+    {
+      "name": "Nashville Property Assessor: tax rates",
+      "url": "https://www.padctn.org/resources/tax-rates-and-calculator/"
+    },
+    {
+      "name": "Metro Nashville Trustee: calculate property taxes",
+      "url": "https://www.nashville.gov/departments/trustee/calculate-property-taxes"
+    },
+    {
+      "name": "City of Spring Hill tax rates",
+      "url": "https://springhilltn.org/999/Tax-Rates"
+    },
+    {
+      "name": "Maury County community profile (Tennessee Comptroller data)",
+      "url": "https://www.mtida.org/images/uploads/county_files/Spring_Hill_Maury_County_2026.pdf"
+    }
   ]
 }
