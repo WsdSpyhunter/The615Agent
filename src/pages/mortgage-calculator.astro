@@ -27,10 +27,18 @@ const schema = [
   <section class="s band"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
     <div class="sh center"><div><span class="kicker navy">Good to know</span><h2>Mortgage calculator questions</h2></div></div>
     <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
-    <h3 style="margin-top:28px;font-size:1.15rem">Property tax rates in the area list</h3>
-    <div class="tablewrap"><table class="data"><caption>Combined rate per $100 of assessed value, as listed in the calculator</caption>
+    <h3 style="margin-top:28px;font-size:1.15rem;text-align:center">Property tax rates in the area list</h3>
+    <div class="taxwrap"><table class="taxtable"><caption>Combined rate per $100 of assessed value, as listed in the calculator</caption>
       <thead><tr><th>Area</th><th>Rate per $100</th></tr></thead>
       <tbody>{taxRates.areas.map((a: any) => <tr><td>{a.label}</td><td>${a.rate.toFixed(a.rate.toFixed(4).replace(/0+$/, '').split('.')[1].length > 3 ? 4 : 3)}</td></tr>)}</tbody></table></div>
     <p class="hint" style="margin-top:12px">These are the latest rates found for each area: 2026 for Williamson and Rutherford counties, and 2025 for Davidson and Maury counties (Maury County is in a 2026 reappraisal year, so its 2026 rates may be lower). A listing&#39;s tax figure is usually last year&#39;s bill on the seller&#39;s assessment, while the calculator applies the rate to the purchase price. Sources: {taxRates.sources.map((x: any, k: number) => <><a href={x.url} rel="noopener" target="_blank">{x.name}</a>{k < taxRates.sources.length - 1 ? '; ' : '.'}</>)} For the details behind each local rate, see the property tax pages for <a href="/franklin/property-taxes">Franklin</a>, <a href="/brentwood/property-taxes">Brentwood</a>, <a href="/spring-hill/property-taxes">Spring Hill</a>, <a href="/nashville/property-taxes">Nashville</a> and the other <a href="/franklin">city guides</a>. This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
   </div></section>
 </Layout>
+<style>
+  .taxwrap{overflow-x:auto;margin-top:10px}
+  .taxtable{width:100%;border-collapse:collapse;font-size:15px}
+  .taxtable caption{text-align:left;font-weight:700;padding:0 12px 8px;color:var(--muted)}
+  .taxtable th,.taxtable td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  .taxtable th:last-child,.taxtable td:last-child{text-align:right;white-space:nowrap}
+  .taxtable thead th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+</style>
