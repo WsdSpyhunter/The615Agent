@@ -15,21 +15,28 @@ const nz = order.length;
 const zipList = nz > 1 ? order.slice(0, -1).join(', ') + ' and ' + order[nz - 1] : order[0];
 const zipWord = nz > 1 ? 'ZIP codes' : 'ZIP code';
 const nzWord = ['', 'one', 'two', 'three', 'four', 'five'][nz] || String(nz);
+const many = nz > 6; // a long list of ZIP codes (Nashville) is shown with one row per ZIP code
+const zipIntro = city.zipNote ?? `${CN} street addresses mainly use ${zipWord} ${zipList}.`;
 const title = `${CN} TN ZIP Codes: Census Numbers by Area`;
-const description = `${CN}, TN ${zipWord} ${zipList} by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.`;
+const description = many ? `${CN}, TN ZIP codes with at least 10,000 residents, by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.` : `${CN}, TN ${zipWord} ${zipList} by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.`;
 const faq = [
-  { q: `What ZIP codes are in ${CN}, TN?`, a: `${CN} street addresses mainly use ${zipWord} ${zipList}. ZIP codes follow postal routes and do not match city limits exactly, so a ZIP can include areas outside the city, and school zones and taxes depend on the exact address.` },
+  { q: `What ZIP codes are in ${CN}, TN?`, a: `${zipIntro} ZIP codes follow postal routes and do not match city limits exactly, so a ZIP can include areas outside the city, and school zones and taxes depend on the exact address.` },
   { q: `Which ${CN} neighborhood is best?`, a: "I do not rank neighborhoods. Fair housing law protects your right to choose where to live, and the right area depends on your budget, timeline and priorities. Compare the numbers, visit the areas and look at specific homes." },
   { q: "How do I check schools and taxes for a specific address?", a: `School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about. See the ${CN} schools and property taxes pages.` },
   { q: "Where do these ZIP code numbers come from?", a: "They come from the U.S. Census Bureau's American Community Survey 5-year estimates (2020-2024) for ZIP Code Tabulation Areas, which approximate postal ZIP codes. Estimates have margins of error." },
 ];
 const schema = [faqSchema(faq)];
 ---
-<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>${nz > 1 ? 'ZIP codes and areas' : 'ZIP code and area'}</em>`} lead={nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>${nz > 1 ? 'ZIP codes and areas' : 'ZIP code and area'}</em>`} lead={city.zipLead ?? (nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`)} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} {zipWord} at a glance</h2></div></div>
-    <p class="answer">{CN} street addresses mainly use {zipWord} {zipList}. The table below shows Census Bureau estimates for {nz > 1 ? 'each' : 'it'}. ZIP codes follow postal routes and do not match city limits exactly, so these numbers describe the ZIP code area, not a neighborhood or a school zone. I do not rank or recommend areas.</p>
+    <p class="answer">{zipIntro} The table below shows Census Bureau estimates for {nz > 1 ? 'each' : 'it'}. ZIP codes follow postal routes and do not match city limits exactly, so these numbers describe the ZIP code area, not a neighborhood or a school zone. I do not rank or recommend areas.</p>
     <div class="tablewrap"><table class="data"><caption>ZIP Code Tabulation Areas ({acs})</caption>
+      {many ? (<>
+      <thead><tr><th>ZIP code</th><th>Population</th><th>Median rent</th><th>Median home value (owner estimate)</th><th>Owner-occupied homes</th><th>Homes valued at $1M or more</th><th>Average commute (minutes)</th><th>Homes built 2020 or later</th></tr></thead>
+      <tbody>
+        {order.map((z) => <tr><td>{z}</td><td>{num(zips[z].population)}</td><td>{usd(zips[z].medianGrossRent)}</td><td>{usd(zips[z].medianHomeValue)}</td><td>{zips[z].ownerOccupiedPct}%</td><td>{zips[z].valuePct1mPlus}%</td><td>{zips[z].meanCommuteMinutes}</td><td>{zips[z].builtSince2020Pct}%</td></tr>)}
+      </tbody></>) : (<>
       <thead><tr><th>Measure</th>{order.map((z) => <th>{z}</th>)}</tr></thead>
       <tbody>
         <tr><td>Population</td>{order.map((z) => <td>{num(zips[z].population)}</td>)}</tr>
@@ -39,7 +46,7 @@ const schema = [faqSchema(faq)];
         <tr><td>Homes valued at $1M or more</td>{order.map((z) => <td>{zips[z].valuePct1mPlus}%</td>)}</tr>
         <tr><td>Average commute (minutes)</td>{order.map((z) => <td>{zips[z].meanCommuteMinutes}</td>)}</tr>
         <tr><td>Homes built 2020 or later</td>{order.map((z) => <td>{zips[z].builtSince2020Pct}%</td>)}</tr>
-      </tbody></table></div>
+      </tbody></>)}</table></div>
     <p class="sources" style="margin-top:12px">Home value is the owner's own estimate, so it differs from Redfin's sale prices. Redfin's citywide median sale price for {CN} was {usd(f.medianPrice)} as of {when}.</p>
   </div></section>
   <section class="s band"><div class="wrap prose">

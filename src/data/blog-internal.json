@@ -1292,5 +1292,169 @@
       "murfreesboro",
       "home prices"
     ]
+  },
+  {
+    "id": "nashville-guide",
+    "url": "/nashville",
+    "label": "Nashville real estate guide",
+    "tags": [
+      "nashville",
+      "relocation",
+      "buyers",
+      "sellers"
+    ]
+  },
+  {
+    "id": "nashville-housing-market",
+    "url": "/nashville/housing-market",
+    "label": "Nashville housing market data",
+    "tags": [
+      "nashville",
+      "market update",
+      "data",
+      "days on market",
+      "months of supply"
+    ]
+  },
+  {
+    "id": "nashville-home-prices",
+    "url": "/nashville/home-prices",
+    "label": "Nashville home prices",
+    "tags": [
+      "nashville",
+      "home prices",
+      "price per square foot",
+      "financing"
+    ]
+  },
+  {
+    "id": "nashville-neighborhoods",
+    "url": "/nashville/neighborhoods",
+    "label": "Nashville ZIP codes and Census numbers",
+    "tags": [
+      "nashville",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nashville-property-taxes",
+    "url": "/nashville/property-taxes",
+    "label": "Nashville property taxes",
+    "tags": [
+      "nashville",
+      "property taxes",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nashville-schools",
+    "url": "/nashville/schools",
+    "label": "Nashville school districts",
+    "tags": [
+      "nashville",
+      "schools",
+      "zoning",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nashville-commute",
+    "url": "/nashville/commute",
+    "label": "Nashville commute times",
+    "tags": [
+      "nashville",
+      "commute",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nashville-cost-of-living",
+    "url": "/nashville/cost-of-living",
+    "label": "Nashville cost of living",
+    "tags": [
+      "nashville",
+      "cost of living",
+      "relocation"
+    ]
+  },
+  {
+    "id": "nashville-new-construction",
+    "url": "/nashville/new-construction",
+    "label": "Nashville new construction",
+    "tags": [
+      "nashville",
+      "new construction"
+    ]
+  },
+  {
+    "id": "nashville-buying",
+    "url": "/nashville/buying-in-nashville",
+    "label": "Buying a home in Nashville",
+    "tags": [
+      "nashville",
+      "buyers",
+      "pre-approval",
+      "closing"
+    ]
+  },
+  {
+    "id": "nashville-selling",
+    "url": "/nashville/selling-in-nashville",
+    "label": "Selling a home in Nashville",
+    "tags": [
+      "nashville",
+      "sellers",
+      "disclosures",
+      "closing"
+    ]
+  },
+  {
+    "id": "nashville-vs-franklin",
+    "url": "/nashville/nashville-vs-franklin",
+    "label": "Nashville vs Franklin",
+    "tags": [
+      "nashville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nashville-vs-brentwood",
+    "url": "/nashville/nashville-vs-brentwood",
+    "label": "Nashville vs Brentwood",
+    "tags": [
+      "nashville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nashville-vs-murfreesboro",
+    "url": "/nashville/nashville-vs-murfreesboro",
+    "label": "Nashville vs Murfreesboro",
+    "tags": [
+      "nashville",
+      "relocation",
+      "cost of living"
+    ]
+  },
+  {
+    "id": "nashville-older-homes",
+    "url": "/nashville/older-homes",
+    "label": "Nashville older homes",
+    "tags": [
+      "nashville",
+      "inspection",
+      "older homes"
+    ]
+  },
+  {
+    "id": "nashville-luxury-homes",
+    "url": "/nashville/luxury-homes",
+    "label": "Nashville homes $1M and up",
+    "tags": [
+      "nashville",
+      "home prices"
+    ]
   }
 ]

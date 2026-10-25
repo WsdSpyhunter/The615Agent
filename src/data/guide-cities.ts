@@ -5,9 +5,10 @@ export type TaxScenario = { label: string; parts: { name: string; rate: number }
 export interface GuideCity {
   slug: string; name: string; enabled: boolean;
   zips: string[];                       // Franklin: all three ZIPs; others: their main ZIPs
+  zipNote?: string; zipLead?: string;   // optional wording for a city with a long ZIP list (Nashville)
   peers: string[];                      // slugs shown in comparison cards/pages (must exist in market.json and census-acs.json)
   countyNote: string; hubFact: string;                   // one factual sentence about the county / county overlap
-  tax: { kind?: 'split' | 'county'; year?: string; countyName?: string; rateSheetText?: string; extraSources?: { label: string; url: string; what?: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string; what?: string }; costNote: string };
+  tax: { kind?: 'split' | 'county' | 'metro'; year?: string; countyName?: string; rateSheetText?: string; extraSources?: { label: string; url: string; what?: string }[]; cityRate: number; cityLabel: string; scenarios: TaxScenario[]; sourceNote: string; cityRateSource: { label: string; url: string; short: string; what?: string }; costNote: string };
   schools: { intro: string; districts: { name: string; text: string; link: { label: string; url: string } }[]; sourcesNote: string; faqDistrict: { q: string; a: string }; faqFind: { q: string; a: string } };
 }
 
@@ -177,6 +178,38 @@ export const guideCities: Record<string, GuideCity> = {
       sourcesNote: 'cityschools.net and rcschools.net',
       faqDistrict: { q: 'Which school district serves Murfreesboro, TN?', a: 'Depending on the address, Murfreesboro students attend Murfreesboro City Schools, a district for pre-kindergarten through sixth grade, or Rutherford County Schools. Confirm the zoned school for an exact address with each district.' },
       faqFind: { q: 'How do I find the zoned school for a Murfreesboro address?', a: "Start with each district's own pages: Murfreesboro City Schools and the Rutherford County Schools bus routes and school zones page. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
+    },
+  },
+  nashville: {
+    slug: 'nashville', name: 'Nashville', enabled: true,
+    zips: ['37013', '37076', '37115', '37138', '37203', '37204', '37205', '37206', '37207', '37208', '37209', '37210', '37211', '37212', '37214', '37215', '37216', '37217', '37218', '37221'],
+    zipNote: 'This page lists the ZIP codes in Davidson County that have at least 10,000 residents, in numeric order.',
+    zipLead: 'Davidson County ZIP codes with at least 10,000 residents, side by side, with Census numbers and no rankings.',
+    peers: ['franklin', 'brentwood', 'murfreesboro'],
+    countyNote: 'Nashville is the county seat of Davidson County, and the two share one consolidated Metro government.', hubFact: 'Nashville and Davidson County share one consolidated Metro government.',
+    tax: {
+      kind: 'metro', countyName: 'Davidson', year: '2026', rateSheetText: "Metro Nashville's FY2027 budget documents and Metro's property tax history",
+      cityRate: 2.814, cityLabel: 'Metro Nashville (Urban Services District)',
+      scenarios: [
+        { label: 'Urban Services District (roughly inside the old city limits)', parts: [{ name: 'Metro combined', rate: 2.814 }] },
+        { label: 'General Services District (the rest of Davidson County)', parts: [{ name: 'Metro combined', rate: 2.782 }] },
+      ],
+      sourceNote: 'The Urban Services District rate of $2.814 is the combined rate in Metro\'s FY2027 recommended budget, and the council set the 2026-27 rate the same as the current year\'s on June 16, 2026. The General Services District rate of $2.782 is from Metro\'s property tax history for the 2025 tax year and has not been listed separately for 2026, so check it with Metro.',
+      cityRateSource: { label: 'Metro Nashville FY27 Budget Overview (combined tax rate)', url: 'https://www.nashville.gov/sites/default/files/2026-05/FY27_BudgetOverview.pdf', short: 'Metro Nashville FY27 budget', what: 'Urban Services District rate' },
+      extraSources: [
+        { label: 'Metro Nashville FY27 Appendix 4: Property Tax Tables', url: 'https://www.nashville.gov/sites/default/files/2026-05/FY27_Appendix4_PropertyTaxTables.pdf', what: 'rate history, including the General Services District rate' },
+        { label: 'Nashville Banner: Metro Council approves the 2026-27 budget (June 16, 2026)', url: 'https://nashvillebanner.com/2026/06/16/metro-council-city-budget-grocery-tax/', what: 'rate unchanged' },
+      ],
+      costNote: ' (2026 tax year)',
+    },
+    schools: {
+      intro: "Nashville addresses are zoned through Metro Nashville Public Schools, the county district. The most reliable way to find the zoned school for a home is the district's own Find My School tool.",
+      districts: [
+        { name: 'Metro Nashville Public Schools', text: 'The district for Nashville and Davidson County. Enter an address in its Find My School tool to see the zoned school. Optional and magnet schools use separate applications.', link: { label: 'Find my school ↗', url: 'https://www.mnps.org/students-families/register-for-school/find-my-school' } },
+      ],
+      sourcesNote: 'mnps.org',
+      faqDistrict: { q: 'Which school district serves Nashville, TN?', a: "Nashville addresses are zoned through Metro Nashville Public Schools. Use the district's Find My School tool to see the zoned school for an address." },
+      faqFind: { q: 'How do I find the zoned school for a Nashville address?', a: "Use the district's own Find My School tool on mnps.org. School assignment depends on the exact address, so verify it with the district for any home you are serious about." },
     },
   },
 };

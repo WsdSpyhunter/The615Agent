@@ -21,7 +21,7 @@ const blurb = (p: any): string => ({
   'new-construction': `How much of ${CN}'s housing was built recently, next to nearby cities.`,
   'older-homes': `How much of ${CN}'s housing is older, and what buyers commonly check.`,
   'luxury-homes': `How many ${CN} homes are valued at $1 million or more, from Census and Redfin.`,
-  'neighborhoods': city.zips.length > 1 ? `The ${['', 'one', 'two', 'three', 'four', 'five'][city.zips.length]} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`,
+  'neighborhoods': city.zipLead ? city.zipLead : city.zips.length > 1 ? `The ${['', 'one', 'two', 'three', 'four', 'five'][city.zips.length] || city.zips.length} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`,
   'buying': `The steps to buy a home in ${CN}, from pre-approval to closing, with today's local numbers.`,
 } as Record<string, string>)[p.key] ?? '';
 ---

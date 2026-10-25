@@ -18,21 +18,23 @@ const faq = [
   { q: `What is the median rent in ${CN}, TN?`, a: `The Census Bureau's median gross rent for ${CN} city was ${usd(cf.medianGrossRent)} a month (American Community Survey, 2020-2024). It covers units that pay rent and varies by size, age and location.` },
   { q: `What is the median household income in ${CN}, TN?`, a: `${usd(cf.medianHouseholdIncome)}, in 2024 inflation-adjusted dollars (American Community Survey, 2020-2024).` },
   { q: "Why are the Census home value and the Redfin sale price different?", a: "The Census figure is the owner's own estimate of what their home would sell for, averaged over five years of survey responses. Redfin's figure is the median price of homes that actually sold in the most recent three months. The two measure different things." },
-  { q: `What is the property tax rate in ${CN}?`, a: `The City of ${CN}'s rate is $${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))} per $100 of assessed value${city.tax.costNote}. County property tax is separate. See the ${CN} property taxes page.` },
+  city.tax.kind === 'metro'
+    ? { q: `What is the property tax rate in ${CN}?`, a: `${CN} and Davidson County share one Metro government, so there is one combined rate: $${city.tax.scenarios[0].parts[0].rate} per $100 of assessed value in the Urban Services District and $${city.tax.scenarios[1].parts[0].rate} in the rest of the county${city.tax.costNote}. See the ${CN} property taxes page.` }
+    : { q: `What is the property tax rate in ${CN}?`, a: `The City of ${CN}'s rate is $${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))} per $100 of assessed value${city.tax.costNote}. County property tax is separate. See the ${CN} property taxes page.` },
 ];
 const schema = [faqSchema(faq)];
 ---
 <GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>cost of living</em>`} lead={`Income, rent, home values and the city tax rate for ${CN}, Tennessee, from the Census Bureau, Redfin and the City of ${CN}, with the source next to every number.`} slug="cost-of-living" label="Cost of living" updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">Census data {C.vintage}</span><h2>{CN} cost of living at a glance</h2></div></div>
-    <p class="answer">For {CN} city, the Census Bureau's American Community Survey (2020-2024) reports a median household income of {usd(cf.medianHouseholdIncome)}, median rent of {usd(cf.medianGrossRent)} a month and a median owner-estimated home value of {usd(cf.medianHomeValue)}. Redfin's median sale price was {usd(f.medianPrice)} as of {when}, and the City of {CN}'s property tax rate is ${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))} per $100 of assessed value.</p>
+    <p class="answer">For {CN} city, the Census Bureau's American Community Survey (2020-2024) reports a median household income of {usd(cf.medianHouseholdIncome)}, median rent of {usd(cf.medianGrossRent)} a month and a median owner-estimated home value of {usd(cf.medianHomeValue)}. Redfin's median sale price was {usd(f.medianPrice)} as of {when}, and {city.tax.kind === 'metro' ? <>the Metro property tax rate is ${city.tax.scenarios[0].parts[0].rate} per $100 of assessed value in the Urban Services District and ${city.tax.scenarios[1].parts[0].rate} in the rest of Davidson County.</> : <>the City of {CN}'s property tax rate is ${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))} per $100 of assessed value.</>}</p>
     <div class="stats">
       <div class="stat"><span>Median household income</span><b>{usd(cf.medianHouseholdIncome)}</b><small>2024 dollars</small></div>
       <div class="stat"><span>Median rent</span><b>{usd(cf.medianGrossRent)}</b><small>per month</small></div>
       <div class="stat"><span>Median home value</span><b>{usd(cf.medianHomeValue)}</b><small>owner estimate</small></div>
       <div class="stat"><span>Median sale price</span><b>{usd(f.medianPrice)}</b><small>Redfin, {monthShort(f.asOf)}</small></div>
       <div class="stat"><span>Owner-occupied homes</span><b>{cf.ownerOccupiedPct}%</b><small>of occupied homes</small></div>
-      <div class="stat"><span>City tax rate</span><b>${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))}</b><small>per $100 assessed</small></div>
+      <div class="stat"><span>{city.tax.kind === 'metro' ? 'Metro tax rate (USD)' : 'City tax rate'}</span><b>${city.tax.cityRate.toFixed(Math.max(3, (String(city.tax.cityRate).split('.')[1] || '').length))}</b><small>per $100 assessed</small></div>
     </div>
     <p class="sources" style="margin-top:12px">Sources: <a href="https://www.census.gov/programs-surveys/acs" rel="noopener" target="_blank">U.S. Census Bureau, American Community Survey</a> (5-year estimates, 2020-2024); <a href="https://www.redfin.com/news/data-center/" rel="noopener" target="_blank">Redfin Data Center</a> (rolling 3 months ending {when}); <a href={city.tax.cityRateSource.url} rel="noopener" target="_blank">{city.tax.cityRateSource.short}</a>.</p>
   </div></section>
