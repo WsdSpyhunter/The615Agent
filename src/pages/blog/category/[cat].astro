@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 const { cat, cats, posts } = Astro.props;
 ---
-<Layout title={`${cat} Posts`} description={`Blog posts about ${cat.toLowerCase()} in Williamson County and Middle Tennessee.`}>
+<Layout noindex title={`${cat} Posts`} description={`Blog posts about ${cat.toLowerCase()} in Williamson County and Middle Tennessee.`}>
   <PageHeader eyebrow="Blog" title={`${cat}`} />
   <section class="s"><div class="wrap">
     <nav class="cats" aria-label="Categories">
