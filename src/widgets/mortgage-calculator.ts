@@ -95,7 +95,7 @@ export class TpaMortgageCalculator extends HTMLElement {
     <div class="tpa-mc-panel">
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-price">Home price</label><output data-o="price"></output></div><input id="tpa-price" data-f="price" type="range" min="100000" max="2000000" step="5000" value="${price}">
         <div class="tpa-mc-num"><input data-f="pricenum" inputmode="numeric" aria-label="Home price in dollars" placeholder="Type a price"></div></div>
-      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-down">Down payment</label><output data-o="down"></output></div><input id="tpa-down" data-f="down" type="range" min="0" max="50" step="0.5" value="${down}">
+      <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-down">Down payment</label><output data-o="down"></output></div><input id="tpa-down" data-f="down" type="range" min="0" max="90" step="0.5" value="${down}">
         <div class="tpa-mc-num"><input data-f="downamt" inputmode="numeric" aria-label="Down payment in dollars"><input data-f="downpct" inputmode="decimal" aria-label="Down payment percent"></div></div>
       <div class="tpa-mc-field"><div class="tpa-mc-top"><label for="tpa-rate">Interest rate</label><output data-o="rate"></output></div><input id="tpa-rate" data-f="rate" type="range" min="2" max="10" step="0.125" value="${rate}">
         <div class="tpa-mc-ratebox"><small>Example rate. Use the rate from your lender's quote, or type your own.</small><input data-f="ratenum" inputmode="decimal" aria-label="Interest rate percent"></div></div>
@@ -154,8 +154,8 @@ export class TpaMortgageCalculator extends HTMLElement {
       f(k).addEventListener('blur', () => this.render());
     });
     f('nomi').addEventListener('change', () => this.render());
-    f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(50, Math.max(0, (v / this.priceVal()) * 100))); this.render(); });
-    f('downpct').addEventListener('input', () => { const v = parseFloat(f('downpct').value.replace(/[^0-9.]/g, '')); if (!isNaN(v)) { f('down').value = String(Math.min(50, Math.max(0, v))); this.render(); } });
+    f('downamt').addEventListener('input', () => { const v = +f('downamt').value.replace(/[^0-9.]/g, ''); f('down').value = String(Math.min(90, Math.max(0, (v / this.priceVal()) * 100))); this.render(); });
+    f('downpct').addEventListener('input', () => { const v = parseFloat(f('downpct').value.replace(/[^0-9.]/g, '')); if (!isNaN(v)) { f('down').value = String(Math.min(90, Math.max(0, v))); this.render(); } });
     this.querySelectorAll<HTMLElement>('[data-seg]').forEach((g) => g.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
       if (g.dataset.seg === 'term') this.term = +b.dataset.v!; else this.ltype = b.dataset.v as any;
       g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
