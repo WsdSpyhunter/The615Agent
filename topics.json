@@ -888,9 +888,9 @@
         "data",
         "murfreesboro"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-10-27",
+      "slug": "murfreesboro-tn-housing-market-update"
     },
     {
       "id": "t47",
