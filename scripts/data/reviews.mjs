@@ -23,6 +23,7 @@ const ees = await get(`/Reviewees?$filter=${encodeURIComponent(`RevieweeScreenNa
 const reviewee = (ees.value || [])[0];
 if (!reviewee) { log(`No Zillow reviewee found for ${SCREEN_NAME}. Leaving the testimonials as they are.`); process.exit(0); }
 log(`Reviewee found: ${reviewee.ReviewCount} reviews, average ${reviewee.AverageReviewRating}`);
+log('Reviewee fields:', JSON.stringify(Object.fromEntries(Object.entries(reviewee).filter(([k, v]) => typeof v !== 'object' && !/URL|Photo|Image/i.test(k)))));
 const profileUrl = reviewee.RevieweeProfileURL || PROFILE_FALLBACK;
 
 const items = [];
@@ -33,6 +34,7 @@ for (let page = 0; next && page < 20; page++) {
   next = j['@odata.nextLink'] ? j['@odata.nextLink'].replace(BASE, '') : null;
 }
 log(`Fetched ${items.length} review records`);
+log('Newest records (date fields only):', JSON.stringify(items.slice(0, 4).map((r) => Object.fromEntries(Object.entries(r).filter(([k]) => /Date|Timestamp|Modif|Status|Key/i.test(k))))));
 
 const clean = (s) => (s ?? '').toString().trim();
 // Privacy: Zillow's data can include the client's street address. Only the city and state are published.
