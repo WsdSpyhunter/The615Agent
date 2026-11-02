@@ -320,9 +320,9 @@
         "sellers",
         "inspection"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-11-02",
+      "slug": "termite-inspection-tennessee-seller-wdo-guide"
     },
     {
       "id": "t18",
