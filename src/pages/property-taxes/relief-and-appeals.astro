@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import GuideClose from '../../components/GuideClose.astro';
+import { site } from '../../site.config';
+
+const usd = (n: number) => '$' + n.toLocaleString('en-US');
+// Comptroller of the Treasury, Division of Property Assessments: 2026 Property Tax Relief brochure and the Property Tax Freeze page (2026 income limits).
+const freeze = [
+  { who: 'Williamson County', limit: 69150, note: 'County freeze, adopted 2008. Spring Hill (Williamson side) also has a city freeze at the same limit.' },
+  { who: 'Davidson County (Nashville)', limit: 63470, note: 'County freeze, adopted 2007. The limit is a local option limit reported to the state.' },
+  { who: 'Rutherford County', limit: 63470, note: 'County freeze, adopted 2008 (local option limit). The City of Murfreesboro also has its own freeze, adopted 2015, at the same limit.' },
+  { who: 'Spring Hill, Maury County side', limit: 47280, note: 'City freeze, adopted 2009. Maury County itself is not on the Comptroller\'s list of counties with a freeze.' },
+];
+const reappraisal = [
+  { who: 'Williamson County', last: '2025', next: '2029' },
+  { who: 'Davidson County', last: '2025', next: '2029' },
+  { who: 'Rutherford County', last: '2026', next: '2030' },
+  { who: 'Maury County', last: '2026', next: '2030' },
+];
+const faq = [
+  { q: 'What is the Tennessee property tax relief program?', a: 'It is a state program that reimburses part of the property tax for low-income elderly homeowners, low-income disabled homeowners, disabled veterans and the surviving spouses of certain disabled veterans. It is paid by the state, and applications go to the county trustee (or the city collecting official if the home is in a city that collects its own tax).' },
+  { q: 'Who qualifies for elderly or disabled homeowner relief in 2026?', a: 'For 2026 the Comptroller lists these requirements: the owner must be 65 or older (or disabled) by Dec. 31, 2026, own the home and use it as the primary residence, and have a 2025 income of $38,470 or less counting the applicant, spouse, co-owner and resident remainder. Relief is calculated on a market value of up to $33,600.' },
+  { q: 'Is there an income limit for disabled veterans?', a: 'No. The Comptroller says disabled veteran homeowners and certain surviving spouses are not subject to an income limit. Eligibility depends on the veteran\'s disability rating as determined by the U.S. Department of Veterans Affairs, and relief is calculated on a market value of up to $175,000. Applicants complete a VA consent form (an F-16, or an F-16S for a surviving spouse).' },
+  { q: 'What is a property tax freeze?', a: 'It is a local option that lets a county or city freeze the taxes on a homeowner\'s primary residence at a base amount. To qualify you must be 65 or older, own and live in the home, and have an income within the county\'s limit. You apply every year to the trustee or city collecting official. A county freeze applies to the county\'s part of the bill, and a city freeze to the city\'s part, so check which ones apply to your address.' },
+  { q: 'How do I appeal my property assessment in Tennessee?', a: 'Most appeals start with the county board of equalization, and some counties offer an informal review with the assessor first. If you disagree with the county board, you can appeal to the State Board of Equalization. The state deadline is August 1 or 45 days after the county board\'s notice was sent, whichever is later. Counties publish their own cutoff dates for the first step, so check your assessment notice and the county assessor.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Tennessee property tax relief, tax freeze and appeals', url: `${site.url}/property-taxes/relief-and-appeals/` },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+];
+---
+<Layout title="Tennessee Property Tax Relief, Freeze and Appeals: Williamson, Davidson, Rutherford, Maury" description="2026 Tennessee property tax relief for seniors, disabled owners and veterans, tax freeze income limits for Williamson, Davidson and Rutherford counties, and how to appeal an assessment." schema={schema}>
+  <PageHeader eyebrow="Property taxes" title="Property tax <em>relief</em>, freeze and appeals" lead="The programs that can lower a Tennessee property tax bill, the 2026 income limits for Williamson, Davidson, Rutherford and Maury counties, and how to appeal an assessment, all from the Tennessee Comptroller." />
+  <section class="s"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">State program</span><h2>Property tax relief for homeowners</h2></div></div>
+    <p class="answer">Tennessee reimburses part of the property tax for low-income elderly and disabled homeowners, and for disabled veterans and certain surviving spouses. For 2026 the Comptroller lists these limits:</p>
+    <div class="taxwrap"><table class="taxtable"><caption>2026 property tax relief (Tennessee Comptroller)</caption>
+      <thead><tr><th>Group</th><th>Main requirements</th><th>Relief calculated on</th></tr></thead>
+      <tbody>
+        <tr><td>Elderly homeowners</td><td>Age 65 or older by Dec. 31, 2026. 2025 income of {usd(38470)} or less (applicant, spouse, co-owner and resident remainder).</td><td>Market value up to {usd(33600)}</td></tr>
+        <tr><td>Disabled homeowners</td><td>Disabled by Dec. 31, 2026. 2025 income of {usd(38470)} or less.</td><td>Market value up to {usd(33600)}</td></tr>
+        <tr><td>Disabled veterans</td><td>No income limit. A qualifying VA disability rating and a signed VA consent form (F-16).</td><td>Market value up to {usd(175000)}</td></tr>
+        <tr><td>Surviving spouses of certain disabled veterans</td><td>No income limit. Married at the time of death, not remarried, a death certificate and a VA consent form (F-16S).</td><td>Market value up to {usd(175000)}</td></tr>
+      </tbody></table></div>
+    <p><b>How to apply.</b> Contact your county trustee, or your city collecting official if the home is in a city that collects its own tax. You may apply when you receive your 2026 property tax bill, and the deadline is 35 days after the bill's delinquency date. The taxes must also be paid by that date, because the program is a reimbursement. You must own the home and use it as your primary residence. The Comptroller's relief office is at 615-747-8871.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Local option</span><h2>Property tax freeze for homeowners 65 and older</h2></div></div>
+    <p class="answer">A tax freeze holds the tax on your primary residence at a base amount, even if rates or values rise later. It exists only where the county or city has adopted it. For 2026 the Comptroller lists these limits for the four counties on this site:</p>
+    <div class="taxwrap"><table class="taxtable"><caption>2026 tax freeze income limits (Tennessee Comptroller)</caption>
+      <thead><tr><th>Where</th><th>2026 income limit</th><th>Notes</th></tr></thead>
+      <tbody>{freeze.map((f) => <tr><td>{f.who}</td><td>{usd(f.limit)}</td><td>{f.note}</td></tr>)}</tbody></table></div>
+    <p>Franklin, Brentwood, Nolensville, Thompson's Station and Columbia do not appear on the Comptroller's list of cities with their own freeze. A county freeze applies to the county's part of a bill, so Williamson County's freeze can apply to homes in those cities. Confirm with the trustee. Maury County is not on the Comptroller's county list. The base tax resets if you improve the home so that its value rises, or if you sell and buy another residence. You apply every year to the trustee or city collecting official, and to qualify you must be 65 or older by the end of the year you apply, own the home as your principal residence, and have income within the limit.</p>
+  </div></section>
+  <section class="s"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Disagree with a value?</span><h2>How to appeal a property assessment</h2></div></div>
+    <ol>
+      <li><b>Look at your assessment notice.</b> Counties send notices after a reappraisal and publish a last day to appeal. That cutoff is the date that matters.</li>
+      <li><b>Ask for an informal review.</b> Some county assessors will review a value before a formal hearing.</li>
+      <li><b>File with the county board of equalization.</b> This is the usual first formal step.</li>
+      <li><b>Appeal to the State Board of Equalization if needed.</b> The state deadline is August 1 or 45 days after the county board's notice was sent, whichever is later. The state board can accept a late appeal for reasonable cause until March 1 of the following year.</li>
+    </ol>
+    <div class="taxwrap"><table class="taxtable"><caption>Reappraisal years for each county</caption>
+      <thead><tr><th>County</th><th>Latest reappraisal</th><th>Expected next (four-year cycle)</th></tr></thead>
+      <tbody>{reappraisal.map((r) => <tr><td>{r.who}</td><td>{r.last}</td><td>{r.next}</td></tr>)}</tbody></table></div>
+    <p>Where to start: the <a href="https://www.williamsoncounty-tn.gov/" rel="noopener" target="_blank">Williamson County</a> assessor and trustee, the <a href="https://www.padctn.org/resources/tax-rates-and-calculator/" rel="noopener" target="_blank">Davidson County Assessor of Property</a> and <a href="https://www.nashville.gov/departments/trustee/calculate-property-taxes" rel="noopener" target="_blank">Metro Trustee</a>, the <a href="https://rutherfordcountytn.gov/assessor" rel="noopener" target="_blank">Rutherford County Assessor</a> and <a href="https://rutherfordcountytn.gov/trustee-faqs" rel="noopener" target="_blank">Trustee</a>, and the <a href="https://www.maurycounty-tn.gov/203/Assessor" rel="noopener" target="_blank">Maury County Assessor</a>.</p>
+    <p class="sources">Sources: Tennessee Comptroller of the Treasury, <a href="https://comptroller.tn.gov/content/dam/cot/pa/documents/tax-relief/TaxReliefBrochure.pdf" rel="noopener" target="_blank">2026 Property Tax Relief Program brochure</a>; <a href="https://comptroller.tn.gov/office-functions/pa/property-taxes/property-tax-programs/property-tax-freeze.html" rel="noopener" target="_blank">Property Tax Freeze</a> (2026 income limits); <a href="https://www.comptroller.tn.gov/content/dam/cot/pa/documents/manualsandreports/appeals-handbook/2023.10%20-%20Appeals%20Handbook%20-%20final%20version.pdf" rel="noopener" target="_blank">Appeals Handbook for Assessors of Property</a> and the State Board of Equalization rules. Reappraisal years are from each county's own releases and rate sheets. Rules and limits change each year, so confirm with the trustee or assessor before you apply or file.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Common questions</span><h2>Relief, freeze and appeal questions</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="hint" style="margin-top:16px;text-align:center">This page is general information, not legal, tax, lending or financial advice. Ask the county trustee or a tax professional about your situation. See the rates on the <a href="/property-taxes/">Middle Tennessee property tax rates</a> page. Equal Housing Opportunity.</p>
+  </div></section>
+  <GuideClose name="Middle Tennessee" />
+</Layout>
+<style>
+  .taxwrap{overflow-x:auto;margin-top:10px}
+  .taxtable{width:100%;border-collapse:collapse;font-size:15px}
+  .taxtable caption{text-align:center;font-weight:700;padding:0 12px 14px;color:var(--muted)}
+  .taxtable th,.taxtable td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .taxtable thead th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+</style>
