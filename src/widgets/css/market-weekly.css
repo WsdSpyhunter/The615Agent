@@ -13,3 +13,5 @@ tpa-market-weekly{display:block;font-family:var(--tpa-font,inherit);min-width:0}
 .tpa-mw-tile small{font-size:12px;color:var(--tpa-muted,#9AA4B1)}
 .tpa-mw-src{font-size:12px;color:var(--tpa-muted,#8B95A3)}
 .tpa-mw-src a{color:var(--tpa-link-on-dark,#7DB4F5);text-decoration:underline}
+
+.tpa-mw-late{margin:0 0 12px;padding:8px 12px;border-radius:10px;background:#FFF3C4;color:#6B5200;font-size:13px;font-weight:600}

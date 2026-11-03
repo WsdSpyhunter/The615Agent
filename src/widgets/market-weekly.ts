@@ -3,7 +3,7 @@ import { getJSON, esc } from './lib/data';
 
 /**
  * <tpa-market-weekly>
- * A compact "this week" strip for one metro area (rolling 4-week figures, refreshed weekly).
+ * A compact weekly strip for one metro area (rolling 4-week figures, published weekly). It shows the period the data runs through, and a notice if the file is more than 17 days old.
  * Attributes: src (default /data/market-weekly.json; format in docs/data-contracts/market-weekly.md), title (override the heading)
  */
 type Weekly = {
@@ -23,6 +23,8 @@ class TpaMarketWeekly extends HTMLElement {
     let d: Weekly;
     try { d = await getJSON<Weekly>(this.getAttribute('src') || '/data/market-weekly.json'); } catch { return; }
     const l = d.latest;
+    // A normal gap is at most about 12 days (a Thursday release covers weeks ending the previous Sunday). Past 17 days a release was missed.
+    const late = (Date.now() - Date.parse(d.asOf + 'T00:00:00Z')) / 86400000 > 17;
     const tiles: [string, string, string?][] = [
       ['Median sale price', money(l.medianPrice), l.yoy == null ? undefined : `${pct(l.yoy, true)} vs. last year`],
       ['Days on market', int(l.dom)],
@@ -32,9 +34,10 @@ class TpaMarketWeekly extends HTMLElement {
       ['Active listings', int(l.activeListings)],
     ];
     this.innerHTML = `<div class="tpa-mw-panel">
-      <div class="tpa-mw-head"><b>${esc(this.getAttribute('title') || `${d.region}: this week's pulse`)}</b><span>${esc(d.frequency || '')} · 4 weeks ending ${esc(date(d.asOf))}</span></div>
+      <div class="tpa-mw-head"><b>${esc(this.getAttribute('title') || `${d.region}: latest weekly pulse`)}</b><span>${esc(d.frequency || '')} · data through ${esc(date(d.asOf))}</span></div>
+      ${late ? `<div class="tpa-mw-late">Redfin has not published a newer weekly file since this one, so the most recent period available is shown.</div>` : ''}
       <div class="tpa-mw-tiles">${tiles.map(([k, v, s]) => `<div class="tpa-mw-tile"><span>${esc(k)}</span><b>${esc(v)}</b>${s ? `<small>${esc(s)}</small>` : ''}</div>`).join('')}</div>
-      <div class="tpa-mw-src">Covers the whole metro area, not a single city. Source: ${d.source?.url ? `<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.name)}</a>` : esc(d.source?.name || '')}.</div>
+      <div class="tpa-mw-src">Covers the whole metro area, not a single city. Redfin publishes this file on Thursdays, and each release covers the four weeks that ended a few days earlier. Source: ${d.source?.url ? `<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.name)}</a>` : esc(d.source?.name || '')}.</div>
     </div>`;
   }
 }

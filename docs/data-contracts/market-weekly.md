@@ -14,3 +14,5 @@ Read by `<tpa-market-weekly>`. Written by `scripts/data/update-weekly.mjs` whene
   "history": [ /* the last 26 windows, same fields plus periodBegin/periodEnd */ ]
 }
 ```
+
+**Freshness.** `asOf` is the last day of the newest four-week period in Redfin's weekly file. Redfin publishes on Thursdays, covering weeks that ended the Sunday before, so the date shown is normally 4 to 11 days old. The widget shows a notice when `asOf` is more than 17 days old (a release was missed).
