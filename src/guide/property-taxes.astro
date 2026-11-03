@@ -108,7 +108,7 @@ const schema = [faqSchema(faq)];
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">Common questions</span><h2>{CN} property tax FAQ</h2></div></div>
     <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
-    <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. Ask a tax professional about your situation. Equal Housing Opportunity.</p>
+    <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. Ask a tax professional about your situation. Equal Housing Opportunity. To compare areas, see <a href="/property-taxes/">Middle Tennessee property tax rates</a>.</p>
     <div class="linkgrid" style="margin-top:18px">
       <a href={`/${CS}/cost-of-living`}><b>Cost of living</b><small>Income, rent and home value.</small></a>
       <a href={`/${CS}/home-prices`}><b>{CN} home prices</b><small>Three years of prices and a sample payment.</small></a>

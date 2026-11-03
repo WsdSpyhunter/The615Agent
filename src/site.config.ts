@@ -21,6 +21,8 @@ export const site = {
     youtube: '',
     zillow: 'https://www.zillow.com/profile/ScottDavisRealtor',
   },
+  // Google Business Profile: link that opens the "write a review" box (not a profile page, so it is kept out of the social list)
+  googleReviewUrl: 'https://g.page/r/CQSfD7Tc8DOKEAI/review',
   // Public Web3Forms access key (safe in page code; it can only send to your email).
   web3formsKey: 'fb6d20db-acfa-46b8-bb9b-bc90dd526eb7',
   // Buttondown newsletter username for the monthly market report. Update when the new account exists.

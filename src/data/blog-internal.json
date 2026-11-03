@@ -1456,5 +1456,16 @@
       "nashville",
       "home prices"
     ]
+  },
+  {
+    "id": "tn-property-taxes",
+    "url": "/property-taxes/",
+    "label": "Middle Tennessee property tax rates compared",
+    "tags": [
+      "property taxes",
+      "cost of living",
+      "relocation",
+      "buyers"
+    ]
   }
 ]

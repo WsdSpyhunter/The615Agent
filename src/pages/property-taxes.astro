@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ColorBar from '../components/ColorBar.astro';
+import GuideClose from '../components/GuideClose.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import { site } from '../site.config';
+import taxRates from '../../public/data/property-tax-rates.json';
+
+// Rows come straight from public/data/property-tax-rates.json (the same rates the calculator uses), so the two can never disagree.
+const by = Object.fromEntries(taxRates.areas.map((a: any) => [a.key, a]));
+type Row = { key: string; county: string; label: string; from: string; page?: string };
+const rows: Row[] = [
+  { key: 'franklin', county: 'Williamson', label: 'Franklin, inside the Franklin Special School District', from: '2026', page: '/franklin/property-taxes/' },
+  { key: 'franklin-outside-fssd', county: 'Williamson', label: 'Franklin, outside that school district', from: '2026', page: '/franklin/property-taxes/' },
+  { key: 'brentwood', county: 'Williamson', label: 'Brentwood', from: '2026', page: '/brentwood/property-taxes/' },
+  { key: 'nolensville', county: 'Williamson', label: 'Nolensville', from: '2026', page: '/nolensville/property-taxes/' },
+  { key: 'thompsons-station', county: 'Williamson', label: "Thompson's Station", from: '2026', page: '/thompsons-station/property-taxes/' },
+  { key: 'spring-hill-williamson', county: 'Williamson', label: 'Spring Hill, Williamson County side', from: '2026', page: '/spring-hill/property-taxes/' },
+  { key: 'williamson-unincorporated', county: 'Williamson', label: 'Unincorporated Williamson County (outside any city)', from: '2026' },
+  { key: 'nashville', county: 'Davidson', label: 'Nashville, Urban Services District', from: '2025, held flat for 2026-27', page: '/nashville/property-taxes/' },
+  { key: 'davidson-gsd', county: 'Davidson', label: 'Davidson County outside the Urban Services District (General Services District)', from: '2025, held flat for 2026-27', page: '/nashville/property-taxes/' },
+  { key: 'murfreesboro', county: 'Rutherford', label: 'Murfreesboro', from: '2026', page: '/murfreesboro/property-taxes/' },
+  { key: 'columbia', county: 'Maury', label: 'Columbia', from: '2025 (2026 may be lower)', page: '/columbia/property-taxes/' },
+  { key: 'spring-hill-maury', county: 'Maury', label: 'Spring Hill, Maury County side', from: '2025 (2026 may be lower)', page: '/spring-hill/property-taxes/' },
+];
+const APPRAISED = 500000;
+const perYear = (rate: number) => Math.round((APPRAISED * 0.25 * rate) / 100);
+const usd = (n: number) => '$' + n.toLocaleString('en-US');
+const fmt = (n: number) => '$' + n.toFixed(n.toFixed(4).replace(/0+$/, '').split('.')[1].length > 3 ? 4 : 3);
+const data = rows.map((r) => ({ ...r, rate: by[r.key].rate }));
+const counties = ['Williamson', 'Davidson', 'Rutherford', 'Maury'];
+const faq = [
+  { q: 'How is a Tennessee property tax bill figured?', a: 'The county assessor sets the appraised value. Residential property is assessed at 25 percent of that value. The tax is the assessed value divided by 100, multiplied by the combined rate per $100 set by the county, the city and, in some places, a school district. For example, a home appraised at $500,000 has an assessed value of $125,000, and at a combined rate of $1.403 per $100 the yearly tax is about $1,754.' },
+  { q: 'Why do rates differ so much between counties and cities?', a: 'Each county and city sets its own rate to fund its own budget, and some areas add a school district rate. Nashville and Davidson County share one consolidated Metro government with two rates, one for the Urban Services District and one for the rest of the county. Rates also depend on how a county values property: a reappraisal changes the values, and the state then resets the rate so the government does not collect more money only because values went up.' },
+  { q: 'What is a reappraisal year?', a: 'Tennessee counties reappraise every four to six years. After a reappraisal, the state calculates a certified rate that would raise the same amount of money as before, and local governments can adopt that rate or a different one after public notice. Rates often fall in a reappraisal year even though appraised values rise.' },
+  { q: 'Do these rates tell me what a specific home will pay?', a: 'No. The bill depends on the exact address, the property\'s appraised value, the district it is in and any exemptions or relief programs. A listing\'s tax figure is usually last year\'s bill on the seller\'s assessment, so it can be lower than what a buyer will pay after a sale. Look up the exact property with the county assessor and trustee.' },
+  { q: 'How often are these rates updated?', a: 'Williamson and Rutherford counties are shown with their 2026 rates. Davidson County is shown with its 2025 rates, which Metro kept for 2026-27, and Maury County with 2025 rates because an official 2026 figure was not yet available to me. Maury County is in a 2026 reappraisal year, so its 2026 rate may be lower. I review these once a year and whenever a county or city adopts new rates.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Middle Tennessee property tax rates', url: `${site.url}/property-taxes/`, about: 'Property tax rates for Williamson, Davidson, Rutherford and Maury counties, Tennessee' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+];
+---
+<Layout title="Middle Tennessee Property Tax Rates 2026: Williamson, Davidson, Rutherford, Maury" description="Property tax rates per $100 for Franklin, Brentwood, Nashville, Murfreesboro, Columbia and more, with the yearly tax on a $500,000 home. Sourced and dated." schema={schema}>
+  <PageHeader eyebrow="Property taxes" title="Middle Tennessee <em>property tax</em> rates" lead="Combined rates per $100 of assessed value for Williamson, Davidson, Rutherford and Maury counties, with the yearly tax on a $500,000 home and the official source for each rate." />
+  <section class="s"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Rates compared</span><h2>Combined property tax rates by area</h2></div></div>
+    <p class="answer" style="max-width:68ch;margin:0 auto 22px;text-align:center">Tennessee assesses homes at 25 percent of appraised value. The table shows each area's combined rate and what that rate works out to for a home appraised at {usd(APPRAISED)}. Listed in order by county, not ranked.</p>
+    <div class="taxwrap"><table class="taxtable"><caption>Combined rate per $100 of assessed value, and the yearly tax on a {usd(APPRAISED)} home</caption>
+      <thead><tr><th>Area</th><th>County</th><th>Rate year</th><th>Rate per $100</th><th>Tax on a {usd(APPRAISED)} home</th></tr></thead>
+      <tbody>{counties.flatMap((c) => data.filter((r) => r.county === c)).map((r) => <tr><td>{r.page ? <a href={r.page}>{r.label}</a> : r.label}</td><td>{r.county}</td><td>{r.from}</td><td>{fmt(r.rate)}</td><td>about {usd(perYear(r.rate))} a year</td></tr>)}</tbody></table></div>
+    <p class="hint" style="margin-top:12px;text-align:center">Illustration only. A real bill depends on the exact address, the property's appraised value, its district and any relief programs. Some small cities inside Davidson County, such as Belle Meade and Berry Hill, levy their own city tax as well, so check the exact address. This is not tax advice.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s band"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Where the numbers come from</span><h2>Sources and notes</h2></div></div>
+    <ul>
+      <li><b>Williamson County:</b> the county's 2026 property tax rate sheet (county, school district and city rates, from the Trustee). The Franklin Special School District rate of $0.7673 applies only inside that district.</li>
+      <li><b>Davidson County (Nashville):</b> Metro Nashville's FY2027 budget documents and rate history. The $2.814 Urban Services District rate is the combined rate for 2026-27, and the council kept the rate unchanged on June 16, 2026. The $2.782 General Services District rate is from Metro's tax-year 2025 table.</li>
+      <li><b>Rutherford County (Murfreesboro):</b> the county commission's June 22, 2026 budget release for the county rate and the City Council's July 2, 2026 minutes for the city's certified rate. Check the final adopted city figure with the city.</li>
+      <li><b>Maury County (Columbia and Spring Hill's Maury side):</b> the Tennessee Comptroller's 2025 data. Maury County is in a 2026 reappraisal year, when rates are reset, so the 2026 rates may be lower. Check with the Maury County Trustee.</li>
+    </ul>
+    <p>Sources:
+      {taxRates.sources.map((x: any, k: number) => <><a href={x.url} rel="noopener" target="_blank">{x.name}</a>{k < taxRates.sources.length - 1 ? '; ' : '.'}</>)}
+      For the full breakdown of one city, open its property tax page, or try the numbers in the <a href="/mortgage-calculator/">mortgage calculator</a>.</p>
+  </div></section>
+  <section class="s"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Common questions</span><h2>Property tax questions</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="hint" style="margin-top:16px;text-align:center">This page is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+  </div></section>
+  <section class="s band"><div class="wrap"><RelatedPosts name="Franklin" /></div></section>
+  <GuideClose name="Middle Tennessee" />
+</Layout>
+<style>
+  .taxwrap{overflow-x:auto;margin-top:10px}
+  .taxtable{width:100%;border-collapse:collapse;font-size:15px}
+  .taxtable caption{text-align:center;font-weight:700;padding:0 12px 14px;color:var(--muted)}
+  .taxtable th,.taxtable td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  .taxtable th:nth-child(n+4),.taxtable td:nth-child(n+4){text-align:right;white-space:nowrap}
+  .taxtable thead th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .taxtable td a{font-weight:600}
+</style>
