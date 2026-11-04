@@ -101,9 +101,9 @@ const schema = [
   <section class="s"><div class="wrap">
     <div class="sh center"><div><span class="kicker navy">Start here</span><h2>Where are you in the move?</h2></div></div>
     <div class="paths relo-paths">
-      <a class="path" href="#steps"><h3>Just exploring</h3><p>See the whole move in seven steps and what comes first.</p><span class="more">See the 7 steps →</span></a>
-      <a class="path light" href="#compare"><h3>Choosing a city</h3><p>Eight cities side by side: price, supply, tax and commute.</p><span class="more">Compare the cities →</span></a>
-      <a class="path" href="/buy#form"><h3>Ready to buy</h3><p>Tell me your budget, area and timeline, and we'll talk within 48 hours.</p><span class="more">Get matched with homes →</span></a>
+      <a class="path p-gold" href="#steps"><h3>Just exploring</h3><p>See the whole move in seven steps and what comes first.</p><span class="more">See the 7 steps →</span></a>
+      <a class="path p-coral" href="#compare"><h3>Choosing a city</h3><p>Eight cities side by side: price, supply, tax and commute.</p><span class="more">Compare the cities →</span></a>
+      <a class="path p-blue" href="/buy#form"><h3>Ready to buy</h3><p>Tell me your budget, area and timeline, and we'll talk within 48 hours.</p><span class="more">Get matched with homes →</span></a>
     </div>
   </div></section>
   <ColorBar rev />
@@ -151,7 +151,7 @@ const schema = [
       <p class="hint" style="margin-top:12px;text-align:center">Illustration, not a loan offer or quote. It assumes the home's appraised value equals the price you enter, a 30-year fixed loan, and no mortgage insurance. It leaves out home insurance, HOA dues and utilities. The starting rate is Freddie Mac's weekly average 30-year fixed rate as of {dateLong(M.mortgageRateAsOf)} (via the Federal Reserve Bank of St. Louis), an average and not a quote. Listed by county, not ranked. Tax rates and sources are on the <a href="/property-taxes/">property tax page</a>. Maury County is in a 2026 reappraisal year, so its 2026 rate may be lower.</p>
     </div>
     <div class="relo-card" style="margin-top:28px">
-      <img src="/img/logo-615-agent.webp" alt="The 615 Agent" width="130" height="66" loading="lazy" decoding="async" />
+      <span class="relo-logo"><img src="/img/logo-615-agent.webp" alt="The 615 Agent" width="648" height="329" loading="lazy" decoding="async" /></span>
       <p>Want to add insurance, mortgage insurance and HOA dues, or try FHA and VA loans? The mortgage calculator does that, with each area's property tax filled in.</p>
       <a class="btn primary" href="/mortgage-calculator/">Open the mortgage calculator</a>
     </div>
@@ -159,6 +159,7 @@ const schema = [
   <ColorBar />
 
   <section class="s" id="basics"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="relo-box">
     <div class="sh center"><div><span class="kicker navy">Tennessee basics</span><h2>What to know before you arrive</h2><p>Each item links to the state's own page. Rules and fees change, so confirm before you go.</p></div></div>
     <ul class="relo-basics">
       <li><b>Income tax.</b> Tennessee does not tax wages and salaries. The Hall income tax on interest and dividends was repealed for tax periods beginning January 1, 2021 or later. <a href="https://www.tn.gov/revenue/taxes/hall-income-tax.html" rel="noopener" target="_blank">Tennessee Department of Revenue</a>. Ask a tax professional how this applies to you.</li>
@@ -167,6 +168,7 @@ const schema = [
       <li><b>Vehicle registration.</b> Someone moving from another state files an application for title and registration through their local county clerk, and brings their most current out-of-state registration. <a href="https://www.tn.gov/revenue/title-and-registration/vehicle-registration/registration-new.html" rel="noopener" target="_blank">Tennessee Department of Revenue, initial registration</a>.</li>
       <li><b>Utilities and local services.</b> Electric, water, gas and internet providers depend on the exact address. <a href="/resources/">My resources page</a> lists the main ones.</li>
     </ul>
+    </div>
   </div></section>
   <ColorBar rev />
 
@@ -181,7 +183,7 @@ const schema = [
 
   <section class="s" id="faq"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
     <div class="sh center"><div><span class="kicker navy">Common questions</span><h2>The top 10 questions relocators ask</h2></div></div>
-    <div class="faq">{topQ.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p>{x.links && <p class="relo-links">{x.links.map(([label, href], k) => <><a href={href} rel={href.startsWith('http') ? 'noopener' : undefined} target={href.startsWith('http') ? '_blank' : undefined}>{label}</a>{k < x.links.length - 1 ? ' · ' : ''}</>)}</p>}</details>)}</div>
+    <div class="faq">{topQ.map((x, i) => <details class={`tone t${i % 4}`} open={i === 0}><summary>{x.q}</summary><p>{x.a}</p>{x.links && <p class="relo-links">{x.links.map(([label, href], k) => <><a href={href} rel={href.startsWith('http') ? 'noopener' : undefined} target={href.startsWith('http') ? '_blank' : undefined}>{label}</a>{k < x.links.length - 1 ? ' · ' : ''}</>)}</p>}</details>)}</div>
     <div class="sh center" style="margin-top:36px"><div><h3>Tennessee quick answers</h3></div></div>
     <div class="faq">{tnQ.map((x) => <details><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
     <p class="hint" style="margin-top:16px;text-align:center">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
@@ -230,6 +232,30 @@ const schema = [
   .paycounty{color:var(--muted);font-weight:400}
   .paytool .relotable th:nth-child(n+3),.paytool .relotable td:nth-child(n+3){text-align:right;white-space:nowrap}
   .paytool .relotable th:nth-child(2),.paytool .relotable td:nth-child(2){text-align:left;white-space:normal}
+  .relo-paths .path{border-width:2px;border-style:solid;color:var(--fg)}
+  .relo-paths .path h3{color:var(--fg)}
+  .relo-paths .path p{color:#3E4651}
+  .relo-paths .path .more{color:var(--navy-text)}
+  .relo-paths .p-gold{background:var(--gold-soft);border-color:var(--gold)}
+  .relo-paths .p-coral{background:var(--coral-soft);border-color:var(--coral)}
+  .relo-paths .p-blue{background:var(--blue-soft);border-color:var(--blue)}
+  .relo-steps li{border-width:2px}
+  .relo-steps li:nth-child(4n+1){border-color:var(--blue)}
+  .relo-steps li:nth-child(4n+2){border-color:var(--gold)}
+  .relo-steps li:nth-child(4n+3){border-color:var(--coral)}
+  .relo-steps li:nth-child(4n+4){border-color:var(--navy)}
+  .relo-steps li:nth-child(4n+2) .relo-n{border-top-color:var(--gold)}
+  .relo-steps li:nth-child(4n+3) .relo-n{border-top-color:var(--coral)}
+  .relo-steps li:nth-child(4n+4) .relo-n{border-top-color:var(--navy)}
+  .relo-logo{display:grid;place-items:center;background:var(--black);border-radius:24px;border-top:4px solid var(--blue);box-shadow:var(--shadow);padding:20px 34px}
+  .relo-logo img{width:min(280px,70vw);height:auto;display:block}
+  .relo-box{background:#fff;border:2px solid var(--blue);border-radius:20px;padding:30px 28px;box-shadow:var(--shadow)}
+  @media(max-width:600px){.relo-box{padding:22px 16px}}
+  .tone.t0{background:var(--coral-soft);border-color:rgba(242,89,58,.4)}
+  .tone.t1{background:var(--gold-soft);border-color:rgba(255,194,14,.7)}
+  .tone.t2{background:var(--blue-soft);border-color:rgba(20,115,230,.4)}
+  .tone.t3{background:#E3EAF5;border-color:rgba(29,78,158,.4)}
+  .tone p{color:#3E4651}
 </style>
 <script>
   // The payment table recalculates as the visitor types. Same loan in every tax area; only the property tax differs.
