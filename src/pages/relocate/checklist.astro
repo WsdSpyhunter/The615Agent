@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ColorBar from '../../components/ColorBar.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+import { site } from '../../site.config';
+import checklist from '../../../public/data/relocation-checklist.json';
+
+const steps: any[] = Object.values(checklist)[0] as any[];
+const total = steps.reduce((n, s) => n + s.items.length, 0);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Relocation checklist for moving to Middle Tennessee', url: `${site.url}/relocate/checklist/`, about: 'A free checklist for relocating to Middle Tennessee, from deciding to move to the first 30 days' },
+];
+---
+<Layout title="Relocation Checklist: Moving to Middle Tennessee" description={`A free ${total}-item checklist for moving to Middle Tennessee, from deciding to move to your first 30 days. Check items off online, or print it or save it as a PDF.`} schema={schema} image="/img/skyline-night-1600.jpg">
+  <PageHeader eyebrow="Free checklist" title="Your <em>relocation</em> checklist" lead={`${steps.length} stages and ${total} items, from deciding to move to your first 30 days in Tennessee. Check items off as you go, or print it.`} />
+  <section class="s"><div class="wrap narrow2">
+    <div class="sh center no-print"><div><p>Your progress is saved on this device, and nothing is sent to anyone.</p></div></div>
+    <div class="relo-actions no-print"><button class="btn primary" type="button" id="print-cl">Print or save as PDF</button><a class="btn ghost" href="/relocate/" style="color:var(--fg)">Back to moving to Middle Tennessee</a></div>
+    <tpa-checklist id="clreloc" src="/data/relocation-checklist.json" storage-key="clreloc" tabs="false">
+      {Object.values(checklist).map((st: any) => <section>{st.map((s: any) => <div><h4>{s.title} ({s.when})</h4><ul>{s.items.map((i: string) => <li>{i}</li>)}</ul></div>)}</section>)}
+    </tpa-checklist>
+    <p class="hint" style="margin-top:16px;text-align:center">Rules and fees change, so confirm each state requirement on the official site before you go. This checklist is general information, not legal, tax, lending or financial advice. Equal Housing Opportunity.</p>
+    <p class="hint no-print" style="text-align:center">Also see the <a href="/checklists/">buyer and seller checklists</a>, the <a href="/property-taxes/">property tax comparison</a> and the <a href="/mortgage-calculator/">mortgage calculator</a>.</p>
+  </div></section>
+  <ColorBar rev />
+  <section class="s no-print"><div class="wrap">
+    <AuthorCard />
+    <div class="cta-band relo-cta">
+      <div><h2 style="font-size:1.3rem">Planning a move to Middle Tennessee?</h2><p>Tell me your budget, area and timeline, and we'll be talking within the next 48 hours.</p></div>
+      <div class="relo-cta-btns"><a class="btn gold" href="/buy#form">Get Matched With Homes</a><a class="btn ghost" href="/contact" style="color:#fff">Plan your move with me</a></div>
+    </div>
+  </div></section>
+</Layout>
+<style>
+  .relo-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:22px}
+  .relo-cta{margin-top:18px;display:grid;justify-items:center;text-align:center;gap:18px}
+  .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+</style>
+<style is:global>
+  @media print{
+    .nav,.mobile,footer,.bar,.no-print,.skip{display:none !important}
+    body{background:#fff}
+    .phead{padding:0 0 12px}
+  }
+</style>
+<script>
+  document.getElementById('print-cl')?.addEventListener('click', () => window.print());
+</script>

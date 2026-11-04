@@ -47,6 +47,8 @@ const extraRows: Row[] = [
   ...Object.entries(extra.cities).map(([k, v]: [string, any]) => ({ name: v.name, note: `${v.county} County`, price: v.redfin?.medianPrice ?? null, supply: v.redfin?.monthsSupply ?? null, tax: NOT_VERIFIED, commute: v.commute != null ? `${v.commute} min` : 'Not yet added', zips: v.zips })),
 ];
 const rows: Row[] = [...cityRows, ...extraRows].sort((a, b) => a.name.localeCompare(b.name));
+const relStages: any[] = Object.values(checklist)[0] as any[];
+const relItems = relStages.reduce((n, st) => n + st.items.length, 0);
 const reloPosts = (await getCollection('posts', (p) => !p.data.draft && p.data.category === 'Relocation')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const dateOf = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 const allTax = taxRates.areas.map((a: any) => perYear(a.rate)).sort((a: number, b: number) => a - b);
@@ -83,7 +85,7 @@ const steps = [
   { n: 3, when: '3-4 months out', t: 'Compare areas by the numbers', d: 'Use the table below to line up price, supply, tax and commute, then open the guide for any city you want to look at more closely.', links: [['Compare cities', '#compare']] },
   { n: 4, when: '2-3 months out', t: 'Check the exact address', d: 'School assignment, property tax and commute all depend on the exact address. Verify each one for any home you are serious about.', links: [['How to check schools', '/franklin/schools/'], ['Tax relief and appeals', '/property-taxes/relief-and-appeals/']] },
   { n: 5, when: '1-3 months out', t: 'Visit, and make an offer', d: 'Visit in person if you can, and drive the commute at the time you would drive it. If you are buying from far away, the out-of-state guide walks through how it works.', links: [['Buying from out of state', '/blog/buying-a-home-from-out-of-state/']] },
-  { n: 6, when: '4-8 weeks out', t: 'Close, and book the move', d: 'Line up the closing date, the movers and the utilities. If you own a home now, talk to an agent licensed in that state about timing both closings.', links: [['Moving checklist', '#checklist']] },
+  { n: 6, when: '4-8 weeks out', t: 'Close, and book the move', d: 'Line up the closing date, the movers and the utilities. If you own a home now, talk to an agent licensed in that state about timing both closings.', links: [['Relocation checklist', '/relocate/checklist/']] },
   { n: 7, when: 'First 30 days', t: 'Settle in', d: 'Get your Tennessee license, register your vehicle and update your address. The state sets the rules, so the next section links to each official page.', links: [['Tennessee basics', '#basics']] },
 ];
 
@@ -97,7 +99,7 @@ const topQ: QA[] = [
   { q: 'How much can I comfortably afford?', a: 'Build your budget as a monthly payment, not just a price: the loan payment, property tax, insurance, mortgage insurance if it applies, and HOA dues. Talk to a lender early and get pre-approved so you know your real number. Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. I am not a lender, so treat any figures here as estimates.', links: [['Mortgage calculator', '/mortgage-calculator/']] },
   { q: 'How does the local buying process work?', a: 'Every state does it a little differently. In Tennessee, closings are commonly handled by a title company or an attorney, and your lender\'s Loan Estimate itemizes the closing costs, including state and local recording fees and taxes. Before you make an offer, ask your agent to walk you through the contract, the inspection period and its deadlines, and who holds your earnest money.', links: [['Buyer checklist', '/checklists/']] },
   { q: 'Can I buy from out of state, or should I rent first?', a: 'Yes, you can buy from out of state. Many buyers tour by live video, hire a local inspector and sign electronically, and some visit once before they close. Renting for a few months first is a reasonable choice if you want more time to explore, and it is your call.', links: [['Buying from out of state', '/blog/buying-a-home-from-out-of-state/']] },
-  { q: 'What if my timing does not line up?', a: 'Selling, starting a job and buying rarely happen on the same day. Options people ask about include a contingency to sell first, a bridge loan, a rent-back (the seller stays in the home for an agreed time after closing) and short-term housing. Availability and terms vary, so talk to your lender and to an agent in the state where you are selling. My license covers Tennessee, so I can plan the Tennessee side with you.', links: [['Relocation checklist', '#checklist']] },
+  { q: 'What if my timing does not line up?', a: 'Selling, starting a job and buying rarely happen on the same day. Options people ask about include a contingency to sell first, a bridge loan, a rent-back (the seller stays in the home for an agreed time after closing) and short-term housing. Availability and terms vary, so talk to your lender and to an agent in the state where you are selling. My license covers Tennessee, so I can plan the Tennessee side with you.', links: [['Relocation checklist', '/relocate/checklist/']] },
   { q: 'What is changing in the area, and who can I trust locally?', a: 'Planned roads and developments are public information. The Tennessee Department of Transportation publishes state road projects, and city and county planning departments publish proposed developments. Nobody can tell you how a project will affect a home\'s value, so I do not predict it. For a specific address, ask what is planned nearby and check the public records. When you are new, ask your agent for two or three names in each category, such as lenders, inspectors and movers, and check licenses and reviews yourself.', links: [['TDOT projects', 'https://www.tn.gov/tdot/projects.html']] },
 ];
 const tnQ: QA[] = [
@@ -156,9 +158,9 @@ const schema = [
     <div class="sh center"><div><span class="kicker navy">Know your payment</span><h2>Same home price, different property tax</h2><p>Enter a price once and see the monthly payment in every tax area. The loan payment is identical everywhere, so the only difference is the property tax.</p></div></div>
     <div class="paytool" id="paytool" data-areas={JSON.stringify(payAreas.map((a) => ({ key: a.key, rate: a.rate })))}>
       <div class="payin">
-        <label>Home price<input id="pt-price" inputmode="numeric" autocomplete="off" value={PAY.price.toLocaleString('en-US')} /></label>
-        <label>Down payment (%)<input id="pt-down" inputmode="decimal" autocomplete="off" value={String(PAY.down)} /></label>
-        <label>Interest rate (%)<input id="pt-rate" inputmode="decimal" autocomplete="off" value={String(PAY.rate)} /></label>
+        <label><span class="pl pl-blue">Home price</span><input id="pt-price" inputmode="numeric" autocomplete="off" value={PAY.price.toLocaleString('en-US')} /></label>
+        <label><span class="pl pl-gold">Down payment (%)</span><input id="pt-down" inputmode="decimal" autocomplete="off" value={String(PAY.down)} /></label>
+        <label><span class="pl pl-coral">Interest rate (%)</span><input id="pt-rate" inputmode="decimal" autocomplete="off" value={String(PAY.rate)} /></label>
       </div>
       <p class="payloan">Loan payment, principal and interest, on a 30-year fixed loan of <b id="pt-loan">{usd0(startPay.loan)}</b>: <b id="pt-pi">{usd0(startPay.pi)}</b> a month</p>
       <div class="relowrap"><table class="relotable"><caption>Monthly property tax and total with the loan payment, by tax area</caption>
@@ -188,12 +190,12 @@ const schema = [
   </div></section>
   <ColorBar rev />
 
-  <section class="s band" id="checklist"><div class="wrap narrow2">
-    <div class="sh center"><div><span class="kicker navy">Free checklist</span><h2>Your relocation checklist</h2><p>Check items off as you go. Your progress is saved on this device, and nothing is sent to anyone.</p></div></div>
-    <tpa-checklist id="clreloc" src="/data/relocation-checklist.json" storage-key="clreloc" tabs="false">
-      {Object.values(checklist).map((steps: any) => <section>{steps.map((s: any) => <div><h4>{s.title} ({s.when})</h4><ul>{s.items.map((i: string) => <li>{i}</li>)}</ul></div>)}</section>)}
-    </tpa-checklist>
-    <p class="hint" style="margin-top:14px">Want the buyer or seller checklist too? See <a href="/checklists/">all checklists</a>.</p>
+  <section class="s band" id="checklist"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Free checklist</span><h2>Your relocation checklist</h2></div></div>
+    <div class="relo-card">
+      <p>{relStages.length} stages and {relItems} items, from deciding to move to your first 30 days in Tennessee. Check items off online, or print it or save it as a PDF.</p>
+      <div class="relo-cta-btns"><a class="btn primary" href="/relocate/checklist/">Open the relocation checklist</a><a class="btn ghost" href="/checklists/" style="color:var(--fg)">Buyer and seller checklists</a></div>
+    </div>
   </div></section>
   <ColorBar />
 
@@ -241,7 +243,11 @@ const schema = [
   .paytool{max-width:980px;margin:0 auto}
   .payin{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
   @media(max-width:620px){.payin{grid-template-columns:1fr}}
-  .payin label{display:grid;gap:6px;font-weight:700;font-size:14px}
+  .payin label{display:grid;gap:8px}
+  .pl{justify-self:start;padding:5px 15px;border-radius:999px;border:2px solid;color:var(--fg);font-size:16px;font-weight:800;line-height:1.3}
+  .pl-blue{background:var(--blue-soft);border-color:var(--blue)}
+  .pl-gold{background:var(--gold-soft);border-color:var(--gold)}
+  .pl-coral{background:var(--coral-soft);border-color:var(--coral)}
   .payin input{font:inherit;font-weight:600;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--fg)}
   .payloan{text-align:center;margin:6px 0 16px}
   .paycounty{color:var(--muted);font-weight:400}
@@ -281,8 +287,9 @@ const schema = [
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
   #compare{background:#fff}
+  #basics{background:var(--black)}
   #basics .kicker{font-size:1.3rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px;display:inline-block}
-  #payment .kicker,#steps .kicker,#compare .kicker,#start .kicker,#relo-blog .kicker,#faq .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
+  #payment .kicker,#steps .kicker,#compare .kicker,#start .kicker,#checklist .kicker,#relo-blog .kicker,#faq .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
 </style>
 <script>
   // The payment table recalculates as the visitor types. Same loan in every tax area; only the property tax differs.
