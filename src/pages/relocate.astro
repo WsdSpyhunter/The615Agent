@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ColorBar from '../components/ColorBar.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../site.config';
+import { M, C, usd, dateLong } from '../lib-guide';
+import { guideCities, cityNames } from '../data/guide-cities';
+import taxRates from '../../public/data/property-tax-rates.json';
+import checklist from '../../public/data/relocation-checklist.json';
+
+// Everything in the city table comes from the same files the city guides use, so the page never disagrees with them.
+const rate = Object.fromEntries(taxRates.areas.map((a: any) => [a.key, a.rate]));
+const APPRAISED = 500000;
+const perYear = (r: number) => Math.round((APPRAISED * 0.25 * r) / 100);
+const taxKeys: Record<string, string[]> = {
+  franklin: ['franklin', 'franklin-outside-fssd'],
+  brentwood: ['brentwood'],
+  'spring-hill': ['spring-hill-williamson', 'spring-hill-maury'],
+  'thompsons-station': ['thompsons-station'],
+  nolensville: ['nolensville'],
+  columbia: ['columbia'],
+  murfreesboro: ['murfreesboro'],
+  nashville: ['nashville', 'davidson-gsd'],
+};
+const taxText = (slug: string) => {
+  const v = taxKeys[slug].map((k) => perYear(rate[k])).sort((a, b) => a - b);
+  return v[0] === v[v.length - 1] ? `about ${usd(v[0])}` : `about ${usd(v[0])} to ${usd(v[v.length - 1])}`;
+};
+const slugs = Object.keys(cityNames).sort((a, b) => cityNames[a].localeCompare(cityNames[b]));
+const rows = slugs.map((s) => ({ slug: s, name: cityNames[s], price: M.cities[s].medianPrice, supply: M.cities[s].monthsSupply, commute: C.cities[s].meanCommuteMinutes, zips: guideCities[s].zips, tax: taxText(s) }));
+const reloPosts = (await getCollection('posts', (p) => !p.data.draft && p.data.category === 'Relocation')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const dateOf = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+const allTax = taxRates.areas.map((a: any) => perYear(a.rate)).sort((a: number, b: number) => a - b);
+const asOf = dateLong(M.asOf ?? M.cities.franklin.asOf);
+
+const steps = [
+  { n: 1, when: '6-12 months out', t: 'Decide why, and set a date', d: 'Write down what is driving the move and when you would like to be settled. A target date makes every later step easier to place.', links: [['Buyer and seller checklists', '/checklists/']] },
+  { n: 2, when: '4-6 months out', t: 'Set a budget you trust', d: 'Talk to a lender and get pre-approved. Then see what a payment looks like with each area\'s real property tax, not a guess.', links: [['Mortgage calculator', '/mortgage-calculator/'], ['Property tax rates compared', '/property-taxes/']] },
+  { n: 3, when: '3-4 months out', t: 'Compare areas by the numbers', d: 'Use the table below to line up price, supply, tax and commute, then open the guide for any city you want to look at more closely.', links: [['Compare cities', '#compare']] },
+  { n: 4, when: '2-3 months out', t: 'Check the exact address', d: 'School assignment, property tax and commute all depend on the exact address. Verify each one for any home you are serious about.', links: [['How to check schools', '/franklin/schools/'], ['Tax relief and appeals', '/property-taxes/relief-and-appeals/']] },
+  { n: 5, when: '1-3 months out', t: 'Visit, and make an offer', d: 'Visit in person if you can, and drive the commute at the time you would drive it. If you are buying from far away, the out-of-state guide walks through how it works.', links: [['Buying from out of state', '/blog/buying-a-home-from-out-of-state/']] },
+  { n: 6, when: '4-8 weeks out', t: 'Close, and book the move', d: 'Line up the closing date, the movers and the utilities. If you own a home now, talk to an agent licensed in that state about timing both closings.', links: [['Moving checklist', '#checklist']] },
+  { n: 7, when: 'First 30 days', t: 'Settle in', d: 'Get your Tennessee license, register your vehicle and update your address. The state sets the rules, so the next section links to each official page.', links: [['Tennessee basics', '#basics']] },
+];
+
+const faq = [
+  { q: 'Does Tennessee have a state income tax?', a: 'Tennessee does not tax wages and salaries. The Hall income tax, which applied only to interest and dividends, was repealed for tax periods beginning January 1, 2021 or later, according to the Tennessee Department of Revenue. Tax rules for your situation can still depend on where you work and live, so ask a tax professional.' },
+  { q: 'How much are property taxes in Middle Tennessee?', a: `It depends on the county, the city and sometimes the school district. On a home appraised at $500,000, the yearly tax in the areas I cover ranges from about ${usd(allTax[0])} to ${usd(allTax[allTax.length - 1])} a year at the latest published rates. The property tax comparison page shows each area with its rate year and source.` },
+  { q: 'How soon do I need a Tennessee driver license?', a: 'The Tennessee Department of Safety says new residents with a license from another state must get a Tennessee license no later than 30 days after establishing residency, at a full-service Driver Services Center. Residents coming from certain states must also bring a certified driving record, so check the state\'s current notice before you go.' },
+  { q: 'How do I register my car in Tennessee?', a: 'The Tennessee Department of Revenue says someone moving from another state files an application for title and registration through their local county clerk, and brings their most current out-of-state registration. The state\'s page lists the documents.' },
+  { q: 'Which city should I choose?', a: 'I do not rank cities, and fair housing law protects your right to choose where you live. The right area depends on your budget, your commute and your priorities. Compare the numbers, visit the areas, and look at specific homes.' },
+  { q: 'Can you help me sell my current home in another state?', a: 'My license covers Tennessee. A home in another state needs an agent licensed in that state. I can help you plan the timing of your Tennessee purchase around your sale.' },
+];
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Moving to Middle Tennessee', url: `${site.url}/relocate/`, about: 'Steps, costs and a checklist for relocating to Franklin, Brentwood, Spring Hill, Thompson\'s Station, Nolensville, Columbia, Murfreesboro and Nashville, Tennessee' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
+];
+---
+<Layout title="Moving to Middle Tennessee: Steps, Costs and a Free Checklist" description="Relocating to Franklin, Brentwood, Spring Hill, Nashville or nearby? A 7-step plan, eight cities side by side with sourced numbers, Tennessee basics and a free checklist." schema={schema} image="/img/skyline-night-1600.jpg">
+  <PageHeader eyebrow="Relocating" title="Moving to <em>Middle Tennessee</em>" lead="A plain 7-step plan, eight cities side by side with sourced numbers, the Tennessee basics and a free checklist. No rankings, no pressure." />
+
+  <section class="s"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Start here</span><h2>Where are you in the move?</h2></div></div>
+    <div class="paths relo-paths">
+      <a class="path" href="#steps"><h3>Just exploring</h3><p>See the whole move in seven steps and what comes first.</p><span class="more">See the 7 steps →</span></a>
+      <a class="path light" href="#compare"><h3>Choosing a city</h3><p>Eight cities side by side: price, supply, tax and commute.</p><span class="more">Compare the cities →</span></a>
+      <a class="path" href="/buy#form"><h3>Ready to buy</h3><p>Tell me your budget, area and timeline, and we'll talk within 48 hours.</p><span class="more">Get matched with homes →</span></a>
+    </div>
+  </div></section>
+  <ColorBar rev />
+
+  <section class="s band" id="steps"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Your move</span><h2>The move in 7 steps</h2><p>Timing is a general guide. Your own dates will shift it.</p></div></div>
+    <ol class="relo-steps">
+      {steps.map((s) => (
+        <li>
+          <span class="relo-n">{s.n}</span>
+          <div class="relo-body">
+            <span class="relo-when">{s.when}</span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+            <p class="relo-links">{s.links.map(([label, href], k) => <><a href={href}>{label}</a>{k < s.links.length - 1 ? ' · ' : ''}</>)}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div></section>
+  <ColorBar />
+
+  <section class="s" id="compare"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Eight cities side by side</span><h2>Compare the numbers</h2></div></div>
+    <p class="answer" style="max-width:68ch;margin:0 auto 22px;text-align:center">Listed alphabetically, not ranked. Open any city for its full guide.</p>
+    <div class="relowrap"><table class="relotable"><caption>Redfin median sale price and months of supply as of {asOf}; Census average commute; property tax on a {usd(APPRAISED)} home</caption>
+      <thead><tr><th>City</th><th>Median sale price</th><th>Months of supply</th><th>Yearly property tax on a {usd(APPRAISED)} home</th><th>Average commute</th><th>ZIP codes</th></tr></thead>
+      <tbody>{rows.map((r) => <tr><td><a href={`/${r.slug}/`}>{r.name}</a></td><td>{usd(r.price)}</td><td>{r.supply}</td><td>{r.tax}</td><td>{r.commute} min</td><td>{r.zips.length > 6 ? <a href={`/${r.slug}/neighborhoods/`}>{r.zips.length} ZIP codes</a> : r.zips.join(', ')}</td></tr>)}</tbody></table></div>
+    <p class="hint" style="margin-top:12px;text-align:center">Where a city shows a range, the tax depends on the school district, county side or service district the home is in. Tax rates are the latest published and are shown with their rate year and source on the <a href="/property-taxes/">property tax page</a>. Commute is the Census Bureau's average for the whole city. These are illustrations, not a quote for any home. See each city's guide for sources.</p>
+  </div></section>
+  <ColorBar rev />
+
+  <section class="s band"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">Know your payment</span><h2>What will it cost me each month?</h2></div></div>
+    <div class="relo-card">
+      <img src="/img/logo-615-agent.webp" alt="The 615 Agent" width="130" height="66" loading="lazy" decoding="async" />
+      <p>The mortgage calculator fills in each area's real property tax, then adds insurance, mortgage insurance and HOA dues, so the payment you see is closer to the one you will pay.</p>
+      <a class="btn primary" href="/mortgage-calculator/">Open the mortgage calculator</a>
+    </div>
+  </div></section>
+  <ColorBar />
+
+  <section class="s" id="basics"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Tennessee basics</span><h2>What to know before you arrive</h2><p>Each item links to the state's own page. Rules and fees change, so confirm before you go.</p></div></div>
+    <ul class="relo-basics">
+      <li><b>Income tax.</b> Tennessee does not tax wages and salaries. The Hall income tax on interest and dividends was repealed for tax periods beginning January 1, 2021 or later. <a href="https://www.tn.gov/revenue/taxes/hall-income-tax.html" rel="noopener" target="_blank">Tennessee Department of Revenue</a>. Ask a tax professional how this applies to you.</li>
+      <li><b>Property tax.</b> Residential property is assessed at 25 percent of its appraised value, then taxed at the county, city and sometimes school district rate. See <a href="/property-taxes/">rates compared</a> and <a href="/property-taxes/relief-and-appeals/">relief and appeals</a>.</li>
+      <li><b>Driver license.</b> A new resident with an out-of-state license must get a Tennessee license no later than 30 days after establishing residency, at a full-service Driver Services Center. Some states also require a certified driving record. <a href="https://www.tn.gov/safety/driver-services/classd/dlnew.html" rel="noopener" target="_blank">Tennessee Department of Safety, new residents</a>.</li>
+      <li><b>Vehicle registration.</b> Someone moving from another state files an application for title and registration through their local county clerk, and brings their most current out-of-state registration. <a href="https://www.tn.gov/revenue/title-and-registration/vehicle-registration/registration-new.html" rel="noopener" target="_blank">Tennessee Department of Revenue, initial registration</a>.</li>
+      <li><b>Utilities and local services.</b> Electric, water, gas and internet providers depend on the exact address. <a href="/resources/">My resources page</a> lists the main ones.</li>
+    </ul>
+  </div></section>
+  <ColorBar rev />
+
+  <section class="s band" id="checklist"><div class="wrap narrow2">
+    <div class="sh"><div><span class="kicker navy">Free checklist</span><h2>Your relocation checklist</h2><p>Check items off as you go. Your progress is saved on this device, and nothing is sent to anyone.</p></div></div>
+    <tpa-checklist id="clreloc" src="/data/relocation-checklist.json" storage-key="clreloc" tabs="false">
+      {Object.values(checklist).map((steps: any) => <section>{steps.map((s: any) => <div><h4>{s.title} ({s.when})</h4><ul>{s.items.map((i: string) => <li>{i}</li>)}</ul></div>)}</section>)}
+    </tpa-checklist>
+    <p class="hint" style="margin-top:14px">Want the buyer or seller checklist too? See <a href="/checklists/">all checklists</a>.</p>
+  </div></section>
+  <ColorBar />
+
+  <section class="s"><div class="wrap prose" style="max-width:820px;margin-inline:auto">
+    <div class="sh center"><div><span class="kicker navy">Common questions</span><h2>Moving to Tennessee FAQ</h2></div></div>
+    <div class="faq">{faq.map((x, i) => <details open={i === 0}><summary>{x.q}</summary><p>{x.a}</p></details>)}</div>
+    <p class="hint" style="margin-top:16px;text-align:center">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
+  </div></section>
+  {reloPosts.length > 0 && <section class="s band"><div class="wrap">
+    <div class="sh center"><div><span class="kicker navy">From the blog</span><h2>More on relocating</h2></div></div>
+    <div class="linkgrid">{reloPosts.map((p) => <a href={`/blog/${p.id}`}><b>{p.data.title}</b><small>{p.data.category} · {dateOf(p.data.pubDate)}</small></a>)}</div>
+  </div></section>}
+
+  <section class="s"><div class="wrap">
+    <AuthorCard />
+    <div class="cta-band" style="display:grid;margin-top:18px">
+      <div><h2 style="font-size:1.3rem">Planning a move to Middle Tennessee?</h2><p>Tell me your budget, area and timeline, and we'll be talking within the next 48 hours.</p></div>
+      <a class="btn gold" href="/buy#form">Get Matched With Homes</a>
+      <a class="btn ghost" href="/contact" style="color:#fff">Plan your move with me</a>
+    </div>
+  </div></section>
+</Layout>
+<style>
+  .relo-paths{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.relo-paths{grid-template-columns:1fr}}
+  .relo-steps{list-style:none;margin:0 auto;padding:0;max-width:820px;display:grid;gap:18px}
+  .relo-steps li{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .relo-n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--black);color:#fff;font-weight:800;font-size:18px;border-top:3px solid var(--blue)}
+  .relo-when{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+  .relo-body h3{margin:2px 0 6px}
+  .relo-body p{margin:0 0 6px}
+  .relo-links{font-weight:600;font-size:15px}
+  .relowrap{overflow-x:auto;margin-top:10px}
+  .relotable{width:100%;border-collapse:collapse;font-size:15px}
+  .relotable caption{text-align:center;font-weight:700;padding:0 12px 14px;color:var(--muted)}
+  .relotable th,.relotable td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line)}
+  .relotable th:nth-child(n+2):nth-child(-n+5),.relotable td:nth-child(n+2):nth-child(-n+5){text-align:right;white-space:nowrap}
+  .relotable thead th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .relotable td a{font-weight:600}
+  .relo-card{max-width:720px;margin:0 auto;text-align:center;display:grid;gap:14px;justify-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px}
+  .relo-card p{margin:0;max-width:56ch}
+  .relo-basics{display:grid;gap:12px;padding-left:20px}
+</style>

@@ -1478,5 +1478,16 @@
       "buyers",
       "relocation"
     ]
+  },
+  {
+    "id": "relocate-hub",
+    "url": "/relocate/",
+    "label": "Moving to Middle Tennessee: 7 steps, eight cities compared and a free relocation checklist",
+    "tags": [
+      "relocation",
+      "buyers",
+      "cost of living",
+      "property taxes"
+    ]
   }
 ]

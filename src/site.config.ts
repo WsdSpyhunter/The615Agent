@@ -43,6 +43,7 @@ export const site = {
 
 export const nav = [
   { label: 'Home', href: '/' },
+  { label: 'Relocate', href: '/relocate' },
   { label: 'Market Data', href: '/market-data' },
   { label: 'Mortgage Calculator', href: '/mortgage-calculator' },
   { label: 'Checklists', href: '/checklists' },
