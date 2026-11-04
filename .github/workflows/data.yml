@@ -60,6 +60,11 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: node scripts/data/update-market.mjs
 
+      - name: Extra places for the Relocate table (Redfin)
+        if: steps.check.outputs.monthly == 'true'
+        continue-on-error: true
+        run: node scripts/data/relocate-extra.mjs
+
       - name: Weekly Nashville metro pulse (Redfin) and mortgage rate
         if: steps.check.outputs.weekly == 'true'
         env:

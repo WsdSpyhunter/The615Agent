@@ -10,6 +10,7 @@ import { guideCities, cityNames } from '../data/guide-cities';
 import taxRates from '../../public/data/property-tax-rates.json';
 import checklist from '../../public/data/relocation-checklist.json';
 import weekly from '../../public/data/market-weekly.json';
+import extra from '../../public/data/relocate-extra.json';
 
 // Everything in the city table comes from the same files the city guides use, so the page never disagrees with them.
 const rate = Object.fromEntries(taxRates.areas.map((a: any) => [a.key, a.rate]));
@@ -29,8 +30,23 @@ const taxText = (slug: string) => {
   const v = taxKeys[slug].map((k) => perYear(rate[k])).sort((a, b) => a - b);
   return v[0] === v[v.length - 1] ? `about ${usd(v[0])}` : `about ${usd(v[0])} to ${usd(v[v.length - 1])}`;
 };
-const slugs = Object.keys(cityNames).sort((a, b) => cityNames[a].localeCompare(cityNames[b]));
-const rows = slugs.map((s) => ({ slug: s, name: cityNames[s], price: M.cities[s].medianPrice, supply: M.cities[s].monthsSupply, commute: C.cities[s].meanCommuteMinutes, zips: guideCities[s].zips, tax: taxText(s) }));
+// Twelve places side by side. Eight are full city guides; four are extras for this table only (they are not in the market temperature gauge).
+// Bellevue and Donelson are Nashville neighborhoods (Redfin neighborhood data, Census figures for their ZIP codes). Mt. Juliet and Smyrna come from Redfin's city data.
+const zipRange = (zs: string[]) => {
+  const v = zs.map((z) => C.zips[z]?.meanCommuteMinutes).filter((x) => x != null) as number[];
+  if (!v.length) return '';
+  const lo = Math.min(...v), hi = Math.max(...v);
+  return lo === hi ? `${lo} min` : `${lo} to ${hi} min`;
+};
+const NOT_VERIFIED = 'Not yet verified';
+type Row = { slug?: string; name: string; note?: string; price: number | null; supply: number | null; tax: string; commute: string; zips: string[]; zipLink?: string };
+const cityRows: Row[] = Object.keys(cityNames).map((s) => ({ slug: s, name: cityNames[s], price: M.cities[s].medianPrice, supply: M.cities[s].monthsSupply, commute: `${C.cities[s].meanCommuteMinutes} min`, zips: guideCities[s].zips, tax: taxText(s), zipLink: guideCities[s].zips.length > 6 ? `/${s}/neighborhoods/` : undefined }));
+const extraRows: Row[] = [
+  { name: 'Bellevue', note: 'Nashville neighborhood', price: M.cities['bellevue'].medianPrice, supply: M.cities['bellevue'].monthsSupply, tax: taxText('nashville'), commute: zipRange(['37221']), zips: ['37221'] },
+  { name: 'Donelson', note: 'Nashville neighborhood, with Hermitage', price: M.cities['donelson-hermitage'].medianPrice, supply: M.cities['donelson-hermitage'].monthsSupply, tax: taxText('nashville'), commute: zipRange(['37214', '37076']), zips: ['37214', '37076'] },
+  ...Object.entries(extra.cities).map(([k, v]: [string, any]) => ({ name: v.name, note: `${v.county} County`, price: v.redfin?.medianPrice ?? null, supply: v.redfin?.monthsSupply ?? null, tax: NOT_VERIFIED, commute: v.commute != null ? `${v.commute} min` : 'Not yet added', zips: v.zips })),
+];
+const rows: Row[] = [...cityRows, ...extraRows].sort((a, b) => a.name.localeCompare(b.name));
 const reloPosts = (await getCollection('posts', (p) => !p.data.draft && p.data.category === 'Relocation')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const dateOf = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 const allTax = taxRates.areas.map((a: any) => perYear(a.rate)).sort((a: number, b: number) => a - b);
@@ -95,14 +111,14 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) },
 ];
 ---
-<Layout title="Moving to Middle Tennessee: Steps, Costs and a Free Checklist" description="Relocating to Franklin, Brentwood, Spring Hill, Nashville or nearby? A 7-step plan, eight cities side by side with sourced numbers, Tennessee basics and a free checklist." schema={schema} image="/img/skyline-night-1600.jpg">
-  <PageHeader eyebrow="Relocating" title="Moving to <em>Middle Tennessee</em>" lead="A plain 7-step plan, eight cities side by side with sourced numbers, the Tennessee basics and a free checklist. No rankings, no pressure." />
+<Layout title="Moving to Middle Tennessee: Steps, Costs and a Free Checklist" description="Relocating to Franklin, Brentwood, Spring Hill, Nashville or nearby? A 7-step plan, twelve areas side by side with sourced numbers, Tennessee basics and a free checklist." schema={schema} image="/img/skyline-night-1600.jpg">
+  <PageHeader eyebrow="Relocating" title="Moving to <em>Middle Tennessee</em>" lead="A plain 7-step plan, twelve areas side by side with sourced numbers, the Tennessee basics and a free checklist. No rankings, no pressure." />
 
   <section class="s" id="start"><div class="wrap">
     <div class="sh center"><div><span class="kicker navy">Start here</span><h2>Where are you in the relocation process?</h2></div></div>
     <div class="paths relo-paths">
       <a class="path p-gold" href="#steps"><h3>Just exploring</h3><p>See the whole move in seven steps and what comes first.</p><span class="more">See the 7 steps →</span></a>
-      <a class="path p-coral" href="#compare"><h3>Choosing a city</h3><p>Eight cities side by side: price, supply, tax and commute.</p><span class="more">Compare the cities →</span></a>
+      <a class="path p-coral" href="#compare"><h3>Choosing a city</h3><p>Twelve areas side by side: price, supply, tax and commute.</p><span class="more">Compare the cities →</span></a>
       <a class="path p-blue" href="/buy#form"><h3>Ready to buy</h3><p>Tell me your budget, area and timeline, and we'll talk within 48 hours.</p><span class="more">Get matched with homes →</span></a>
     </div>
   </div></section>
@@ -127,12 +143,12 @@ const schema = [
   <ColorBar />
 
   <section class="s" id="compare"><div class="wrap">
-    <div class="sh center"><div><span class="kicker navy">Eight cities side by side</span><h2>Compare the numbers</h2></div></div>
+    <div class="sh center"><div><span class="kicker navy">Twelve areas side by side</span><h2>Compare the numbers</h2></div></div>
     <p class="answer" style="max-width:68ch;margin:0 auto 22px;text-align:center">Listed alphabetically, not ranked. Open any city for its full guide.</p>
     <div class="relowrap"><table class="relotable"><caption>Redfin median sale price and months of supply as of {asOf}; Census average commute; property tax on a {usd(APPRAISED)} home</caption>
       <thead><tr><th>City</th><th>Median sale price</th><th>Months of supply</th><th>Yearly property tax on a {usd(APPRAISED)} home</th><th>Average commute</th><th>ZIP codes</th></tr></thead>
-      <tbody>{rows.map((r) => <tr><td><a href={`/${r.slug}/`}>{r.name}</a></td><td>{usd(r.price)}</td><td>{r.supply}</td><td>{r.tax}</td><td>{r.commute} min</td><td>{r.zips.length > 6 ? <a href={`/${r.slug}/neighborhoods/`}>{r.zips.length} ZIP codes</a> : r.zips.join(', ')}</td></tr>)}</tbody></table></div>
-    <p class="hint" style="margin-top:12px;text-align:center">Where a city shows a range, the tax depends on the school district, county side or service district the home is in. Tax rates are the latest published and are shown with their rate year and source on the <a href="/property-taxes/">property tax page</a>. Commute is the Census Bureau's average for the whole city. These are illustrations, not a quote for any home. See each city's guide for sources.</p>
+      <tbody>{rows.map((r) => <tr><td>{r.slug ? <a href={`/${r.slug}/`}>{r.name}</a> : <b>{r.name}</b>}{r.note && <small class="paycounty"> · {r.note}</small>}</td><td>{r.price != null ? usd(r.price) : 'n/a'}</td><td>{r.supply ?? 'n/a'}</td><td>{r.tax}</td><td>{r.commute || 'n/a'}</td><td>{r.zipLink ? <a href={r.zipLink}>{r.zips.length} ZIP codes</a> : r.zips.join(', ')}</td></tr>)}</tbody></table></div>
+    <p class="hint" style="margin-top:12px;text-align:center">Where a row shows a range, the tax depends on the school district, county side or service district the home is in. Tax rates are the latest published and are shown with their rate year and source on the <a href="/property-taxes/">property tax page</a>. Commute is the Census Bureau's average for the whole city. For Bellevue and Donelson, which are Nashville neighborhoods, price and supply are Redfin's neighborhood figures, commute is the Census figure for their ZIP codes, and the tax range is Nashville's (Davidson County's two service districts). Mt. Juliet and Smyrna show Redfin's citywide figures. I have not yet confirmed an official 2026 property tax rate for either, so no figure is shown; check with the county trustee and the city. City names that are links open a full city guide. These are illustrations, not a quote for any home.</p>
   </div></section>
   <ColorBar rev />
 
@@ -264,6 +280,7 @@ const schema = [
   .relo-cta{margin-top:18px;display:grid;justify-items:center;text-align:center;gap:18px}
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
+  #compare{background:#fff}
   #basics .kicker{font-size:1.3rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px;display:inline-block}
   #payment .kicker,#steps .kicker,#compare .kicker,#start .kicker,#relo-blog .kicker,#faq .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
 </style>

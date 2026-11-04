@@ -23,7 +23,7 @@ const shape = (r) => ({
   ppsfYoy: num(r['median sale price per sq.ft. yoy (%)']),
 });
 
-async function pull(file, isWanted, quick = (line) => line.includes(', TN"')) {
+export async function pull(file, isWanted, quick = (line) => line.includes(', TN"')) {
   const out = new Map(); // normalized region -> Map(month -> record)
   const info = await streamCsv(`${REDFIN_BASE}/${file}`, quick, (r) => {
     const k = norm(r['region name'] || '');

@@ -1,0 +1,38 @@
+{
+  "note": "Extra places for the Relocate page table only. Redfin Data Center, citywide, rolling three months. Not used by the market temperature gauge.",
+  "source": {
+    "name": "Redfin Data Center",
+    "url": "https://www.redfin.com/news/data-center/"
+  },
+  "retrieved": "2026-11-04",
+  "cities": {
+    "mt-juliet": {
+      "name": "Mt. Juliet",
+      "county": "Wilson",
+      "zips": [
+        "37122"
+      ],
+      "redfin": {
+        "periodEnd": "2026-09-30",
+        "medianPrice": 573227,
+        "monthsSupply": 4.7,
+        "inventory": 344,
+        "region": "Mount Juliet, TN"
+      }
+    },
+    "smyrna": {
+      "name": "Smyrna",
+      "county": "Rutherford",
+      "zips": [
+        "37167"
+      ],
+      "redfin": {
+        "periodEnd": "2026-09-30",
+        "medianPrice": 409755,
+        "monthsSupply": 4.3,
+        "inventory": 304,
+        "region": "Smyrna, TN"
+      }
+    }
+  }
+}
