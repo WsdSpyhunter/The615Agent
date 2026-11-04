@@ -173,7 +173,7 @@ const schema = [
   <ColorBar rev />
 
   <section class="s band" id="checklist"><div class="wrap narrow2">
-    <div class="sh"><div><span class="kicker navy">Free checklist</span><h2>Your relocation checklist</h2><p>Check items off as you go. Your progress is saved on this device, and nothing is sent to anyone.</p></div></div>
+    <div class="sh center"><div><span class="kicker navy">Free checklist</span><h2>Your relocation checklist</h2><p>Check items off as you go. Your progress is saved on this device, and nothing is sent to anyone.</p></div></div>
     <tpa-checklist id="clreloc" src="/data/relocation-checklist.json" storage-key="clreloc" tabs="false">
       {Object.values(checklist).map((steps: any) => <section>{steps.map((s: any) => <div><h4>{s.title} ({s.when})</h4><ul>{s.items.map((i: string) => <li>{i}</li>)}</ul></div>)}</section>)}
     </tpa-checklist>
@@ -264,6 +264,7 @@ const schema = [
   .relo-cta{margin-top:18px;display:grid;justify-items:center;text-align:center;gap:18px}
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
+  #basics .kicker{font-size:1.3rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px;display:inline-block}
   #payment .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
 </style>
 <script>
