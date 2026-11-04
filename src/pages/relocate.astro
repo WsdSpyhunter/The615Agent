@@ -244,7 +244,7 @@ const schema = [
   .payin{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
   @media(max-width:620px){.payin{grid-template-columns:1fr}}
   .payin label{display:grid;gap:8px}
-  .pl{justify-self:start;padding:5px 15px;border-radius:999px;border:2px solid;color:var(--fg);font-size:16px;font-weight:800;line-height:1.3}
+  .pl{justify-self:center;padding:5px 15px;border-radius:999px;border:2px solid;color:var(--fg);font-size:16px;font-weight:800;line-height:1.3}
   .pl-blue{background:var(--blue-soft);border-color:var(--blue)}
   .pl-gold{background:var(--gold-soft);border-color:var(--gold)}
   .pl-coral{background:var(--coral-soft);border-color:var(--coral)}
@@ -283,7 +283,7 @@ const schema = [
   .relo-posts a:hover{transform:translateY(-2px)}
   .relo-posts b{font-size:1.05rem;line-height:1.3}
   .relo-posts small{color:var(--muted)}
-  .relo-cta{margin-top:18px;display:grid;justify-items:center;text-align:center;gap:18px}
+  .relo-cta{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr);justify-content:center;justify-items:center;text-align:center;gap:18px}
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
   #compare{background:#fff}
