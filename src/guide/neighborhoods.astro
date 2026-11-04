@@ -17,7 +17,7 @@ const zipWord = nz > 1 ? 'ZIP codes' : 'ZIP code';
 const nzWord = ['', 'one', 'two', 'three', 'four', 'five'][nz] || String(nz);
 const many = nz > 6; // a long list of ZIP codes (Nashville) is shown with one row per ZIP code
 const zipIntro = city.zipNote ?? `${CN} street addresses mainly use ${zipWord} ${zipList}.`;
-const title = `${CN} TN ZIP Codes: Census Numbers by Area`;
+const title = many ? `${CN} TN ZIP Codes: Census Numbers by Area` : `${CN} TN ZIP Codes: ${order.join(', ')} | Census Numbers`;
 const description = many ? `${CN}, TN ZIP codes with at least 10,000 residents, by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.` : `${CN}, TN ${zipWord} ${zipList} by the numbers: population, rent, home value and commute (Census). Numbers only, no rankings.`;
 const faq = [
   { q: `What ZIP codes are in ${CN}, TN?`, a: `${zipIntro} ZIP codes follow postal routes and do not match city limits exactly, so a ZIP can include areas outside the city, and school zones and taxes depend on the exact address.` },
@@ -27,7 +27,7 @@ const faq = [
 ];
 const schema = [faqSchema(faq)];
 ---
-<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>${nz > 1 ? 'ZIP codes and areas' : 'ZIP code and area'}</em>`} lead={city.zipLead ?? (nz > 1 ? `The ${nzWord} ${CN} ZIP codes side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code, with Census numbers and no rankings.`)} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
+<GuideLayout city={city} title={title} description={description} h1={`${CN}, TN <em>${nz > 1 ? 'ZIP codes and areas' : 'ZIP code and area'}</em>`} lead={city.zipLead ?? (nz > 1 ? `The ${nzWord} ${CN} ZIP codes (${zipList}) side by side, with Census numbers and no rankings.` : `The main ${CN} ZIP code (${zipList}), with Census numbers and no rankings.`)} slug="neighborhoods" label="Neighborhoods" updated={UPDATED} schema={schema}>
   <section class="s"><div class="wrap">
     <div class="sh"><div><span class="kicker navy">{acs}</span><h2>{CN} {zipWord} at a glance</h2></div></div>
     <p class="answer">{zipIntro} The table below shows Census Bureau estimates for {nz > 1 ? 'each' : 'it'}. ZIP codes follow postal routes and do not match city limits exactly, so these numbers describe the ZIP code area, not a neighborhood or a school zone. I do not rank or recommend areas.</p>
