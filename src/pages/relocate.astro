@@ -98,7 +98,7 @@ const schema = [
 <Layout title="Moving to Middle Tennessee: Steps, Costs and a Free Checklist" description="Relocating to Franklin, Brentwood, Spring Hill, Nashville or nearby? A 7-step plan, eight cities side by side with sourced numbers, Tennessee basics and a free checklist." schema={schema} image="/img/skyline-night-1600.jpg">
   <PageHeader eyebrow="Relocating" title="Moving to <em>Middle Tennessee</em>" lead="A plain 7-step plan, eight cities side by side with sourced numbers, the Tennessee basics and a free checklist. No rankings, no pressure." />
 
-  <section class="s"><div class="wrap">
+  <section class="s" id="start"><div class="wrap">
     <div class="sh center"><div><span class="kicker navy">Start here</span><h2>Where are you in the move?</h2></div></div>
     <div class="paths relo-paths">
       <a class="path p-gold" href="#steps"><h3>Just exploring</h3><p>See the whole move in seven steps and what comes first.</p><span class="more">See the 7 steps →</span></a>
@@ -189,7 +189,7 @@ const schema = [
     <p class="hint" style="margin-top:16px;text-align:center">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or steer buyers toward or away from any area. Equal Housing Opportunity.</p>
     <div class="relo-card relo-ask" style="margin-top:24px"><p>Thinking about a move? I'm happy to answer questions about the area and help you figure out where to start.</p><a class="btn primary" href="/contact">Ask me a question</a></div>
   </div></section>
-  {reloPosts.length > 0 && <section class="s band"><div class="wrap">
+  {reloPosts.length > 0 && <section class="s band" id="relo-blog"><div class="wrap">
     <div class="sh center"><div><span class="kicker navy">From the blog</span><h2>More on relocating</h2></div></div>
     <div class="relo-posts">{reloPosts.map((p) => <a href={`/blog/${p.id}`}><b>{p.data.title}</b><small>{p.data.category} · {dateOf(p.data.pubDate)}</small></a>)}</div>
   </div></section>}
@@ -265,7 +265,7 @@ const schema = [
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
   #basics .kicker{font-size:1.3rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px;display:inline-block}
-  #payment .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
+  #payment .kicker,#start .kicker,#relo-blog .kicker,#faq .kicker{display:inline-block;background:var(--blue);color:#fff;padding:9px 22px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
 </style>
 <script>
   // The payment table recalculates as the visitor types. Same loan in every tax area; only the property tax differs.
