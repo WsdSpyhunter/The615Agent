@@ -488,3 +488,23 @@ article.s{padding-top:48px}
 /* Photo credit lines inside blog posts: same small size and color as the credit under the top photo */
 .prose p:has(> em:only-child > a[href*="pixabay.com"]),.prose p:has(> em:only-child > a[href*="pexels.com"]),.prose p:has(> em:only-child > a[href*="unsplash.com"]){font-size:12.5px;color:var(--muted);margin:6px 0 1.2em}
 .prose p:has(> em:only-child > a[href*="pixabay.com"]) em,.prose p:has(> em:only-child > a[href*="pexels.com"]) em,.prose p:has(> em:only-child > a[href*="unsplash.com"]) em{font-style:normal}
+
+/* Phones only (600px and narrower): centered blocks the owner asked for. Computer and tablet widths are unchanged. */
+@media(max-width:600px){
+  /* About: the "How I work" title, the question line under the list, and the two buttons */
+  .about-h2,.about-q{text-align:center}
+  .about-cta{flex-direction:column;align-items:center}
+  /* Checklists: chip, title, description, file size and all the buttons inside each card */
+  .clbody{text-align:center;justify-items:center}
+  .clbody .btns{justify-content:center}
+  .clbody .chip{justify-self:center}
+  /* Monthly market report box (wherever it appears): centered, with the words spaced out */
+  .signup{text-align:center}
+  .signup h2{word-spacing:.14em;letter-spacing:0;line-height:1.25}
+  .signup p{word-spacing:.06em;line-height:1.65}
+  .signup .row{justify-content:center}
+  .signup .row .btn{margin-inline:auto}
+  /* Resources: the free checklists band */
+  .res-cta{flex-direction:column;justify-content:center;align-items:center;text-align:center}
+}
+
