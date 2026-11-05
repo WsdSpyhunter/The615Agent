@@ -168,6 +168,9 @@ const schema = [
         <tbody>{payAreas.map((a) => <tr data-key={a.key}><td>{a.label}<small class="paycounty"> · {a.county} County</small></td><td>{a.from}</td><td class="pt-tax">{usd0(taxMo(PAY.price, a.rate))}</td><td class="pt-tot">{usd0(startPay.pi + taxMo(PAY.price, a.rate))}</td></tr>)}</tbody></table></div>
       <p class="hint" style="margin-top:12px;text-align:center">Illustration, not a loan offer or quote. It assumes the home's appraised value equals the price you enter, a 30-year fixed loan, and no mortgage insurance. It leaves out home insurance, HOA dues and utilities. The starting rate is Freddie Mac's weekly average 30-year fixed rate as of {dateLong(M.mortgageRateAsOf)} (via the Federal Reserve Bank of St. Louis), an average and not a quote. Listed by county, not ranked. Tax rates and sources are on the <a href="/property-taxes/">property tax page</a>. Maury County is in a 2026 reappraisal year, so its 2026 rate may be lower.</p>
     </div>
+    <div class="relo-ins">
+      <p>Home insurance isn’t included in these numbers. <a href="https://www.emleyrm.com/" target="_blank" rel="noopener">Steve Emley of Emley Risk Management ↗</a> is a trusted insurance broker that I often refer clients to. I receive no payment or any type of compensation for referring him to clients. You’re free to use any insurance agent, and I always suggest getting quotes from more than one insurance agent. <a href="/resources/#insurance">His contact details</a></p>
+    </div>
     <div class="relo-card" style="margin-top:28px">
       <span class="relo-logo"><img src="/img/logo-615-agent.webp" alt="The 615 Agent" width="648" height="329" loading="lazy" decoding="async" /></span>
       <p>Want to add insurance, mortgage insurance and HOA dues, or try FHA and VA loans? The mortgage calculator does that, with each area's property tax filled in.</p>
@@ -286,6 +289,9 @@ const schema = [
   .relo-cta{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr);justify-content:center;justify-items:center;text-align:center;gap:18px}
   .relo-cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
   .relo-ask{border:1.5px solid var(--blue)}
+  .relo-ins{max-width:760px;margin:26px auto 0;background:#fff;border:1.5px solid var(--blue);border-radius:16px;padding:18px 24px;text-align:center}
+  .relo-ins p{margin:0;line-height:1.75;letter-spacing:.01em;word-spacing:.1em}
+  .relo-ins a{font-weight:700;color:var(--navy-text);text-decoration:underline}
   #compare{background:#fff}
   #basics{background:var(--black)}
   #basics .kicker{font-size:1.3rem;font-weight:800;letter-spacing:.1em;margin-bottom:10px;display:inline-block}
