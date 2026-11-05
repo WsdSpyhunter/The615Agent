@@ -493,6 +493,8 @@ article.s{padding-top:48px}
 @media(max-width:600px){
   /* About: the "How I work" title, the question line under the list, and the two buttons */
   .about-h2,.about-q{text-align:center}
+  .about-phone{white-space:nowrap}
+  .about-sig{text-align:center}
   .about-cta{flex-direction:column;align-items:center}
   /* Checklists: chip, title, description, file size and all the buttons inside each card */
   .clbody{text-align:center;justify-items:center}

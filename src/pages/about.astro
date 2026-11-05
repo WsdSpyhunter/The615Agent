@@ -23,9 +23,9 @@ const schema = { '@context': 'https://schema.org', '@type': 'AboutPage', name: '
         <li><b>I show you the real numbers.</b> I use current local market data, not hype, so you know where things actually stand before you decide.</li>
         <li><b>You hear from me fast.</b> Reach out and I’ll call you back, usually within a few hours.</li>
       </ul>
-      <p class="about-q">Got a question at any point? Call or text me: <a href={`tel:${site.phoneHref}`} style="white-space:nowrap">{site.phone}</a> or <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <p class="about-q">Got a question at any point? Call or text me: <a class="about-phone" href={`tel:${site.phoneHref}`}>{site.phone}</a> or <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
       <div class="cta-row about-cta" style="margin-top:24px"><a class="btn primary" href="/buy#form">Get Matched With Homes</a><a class="btn dark" href="/contact">Contact me</a></div>
-      <p class="hint" style="margin-top:20px">{site.agent} · {site.license} · {site.brokerage}</p>
+      <p class="hint about-sig" style="margin-top:20px">{site.agent} · {site.license} · {site.brokerage}</p>
     </div>
   </div></section>
 </Layout>
