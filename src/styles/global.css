@@ -500,9 +500,11 @@ article.s{padding-top:48px}
   .clbody .chip{justify-self:center}
   /* Monthly market report box (wherever it appears): centered, with the words spaced out */
   .signup{text-align:center}
-  .signup h2{word-spacing:.14em;letter-spacing:0;line-height:1.25}
-  .signup p{word-spacing:.06em;line-height:1.65}
-  .signup .row{justify-content:center}
+  .signup h2{word-spacing:.32em;letter-spacing:.012em;line-height:1.3}
+  .signup p{word-spacing:.14em;letter-spacing:.01em;line-height:1.7}
+  .signup small{word-spacing:.1em;letter-spacing:.01em;line-height:1.6}
+  .signup .row{flex-direction:column;align-items:center;gap:14px}
+  .signup .row input{flex:0 0 auto;width:100%}
   .signup .row .btn{margin-inline:auto}
   /* Resources: the free checklists band */
   .res-cta{flex-direction:column;justify-content:center;align-items:center;text-align:center}
