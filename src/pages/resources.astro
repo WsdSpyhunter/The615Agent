@@ -19,7 +19,7 @@ import resources from '../data/resources.json';
         </ul>
       </div>
     ))}
-    <div class="resgroup" id="insurance">
+    <div class="resgroup insgroup" id="insurance">
       <h2>Home insurance</h2>
       <div class="insbox">
         <h3>Steve Emley, Emley Risk Management</h3>
@@ -31,9 +31,10 @@ import resources from '../data/resources.json';
   </div></section>
 </Layout>
 <style>
-  .insbox{background:#fff;border:1.5px solid var(--blue);border-radius:16px;padding:22px 24px;max-width:760px}
+  .insgroup{text-align:center}
+  .insbox{background:#fff;border:1.5px solid var(--blue);border-radius:16px;padding:24px 28px;max-width:760px;margin-inline:auto;text-align:center}
   .insbox h3{font-size:1.25rem;margin-bottom:8px}
   .insbox p{margin:0 0 10px;line-height:1.7}
   .inslinks{font-weight:700}
-  .inslinks a{color:var(--navy-text);text-decoration:underline}
+  .inslinks a{color:var(--navy-text);text-decoration:underline;white-space:nowrap}
 </style>
