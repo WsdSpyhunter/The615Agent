@@ -96,9 +96,9 @@
         "closing disclosure",
         "closing"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-11-05",
+      "slug": "closing-disclosure-explained-line-by-line"
     },
     {
       "id": "t06",

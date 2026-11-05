@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "slug": "closing-disclosure-explained-line-by-line",
+  "topicId": "t05",
+  "created": "2026-11-05",
+  "status": "draft",
+  "title": "Closing Disclosure Explained: Read It Line by Line",
+  "description": "Closing disclosure explained for Middle Tennessee buyers: what each section means, how to compare it with your Loan Estimate, and what to ask your lender.",
+  "category": "Buyers",
+  "keyword": "closing disclosure explained",
+  "body": "The Closing Disclosure shows the final terms and costs of your mortgage. It can look dense the first time you see it. Taken one section at a time, it is readable.\n\nThis is a plain walk through what to look for. I am not a lender or an attorney, so treat this as a guide to the questions worth asking, not advice on your specific loan.\n\n## When it arrives and what to do first\n\n{{img:0}}\n\nA lender must send the Closing Disclosure at least 3 business days before closing. Because it is business days, weekends and holidays can change when your window starts. Count them with your lender instead of guessing.\n\nWhen it arrives, set aside an hour and keep your Loan Estimate open next to it. After you apply, a lender must give you a Loan Estimate within three business days. It is a standard three-page form, so it is built for side-by-side comparison.\n\nThe CFPB explains both forms in plain language in its Owning a Home guides. They are worth keeping open while you read.\n\n## Loan terms: check these first\n\nStart with the basics: loan amount, interest rate, loan type and the monthly principal and interest. Do they match what you expected?\n\nFor context, Freddie Mac via FRED reports a 30-year fixed mortgage rate average of 7.18% for the week of 2026-11-05. That is a national average. Your rate depends on your own loan and lender, so what matters is whether the number on your form matches what you agreed to.\n\nAlso look for any language about the rate or payment changing after closing. An adjustable-rate mortgage has a rate that is fixed for an initial period and can then change. If you did not choose one and you see that kind of language, call your lender right away.\n\nIf you are using a loan program through the [Tennessee Housing Development Agency](https://www.thda.org), which works through participating lenders, confirm that the terms on the form match the program you applied for.\n\n## Projected payments and escrow\n\n{{img:1}}\n\nThis section shows what you can expect to pay each month. Beyond principal and interest, it may include private mortgage insurance. That is typically required on conventional loans when the down payment is under 20 percent. It may also include estimated taxes and homeowner's insurance.\n\nProperty taxes depend on the exact address, so check the figure against county records. For Williamson County homes, the [Williamson County property search](https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search) is the official place to look up a parcel. Spring Hill includes parts of both Williamson and Maury counties, so county services, schools and taxes can differ by address.\n\nIf the monthly total is higher than you planned, try your own numbers in the [Mortgage calculator](/mortgage-calculator). Then ask your lender what is driving the difference.\n\n## Closing costs and cash to close\n\nClosing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. As arithmetic only, Spring Hill's median sale price was $499,752 (Redfin, rolling 3 months, data as of 2026-09-30). On that price, 2 to 4 percent works out to roughly $10,000 to $20,000. Your actual costs will differ.\n\nRead the itemized costs in groups:\n\n- Lender charges\n- Third-party services, such as an appraisal or title work\n- Prepaid items, such as insurance and interest\n- Taxes and recording fees\n\nAsk about any line you cannot explain. Deed recording happens through the county, and the [Williamson County Register of Deeds](https://williamsoncountyregister.com/) is the official office for those records.\n\nThen find the cash to close figure. That is the amount you will actually need to bring. See where your earnest money is credited and make sure the total makes sense to you.\n\nIf your contract included seller-paid closing costs or an interest rate buydown, look for those credits. Whether they are available depends on the seller, the home and the market, and a lender must confirm what is allowed for the loan.\n\n## Compare it with your Loan Estimate\n\nPut the two forms side by side. Check the interest rate, loan amount, monthly payment and total closing costs.\n\nSome differences are normal. Tax or insurance figures may have been updated, for example. Others deserve a direct question: what changed, and why? If a change affects what you pay, ask for the answer in writing.\n\nIf something looks wrong, ask before closing day, not at the table. That is the reason the 3 business days exist.\n\n## Wire fraud and last-minute changes\n\nWire fraud is real. Verify wire instructions by phone using a number you already trust, and never rely on emailed wire instructions. That applies even when an email looks like it came from your title company or your agent.\n\nFrom the time you apply through closing, avoid opening new credit, financing furniture or changing jobs. A pre-approval letter is not a final loan commitment. Final approval depends on the appraisal, underwriting and your finances staying the same until closing.\n\nIf you are selling a home too, cancel its homeowner's insurance only after closing is confirmed. When moving day gets close, the [Free moving checklists](/checklists) can help you keep track of the details.\n\n## Questions to bring to your lender\n\n- Do the rate and loan type match what I agreed to?\n- What changed from my Loan Estimate, and why?\n- What is included in the monthly escrow amount?\n- Which fees are third-party charges, and can I ask about them?\n- How and when do I send cash to close, and how do I verify the wire instructions?\n\n## Next step\n\nIf you are still planning your purchase, you can [Get matched with homes](/buy#form). When you fill out the form, Scott schedules a call and you will be talking within the next 48 hours. If you are looking in Franklin, there is also a page on [Buying a home in Franklin](/franklin/buying-in-franklin).",
+  "faq": [
+    {
+      "q": "How early do I get the Closing Disclosure?",
+      "a": "A lender must send the Closing Disclosure at least 3 business days before closing. Use that time to compare it with your Loan Estimate and ask questions."
+    },
+    {
+      "q": "What should I compare my Closing Disclosure with?",
+      "a": "Compare it with your Loan Estimate. A lender must give you the Loan Estimate within three business days after you apply, and it is a standard three-page form built for side-by-side comparison."
+    },
+    {
+      "q": "How much should I expect to pay in closing costs?",
+      "a": "Closing costs typically run 2 to 4 percent of the purchase price, plus earnest money and moving costs. Your Closing Disclosure shows your actual figures."
+    },
+    {
+      "q": "How do I avoid wire fraud at closing?",
+      "a": "Verify wire instructions by phone using a number you already trust, and never rely on emailed wire instructions."
+    }
+  ],
+  "hero": {
+    "provider": "Pixabay",
+    "id": 3196481,
+    "url": "https://pixabay.com/get/gbe0a32e1fc3c0a3673a6486d253120ca866914f28902e9395fa6a5c02f262bdc525612855926c3e30d667ab89d1ce5b71df703c82d3131f1b208dc26706f4d02_1280.jpg",
+    "preview": "https://pixabay.com/get/gfa99ecfa1ee37da1bd67b5b9ad8aa3105be8afa6e5a3e8d7ae0451de130ef435531a13e5baf28a01bd2e7829bb963e23c6d5044db2e4a6920912d448186db44a_640.jpg",
+    "width": 8736,
+    "height": 5824,
+    "alt": "Photo: Laptop, office, hand, writing, business",
+    "credit": "AymaneJed",
+    "creditUrl": "https://pixabay.com/users/AymaneJed-1888423/",
+    "page": "https://pixabay.com/photos/laptop-office-hand-writing-3196481/",
+    "home": "https://pixabay.com"
+  },
+  "inline": [
+    {
+      "provider": "Pixabay",
+      "id": 6688945,
+      "url": "https://pixabay.com/get/g939c0ddfc9e2e99be23f75b07e734ca699b1ccecb714c867a45c3fbecc722c05f65cbcc50f2ce8ee0cd25bd6237d3066d079c5180d49b8d9205810fc6682b0af_1280.jpg",
+      "preview": "https://pixabay.com/get/g8a14aab541d114bb05e0939671726db28d9db3f86ff9dbb4febcf66021eda387acf05511160ed9ba4b36cefe96ff02616f20e77dcf7f24b5a630f20758d1b26d_640.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+      "credit": "OleksandrPidvalnyi",
+      "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+      "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 5266520,
+      "url": "https://pixabay.com/get/gb24cf39f148d5dc53290c74613ee9a80a00d6aa48309343a58a529dc7cffea1382475400c7e8a0a1acf42be7078d2e964d5af4eb6029e8cb7cb723b46d7a9f92_1280.jpg",
+      "preview": "https://pixabay.com/get/g7e8663d4f149061c42130b6383af5a1b01b75ca013a5a9ab74081787705511fe9a1f0cf56966301cc8eee0c1adc83663a6e9c296fd777bfa8e9967bcd4af91d6_640.jpg",
+      "width": 3000,
+      "height": 2002,
+      "alt": "Photo: Mortgage, house, contract, sign, home",
+      "credit": "Tumisu",
+      "creditUrl": "https://pixabay.com/users/Tumisu-148124/",
+      "page": "https://pixabay.com/photos/mortgage-house-contract-sign-home-5266520/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "choices": [
+    {
+      "provider": "Pixabay",
+      "id": 3196481,
+      "url": "https://pixabay.com/get/gbe0a32e1fc3c0a3673a6486d253120ca866914f28902e9395fa6a5c02f262bdc525612855926c3e30d667ab89d1ce5b71df703c82d3131f1b208dc26706f4d02_1280.jpg",
+      "preview": "https://pixabay.com/get/gfa99ecfa1ee37da1bd67b5b9ad8aa3105be8afa6e5a3e8d7ae0451de130ef435531a13e5baf28a01bd2e7829bb963e23c6d5044db2e4a6920912d448186db44a_640.jpg",
+      "width": 8736,
+      "height": 5824,
+      "alt": "Photo: Laptop, office, hand, writing, business",
+      "credit": "AymaneJed",
+      "creditUrl": "https://pixabay.com/users/AymaneJed-1888423/",
+      "page": "https://pixabay.com/photos/laptop-office-hand-writing-3196481/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 6688945,
+      "url": "https://pixabay.com/get/g939c0ddfc9e2e99be23f75b07e734ca699b1ccecb714c867a45c3fbecc722c05f65cbcc50f2ce8ee0cd25bd6237d3066d079c5180d49b8d9205810fc6682b0af_1280.jpg",
+      "preview": "https://pixabay.com/get/g8a14aab541d114bb05e0939671726db28d9db3f86ff9dbb4febcf66021eda387acf05511160ed9ba4b36cefe96ff02616f20e77dcf7f24b5a630f20758d1b26d_640.jpg",
+      "width": 6000,
+      "height": 4000,
+      "alt": "Photo: Real estate, homeownership, homebuying, home, house",
+      "credit": "OleksandrPidvalnyi",
+      "creditUrl": "https://pixabay.com/users/OleksandrPidvalnyi-4638469/",
+      "page": "https://pixabay.com/photos/real-estate-homeownership-homebuying-6688945/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 5266520,
+      "url": "https://pixabay.com/get/gb24cf39f148d5dc53290c74613ee9a80a00d6aa48309343a58a529dc7cffea1382475400c7e8a0a1acf42be7078d2e964d5af4eb6029e8cb7cb723b46d7a9f92_1280.jpg",
+      "preview": "https://pixabay.com/get/g7e8663d4f149061c42130b6383af5a1b01b75ca013a5a9ab74081787705511fe9a1f0cf56966301cc8eee0c1adc83663a6e9c296fd777bfa8e9967bcd4af91d6_640.jpg",
+      "width": 3000,
+      "height": 2002,
+      "alt": "Photo: Mortgage, house, contract, sign, home",
+      "credit": "Tumisu",
+      "creditUrl": "https://pixabay.com/users/Tumisu-148124/",
+      "page": "https://pixabay.com/photos/mortgage-house-contract-sign-home-5266520/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "checks": {
+    "words": 1007,
+    "linksChecked": [
+      {
+        "id": "cfpb-owning-a-home",
+        "url": "https://www.consumerfinance.gov/owning-a-home/",
+        "status": 403
+      },
+      {
+        "id": "thda",
+        "url": "https://www.thda.org",
+        "status": 200
+      },
+      {
+        "id": "county-property-search",
+        "url": "https://www.williamsoncounty-tn.gov/2099/35739/Property-Data-Search",
+        "status": 200
+      },
+      {
+        "id": "register-of-deeds",
+        "url": "https://williamsoncountyregister.com/",
+        "status": 200
+      }
+    ],
+    "dropped": [
+      {
+        "id": "cfpb-owning-a-home",
+        "url": "https://www.consumerfinance.gov/owning-a-home/",
+        "status": 403
+      }
+    ],
+    "review": {
+      "ok": false,
+      "issues": [
+        "Numbers not found in the supplied facts: 10000, 20000."
+      ]
+    },
+    "compliance": {
+      "hard": [],
+      "soft": []
+    },
+    "quote": null,
+    "quoteNote": null,
+    "dataPointsUsed": [
+      "30-year fixed mortgage rate: 7.18% (Freddie Mac via FRED, week of 2026-11-05)",
+      "Spring Hill median sale price $499,752 (Redfin, rolling 3 months, data as of 2026-09-30)"
+    ],
+    "model": "claude-sonnet-5-5",
+    "failedChecks": true
+  }
+}
