@@ -18,7 +18,8 @@
         "monthsSupply": 4.7,
         "inventory": 344,
         "region": "Mount Juliet, TN"
-      }
+      },
+      "commute": 30.2
     },
     "smyrna": {
       "name": "Smyrna",
@@ -32,7 +33,12 @@
         "monthsSupply": 4.3,
         "inventory": 304,
         "region": "Smyrna, TN"
-      }
+      },
+      "commute": 26.3
     }
+  },
+  "commuteSource": {
+    "name": "U.S. Census Bureau, American Community Survey 5-year (2020-2024), Data Profile DP03_0025, mean travel time to work, place level",
+    "url": "https://data.census.gov/"
   }
 }
