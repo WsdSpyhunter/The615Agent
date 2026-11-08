@@ -4,7 +4,7 @@
     "name": "Redfin Data Center",
     "url": "https://www.redfin.com/news/data-center/"
   },
-  "retrieved": "2026-11-04",
+  "retrieved": "2026-11-08",
   "cities": {
     "mt-juliet": {
       "name": "Mt. Juliet",
@@ -36,9 +36,5 @@
       },
       "commute": 26.3
     }
-  },
-  "commuteSource": {
-    "name": "U.S. Census Bureau, American Community Survey 5-year (2020-2024), Data Profile DP03_0025, mean travel time to work, place level",
-    "url": "https://data.census.gov/"
   }
 }
