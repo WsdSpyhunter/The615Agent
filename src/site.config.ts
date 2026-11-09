@@ -28,7 +28,7 @@ export const site = {
   // Buttondown newsletter username for the monthly market report. Update when the new account exists.
   buttondownUser: 'the615agent',
   // Cloudflare Web Analytics token (public). Leave empty until you create it.
-  cloudflareAnalyticsToken: '',
+  cloudflareAnalyticsToken: '35d8ed15c66745cc9f5e7f93daf19cb4',
   // Show placeholder testimonials until real ones are in src/data/testimonials.json
   showPlaceholderTestimonials: true,
   // PHASE 2: IDX / MLS search.
