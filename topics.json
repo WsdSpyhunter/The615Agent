@@ -828,9 +828,9 @@
         "data",
         "thompsons-station"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-11-09",
+      "slug": "thompsons-station-tn-housing-market-update"
     },
     {
       "id": "t44",
