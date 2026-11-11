@@ -10,7 +10,7 @@ export const site = {
   brokerLicense: '265453',
   phone: '(615) 326-4055',
   phoneHref: '+16153264055',
-  email: 'scott@hivenashville.com',
+  email: 'scott@the615agent.com',
   brokeragePhone: '(615) 579-8474',
   serviceArea: 'Williamson County and Middle Tennessee',
   tagline: 'Buying and selling across Middle Tennessee',

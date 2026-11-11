@@ -14,7 +14,7 @@ const all = enabledCities.flatMap((c) => [
   { key: `${c.slug}__index`, city: c.name, label: `${c.name} guide home (hub)`, path: `/${c.slug}` },
   ...pagesFor(c.slug).map((p) => ({ key: `${c.slug}__${p.slug}`, city: c.name, label: `${c.name}: ${p.label}`, path: `/${c.slug}/${p.slug}` })),
 ]);
-const secret = process.env.APPROVAL_SECRET, worker = (process.env.WORKER_URL || '').replace(/\/$/, ''), to = process.env.APPROVAL_EMAIL || 'scott@hivenashville.com';
+const secret = process.env.APPROVAL_SECRET, worker = (process.env.WORKER_URL || '').replace(/\/$/, ''), to = process.env.APPROVAL_EMAIL || 'scott@the615agent.com';
 const preview = process.argv.includes('--preview') || !secret || !worker;
 const link = (key) => (preview ? '#' : `${worker}/act?t=${signToken({ s: key, a: 'guide' }, secret)}`);
 const strip = (html) => html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<nav[\s\S]*?<\/nav>|<header[\s\S]*?<\/header>|<footer[\s\S]*?<\/footer>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();

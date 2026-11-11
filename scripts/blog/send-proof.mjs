@@ -9,7 +9,7 @@ import { sendEmail } from './email.mjs';
 const slug = process.argv[2];
 const draft = readJson(`drafts/${slug}.json`);
 if (!draft) { console.log(`No draft "${slug}".`); process.exit(1); }
-const secret = process.env.APPROVAL_SECRET, worker = (process.env.WORKER_URL || '').replace(/\/$/, ''), to = process.env.APPROVAL_EMAIL || 'scott@hivenashville.com';
+const secret = process.env.APPROVAL_SECRET, worker = (process.env.WORKER_URL || '').replace(/\/$/, ''), to = process.env.APPROVAL_EMAIL || 'scott@the615agent.com';
 if (process.argv.includes('--preview') || !secret || !worker) {
   writeFileSync('proof-preview.html', approvalEmail(draft, { approve: '#', edit: '#', regenerate: '#', reject: '#' }));
   console.log('Wrote proof-preview.html (no email sent: preview mode, or APPROVAL_SECRET / WORKER_URL missing).');
