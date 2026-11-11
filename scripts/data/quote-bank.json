@@ -1,12 +1,23 @@
 {
- "generated": "2026-11-10",
+ "generated": "2026-11-11",
  "status": {
-  "fed": "ok: 14 items listed, 14 pages read, 5 quotes kept",
+  "fed": "ok: 14 items listed, 14 pages read, 6 quotes kept",
   "fhfa": "ok: 10 items listed, 10 pages read, 0 quotes kept",
   "cfpb": "ok: 14 items listed, 14 pages read, 0 quotes kept",
   "treasury": "ok: 10 items listed, 10 pages read, 0 quotes kept"
  },
  "quotes": [
+  {
+   "id": "qf6a01e5d",
+   "text": "Corporate bond and mortgage rate spreads have widened, and equity valuations in the tech sector have dropped, as investors appear to be reassessing expected returns and the risks associated with increased external financing for AI investment projects.",
+   "speaker": "Michelle W. Bowman",
+   "role": "Federal Reserve Vice Chair for Supervision",
+   "org": "Federal Reserve",
+   "kind": "speech",
+   "title": "Bowman, The U.S. Economy and Considerations for Monetary Policy",
+   "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261110a.htm",
+   "date": "2026-11-10"
+  },
   {
    "id": "qc6368ae4",
    "text": "The rise in home values likely filtered through to put upward pressure on rents in rural and less dense areas as well.",
