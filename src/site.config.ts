@@ -7,7 +7,7 @@ export const site = {
   brokerage: 'RE/MAX Choice Properties',
   license: 'TN License #369664',
   licenseNumber: '369664',
-  brokerLicense: '', // TODO: office's TN firm license number (not shown anywhere yet)
+  brokerLicense: '258581',
   phone: '(615) 326-4055',
   phoneHref: '+16153264055',
   email: 'scott@the615agent.com',
