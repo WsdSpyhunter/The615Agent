@@ -36,7 +36,8 @@
       { "name": "Middle Tennessee Electric", "url": "https://www.mte.com", "note": "Electric service in much of Williamson County." },
       { "name": "Nashville Electric Service", "url": "https://www.nespower.com", "note": "Electric service in Davidson County." },
       { "name": "TDOT SmartWay", "url": "https://smartway.tn.gov", "note": "Live traffic and road conditions." },
-      { "name": "TDOT", "url": "https://www.tn.gov/tdot.html", "note": "State roads and projects." }
+      { "name": "TDOT", "url": "https://www.tn.gov/tdot.html", "note": "State roads and projects." },
+      { "name": "Nashville What To Do", "url": "https://www.nashvillewhattodo.com", "note": "Nashville travel guide with live conditions, dated prices and attraction ratings." }
     ]
   },
   {
