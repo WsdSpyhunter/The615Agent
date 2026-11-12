@@ -178,7 +178,9 @@ input,select,textarea{font:inherit;color:var(--fg);background:var(--card);border
 .signup .row input{flex:1 1 200px;width:auto}
 .signup .btn{background:var(--gold);color:#0A0A0A}
 .signup small{display:block;margin-top:8px;opacity:.85}
-
+.signup h2{word-spacing:.22em;letter-spacing:.008em;line-height:1.25}
+.signup p{word-spacing:.12em;letter-spacing:.008em;line-height:1.7}
+.signup small{word-spacing:.08em;letter-spacing:.008em;line-height:1.6}
 /* forms + contact */
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px}
 @media(max-width:820px){.contact{grid-template-columns:1fr}}
