@@ -84,4 +84,4 @@ When you are ready to pack, the [moving checklists](/checklists) can help you ke
 
 If you want to talk through what a move to Williamson County or nearby would look like for your budget, fill out the [Get matched with homes](/buy#form) form. I will schedule a call, and you will be talking with me within the next 48 hours. You can also reach me directly through [Contact Scott](/contact).
 
-I am Scott Davis, a REALTOR® with Hive Nashville. I can explain how the pieces fit together, and your lender, insurance agent and the county can confirm the exact figures for a specific home.
+I am Scott Davis, a REALTOR® with RE/MAX. I can explain how the pieces fit together, and your lender, insurance agent and the county can confirm the exact figures for a specific home.

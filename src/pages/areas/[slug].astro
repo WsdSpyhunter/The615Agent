@@ -19,7 +19,7 @@ const schema = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: c.faq.map((f: any) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
 ---
-<Layout title={`${c.title} Homes and Neighborhood Guide`} description={`Thinking about ${c.title}? A guide to what to know, local resources, and answers to common questions, from Scott Davis, Realtor with Hive Nashville.`} schema={schema}>
+<Layout title={`${c.title} Homes and Neighborhood Guide`} description={`Thinking about ${c.title}? A guide to what to know, local resources, and answers to common questions, from Scott Davis, Realtor with RE/MAX.`} schema={schema}>
   <PageHeader eyebrow="Area guide" title={`Moving to <em>${a.name}</em>`} lead={a.blurb} />
   <section class="s"><div class="wrap two area">
     <div class="prose">

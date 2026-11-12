@@ -4,14 +4,14 @@ export const site = {
   url: 'https://the615agent.com',
   agent: 'Scott Davis',
   title: 'Realtor',
-  brokerage: 'Hive Nashville',
+  brokerage: 'RE/MAX',
   license: 'TN License #369664',
   licenseNumber: '369664',
-  brokerLicense: '265453',
+  brokerLicense: '', // TODO: RE/MAX office's TN firm license number
   phone: '(615) 326-4055',
   phoneHref: '+16153264055',
   email: 'scott@the615agent.com',
-  brokeragePhone: '(615) 579-8474',
+  brokeragePhone: '', // TODO: RE/MAX office phone
   serviceArea: 'Williamson County and Middle Tennessee',
   tagline: 'Buying and selling across Middle Tennessee',
   social: {

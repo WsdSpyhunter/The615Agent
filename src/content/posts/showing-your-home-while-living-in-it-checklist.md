@@ -119,4 +119,4 @@ Living in the home also means you are already packing. Boxing up off-season item
 
 ## Next steps
 
-If you want to talk through a plan for your own house, start with [finding out what your home is worth](/sell#form), or [contact Scott](/contact) directly. I'm a REALTOR® with Hive Nashville, and I can walk through the house with you before photos and showings begin.
+If you want to talk through a plan for your own house, start with [finding out what your home is worth](/sell#form), or [contact Scott](/contact) directly. I'm a REALTOR® with RE/MAX, and I can walk through the house with you before photos and showings begin.

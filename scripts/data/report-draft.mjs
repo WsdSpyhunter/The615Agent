@@ -47,12 +47,12 @@ const websiteCta = `<div style="background:#EEF0F2;border-radius:14px;padding:22
 const signature = `<div style="background:${BLACK};border-radius:14px;padding:24px 18px;text-align:center;margin:26px 0 0;font-family:Arial,Helvetica,sans-serif;color:#ffffff">
 <img src="${IMG}/headshot.jpg" alt="Scott Davis" width="96" height="96" style="display:block;margin:0 auto 12px;width:96px;min-width:96px;max-width:96px;height:96px;min-height:96px;max-height:96px;object-fit:cover;border-radius:50%;border:4px solid ${BLUE}">
 <div style="font-size:18px;font-weight:bold;color:#ffffff">Scott Davis, REALTOR&reg;</div>
-<div style="font-size:13px;color:#C4CCD6;margin-top:4px">The 615 Agent &middot; Hive Nashville &middot; TN License #369664</div>
+<div style="font-size:13px;color:#C4CCD6;margin-top:4px">The 615 Agent &middot; RE/MAX &middot; TN License #369664</div>
 <div style="font-size:14px;margin-top:10px"><a href="tel:+16153264055" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">(615) 326-4055</span></a> &middot; <a href="mailto:scott@the615agent.com" style="color:#7DB4F5 !important;text-decoration:none"><span style="color:#7DB4F5 !important">scott@the615agent.com</span></a></div>
 <div style="font-size:14px;margin-top:6px"><a href="${SITE}" style="color:${GOLD} !important;text-decoration:none;font-weight:bold"><span style="color:${GOLD} !important">The615Agent.com</span></a></div>
 <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:22px auto 0;width:100%;max-width:420px"><tr>
 <td align="center" valign="bottom" style="width:50%;padding:0 14px;vertical-align:bottom"><img src="${IMG}/logo-615-agent.png" alt="The 615 Agent" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
-<td align="center" valign="bottom" style="width:50%;padding:0 14px;vertical-align:bottom"><img src="${IMG}/hive-nashville.png" alt="Hive Nashville" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
+<td align="center" valign="bottom" style="width:50%;padding:0 14px;vertical-align:bottom"><img src="${IMG}/remax.png" alt="RE/MAX" width="150" style="display:block;margin:0 auto;width:150px;max-width:100%;height:auto"></td>
 </tr></table>
 </div>`;
 
@@ -89,7 +89,7 @@ const body = [
   websiteCta,
   signature,
   `Sources: ${m.sources.map((s) => (typeof s === 'string' ? s : `[${s.name}](${s.url})${s.note ? ` (${s.note})` : ''}`)).join('; ')}. Conditions vary by neighborhood, price range and home type. This is general information, not legal, tax, lending or financial advice.`,
-  `Equal Housing Opportunity. Scott Davis is a licensed Tennessee REALTOR&reg; (License #369664) with Hive Nashville.`,
+  `Equal Housing Opportunity. Scott Davis is a licensed Tennessee REALTOR&reg; (License #369664) with RE/MAX.`,
 ].filter(Boolean).join('\n\n');
 
 if (PREVIEW) {

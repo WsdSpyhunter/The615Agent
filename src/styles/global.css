@@ -426,7 +426,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 
 #blog .post + .post{margin-top:26px}
 
-/* Home hero: the "Scott Davis · Realtor at Hive Nashville" label now sits under the two buttons */
+/* Home hero: the "Scott Davis · Realtor at RE/MAX" label now sits under the two buttons */
 .hero .eyebrow{display:flex;width:fit-content;margin-top:38px}
 @media(max-width:600px){.hero .eyebrow{margin-top:38px;margin-inline:auto}}
 

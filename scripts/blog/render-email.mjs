@@ -21,12 +21,12 @@ const authorCardPreview = () => `<div style="margin:26px 0 6px;font-size:12px;le
 <img src="${SITE}/img/email/headshot.jpg" alt="Scott Davis" width="88" height="88" style="display:block;margin:0 auto 10px;width:88px;height:88px;border-radius:50%;border:4px solid #1473E6">
 <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#1473E6;font-weight:bold">About the author</div>
 <div style="font-size:19px;font-weight:bold;margin-top:2px">Scott Davis, REALTOR&reg;</div>
-<div style="font-size:13px;color:#4F5966;margin:3px 0 8px">The 615 Agent &middot; Hive Nashville &middot; TN License #369664</div>
+<div style="font-size:13px;color:#4F5966;margin:3px 0 8px">The 615 Agent &middot; RE/MAX &middot; TN License #369664</div>
 <div style="font-size:14px;line-height:1.5;margin:0 0 12px">I help people buy, sell, invest and relocate along the I-65 corridor south of Nashville. Questions about anything in this post? Reach out and I will get back to you.</div>
 <div style="margin:0 0 14px"><span style="display:inline-block;background:#1473E6;color:#ffffff;font-weight:bold;font-size:13px;border-radius:999px;padding:10px 18px;margin:3px">Contact me</span><span style="display:inline-block;border:1.5px solid #0A0A0A;color:#0A0A0A;font-weight:bold;font-size:13px;border-radius:999px;padding:8px 16px;margin:3px">Get matched with homes</span><span style="display:inline-block;color:#173F8A;font-weight:bold;font-size:13px;margin:3px 6px">(615) 326-4055</span></div>
 <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;width:100%;max-width:380px;border-top:1px solid #D4D9DF"><tr>
 <td align="center" valign="middle" style="padding:14px 8px 0"><span style="display:inline-block;background:#0A0A0A;border-radius:10px;padding:8px 12px"><img src="${SITE}/img/email/logo-615-agent.png" alt="The 615 Agent" width="100" style="display:block;width:100px;height:auto"></span></td>
-<td align="center" valign="middle" style="padding:14px 8px 0"><span style="display:inline-block;background:#0A0A0A;border-radius:10px;padding:8px 12px"><img src="${SITE}/img/email/hive-nashville.png" alt="Hive Nashville" width="100" style="display:block;width:100px;height:auto"></span></td>
+<td align="center" valign="middle" style="padding:14px 8px 0"><span style="display:inline-block;background:#0A0A0A;border-radius:10px;padding:8px 12px"><img src="${SITE}/img/email/remax.png" alt="RE/MAX" width="100" style="display:block;width:100px;height:auto"></span></td>
 </tr></table>
 </div>`;
 
