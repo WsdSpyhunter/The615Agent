@@ -98,4 +98,4 @@ I can't tell you where rates will go. I can help you look at local numbers for t
 
 If you want to start, fill out the [Get Matched form](/buy#form). I will schedule a call, and we will be talking within the next 48 hours. You can also reach me through the [contact page](/contact). If Franklin is on your list, see [buying a home in Franklin](/franklin/buying-in-franklin).
 
-Scott Davis, REALTOR® with RE/MAX
+Scott Davis, REALTOR® with RE/MAX Choice Properties

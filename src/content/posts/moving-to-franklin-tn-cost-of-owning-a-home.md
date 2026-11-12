@@ -97,4 +97,4 @@ When you are ready to pack, request quotes from at least 3 licensed moving compa
 
 A move to a new city goes better when the numbers are checked against your own budget and timeline. If you want to talk through Franklin, fill out the Get Matched buyer form on this site. I will schedule a call, and we will be talking within the next 48 hours. You can also reach me through the contact page.
 
-— Scott Davis, REALTOR® with RE/MAX
+— Scott Davis, REALTOR® with RE/MAX Choice Properties

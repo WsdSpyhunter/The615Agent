@@ -14,8 +14,8 @@ const year = new Date().getFullYear();
         Affiliated with {site.brokerage}<br />
         Tennessee Licensed Real Estate Professional · {site.license}<br />
         <a href={`tel:${site.phoneHref}`}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a><br />
-        {site.brokeragePhone && `${site.brokerage}: ${site.brokeragePhone}`}
-        <img class="hive" src="/img/remax.png" alt={site.brokerage} width="150" height="56" loading="lazy" />
+        {site.brokeragePhone && `${site.brokerage}: ${site.brokeragePhone}`}<br />Each Office Independently Owned and Operated.
+        <img class="hive" src="/img/remax-cream.png" alt={site.brokerage} width="150" height="42" loading="lazy" />
         <div class="socials">
           {Object.entries(site.social).filter(([k, v]) => v && k !== 'zillow').map(([k, v]) => <a href={v} rel="noopener" target="_blank">{k[0].toUpperCase() + k.slice(1)}</a>)}
         </div>

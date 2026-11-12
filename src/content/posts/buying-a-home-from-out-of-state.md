@@ -96,4 +96,4 @@ For the move, request quotes from at least 3 licensed moving companies and book 
 
 If you are planning a move to Middle Tennessee, tell me where you are in the process. Fill out the [Get Matched form](/buy#form) and I will schedule a call, and we will be talking within the next 48 hours. You can also reach me through the [contact page](/contact) with questions first.
 
-— Scott Davis, REALTOR®, RE/MAX
+— Scott Davis, REALTOR®, RE/MAX Choice Properties

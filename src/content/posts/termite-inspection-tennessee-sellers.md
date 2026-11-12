@@ -95,4 +95,4 @@ There is no single right answer to the second question. It depends on your home,
 
 ## Next step
 
-If you are thinking about selling, start with the basics. [Find out what your home is worth](/sell#form) gets the conversation going, and the [Selling a home in Franklin](/franklin/selling-in-franklin) page is there if you are in that area. If you have a question about inspections, repairs or timing, you can [Contact Scott](/contact) directly. I am a REALTOR® with RE/MAX, and I am happy to talk through your situation.
+If you are thinking about selling, start with the basics. [Find out what your home is worth](/sell#form) gets the conversation going, and the [Selling a home in Franklin](/franklin/selling-in-franklin) page is there if you are in that area. If you have a question about inspections, repairs or timing, you can [Contact Scott](/contact) directly. I am a REALTOR® with RE/MAX Choice Properties, and I am happy to talk through your situation.

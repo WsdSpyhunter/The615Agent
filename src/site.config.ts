@@ -4,14 +4,14 @@ export const site = {
   url: 'https://the615agent.com',
   agent: 'Scott Davis',
   title: 'Realtor',
-  brokerage: 'RE/MAX',
+  brokerage: 'RE/MAX Choice Properties',
   license: 'TN License #369664',
   licenseNumber: '369664',
-  brokerLicense: '', // TODO: RE/MAX office's TN firm license number
+  brokerLicense: '', // TODO: office's TN firm license number (not shown anywhere yet)
   phone: '(615) 326-4055',
   phoneHref: '+16153264055',
   email: 'scott@the615agent.com',
-  brokeragePhone: '', // TODO: RE/MAX office phone
+  brokeragePhone: '(615) 227-1514', // office phone as listed on RE/MAX Choice Properties pages
   serviceArea: 'Williamson County and Middle Tennessee',
   tagline: 'Buying and selling across Middle Tennessee',
   social: {

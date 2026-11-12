@@ -96,6 +96,6 @@ Nearby towns can look quite different from one another. If you are comparing, th
 
 ## Talk it through
 
-If you want to look at what these numbers mean for a specific plan, I am happy to talk. I am Scott Davis, a REALTOR® with RE/MAX.
+If you want to look at what these numbers mean for a specific plan, I am happy to talk. I am Scott Davis, a REALTOR® with RE/MAX Choice Properties.
 
 Buyers can use [Get matched with homes](/buy#form). After you fill out the form, I schedule a call and we will be talking within the next 48 hours. If you own a home, [find out what your home is worth](/sell#form) to start that conversation.

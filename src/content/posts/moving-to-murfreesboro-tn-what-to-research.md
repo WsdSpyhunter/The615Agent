@@ -83,4 +83,4 @@ Our [Free moving checklists](/checklists) can help you keep the steps in order, 
 
 ## Talk it through
 
-If you want help sorting through any of this, fill out the [Get matched with homes](/buy#form) form. I will schedule a call, and we will be talking within the next 48 hours. You can also reach me through [Contact Scott](/contact). Scott Davis, REALTOR® with RE/MAX.
+If you want help sorting through any of this, fill out the [Get matched with homes](/buy#form) form. I will schedule a call, and we will be talking within the next 48 hours. You can also reach me through [Contact Scott](/contact). Scott Davis, REALTOR® with RE/MAX Choice Properties.

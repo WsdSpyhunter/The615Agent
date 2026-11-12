@@ -95,4 +95,4 @@ If you are selling, the same data applies in reverse. Days on market and sale-to
 
 ## Talk it through
 
-Data tells you what has happened, not what will happen. If you are thinking about buying in Murfreesboro or elsewhere in Middle Tennessee, you can use the [Get matched with homes](/buy#form) form, and I will schedule a call so we are talking within the next 48 hours. If you are thinking about selling, [Find out what your home is worth](/sell#form) is the place to start. I am Scott Davis, a REALTOR® with RE/MAX, and I am glad to look at the local numbers with you.
+Data tells you what has happened, not what will happen. If you are thinking about buying in Murfreesboro or elsewhere in Middle Tennessee, you can use the [Get matched with homes](/buy#form) form, and I will schedule a call so we are talking within the next 48 hours. If you are thinking about selling, [Find out what your home is worth](/sell#form) is the place to start. I am Scott Davis, a REALTOR® with RE/MAX Choice Properties, and I am glad to look at the local numbers with you.
