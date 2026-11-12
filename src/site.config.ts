@@ -11,7 +11,8 @@ export const site = {
   phone: '(615) 326-4055',
   phoneHref: '+16153264055',
   email: 'scott@the615agent.com',
-  brokeragePhone: '(615) 227-1514', // office phone as listed on RE/MAX Choice Properties pages
+  brokeragePhone: '(615) 444-3752', // office direct line, per the broker's own site
+  brokerageAddress: '115 North Castle Heights Ave, Suite 201, Lebanon, TN 37087',
   serviceArea: 'Williamson County and Middle Tennessee',
   tagline: 'Buying and selling across Middle Tennessee',
   social: {
