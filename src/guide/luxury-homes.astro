@@ -9,7 +9,7 @@ const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.
 const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
 const rows = censusRows(CS);
 const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
-const title = `${CN} TN Homes $1 Million and Up: Census and Redfin Data`;
+const title = `${CN} TN Homes Over $1 Million: Census and Redfin Data`;
 const description = `${pct(cf.valuePct1mPlus)} of ${CN}, TN owner-occupied homes are valued at $1 million or more (Census). Redfin median sale price ${usd(f.medianPrice)}. City comparison.`;
 const faq = [
   { q: `What share of ${CN} homes are worth $1 million or more?`, a: `According to the Census Bureau's American Community Survey (2020-2024), ${pct(cf.valuePct1mPlus)} of ${CN} city's owner-occupied homes are valued at $1 million or more, and ${pct(cf.valuePct500to999k)} between $500,000 and $999,999. Values are the owners' own estimates.` },

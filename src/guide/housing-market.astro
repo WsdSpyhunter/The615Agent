@@ -6,7 +6,7 @@ import ColorBar from '../components/ColorBar.astro';
 import MarketTemperature from '../components/MarketTemperature.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
-import { site } from '../site.config';
+import { site, areas } from '../site.config';
 import { enabledCities } from '../data/guide-cities';
 import { M, H, usd, dateLong, monthYear, monthShort, signed, word, chart } from '../lib-guide';
 
@@ -116,7 +116,7 @@ const schema = [
       <a href="/market-data"><b>Market data for all cities</b><small>Live charts and temperature for every area we serve.</small></a>
       <a href="/blog/monthly-market-report-2026-08"><b>Monthly market report</b><small>The latest report covering Franklin, Brentwood, Spring Hill and more.</small></a>
       <a href="/blog/is-now-a-good-time-to-buy-middle-tennessee"><b>Is now a good time to buy?</b><small>The questions that matter more than market timing.</small></a>
-      <a href={`/areas/${CS}`}><b>{CN} area page</b><small>Helpful local links and answers.</small></a>
+      {areas.some((a) => a.slug === CS) && <a href={`/areas/${CS}`}><b>{CN} area page</b><small>Helpful local links and answers.</small></a>}
       <a href="/mortgage-calculator"><b>Mortgage calculator</b><small>Estimate a monthly payment at today’s rates.</small></a>
       <a href="/sell#form"><b>What’s my {CN} home worth?</b><small>Request a free home value review.</small></a>
       {enabledCities.filter((o) => o.slug !== CS && o.peers.includes(CS)).map((o) => <a href={`/${o.slug}/${o.slug}-vs-${CS}`}><b>{o.name} vs {CN}</b><small>The two cities side by side.</small></a>)}

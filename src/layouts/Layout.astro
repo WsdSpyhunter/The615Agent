@@ -41,9 +41,10 @@ const agentSchema = {
   telephone: site.phone,
   email: site.email,
   areaServed: ['Franklin, TN', 'Brentwood, TN', 'Spring Hill, TN', "Thompson's Station, TN", 'Nolensville, TN', 'Columbia, TN', 'Murfreesboro, TN', 'Williamson County, TN', 'Nashville, TN'],
-  parentOrganization: { '@type': 'Organization', name: site.brokerage },
+  address: { '@type': 'PostalAddress', streetAddress: '5310 Maryland Way, Suite 320', addressLocality: 'Brentwood', addressRegion: 'TN', postalCode: '37027', addressCountry: 'US' },
+  parentOrganization: { '@type': 'Organization', name: site.brokerage, telephone: site.brokeragePhone },
   employee: { '@type': 'Person', name: site.agent, jobTitle: site.title, telephone: site.phone, email: site.email },
-  sameAs: Object.values(site.social).filter(Boolean),
+  sameAs: [...Object.values(site.social).filter(Boolean), 'https://scottdavis-tn.remax.com/'],
 };
 const schemas = [agentSchema, ...(Array.isArray(schema) ? schema : schema ? [schema] : [])];
 ---

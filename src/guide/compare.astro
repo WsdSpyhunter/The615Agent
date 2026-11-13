@@ -5,7 +5,7 @@ import GuideLayout from '../layouts/GuideLayout.astro';
 import ColorBar from '../components/ColorBar.astro';
 import GuideClose from '../components/GuideClose.astro';
 import { M, H, C, usd, num, dateLong, monthShort, signed, chart2 } from '../lib-guide';
-import { site } from '../site.config';
+import { site, areas } from '../site.config';
 const f = M.cities[CS], p = M.cities[peer], cf = C.cities[CS], cp = C.cities[peer];
 const FN = `${CN}`, PN = p.name, when = dateLong(f.asOf), monS = monthShort(f.asOf), UPDATED = C.retrieved;
 const hf = H.cities[CS].months, hp = H.cities[peer].months;
@@ -75,7 +75,7 @@ const schema = [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEnti
     <p class="sources" style="margin-top:14px">This page is general information, not legal, tax, lending or financial advice. I do not rank cities or neighborhoods and do not steer buyers toward or away from any place. Equal Housing Opportunity.</p>
     <div class="linkgrid" style="margin-top:18px">
       <a href={`/${CS}/housing-market`}><b>{CN} housing market</b><small>Prices, days on market and supply.</small></a>
-      <a href={`/areas/${peer}`}><b>{PN} area page</b><small>Helpful local links and answers.</small></a>
+      {areas.some((a) => a.slug === peer) && <a href={`/areas/${peer}`}><b>{PN} area page</b><small>Helpful local links and answers.</small></a>}
       <a href={`/${CS}/cost-of-living`}><b>{CN} cost of living</b><small>Income, rent and home value.</small></a>
     </div>
   </div></section>

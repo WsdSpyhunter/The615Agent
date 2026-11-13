@@ -8,7 +8,7 @@ import { M, usd, dateLong, monthShort, signed } from '../lib-guide';
 
 const f = M.cities[CS], when = dateLong(f.asOf), monS = monthShort(f.asOf), t = f.temperature;
 const tilt = t.tilt === 'sellers' ? ', leaning toward sellers' : t.tilt === 'buyers' ? ', leaning toward buyers' : '';
-const title = `How to Sell Your House in ${CN}, TN: Steps and Local Data`;
+const title = `Selling a House in ${CN}, TN: Steps and Local Data`;
 const description = `How to sell your house in ${CN}, TN, with local data: median price ${usd(f.medianPrice)}, ${f.dom} days on market, ${f.saleToList.toFixed(1)}% sale-to-list.`;
 const steps = [
   { h: 'Understand the local numbers', p: [`As of ${when}, the median sale price in ${CN} was ${usd(f.medianPrice)} (${signed(f.yoy)} from a year earlier), homes took a median of ${f.dom} days to sell and sold for an average of ${f.saleToList.toFixed(1)}% of list price, with ${f.monthsSupply} months of supply and ${f.inventory} homes for sale (source: Redfin Data Center). Our blended market rating is a ${t.label.toLowerCase()}${tilt}. See the full <a href="/${CS}/housing-market">${CN} housing market</a> page.`, 'These are citywide figures. Conditions can differ a lot by price range, condition and location, so they describe the market and are not a price for any one home.'] },

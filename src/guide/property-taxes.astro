@@ -28,7 +28,7 @@ const r4 = (n: number) => '$' + n.toFixed(4);
 const rate = (n: number) => { const dec = (String(n).split('.')[1] || '').length; return '$' + n.toFixed(Math.max(2, dec)); };
 const partsText = (sc: any) => sc.parts.map((x: any) => `${x.name} ${rate(x.rate)}`).join(', ');
 const cityRate3 = T.cityRate.toFixed(Math.max(3, (String(T.cityRate).split('.')[1] || '').length)); // 0.103, 0.340, 0.8251
-const title = `${CN} TN Property Taxes: ${yr} Rates and How Bills Work`;
+const title = `${CN} TN Property Tax Rate ${yr}: How Your Bill Works`;
 const description0 = `${CN}, TN property tax rates (${yr}): city $${cityRate3} per $100 of assessed value plus county${two ? ' and school' : ''} rates, with a worked example.`;
 const descSplit = `${CN}, TN property tax rates: city $${cityRate3} per $100 of assessed value, plus Williamson or Maury County rates, with a worked example.`;
 const descMetro = metro ? `${CN}, TN property tax rates (${yr}): ${rate(T.scenarios[0].parts[0].rate)} per $100 of assessed value in the Urban Services District and ${rate(T.scenarios[1].parts[0].rate)} elsewhere in Davidson County, with a worked example.` : '';

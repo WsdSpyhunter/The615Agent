@@ -9,7 +9,7 @@ const f = M.cities[CS], cf = C.cities[CS], when = dateLong(f.asOf), UPDATED = C.
 const acs = "U.S. Census Bureau, American Community Survey 5-Year Estimates (2020-2024)";
 const rows = censusRows(CS);
 const faqSchema = (faq) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((x) => ({ "@type": "Question", name: x.q, acceptedAnswer: { "@type": "Answer", text: x.a } })) });
-const title = `${CN} TN New Construction: How Much of ${CN} Is Newer`;
+const title = `${CN} TN New Construction: Share of Newer Homes`;
 const description = `${pct(builtSince2010(cf))} of ${CN}, TN homes were built in 2010 or later, and ${pct(cf.builtPct.b2020)} in 2020 or later (Census). City comparison, plus what buyers can ask and inspect.`;
 const faq = [
   { q: `How much of ${CN}'s housing is newer?`, a: `According to the Census Bureau's American Community Survey (2020-2024), ${pct(cf.builtPct.b2020)} of ${CN} city's ${num(cf.housingUnits)} housing units were built in 2020 or later and ${pct(cf.builtPct.b2010)} between 2010 and 2019, so ${pct(builtSince2010(cf))} were built in 2010 or later.` },
