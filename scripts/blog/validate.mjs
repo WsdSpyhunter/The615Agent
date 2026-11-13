@@ -9,7 +9,8 @@ export function validatePost(post, ctx) {
   const issues = [];
   const body = post.body || '';
   const wc = words(body);
-  if (wc < 800 || wc > 1200) issues.push(`Body is ${wc} words; it must be 800 to 1,200.`);
+  if (wc > 1200) issues.push(`Body is ${wc} words; it must be 800 to 1,200. CUT AT LEAST ${wc - 1100} WORDS: drop a whole section or the least important facts, and aim for about 1,000 words.`);
+  else if (wc < 800) issues.push(`Body is ${wc} words; it must be 800 to 1,200. ADD ABOUT ${900 - wc} WORDS of explanation using only the supplied facts.`);
   if (!post.title || post.title.length > 68) issues.push('Title is missing or longer than 68 characters.');
   if (!post.description || post.description.length < 110 || post.description.length > 160) issues.push(`Meta description is ${post.description?.length ?? 0} characters; it must be about 130 to 155.`);
   if (!Array.isArray(post.faq) || post.faq.length < 3 || post.faq.length > 5) issues.push('FAQ must have 3 to 5 questions.');
