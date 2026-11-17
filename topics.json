@@ -1069,6 +1069,27 @@
       "custom": true,
       "slug": "federal-reserve-mortgage-rates-explained",
       "usedOn": "2026-10-16"
+    },
+    {
+      "id": "t24",
+      "category": "Relocation",
+      "type": "evergreen",
+      "idea": "Planning a Nashville visit before you move: how to use a short trip to plan your move to Middle Tennessee, with free planning tools",
+      "keyword": "visit Nashville before moving",
+      "related": [
+        "Nashville trip planner",
+        "day trip to Franklin",
+        "moving to Middle Tennessee"
+      ],
+      "linkTags": [
+        "relocation",
+        "nashville",
+        "nashville visit",
+        "franklin"
+      ],
+      "status": "unused",
+      "usedOn": null,
+      "slug": null
     }
   ]
 }

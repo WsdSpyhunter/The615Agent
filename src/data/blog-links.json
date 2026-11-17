@@ -30,5 +30,9 @@
   { "id": "fred-mortgage-rate", "label": "Freddie Mac 30-year mortgage rate (FRED)", "url": "https://fred.stlouisfed.org/series/MORTGAGE30US", "tags": ["mortgage rates", "market update", "financing"] },
   { "id": "redfin-data", "label": "Redfin Data Center", "url": "https://www.redfin.com/news/data-center/", "tags": ["market update", "data"] },
   { "id": "zillow-research", "label": "Zillow Research data", "url": "https://www.zillow.com/research/data/", "tags": ["market update", "data"] },
-  { "id": "realtor-research", "label": "Realtor.com Research data", "url": "https://www.realtor.com/research/data/", "tags": ["market update", "data"] }
+  { "id": "realtor-research", "label": "Realtor.com Research data", "url": "https://www.realtor.com/research/data/", "tags": ["market update", "data"] },
+  { "id": "nwtd-plan", "label": "NashvilleWhatToDo.com free day planner", "url": "https://www.nashvillewhattodo.com/plan/", "tags": ["nashville visit"] },
+  { "id": "nwtd-itineraries", "label": "NashvilleWhatToDo.com ready-made 1 to 3 day itineraries", "url": "https://www.nashvillewhattodo.com/itineraries/", "tags": ["nashville visit"] },
+  { "id": "nwtd-calendar", "label": "NashvilleWhatToDo.com crowd calendar", "url": "https://www.nashvillewhattodo.com/calendar/", "tags": ["nashville visit"] },
+  { "id": "nwtd-franklin-trip", "label": "NashvilleWhatToDo.com Franklin day trip page", "url": "https://www.nashvillewhattodo.com/day-trips/franklin/", "tags": ["nashville visit"] }
 ]
