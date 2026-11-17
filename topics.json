@@ -1087,9 +1087,9 @@
         "nashville visit",
         "franklin"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-11-17",
+      "slug": "visit-nashville-before-moving"
     }
   ]
 }
