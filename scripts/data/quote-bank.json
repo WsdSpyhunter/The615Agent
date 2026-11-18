@@ -1,12 +1,45 @@
 {
- "generated": "2026-11-17",
+ "generated": "2026-11-18",
  "status": {
-  "fed": "ok: 14 items listed, 14 pages read, 3 quotes kept",
+  "fed": "ok: 14 items listed, 14 pages read, 4 quotes kept",
   "fhfa": "ok: 10 items listed, 10 pages read, 0 quotes kept",
   "cfpb": "ok: 14 items listed, 14 pages read, 0 quotes kept",
   "treasury": "ok: 10 items listed, 10 pages read, 0 quotes kept"
  },
  "quotes": [
+  {
+   "id": "qa9d703e2",
+   "text": "I've seen affordable housing built by partnerships between tribal governments and local banks on the Flathead and Blackfeet Reservations in Montana.",
+   "speaker": "Michael S. Barr",
+   "role": "Federal Reserve Governor",
+   "org": "Federal Reserve",
+   "kind": "speech",
+   "title": "Barr, Investing in America’s Underserved Communities",
+   "url": "https://www.federalreserve.gov/newsevents/speech/barr20261118a.htm",
+   "date": "2026-11-18"
+  },
+  {
+   "id": "q9c83bb83",
+   "text": "Syracuse, New York, announced earlier this year the creation of a revolving loan fund for mixed-income housing.",
+   "speaker": "Michael S. Barr",
+   "role": "Federal Reserve Governor",
+   "org": "Federal Reserve",
+   "kind": "speech",
+   "title": "Barr, Investing in America’s Underserved Communities",
+   "url": "https://www.federalreserve.gov/newsevents/speech/barr20261118a.htm",
+   "date": "2026-11-18"
+  },
+  {
+   "id": "q959b4b6c",
+   "text": "The Low-Income Housing Tax Credit (LITHC) has been a critical tool so important to the recovery of the Bronx and many communities around the country.",
+   "speaker": "Michael S. Barr",
+   "role": "Federal Reserve Governor",
+   "org": "Federal Reserve",
+   "kind": "speech",
+   "title": "Barr, Investing in America’s Underserved Communities",
+   "url": "https://www.federalreserve.gov/newsevents/speech/barr20261118a.htm",
+   "date": "2026-11-18"
+  },
   {
    "id": "qf6a01e5d",
    "text": "Corporate bond and mortgage rate spreads have widened, and equity valuations in the tech sector have dropped, as investors appear to be reassessing expected returns and the risks associated with increased external financing for AI investment projects.",
@@ -17,28 +50,6 @@
    "title": "Bowman, The U.S. Economy and Considerations for Monetary Policy",
    "url": "https://www.federalreserve.gov/newsevents/speech/bowman20261110a.htm",
    "date": "2026-11-10"
-  },
-  {
-   "id": "qc6368ae4",
-   "text": "The rise in home values likely filtered through to put upward pressure on rents in rural and less dense areas as well.",
-   "speaker": "Lisa D. Cook",
-   "role": "Federal Reserve Governor",
-   "org": "Federal Reserve",
-   "kind": "speech",
-   "title": "Cook, The Dual Mandate in Rural America",
-   "url": "https://www.federalreserve.gov/newsevents/speech/cook20260930a.htm",
-   "date": "2026-09-30"
-  },
-  {
-   "id": "q183c376f",
-   "text": "Since 2023, housing inflation in rural areas has reverted toward pre-pandemic patterns; however, housing costs remain a significant driver of overall inflation.",
-   "speaker": "Lisa D. Cook",
-   "role": "Federal Reserve Governor",
-   "org": "Federal Reserve",
-   "kind": "speech",
-   "title": "Cook, The Dual Mandate in Rural America",
-   "url": "https://www.federalreserve.gov/newsevents/speech/cook20260930a.htm",
-   "date": "2026-09-30"
   }
  ]
 }
