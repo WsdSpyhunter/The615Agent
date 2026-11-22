@@ -17,5 +17,6 @@ const pending = drafts.filter((d) => d && d.status === 'draft').length;
 if (pending >= 3) { out(false, `${pending} drafts are already waiting for approval`); process.exit(0); }
 const last = [...topics.filter((t) => ['draft', 'published'].includes(t.status)).map((t) => t.usedOn), ...drafts.map((d) => d?.created)].filter((x) => /^\d{4}-\d{2}-\d{2}$/.test(x || '')).sort().pop();
 const daysSince = last ? Math.round((Date.parse(day) - Date.parse(last)) / 86400000) : 99;
-if (daysSince < 3) { out(false, `last draft was ${daysSince} day(s) ago; the next one is due after 3 days`); process.exit(0); }
+const needed = parts.weekday === 'Fri' ? 2 : 3; // Friday counts one day early because Saturday and Sunday never run
+if (daysSince < needed) { out(false, `last draft was ${daysSince} day(s) ago; the next one is due after ${needed} days`); process.exit(0); }
 out(true, `${parts.weekday} ${hour}:xx Central, last draft ${daysSince} days ago`);
