@@ -927,9 +927,9 @@
         "data",
         "mortgage rates"
       ],
-      "status": "unused",
-      "usedOn": null,
-      "slug": null
+      "status": "draft",
+      "usedOn": "2026-11-22",
+      "slug": "middle-tennessee-housing-market-november-2026"
     },
     {
       "id": "t49",
