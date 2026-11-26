@@ -58,12 +58,23 @@ log(`Topic ${topic.id}: ${topic.idea}`);
 const existing = posts.map((p) => ({ title: p.title }));
 const ctx = buildContext(topic, existing);
 
+// The model cannot count characters, so a meta description a little over 155 used to fail all three attempts. Trim it in code at a word boundary instead.
+function fitDescription(d) {
+  d = String(d || '').trim().replace(/\s+/g, ' ');
+  if (d.length <= 155) return d;
+  let cut = d.slice(0, 155);
+  const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('; '), cut.lastIndexOf(', '));
+  cut = stop >= 120 ? cut.slice(0, stop) : cut.slice(0, cut.lastIndexOf(' '));
+  return cut.replace(/[\s,;:–-]+$/, '').replace(/\b(and|or|the|a|an|to|of|for|with|in|on|before|your)$/i, '').trim().replace(/[\s,;:]+$/, '').replace(/\.?$/, '.');
+}
+
 async function writePost() {
   let extra = '';
   for (let attempt = 1; attempt <= 3; attempt++) {
     let post;
     if (process.env.BLOG_FIXTURE) post = readJson(process.env.BLOG_FIXTURE);
     else post = parseJson(await ask({ system: system(), user: user(topic, ctx, extra) }));
+    post.description = fitDescription(post.description);
     const issues = validatePost(post, ctx);
     let review = { ok: true, issues: [] };
     if (!issues.length && !process.env.BLOG_FIXTURE) {
