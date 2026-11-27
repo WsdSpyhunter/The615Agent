@@ -9,7 +9,7 @@ import { buildContext } from './context.mjs';
 import { system, user, reviewSystem } from './prompt.mjs';
 import { complianceIssues } from './compliance.mjs';
 import { ask, parseJson, MODEL } from './claude.mjs';
-import { validatePost } from './validate.mjs';
+import { validatePost, fitDescription } from './validate.mjs';
 import { resolveLinks } from './links.mjs';
 import { choosePhotos } from './images.mjs';
 import { applyQuote, formatQuote } from '../quotes/lib.mjs';
@@ -57,16 +57,6 @@ log(`Topic ${topic.id}: ${topic.idea}`);
 // Only live posts may be mentioned: a pending or replaced draft is not on the site (this caused a reference to a post that never existed).
 const existing = posts.map((p) => ({ title: p.title }));
 const ctx = buildContext(topic, existing);
-
-// The model cannot count characters, so a meta description a little over 155 used to fail all three attempts. Trim it in code at a word boundary instead.
-function fitDescription(d) {
-  d = String(d || '').trim().replace(/\s+/g, ' ');
-  if (d.length <= 155) return d;
-  let cut = d.slice(0, 155);
-  const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('; '), cut.lastIndexOf(', '));
-  cut = stop >= 120 ? cut.slice(0, stop) : cut.slice(0, cut.lastIndexOf(' '));
-  return cut.replace(/[\s,;:–-]+$/, '').replace(/\b(and|or|the|a|an|to|of|for|with|in|on|before|your)$/i, '').trim().replace(/[\s,;:]+$/, '').replace(/\.?$/, '.');
-}
 
 async function writePost() {
   let extra = '';

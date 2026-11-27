@@ -12,7 +12,7 @@ on:
     types: [blog-resend-proof]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   resend:
@@ -27,6 +27,21 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Recheck a draft that was blocked by a fixable problem
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          case "$SLUG" in (*[!a-z0-9-]*) echo "Bad slug"; exit 1;; esac
+          node scripts/blog/recheck.mjs "$SLUG"
+          if ! git diff --quiet drafts; then
+            git config user.name "the615agent-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add drafts
+            git commit -m "Blog draft recheck: $SLUG"
+            git pull --rebase -q
+            git push
+          fi
+
       - name: Email the proof
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}

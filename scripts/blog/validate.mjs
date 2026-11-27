@@ -53,3 +53,13 @@ export function validatePost(post, ctx) {
   if (ctx.marketFacts.length && !usedMarket) issues.push('Must include at least one real market number from the market facts.');
   return issues;
 }
+
+// The model cannot count characters, so a meta description a little over 155 used to fail all three attempts. Trim it in code at a word boundary instead.
+export function fitDescription(d) {
+  d = String(d || '').trim().replace(/\s+/g, ' ');
+  if (d.length <= 155) return d;
+  let cut = d.slice(0, 155);
+  const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('; '), cut.lastIndexOf(', '));
+  cut = stop >= 120 ? cut.slice(0, stop) : cut.slice(0, cut.lastIndexOf(' '));
+  return cut.replace(/[\s,;:–-]+$/, '').replace(/\b(and|or|the|a|an|to|of|for|with|in|on|before|your)$/i, '').trim().replace(/[\s,;:]+$/, '').replace(/\.?$/, '.');
+}
