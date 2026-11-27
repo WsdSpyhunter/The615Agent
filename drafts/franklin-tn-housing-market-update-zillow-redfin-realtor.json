@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "slug": "franklin-tn-housing-market-update-zillow-redfin-realtor",
+  "topicId": "t40",
+  "created": "2026-11-27",
+  "status": "draft",
+  "title": "Franklin TN Housing Market Update: Zillow, Redfin Data",
+  "description": "Franklin TN housing market update: see what Redfin, Zillow and Realtor.com show on prices, days on market and months of supply, and how to read it.",
+  "category": "Market Update",
+  "keyword": "Franklin TN housing market",
+  "body": "The Franklin TN housing market looks a little different depending on who is measuring it. Zillow, Redfin and Realtor.com each use their own methods, so their numbers do not always line up. This post puts the latest figures side by side and explains what each one means in plain terms.\n\nNothing here predicts where prices or rates go next. It is a snapshot, and a snapshot only helps if you know how to read it.\n\n## What each source shows for Franklin\n\n{{img:0}}\n\nRedfin's rolling 3-month data for Franklin, as of October 31, 2026, shows a median sale price of $849,409, up 5.5% from a year earlier. Median days on market was 61, and the average sale-to-list ratio was 97.9%. There were 538 active listings and 4.1 months of supply. The underlying data lives at the [Redfin Data Center](https://www.redfin.com/news/data-center/).\n\nZillow's Market Temperature Index for Franklin reads 28 in my data file as of that same date. It moved down 1 point over three months, which is a small change, and the trend reads as steady. More detail is on Zillow Research data.\n\nRealtor.com's hotness score for Williamson County is 44.7 out of 100. That is a county-level number, so it covers the whole county and not Franklin alone. Its figures are published through [Realtor.com Research data](https://www.realtor.com/research/data/).\n\nPut together, the overall rating for Franklin in my data is that it leans toward buyers, with a steady trend rather than a fast shift. For a closer look at the city, see the [Franklin housing market data](/franklin/housing-market) page.\n\n## How to read days on market, sale-to-list and months of supply\n\nThese three terms show up in almost every market report. Here is what they mean.\n\n**Days on market** is how long a typical home takes to sell after it is listed. A median of 61 days in Franklin means the middle home sat 61 days, with half taking less time and half taking more.\n\n**Sale-to-list ratio** compares what homes sell for with what they were listed for. An average of 97.9% means homes closed a little under list price on average. It does not tell you what any single home will do, since some sell over asking and some well under.\n\n**Months of supply** is how long it would take to sell every active listing at the current pace of sales. The usual rule of thumb is that under 4 months favors sellers, 4 to 6 months is balanced, and over 6 months favors buyers.\n\nFranklin's 4.1 months from Redfin sits just inside the balanced range. The overall rating leans toward buyers. Those two reads can both be fair, because the sources measure different things over different windows. When they differ slightly, I treat that as a reason to look at several numbers instead of picking one.\n\n## Franklin next to the Nashville metro\n\nFor a wider view, Redfin's Nashville metro numbers for the 4 weeks ending November 22, 2026 are below:\n\n- Median sale price: $471,305\n- Median days on market: 67\n- Sale-to-list ratio: 97.7%\n- Months of supply: 6.1\n- Homes sold: 2,140\n\nA 6.1 months of supply reading falls just over 6, which is the range that favors buyers under the usual rule of thumb.\n\nBe careful comparing these directly to the Franklin figures. The Franklin data is a rolling 3 months and the metro data is 4 weeks, so the time windows differ. The metro also covers many cities and price ranges.\n\nThat is the main reason I lean on local data. Conditions can differ a lot between cities, price ranges and neighborhoods, so a national headline or a metro average may say little about the street you care about. You can see nearby areas on the [market data for the I-65 corridor](/market-data) page, or check the [Nashville housing market data](/nashville/housing-market) page for the metro.\n\n## Rates, monthly budget and address-level details\n\nThe 30-year fixed mortgage rate was 7.21% for the week of November 25, 2026, according to Freddie Mac via Freddie Mac 30-year mortgage rate (FRED). Nobody can reliably predict where rates go from here. Waiting for a drop is a bet in either direction, and the cost of waiting, such as rent paid, price changes or losing a home you wanted, is real even though it is easy to overlook.\n\nA more useful starting point is your own budget. Stable income, an emergency fund after closing and a payment that fits comfortably matter more than the headline numbers. The [mortgage calculator](/mortgage-calculator) lets you try your own price, down payment and rate without relying on anyone's example.\n\nTwo things in a Franklin purchase depend entirely on the exact address:\n\n- **Schools.** Assignment depends on the address, so verify it with [Williamson County Schools](https://www.wcs.edu) or the district that serves the home.\n- **Property taxes.** These also depend on the address, so check with the county for any home you are serious about.\n\nMarket reports describe averages and medians. They cannot tell you what a particular home is worth or how it will be received. That comes from looking at recent comparable sales and the condition of the home itself.\n\n## Where to go from here\n\nIf you are thinking about buying in Franklin, you can [get matched with homes](/buy#form). When you fill out the form, I schedule a call and we will be talking within the next 48 hours.\n\nIf you are thinking about selling, you can [find out what your home is worth](/sell#form). Either way, I will walk through the numbers with you and answer questions without pressure.",
+  "faq": [
+    {
+      "q": "Is the Franklin TN housing market a buyer's or seller's market?",
+      "a": "In my data, Franklin's overall rating leans toward buyers as of October 31, 2026. Redfin's months of supply for Franklin was 4.1, which sits in the 4 to 6 month balanced range."
+    },
+    {
+      "q": "What is the median home price in Franklin TN?",
+      "a": "Redfin's rolling 3-month median sale price for Franklin was $849,409 as of October 31, 2026, up 5.5% from a year earlier."
+    },
+    {
+      "q": "How long do homes take to sell in Franklin?",
+      "a": "Redfin shows a median of 61 days on market in Franklin, based on a rolling 3 months of data as of October 31, 2026. The average sale-to-list ratio was 97.9%."
+    },
+    {
+      "q": "What does months of supply mean?",
+      "a": "Months of supply is how long it would take to sell every active listing at the current pace of sales. Under 4 months favors sellers, 4 to 6 is balanced, and over 6 favors buyers."
+    },
+    {
+      "q": "Do schools and property taxes depend on the address in Franklin?",
+      "a": "Yes. School assignment and property taxes depend on the exact address, so verify them with the school district and the county for any home you are serious about."
+    }
+  ],
+  "hero": {
+    "provider": "Pixabay",
+    "id": 8984580,
+    "url": "https://pixabay.com/get/gf54e261ea2a7cb1c8ca6e6e16916e0e58e4119f0895ebb9a754793809ee151f165c8c1feba6540c264f1a7238cfe619e9257e05f788a3a3195bbfba68dc7977c_1280.jpg",
+    "preview": "https://pixabay.com/get/gbc964dbdf8aa129e5681cc7b4d81d18653621c9c9d307143b0624c47d3f497e532d7e2e62b7bd2f94c43a21c73fb1028bd8395be1cfb3be08d213d6ffcbfc337_640.jpg",
+    "width": 7357,
+    "height": 4907,
+    "alt": "Photo: Fall, autumn, leaves, nature, foliage",
+    "credit": "Michelle-Maria",
+    "creditUrl": "https://pixabay.com/users/Michelle-Maria-165491/",
+    "page": "https://pixabay.com/photos/fall-autumn-leaves-nature-foliage-8984580/",
+    "home": "https://pixabay.com"
+  },
+  "inline": [
+    {
+      "provider": "Pixabay",
+      "id": 1477041,
+      "url": "https://pixabay.com/get/ge786a47dc7944332dd0726f3bbf63c271f30eb0b670382f742cd759e94c2d504a2c32e608c82c1c6082389f0505b703f127983e6164e0ef19c7f0b0cbbd4e096_1280.jpg",
+      "preview": "https://pixabay.com/get/g903f38e32c96c7d4243d343baf021ec84c9f2c1ca37bae18d00bd6643b49e8f1748b3177c0a5fceef1b0e57f69c9fa8e7098ee828697e08cfc9e02cdfc774186_640.jpg",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Photo: House, pool, interior design, architecture, 3d",
+      "credit": "Giovanni_cg",
+      "creditUrl": "https://pixabay.com/users/Giovanni_cg-1760325/",
+      "page": "https://pixabay.com/photos/house-pool-interior-design-1477041/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "choices": [
+    {
+      "provider": "Pixabay",
+      "id": 8984580,
+      "url": "https://pixabay.com/get/gf54e261ea2a7cb1c8ca6e6e16916e0e58e4119f0895ebb9a754793809ee151f165c8c1feba6540c264f1a7238cfe619e9257e05f788a3a3195bbfba68dc7977c_1280.jpg",
+      "preview": "https://pixabay.com/get/gbc964dbdf8aa129e5681cc7b4d81d18653621c9c9d307143b0624c47d3f497e532d7e2e62b7bd2f94c43a21c73fb1028bd8395be1cfb3be08d213d6ffcbfc337_640.jpg",
+      "width": 7357,
+      "height": 4907,
+      "alt": "Photo: Fall, autumn, leaves, nature, foliage",
+      "credit": "Michelle-Maria",
+      "creditUrl": "https://pixabay.com/users/Michelle-Maria-165491/",
+      "page": "https://pixabay.com/photos/fall-autumn-leaves-nature-foliage-8984580/",
+      "home": "https://pixabay.com"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1477041,
+      "url": "https://pixabay.com/get/ge786a47dc7944332dd0726f3bbf63c271f30eb0b670382f742cd759e94c2d504a2c32e608c82c1c6082389f0505b703f127983e6164e0ef19c7f0b0cbbd4e096_1280.jpg",
+      "preview": "https://pixabay.com/get/g903f38e32c96c7d4243d343baf021ec84c9f2c1ca37bae18d00bd6643b49e8f1748b3177c0a5fceef1b0e57f69c9fa8e7098ee828697e08cfc9e02cdfc774186_640.jpg",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Photo: House, pool, interior design, architecture, 3d",
+      "credit": "Giovanni_cg",
+      "creditUrl": "https://pixabay.com/users/Giovanni_cg-1760325/",
+      "page": "https://pixabay.com/photos/house-pool-interior-design-1477041/",
+      "home": "https://pixabay.com"
+    }
+  ],
+  "checks": {
+    "words": 971,
+    "linksChecked": [
+      {
+        "id": "redfin-data",
+        "url": "https://www.redfin.com/news/data-center/",
+        "status": 200
+      },
+      {
+        "id": "zillow-research",
+        "url": "https://www.zillow.com/research/data/",
+        "status": 403
+      },
+      {
+        "id": "realtor-research",
+        "url": "https://www.realtor.com/research/data/",
+        "status": 200
+      },
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      },
+      {
+        "id": "wcs",
+        "url": "https://www.wcs.edu",
+        "status": 200
+      }
+    ],
+    "dropped": [
+      {
+        "id": "zillow-research",
+        "url": "https://www.zillow.com/research/data/",
+        "status": 403
+      },
+      {
+        "id": "fred-mortgage-rate",
+        "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+        "status": 0
+      }
+    ],
+    "review": {
+      "ok": true,
+      "issues": []
+    },
+    "compliance": {
+      "hard": [],
+      "soft": []
+    },
+    "quote": null,
+    "quoteNote": null,
+    "dataPointsUsed": [
+      "Franklin median sale price $849,409, up 5.5% year over year (Redfin, rolling 3 months, as of 2026-10-31)",
+      "Franklin median days on market 61; sale-to-list 97.9%; 538 active listings; 4.1 months of supply (Redfin, as of 2026-10-31)",
+      "Zillow Market Temperature Index for Franklin 28, down 1 over 3 months; Realtor.com Williamson County hotness 44.7 of 100",
+      "Nashville metro, 4 weeks ending 2026-11-22: median price $471,305, 67 days on market, 97.7% sale-to-list, 6.1 months of supply, 2,140 sold (Redfin)",
+      "30-year fixed mortgage rate 7.21% (Freddie Mac via FRED, week of 2026-11-25)"
+    ],
+    "model": "claude-sonnet-5-5",
+    "failedChecks": false
+  }
+}
